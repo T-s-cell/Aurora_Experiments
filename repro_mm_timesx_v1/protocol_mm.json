@@ -5,7 +5,6 @@
   "scope_statement": "M48T512 measures ONLY the gain of the current fixed-input text scheme over EXP-010; it does NOT represent Aurora's capability under full (untruncated) text. Event publication timing is NOT independently audited.",
   "declaration": "Aurora is NOT trained or fine-tuned on TimesX. Pre-training data overlap is not audited, so no stronger claim is made.",
   "no_search": "No model modification and no hyperparameter search: budgets, block order, tokenizer and all inference settings are frozen a priori.",
-
   "data": {
     "zip_sha256": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
     "split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
@@ -19,7 +18,6 @@
     "domains_total": 19,
     "window_key": "(var_key, sample_id) composite key; uniqueness, text-cache lookup and all alignment checks use the composite key only — never row position"
   },
-
   "model": {
     "package": "aurora-model==0.2.0",
     "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
@@ -28,7 +26,6 @@
     "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
     "loading": "identical to EXP-010 load_aurora.py: sha256 verify -> state_dict key bidirectional diff vs safetensors -> load_state_dict(strict=True) -> eval() -> all params requires_grad_(False)"
   },
-
   "inference": {
     "batch_size": 1,
     "num_samples": 100,
@@ -40,7 +37,6 @@
     "pred_reduction": "mean over the 100-sample dim -> single point forecast (float64)",
     "text_tensor_path": "text_input_ids / text_attention_mask / text_token_type_ids passed as explicit Long tensors [1,512] moved to model.device; token_type_ids all zeros; the string path text_inputs= is FORBIDDEN (known batch-squeeze and device defects)."
   },
-
   "text": {
     "method_tag": "M48T512",
     "source": "TimesX_Datasets.zip native per-sample fields: background, scenario (Events), holiday_info (Calendar), covariates_info (Covariates). Text enters inference ONLY through the frozen cache built by repro_mm_timesx_v1/text_cache.py from these fields; the builder's constructor receives the four field strings only, never the sample dict.",
@@ -65,15 +61,17 @@
       "schema": "ids int32 [2474,512], mask int32 [2474,512], explicit key arrays var_keys/sample_ids/domains; meta line per window: per-block raw/kept token counts, [start,end) boundaries in the 512 sequence, full decoded text + its sha256, zip provenance",
       "id_verification": "expected token IDs are re-derived by the fixed rules (normalize -> '<Name>: <field>' -> encode(add_special_tokens=False) -> first N) and compared for EXACT equality against cache rows; decoded text is for human inspection only and is NOT required to equal the original field verbatim (BERT lowercases and splits punctuation/subwords)."
     },
-    "retention_note": "TextEncoder.max_length=125: BERT first contextualizes ALL valid input positions via full self-attention, then the first 125 contextualized features are retained and distilled by 10 learnable queries (cross_text). Rear text (Calendar/Covariates region) can therefore still influence output through attention even though its own features are not retained. This mechanism is NOT modified; the preflight quantifies rear-token sensitivity by fixing the first 125 input positions AND the whole attention mask and replacing only rear valid tokens (equal length). Pad-position BERT features entering the retained window when content <125 tokens are inherent model behavior, recorded not fixed."
+    "retention_note": "TextEncoder.max_length=125: BERT first contextualizes ALL valid input positions via full self-attention, then the first 125 contextualized features are retained and distilled by 10 learnable queries (cross_text). The retained rows correspond to input content positions 1..125 (index 0 is [CLS]; CLS and SEP rows are zeroed by the valid mask before retention). Rear text (indices >= 126, Calendar/Covariates region) can therefore still influence output through attention even though its own features are not retained. This mechanism is NOT modified; the preflight quantifies rear-token sensitivity by fixing input indices 0..125 ([CLS] + the content positions feeding the retained features) AND the whole attention mask, then replacing only rear valid tokens from index 126 (equal length). Pad-position BERT features entering the retained window when content <125 tokens are inherent model behavior, recorded not fixed."
   },
-
   "seeds": {
-    "base_seeds": [2021, 2022, 2023],
+    "base_seeds": [
+      2021,
+      2022,
+      2023
+    ],
     "per_window_rule": "w = int.from_bytes(sha256(f'aurora-timesx-v1|{base_seed}|{var_key}|{sample_id}'.encode()).digest()[:8], 'big') % (2**31 - 1)",
     "application": "torch.manual_seed(w) immediately before each window's generate() call; no other RNG consumption between seeding and generate(); rule and prefix IDENTICAL to EXP-010 so seeds pair with A48 windows"
   },
-
   "determinism": {
     "timing": "CUBLAS_WORKSPACE_CONFIG=':4096:8' must be set in process env BEFORE any CUDA initialization; torch.use_deterministic_algorithms(True), torch.backends.cuda.matmul.allow_tf32=False, torch.backends.cudnn.allow_tf32=False, torch.backends.cudnn.benchmark=False must all be applied BEFORE the first inference call.",
     "tf32": "disabled (matmul and cudnn)",
@@ -82,7 +80,6 @@
     "cublas_workspace_config": ":4096:8",
     "error_policy": "If a determinism error names a specific op, record the op and the disposition in the preflight report; never silently fall back to warn_only. The text branch (BERT/TextGuider/cross_text) may introduce new ops; same policy applies."
   },
-
   "scoring": {
     "window_d": "d = pstdev(past96, ddof=0); if d < 1e-8: d = fallback_std (precomputed in split_manifest per variable from first training sample past-96)",
     "std_mse": "mean(((pred - target)/d)^2) per window -> mean per variable -> equal weight within domain -> equal weight across 19 domains",
@@ -90,19 +87,29 @@
     "d_vs_revin_note": "The scoring denominator d (pstdev with fallback) and Aurora's internal RevIN scale (std(unbiased=False)+1e-5) are distinct quantities. Scoring uses only d; inference uses only the official revin path. They are never interchanged or blended.",
     "paired_delta_ladder": "Window-level paired differences (M48T512 - A48, same seed, same composite key) -> mean per variable -> equal weight within domain -> equal weight across 19 domains -> overall. NEVER a plain average over all windows. Relative changes and improved domain/variable counts reported alongside."
   },
-
   "shard_fingerprint": {
-    "per_shard_header": ["protocol_mm_sha256", "split_manifest_sha256", "data_cache_sha256", "weights_sha256", "hf_revision", "itl", "num_samples", "base_seed", "text_cache_npz_sha256", "code_md5 (root key sources + repro_mm_timesx_v1 key sources)", "bert_config_md5 (tokenizer files)", "aurora_package_md5 (key files)"],
+    "per_shard_header": [
+      "protocol_mm_sha256",
+      "split_manifest_sha256",
+      "data_cache_sha256",
+      "weights_sha256",
+      "hf_revision",
+      "itl",
+      "num_samples",
+      "base_seed",
+      "text_cache_npz_sha256",
+      "code_md5 (root key sources + repro_mm_timesx_v1 key sources)",
+      "bert_config_md5 (tokenizer files)",
+      "aurora_package_md5 (key files)"
+    ],
     "resume_policy": "On resume, every header field is re-verified against the current protocol; ANY mismatch (including a one-byte change to the text cache or any builder/code file) -> shard is NOT reused, moved to repro_mm_timesx_v1/predictions/quarantine/ (never deleted), and re-generated.",
     "done_marker": ".done JSON with the same fingerprint is written only after atomic shard completion"
   },
-
   "outputs": {
     "npz_schema": "sample_ids(int64)/var_keys(str)/domains(str)/pred(N,12 float64)/target(N,12 float64)/d(N, float64), sharded by (base_seed, domain), Z0/A48-compatible, under repro_mm_timesx_v1/predictions/ with method tag M48T512",
     "aggregate": "repro_mm_timesx_v1/results/: per-seed, variable-level, 19-domain and overall (mean +/- std ddof=1) for M48T512; A48 recomputed at full precision from the frozen root predictions/ shards (not from display CSVs); Z0 from data/Z0__test.npz; paired-difference tables per the frozen ladder",
     "coverage_check": "per seed: key set equal to Z0__test.npz keys (2,474 rows); target and d recomputed from frozen data and compared bitwise; predictions finite"
   },
-
   "eval_gate": {
     "approval_flag": "--i-approve-frozen-protocol <first 12 hex of sha256(protocol_mm.json)>; the EXP-010 token (580eb3c3f51d) MUST be rejected by this driver",
     "runtime_checks": "all sha256 fingerprints re-verified at startup; text cache npz sha + key set equality with the 2,474 frozen test rows; GPU >= 20 GB free; test window count == 2474",

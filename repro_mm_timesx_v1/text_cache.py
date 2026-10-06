@@ -23,7 +23,7 @@ import re
 import sys
 import zipfile
 from collections import Counter
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +57,68 @@ DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 COV_HEADER_RE = re.compile(
     r"^Covariate information from (\d{4}-\d{2}-\d{2}) to (\d{4}-\d{2}-\d{2}):")
 WEEKEND_TOL = {"1D": timedelta(days=3), "1W": timedelta(days=7)}
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11,
+    "december": 12,
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7, "aug": 8,
+    "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12,
+}
+_MON = r"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)"
+_SUFFIX = r"(?:st|nd|rd|th)?"
+EN_DATE_MDY = re.compile(rf"\b({_MON})\.?\s+(\d{{1,2}}){_SUFFIX}\s*,?\s+(\d{{4}})\b", re.I)
+EN_DATE_DMY = re.compile(rf"\b(\d{{1,2}}){_SUFFIX}\s+({_MON})\.?,?\s+(\d{{4}})\b", re.I)
+EN_DATE_MD = re.compile(rf"\b({_MON})\.?\s+(\d{{1,2}}){_SUFFIX}(?!\s*,?\s*\d{{4}})\b", re.I)
+EN_DATE_DM = re.compile(rf"\b(\d{{1,2}}){_SUFFIX}\s+({_MON})\.?(?!\s*,?\s*\d{{4}})\b", re.I)
+
+# first-pass review-aid buckets (auto tags are NOT a leakage verdict)
+_SCHED_KW = re.compile(
+    r"\b(release[sd]?|schedul\w+|announc\w+|plan\w*|expect\w+|forecast\w*|"
+    r"upcoming|set to|due (?:on|for|to)|will (?:be|release|publish|report)|"
+    r"projected?|anticipated?|estimat\w+)\b", re.I)
+_REALIZED_KW = re.compile(
+    r"\b(report\w*|rose|fell|jump\w+|drop\w+|surge[ds]?|plunge[ds]?|climb\w+|"
+    r"declin\w+|gained|lost|increase[ds]?|decrease[ds]?|soared|slumped|"
+    r"posted|recorded|reached|according to|said|settled|closed|traded)\b", re.I)
+
+
+def _month_of(tok):
+    return _MONTHS[tok.lower().rstrip(".")]
+
+
+def find_english_dates(text):
+    """[(date, has_year, span, matched)] — deduplicated by (date, span-start)."""
+    out = []
+    seen = set()
+    for m in EN_DATE_MDY.finditer(text):
+        try:
+            d = date(int(m.group(3)), _month_of(m.group(1)), int(m.group(2)))
+        except ValueError:
+            continue
+        out.append((d, True, m.span(), m.group(0)))
+        seen.add((d, m.start()))
+    for m in EN_DATE_DMY.finditer(text):
+        try:
+            d = date(int(m.group(3)), _month_of(m.group(2)), int(m.group(1)))
+        except ValueError:
+            continue
+        if (d, m.start()) not in seen:
+            out.append((d, True, m.span(), m.group(0)))
+            seen.add((d, m.start()))
+    for m in EN_DATE_MD.finditer(text):
+        try:
+            d_tpl = (_month_of(m.group(1)), int(m.group(2)))
+        except (KeyError, ValueError):
+            continue
+        out.append((d_tpl, False, m.span(), m.group(0)))
+    for m in EN_DATE_DM.finditer(text):
+        try:
+            d_tpl = (_month_of(m.group(2)), int(m.group(1)))
+        except (KeyError, ValueError):
+            continue
+        out.append((d_tpl, False, m.span(), m.group(0)))
+    return out
 
 
 def sha256_file(path, chunk=1 << 22):
@@ -225,6 +287,124 @@ def scan_events(index, rows, label, by_var, ctx_chars=300):
     return report, out
 
 
+def scan_events_english(index, rows, label, by_var, ctx_chars=140):
+    """English-language date scan of the Events text, two scopes:
+      scope=input : the ACTUAL model input — decode of the kept (<=270-token)
+                    Events block from the frozen cache, by composite key
+      scope=full  : the full raw scenario field (prefix stripped)
+    Primary review set (written to CSV): windows whose input Events contain a
+    YEAR-EXPLICIT English date ("September 13, 2023") on/after the prediction
+    start. Year-less dates ("October 20") are ambiguous — the same text recurs
+    yearly and historical mentions dominate — so they are counted
+    INFORMATIONALLY (future-inferred over {pred.year, pred.year+1}), never as
+    review-blocking flags. Auto keyword tags are review aids, NOT a verdict."""
+    z = np.load(CACHE_DIR / "text_tokens_M48T512.npz", allow_pickle=False)
+    cache_ids = {((str(vk), str(sid))): z["ids"][i]
+                 for i, (vk, sid) in enumerate(zip(z["var_keys"], z["sample_ids"]))}
+    meta = {}
+    with open(CACHE_DIR / "text_meta_M48T512.jsonl", encoding="utf-8") as f:
+        for line in f:
+            m = json.loads(line)
+            meta[(m["var_key"], m["sample_id"])] = m
+    from transformers import BertTokenizer
+    from text_builder import find_bert_config
+    tok = BertTokenizer.from_pretrained(find_bert_config(), local_files_only=True)
+
+    def _valid(y, mo, dy):
+        try:
+            datetime(y, mo, dy)
+            return True
+        except ValueError:
+            return False
+
+    hits_input, hits_full = [], []      # primary: year-explicit >= pred start
+    n_win_input = n_win_full = 0
+    n_info_noyear_input = 0             # informational: year-less, future-inferred
+    n_info_noyear_hits = 0
+    for vk, sid, *_ in rows:
+        key = (vk, sid)
+        rec = resolve_independently(index, vk, sid, by_var)
+        pred0 = rec["future_start"].date()
+        years = (pred0.year, pred0.year + 1)
+
+        def _scan(text, scope, store):
+            primary = info = False
+            for d, has_year, span, matched in find_english_dates(text):
+                s = max(0, span[0] - 80)
+                context = text[s:span[1] + ctx_chars]
+                if has_year:
+                    if d >= pred0:
+                        primary = True
+                        store.append({
+                            "var_key": vk, "sample_id": sid, "scope": scope,
+                            "matched": matched, "date": str(d),
+                            "pred_start": str(pred0),
+                            "tag_schedule_like": bool(_SCHED_KW.search(context)),
+                            "tag_realized_like": bool(_REALIZED_KW.search(context)),
+                            "context": context,
+                        })
+                else:
+                    mo, dy = d
+                    if any(datetime(y, mo, dy).date() >= pred0
+                           for y in years if _valid(y, mo, dy)):
+                        info = True
+            return primary, info
+
+        # scope=input: decode the frozen kept Events block
+        mblk = next(b for b in meta[key]["blocks"] if b["block"] == "Events")
+        if mblk["skipped"]:
+            input_text = ""
+        else:
+            ids = cache_ids[key]
+            input_text = tok.decode(ids[mblk["start"]:mblk["end"]].tolist(),
+                                    skip_special_tokens=False)
+        p_in, i_in = _scan(input_text, "input", hits_input)
+        n_win_input += int(p_in)
+        n_info_noyear_input += int(i_in)
+        full_text = PRED_PREFIX_RE.sub("", rec["fields"]["scenario"])
+        p_full, _ = _scan(full_text, "full", hits_full)
+        n_win_full += int(p_full)
+
+    report = {
+        "scope_label": label,
+        "n_windows": len(rows),
+        "n_windows_flagged_input": n_win_input,
+        "n_windows_flagged_full": n_win_full,
+        "n_hits_input": len(hits_input),
+        "n_hits_full": len(hits_full),
+        "n_windows_info_noyear_input": n_info_noyear_input,
+        "note": "PRIMARY flags (CSV) = input Events decode contains a "
+                "year-explicit English date on/after the prediction start. "
+                "Advance-published schedules are NOT leakage; every primary "
+                "window needs manual classification sign-off before the full "
+                "run. Year-less month-day references are counted "
+                "informationally only (n_windows_info_noyear_input): the same "
+                "text recurs yearly so year inference is unreliable. The "
+                "full scope covers the raw field including text beyond the "
+                "kept 270-token budget that the model never consumes. "
+                "Independent reference count from the reviewer's own scan: "
+                "157 input windows; our pattern set (full+abbreviated month "
+                "names, sept., optional ordinal suffix/comma) is a superset.",
+        "hits_input": hits_input,
+        "hits_full": hits_full,
+    }
+    out = PREFLIGHT / f"events_english_{label}.json"
+    PREFLIGHT.mkdir(exist_ok=True)
+    out.write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    # compact CSV for manual review (input scope only — this is what the model sees)
+    import csv as _csv
+    csv_path = PREFLIGHT / f"events_english_{label}_input.csv"
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        w = _csv.writer(f)
+        w.writerow(["var_key", "sample_id", "matched", "date", "pred_start",
+                    "tag_schedule_like", "tag_realized_like", "context"])
+        for h in hits_input:
+            w.writerow([h["var_key"], h["sample_id"], h["matched"], h["date"],
+                        h["pred_start"], h["tag_schedule_like"],
+                        h["tag_realized_like"], h["context"]])
+    return report, out
+
+
 def run_verify():
     print("[verify] building zip index ...")
     index = build_index()
@@ -247,6 +427,11 @@ def run_verify():
 
     ev_test, p2 = scan_events(index, rows, "test", by_var)
     print(f"[verify] events scan (test): {ev_test['n_flagged']} flagged -> {p2.name}")
+
+    ev_en, p3 = scan_events_english(index, rows, "test", by_var)
+    print(f"[verify] events English-date scan (test): "
+          f"input-scope {ev_en['n_windows_flagged_input']} windows flagged, "
+          f"full-scope {ev_en['n_windows_flagged_full']} -> {p3.name}")
 
     ok = not bad and cov_test["n_violations"] == 0
     print(f"[verify] RESULT: {'OK' if ok else 'FAILED — inspect preflight/ reports'}")

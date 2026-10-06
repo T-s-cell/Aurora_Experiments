@@ -53,6 +53,7 @@ def mm_data():
     bad = tc.check_fields(index, rows, by_var)
     cov, _ = tc.check_covariate_span(index, rows, "test_preflight", by_var)
     ev, _ = tc.scan_events(index, rows, "test_preflight", by_var)
+    ev_en, _ = tc.scan_events_english(index, rows, "test_preflight", by_var)
     ok = not bad and cov["n_violations"] == 0
     save("MM-DATA", {
         "ok": ok,
@@ -62,6 +63,17 @@ def mm_data():
         "covariate_tolerance_hits": cov["n_tolerance_hits"],
         "events_flagged": ev["n_flagged"],
         "events_note": ev["note"],
+        "events_english_input_windows": ev_en["n_windows_flagged_input"],
+        "events_english_full_windows": ev_en["n_windows_flagged_full"],
+        "events_english_info_noyear_windows": ev_en["n_windows_info_noyear_input"],
+        "events_english_review": "PRIMARY flags (year-explicit date >= pred start "
+                                 "in the input Events decode) are listed in "
+                                 "preflight/events_english_test_preflight_input.csv "
+                                 "and require manual classification sign-off before "
+                                 "the full run (gate = user verdict, not this scan; "
+                                 "flagged != leakage — advance-published schedules "
+                                 "expected). Year-less month-day mentions are "
+                                 "informational only.",
     })
     return ok
 
@@ -146,8 +158,9 @@ def mm_a(model):
 
 def mm_b(model):
     """Text reaches BERT/fusion; rear-token perturbation with EXACT position
-    control: fix input positions 0..124 (the 125 actually-retained positions)
-    AND the whole attention mask; equal-length replacement of rear valid tokens."""
+    control: fix input indices 0..125 (index 0 is [CLS]; the 125 retained
+    feature rows correspond to content positions 1..125) AND the whole
+    attention mask; equal-length replacement of rear valid tokens from 126."""
     import torch
     from predict_mm import predict_window_mm
     from text_builder import find_bert_config
@@ -229,19 +242,20 @@ def mm_b(model):
                                torch.zeros(1, len(ids_b), dtype=torch.long, device=device))
     diff_text = float(np.max(np.abs(pred_a - pred_b)))
 
-    # REAR PERTURBATION: exact positions — fix [0,125) tokens + whole mask;
-    # equal-length replacement of rear non-SEP valid tokens [125, content_len-1)
+    # REAR PERTURBATION: exact positions — fix indices [0,126) ([CLS] at 0 +
+    # content positions 1..125, the sources of the 125 retained feature rows)
+    # + whole mask; equal-length replacement of rear valid tokens [126, content_len-1)
     ids_c = ids_a.copy()
     alt = tok.encode("the quick brown fox jumps over the lazy dog and reports "
                      "an unusual market movement today", add_special_tokens=False)
-    rear = content_len - 1 - 125  # exclude SEP at content_len-1
+    rear = content_len - 1 - 126  # exclude SEP at content_len-1
     reps = np.resize(np.array(alt, dtype=np.int32), rear)
-    ids_c[125:content_len - 1] = reps
+    ids_c[126:content_len - 1] = reps
     exact = {
-        "front_125_unchanged": bool(np.array_equal(ids_c[:125], ids_a[:125])),
+        "front_126_unchanged": bool(np.array_equal(ids_c[:126], ids_a[:126])),
         "mask_unchanged": bool(np.array_equal(mask_c := mask_a, mask_a)),
         "sep_unchanged": bool(ids_c[content_len - 1] == ids_a[content_len - 1]),
-        "rear_changed": bool((ids_c[125:content_len - 1] != ids_a[125:content_len - 1]).any()),
+        "rear_changed": bool((ids_c[126:content_len - 1] != ids_a[126:content_len - 1]).any()),
         "same_length": bool(len(ids_c) == len(ids_a)),
     }
     caps2 = {}
@@ -276,9 +290,11 @@ def mm_b(model):
             "retained_feature_max_abs_diff": feat_diff,
             "retained_features_changed_fraction": frac_changed,
             "pred_max_abs_diff": pred_diff,
-            "interpretation": "rear tokens (>= position 125) were replaced at equal "
-                              "length with front 125 input tokens and the full "
-                              "attention mask fixed; any feature/prediction change "
+            "interpretation": "rear tokens (indices >= 126) were replaced at equal "
+                              "length with front input tokens while indices 0..125 "
+                              "([CLS] + the content positions feeding the 125 "
+                              "retained features) and the full "
+                              "attention mask were fixed; any feature/prediction change "
                               "quantifies the contextualization path (BERT attends "
                               "over all valid positions before the first-125 "
                               "retention), NOT direct retention of rear features.",

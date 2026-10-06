@@ -1,27 +1,42 @@
 {
-  "provenance_of": "repro_mm_timesx_v1 (protocol aurora-timesx-mm-v1, method M48T512)",
-  "created": "2026-10-06",
-  "upstream_frozen_artifacts": {
-    "data/TimesX_Datasets.zip": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
-    "data/split_manifest.json": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
-    "data/data_cache.npz": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
-    "data/Z0__test.npz": "49d456f5f5e90ca86da000a31108e92028168eaf96fb9b84ba68e962c03df437",
-    "weights model.safetensors": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58"
-  },
-  "new_artifacts": {
-    "cache/text_tokens_M48T512.npz": "0a3cc424b0952781ad6396262926822e44784eaca97778e13e54061eabe96d18",
-    "cache/text_meta_M48T512.jsonl": "bca9f960a7073d06636b0e425daef738d47c0a055b6b7348881f1ba96f65a68c",
-    "protocol_mm.json_sha256": "77ff930f5065c8ca12add9bab1463834a1cb5e3c412c9c9936fb894bd4316023"
-  },
-  "tokenizer_files_md5": {
-    "aurora/bert_config/config.json": "0939b914fc32135f6c12d8ef281dbd7a",
-    "aurora/bert_config/tokenizer.json": "eac14313ee1816d9e8ef962f7615fd93",
-    "aurora/bert_config/tokenizer_config.json": "aee76cec0170859d909d411dc7cdaa76",
-    "aurora/bert_config/vocab.txt": "64800d5d8528ce344256daf115d4965e"
-  },
-  "code_provenance": {
-    "reused_root_modules": ["load_aurora.py", "data_loader.py", "predict.py", "aggregate.py (helpers only)", "run_eval.py (runtime_gate only)"],
-    "original_id_logic": "reference/exp004/timesx_data.py parse_ts/make_sample_id/domain_of (vendored read-only)",
-    "new_modules": ["text_builder.py", "text_cache.py", "predict_mm.py", "run_eval_mm.py", "aggregate_mm.py", "run_preflight_mm.py", "audit_pack_mm.py"]
-  }
+ "provenance_of": "repro_mm_timesx_v1 (protocol aurora-timesx-mm-v1, method M48T512)",
+ "created": "2026-10-06",
+ "upstream_frozen_artifacts": {
+  "data/TimesX_Datasets.zip": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
+  "data/split_manifest.json": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "data/data_cache.npz": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+  "data/Z0__test.npz": "49d456f5f5e90ca86da000a31108e92028168eaf96fb9b84ba68e962c03df437",
+  "weights model.safetensors": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58"
+ },
+ "new_artifacts": {
+  "cache/text_tokens_M48T512.npz": "0a3cc424b0952781ad6396262926822e44784eaca97778e13e54061eabe96d18",
+  "cache/text_meta_M48T512.jsonl": "bca9f960a7073d06636b0e425daef738d47c0a055b6b7348881f1ba96f65a68c",
+  "protocol_mm.json_sha256": "74b08ecac1ed57ea37a88e2369d0070ecb6cec78889afe313c64a777503cef13"
+ },
+ "tokenizer_files_md5": {
+  "aurora/bert_config/config.json": "0939b914fc32135f6c12d8ef281dbd7a",
+  "aurora/bert_config/tokenizer.json": "eac14313ee1816d9e8ef962f7615fd93",
+  "aurora/bert_config/tokenizer_config.json": "aee76cec0170859d909d411dc7cdaa76",
+  "aurora/bert_config/vocab.txt": "64800d5d8528ce344256daf115d4965e"
+ },
+ "code_provenance": {
+  "reused_root_modules": [
+   "load_aurora.py",
+   "data_loader.py",
+   "predict.py",
+   "aggregate.py (helpers only)",
+   "run_eval.py (runtime_gate only)"
+  ],
+  "original_id_logic": "reference/exp004/timesx_data.py parse_ts/make_sample_id/domain_of (vendored read-only)",
+  "new_modules": [
+   "text_builder.py",
+   "text_cache.py",
+   "predict_mm.py",
+   "run_eval_mm.py",
+   "aggregate_mm.py",
+   "run_preflight_mm.py",
+   "audit_pack_mm.py"
+  ]
+ },
+ "revision_note": "2026-10-07: retention_note amended after reviewer audit (rear-perturbation index fix: fix input indices 0..125, perturb from 126; [CLS] at 0, retained rows = content positions 1..125). Text cache and all data/model hashes unchanged. Previous protocol_mm sha256 77ff930f5065\u2026 superseded; new approval token derives from the amended file."
 }
