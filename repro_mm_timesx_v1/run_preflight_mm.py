@@ -164,7 +164,8 @@ def mm_b(model):
 
     device = next(model.parameters()).device
     caps = {}
-    te = model.TextEncoder
+    core = model.model if hasattr(model, "model") else model  # AuroraForPrediction.model = AuroraModel
+    te = core.TextEncoder
     orig_extract = te.extract_bert_features
 
     def spy_extract(input_dict):
@@ -176,16 +177,18 @@ def mm_b(model):
         return out
     te.extract_bert_features = spy_extract
     cross_caps = {}
-    h1 = te.cross_text.register_forward_hook(
-        lambda m, i, o: cross_caps.setdefault("out", o.detach().cpu().numpy()))
+    def _h1(m, i, o):
+        cross_caps.setdefault("out", o.detach().cpu().numpy())  # no return: hook must not replace output
+    h1 = te.cross_text.register_forward_hook(_h1)
     guider_caps = {}
-    h2 = model.TextGuider.register_forward_hook(
-        lambda m, i, o: guider_caps.setdefault(
-            "attn_text_not_none", o[1] is not None if isinstance(o, tuple) else True))
+    def _h2(m, i, o):
+        guider_caps.setdefault("attn_text_not_none",
+                               bool(o[1] is not None) if isinstance(o, tuple) else True)
+    h2 = core.TextGuider.register_forward_hook(_h2)
     conn_caps = {}
-    h3 = model.ModalityConnector.register_forward_hook(
-        lambda m, i, o: conn_caps.setdefault(
-            "from_text_not_none", o[0] is not None))
+    def _h3(m, i, o):
+        conn_caps.setdefault("from_text_not_none", bool(o[0] is not None))
+    h3 = core.ModalityConnector.register_forward_hook(_h3)
 
     torch.manual_seed(7)
     _ = model.generate(
@@ -199,6 +202,7 @@ def mm_b(model):
 
     h1.remove(); h2.remove(); h3.remove()
     del te.extract_bert_features  # un-shadow the class method
+
 
     hooks_ok = {
         "ids_match_passed": bool(np.array_equal(caps["input_ids"][0], ids_a)),
@@ -360,6 +364,7 @@ def mm_c(model):
 
 def mm_c_child(domain, seed):
     """Hidden child mode: recompute ONE trainval window with text, dump npy."""
+    import torch
     from load_aurora import load_aurora
     from predict_mm import predict_window_mm
     model, _ = load_aurora(device="cuda")
@@ -511,13 +516,13 @@ def mm_e():
     store.save("PREF", dom, 31337, fp, out_rows)
 
     npz_path, _, _ = store._paths("PREF", dom, 31337)
-    tampered = [{**r, "pred": np.full(12, 0.9)} for r in out_rows]
-    store.save("PREF", dom, 31337, fp, tampered)
-    hdr = json.loads(Path(str(npz_path) + ".header.json").read_text())
-    hdr["content_sha256"] = sha256_bytes(npz_path.read_bytes())
-    Path(str(npz_path) + ".header.json").write_text(json.dumps(hdr))
+    with np.load(npz_path, allow_pickle=False) as z:
+        data = {k: z[k] for k in z.files}
+    data["pred"] = data["pred"] + 1.0  # byte-level content swap WITHOUT ShardStore.save
+    with open(npz_path, "wb") as f:
+        np.savez(f, **data)
     reuse_npz = store.reuse_or_init("PREF", dom, 31337, fp, expect=expect)
-    drills["npz_swap_with_stale_done_rejected"] = {"ok": reuse_npz is False}
+    drills["npz_content_swap_rejected"] = {"ok": reuse_npz is False}
     store.save("PREF", dom, 31337, fp, out_rows)
 
     dup_entries = [(vk, sid, tgt, dv) for vk, sid, tgt, dv in

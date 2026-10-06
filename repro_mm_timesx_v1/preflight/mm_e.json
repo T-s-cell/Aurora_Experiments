@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "drills": {
+    "clean_reuse": {
+      "ok": true
+    },
+    "fingerprint_mismatch_quarantines": {
+      "ok": true
+    },
+    "done_tamper_rejected": {
+      "ok": true
+    },
+    "npz_content_swap_rejected": {
+      "ok": true
+    },
+    "coverage_dup_and_missing_rejected": {
+      "ok": true
+    },
+    "dry_run_zero_inference": {
+      "ok": true,
+      "rc": 0
+    },
+    "flag_matrix": {
+      "ok": true,
+      "cases": [
+        {
+          "case": "exp010_token_rejected",
+          "rc": 2,
+          "expected_rc": 2,
+          "ok": true
+        },
+        {
+          "case": "wrong_token_rejected",
+          "rc": 2,
+          "expected_rc": 2,
+          "ok": true
+        },
+        {
+          "case": "no_token_locked",
+          "rc": 1,
+          "expected_rc": 1,
+          "ok": true
+        },
+        {
+          "case": "dryrun_plus_token_rejected",
+          "rc": 2,
+          "expected_rc": 2,
+          "ok": true
+        }
+      ]
+    }
+  }
+}

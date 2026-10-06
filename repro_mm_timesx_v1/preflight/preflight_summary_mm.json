@@ -1,0 +1,636 @@
+{
+  "sections": {
+    "MM-DATA": {
+      "ok": true,
+      "n_test_windows": 2474,
+      "mapping_problems": 0,
+      "covariate_violations": 0,
+      "covariate_tolerance_hits": 0,
+      "events_flagged": 0,
+      "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge \u2014 recorded as a limitation, not evidence of absence."
+    },
+    "MM-D": {
+      "ok": true,
+      "key_sets_equal": true,
+      "unknown_calendar_consistency": {
+        "n_unknown": 618,
+        "n_calendar_skipped": 618,
+        "sets_equal": true,
+        "expected_618": true,
+        "ok": true
+      },
+      "n_sampled_rows": 42,
+      "all_sampled_rows_exact": true,
+      "note": "token IDs are verified by EXACT equality against the frozen rules; decoded text equals meta and is for human inspection (BERT lowercases/punctuation-splits, so verbatim equality with source fields is NOT expected)",
+      "rows": [
+        {
+          "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+          "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20250528T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 433
+        },
+        {
+          "var_key": "CropsAndStaples__cotton_usd_lbs_96_12_12_10events",
+          "sample_id": "CropsAndStaples__cotton_usd_lbs_96_12_12_10events__20251104T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 451
+        },
+        {
+          "var_key": "CropsAndStaples__rice_usd_cwt_96_12_12_10events",
+          "sample_id": "CropsAndStaples__rice_usd_cwt_96_12_12_10events__20250630T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 452
+        },
+        {
+          "var_key": "CropsAndStaples__wheat_usd_bu_96_12_12_10events",
+          "sample_id": "CropsAndStaples__wheat_usd_bu_96_12_12_10events__20251223T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 464
+        },
+        {
+          "var_key": "Currency__usdtochf_exchangerate_96_12_12_10events",
+          "sample_id": "Currency__usdtochf_exchangerate_96_12_12_10events__20250623T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 457
+        },
+        {
+          "var_key": "Currency__usdtoinr_exchangerate_96_12_12_10events",
+          "sample_id": "Currency__usdtoinr_exchangerate_96_12_12_10events__20251017T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 438
+        },
+        {
+          "var_key": "Currency__usdtosgd_exchangerate_96_12_12_10events",
+          "sample_id": "Currency__usdtosgd_exchangerate_96_12_12_10events__20260217T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 438
+        },
+        {
+          "var_key": "EnergyAndFuels__ethanol_usd_gal_96_12_12_10events",
+          "sample_id": "EnergyAndFuels__ethanol_usd_gal_96_12_12_10events__20250924T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 432
+        },
+        {
+          "var_key": "EnergyAndFuels__propane_usd_gal_96_12_12_10events",
+          "sample_id": "EnergyAndFuels__propane_usd_gal_96_12_12_10events__20250523T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 452
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events__20250212T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 454
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20241029T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 451
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events__20251219T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 464
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events__20250805T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 433
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events__20241024T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 434
+        },
+        {
+          "var_key": "LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events",
+          "sample_id": "LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events__20260209T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 456
+        },
+        {
+          "var_key": "RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events",
+          "sample_id": "RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events__20250911T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 434
+        },
+        {
+          "var_key": "RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events",
+          "sample_id": "RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events__20260316T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 433
+        },
+        {
+          "var_key": "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events",
+          "sample_id": "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events__20251120T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 453
+        },
+        {
+          "var_key": "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events",
+          "sample_id": "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events__20251215T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 456
+        },
+        {
+          "var_key": "StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events",
+          "sample_id": "StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events__20251222T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 464
+        },
+        {
+          "var_key": "StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events",
+          "sample_id": "StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events__20250804T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 435
+        },
+        {
+          "var_key": "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events",
+          "sample_id": "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events__20251202T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 433
+        },
+        {
+          "var_key": "arts__broadway_shows_96_12_4_10events",
+          "sample_id": "arts__broadway_shows_96_12_4_10events__20241222T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 488
+        },
+        {
+          "var_key": "arts__film_festivals_96_12_4_10events",
+          "sample_id": "arts__film_festivals_96_12_4_10events__20251221T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 488
+        },
+        {
+          "var_key": "arts__national_football_league_96_12_4_10events",
+          "sample_id": "arts__national_football_league_96_12_4_10events__20250316T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 450
+        },
+        {
+          "var_key": "climate__heatwave_96_12_4_10events",
+          "sample_id": "climate__heatwave_96_12_4_10events__20250928T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 469
+        },
+        {
+          "var_key": "economy__government_spending_96_12_4_10events",
+          "sample_id": "economy__government_spending_96_12_4_10events__20250803T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 459
+        },
+        {
+          "var_key": "economy__unemployment_rate_96_12_4_10events",
+          "sample_id": "economy__unemployment_rate_96_12_4_10events__20250608T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 464
+        },
+        {
+          "var_key": "electronic_technology__drones_96_12_4_10events",
+          "sample_id": "electronic_technology__drones_96_12_4_10events__20251221T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 487
+        },
+        {
+          "var_key": "finance__financial_regulation_96_12_4_10events",
+          "sample_id": "finance__financial_regulation_96_12_4_10events__20251026T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 482
+        },
+        {
+          "var_key": "finance__venture_capital_96_12_4_10events",
+          "sample_id": "finance__venture_capital_96_12_4_10events__20250831T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 469
+        },
+        {
+          "var_key": "pets__marine_life_96_12_4_10events",
+          "sample_id": "pets__marine_life_96_12_4_10events__20250706T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 449
+        },
+        {
+          "var_key": "public_health__drug_overdose_96_12_4_10events",
+          "sample_id": "public_health__drug_overdose_96_12_4_10events__20250511T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 474
+        },
+        {
+          "var_key": "public_health__opioid_crisis_96_12_4_10events",
+          "sample_id": "public_health__opioid_crisis_96_12_4_10events__20251123T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 488
+        },
+        {
+          "var_key": "public_policy__presidential_election_96_12_4_10events",
+          "sample_id": "public_policy__presidential_election_96_12_4_10events__20250928T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 469
+        },
+        {
+          "var_key": "science__earthquake_96_12_4_10events",
+          "sample_id": "science__earthquake_96_12_4_10events__20250803T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 458
+        },
+        {
+          "var_key": "science__volcanic_eruption_96_12_4_10events",
+          "sample_id": "science__volcanic_eruption_96_12_4_10events__20250608T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 464
+        },
+        {
+          "var_key": "shopping__flu_shot_96_12_4_10events",
+          "sample_id": "shopping__flu_shot_96_12_4_10events__20251221T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 488
+        },
+        {
+          "var_key": "society__data_privacy_96_12_4_10events",
+          "sample_id": "society__data_privacy_96_12_4_10events__20251026T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 482
+        },
+        {
+          "var_key": "society__wildfires_96_12_4_10events",
+          "sample_id": "society__wildfires_96_12_4_10events__20250831T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 469
+        },
+        {
+          "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+          "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20250528T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 433
+        },
+        {
+          "var_key": "arts__art_exhibitions_96_12_4_10events",
+          "sample_id": "arts__art_exhibitions_96_12_4_10events__20241027T000000",
+          "ids_exact": true,
+          "mask_exact": true,
+          "bounds_ok": true,
+          "decode_matches_meta": true,
+          "raw_chars_match_meta": true,
+          "no_double_truncation": true,
+          "content_tokens": 482
+        }
+      ]
+    },
+    "MM-E": {
+      "ok": true,
+      "drills": {
+        "clean_reuse": {
+          "ok": true
+        },
+        "fingerprint_mismatch_quarantines": {
+          "ok": true
+        },
+        "done_tamper_rejected": {
+          "ok": true
+        },
+        "npz_content_swap_rejected": {
+          "ok": true
+        },
+        "coverage_dup_and_missing_rejected": {
+          "ok": true
+        },
+        "dry_run_zero_inference": {
+          "ok": true,
+          "rc": 0
+        },
+        "flag_matrix": {
+          "ok": true,
+          "cases": [
+            {
+              "case": "exp010_token_rejected",
+              "rc": 2,
+              "expected_rc": 2,
+              "ok": true
+            },
+            {
+              "case": "wrong_token_rejected",
+              "rc": 2,
+              "expected_rc": 2,
+              "ok": true
+            },
+            {
+              "case": "no_token_locked",
+              "rc": 1,
+              "expected_rc": 1,
+              "ok": true
+            },
+            {
+              "case": "dryrun_plus_token_rejected",
+              "rc": 2,
+              "expected_rc": 2,
+              "ok": true
+            }
+          ]
+        }
+      }
+    },
+    "MM-A": {
+      "ok": true,
+      "n_windows": 4,
+      "checks": [
+        {
+          "var_key": "climate__deforestation_96_12_4_10events",
+          "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+          "bitwise": true,
+          "max_abs_diff": 0.0
+        },
+        {
+          "var_key": "finance__asset_management_96_12_4_10events",
+          "sample_id": "finance__asset_management_96_12_4_10events__20231029T000000",
+          "bitwise": true,
+          "max_abs_diff": 0.0
+        },
+        {
+          "var_key": "pets__animal_migration_96_12_4_10events",
+          "sample_id": "pets__animal_migration_96_12_4_10events__20231029T000000",
+          "bitwise": true,
+          "max_abs_diff": 0.0
+        },
+        {
+          "var_key": "traffic__air_travel_96_12_4_10events",
+          "sample_id": "traffic__air_travel_96_12_4_10events__20231029T000000",
+          "bitwise": true,
+          "max_abs_diff": 0.0
+        }
+      ]
+    },
+    "MM-B": {
+      "ok": true,
+      "window": {
+        "var_key": "climate__deforestation_96_12_4_10events",
+        "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+        "content_len": 494
+      },
+      "hooks": {
+        "ids_match_passed": true,
+        "mask_match_passed": true,
+        "fixed_features_shape": [
+          1,
+          125,
+          768
+        ],
+        "cross_text_shape": [
+          1,
+          10,
+          256
+        ],
+        "textguider_attn_not_none": true,
+        "from_text_not_none": true,
+        "fixed_features_shape_ok": true,
+        "cross_text_shape_ok": true
+      },
+      "different_text_max_pred_diff": 0.2961678695678671,
+      "rear_perturbation": {
+        "controls": {
+          "front_125_unchanged": true,
+          "mask_unchanged": true,
+          "sep_unchanged": true,
+          "rear_changed": true,
+          "same_length": true
+        },
+        "retained_feature_max_abs_diff": 8.527843475341797,
+        "retained_features_changed_fraction": 1.0,
+        "pred_max_abs_diff": 0.2033937835693358,
+        "interpretation": "rear tokens (>= position 125) were replaced at equal length with front 125 input tokens and the full attention mask fixed; any feature/prediction change quantifies the contextualization path (BERT attends over all valid positions before the first-125 retention), NOT direct retention of rear features."
+      }
+    },
+    "MM-C": {
+      "ok": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "same_seed_repeat_bitwise": true,
+      "weights_unchanged": true,
+      "n_tensors": 896,
+      "n_bn_modules": 29,
+      "cross_process_bitwise": true,
+      "cross_process_detail": {
+        "rc": 0,
+        "bitwise": true
+      },
+      "ms_per_window_with_text": 48.26807975769043,
+      "peak_vram_gb": 0.8364853858947754
+    }
+  },
+  "total_seconds": 33.145994901657104,
+  "all_ok": true
+}

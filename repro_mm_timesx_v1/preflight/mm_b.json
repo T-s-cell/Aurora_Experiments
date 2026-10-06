@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "window": {
+    "var_key": "climate__deforestation_96_12_4_10events",
+    "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+    "content_len": 494
+  },
+  "hooks": {
+    "ids_match_passed": true,
+    "mask_match_passed": true,
+    "fixed_features_shape": [
+      1,
+      125,
+      768
+    ],
+    "cross_text_shape": [
+      1,
+      10,
+      256
+    ],
+    "textguider_attn_not_none": true,
+    "from_text_not_none": true,
+    "fixed_features_shape_ok": true,
+    "cross_text_shape_ok": true
+  },
+  "different_text_max_pred_diff": 0.2961678695678671,
+  "rear_perturbation": {
+    "controls": {
+      "front_125_unchanged": true,
+      "mask_unchanged": true,
+      "sep_unchanged": true,
+      "rear_changed": true,
+      "same_length": true
+    },
+    "retained_feature_max_abs_diff": 8.527843475341797,
+    "retained_features_changed_fraction": 1.0,
+    "pred_max_abs_diff": 0.2033937835693358,
+    "interpretation": "rear tokens (>= position 125) were replaced at equal length with front 125 input tokens and the full attention mask fixed; any feature/prediction change quantifies the contextualization path (BERT attends over all valid positions before the first-125 retention), NOT direct retention of rear features."
+  }
+}

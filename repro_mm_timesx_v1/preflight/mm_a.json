@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "n_windows": 4,
+  "checks": [
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+      "bitwise": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "finance__asset_management_96_12_4_10events",
+      "sample_id": "finance__asset_management_96_12_4_10events__20231029T000000",
+      "bitwise": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "pets__animal_migration_96_12_4_10events",
+      "sample_id": "pets__animal_migration_96_12_4_10events__20231029T000000",
+      "bitwise": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "traffic__air_travel_96_12_4_10events",
+      "sample_id": "traffic__air_travel_96_12_4_10events__20231029T000000",
+      "bitwise": true,
+      "max_abs_diff": 0.0
+    }
+  ]
+}

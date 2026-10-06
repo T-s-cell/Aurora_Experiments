@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "raw_shape": [
+    1,
+    100,
+    12
+  ],
+  "raw_finite": true,
+  "same_seed_repeat_bitwise": true,
+  "weights_unchanged": true,
+  "n_tensors": 896,
+  "n_bn_modules": 29,
+  "cross_process_bitwise": true,
+  "cross_process_detail": {
+    "rc": 0,
+    "bitwise": true
+  },
+  "ms_per_window_with_text": 48.26807975769043,
+  "peak_vram_gb": 0.8364853858947754
+}
