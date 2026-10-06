@@ -96,7 +96,9 @@ def approved_run(protocol, itl, seeds, device):
     import torch
     import data_loader
     from load_aurora import load_aurora
-    from predict import ShardStore, derive_seed, predict_window, shard_fingerprint
+    from predict import (ShardStore, ShardVerificationError, build_expectation,
+                         derive_seed, predict_window, shard_fingerprint,
+                         verify_shard_coverage)
     import aggregate
 
     method = f"A{itl}"
@@ -108,18 +110,22 @@ def approved_run(protocol, itl, seeds, device):
     print("[gate] runtime checks OK:", json.dumps(gate))
 
     data = data_loader.TimesXData()
+    rows_all = data.test_rows()
+    expect_full = build_expectation(rows_all)          # {(vk,sid): (target,d)} over 2474
+    by_domain = {}
+    for r in rows_all:
+        by_domain.setdefault(r[2], []).append(r)
+    expect_by_domain = {d: build_expectation(rs) for d, rs in by_domain.items()}
+
     store = ShardStore()
 
     for base_seed in seeds:
-        rows_all = data.test_rows()
         fp = shard_fingerprint(protocol, itl, base_seed, load_rep["weights"]["sha256"])
-        by_domain = {}
-        for r in rows_all:
-            by_domain.setdefault(r[2], []).append(r)
 
         for domain in data_loader.DOMAIN_NAMES:
             dom_rows = by_domain[domain]
-            if store.reuse_or_init(method, domain, base_seed, fp):
+            if store.reuse_or_init(method, domain, base_seed, fp,
+                                   expect=expect_by_domain[domain]):
                 print(f"[eval] reuse {method} {domain} s{base_seed} ({len(dom_rows)} rows)")
                 continue
             t0 = time.time()
@@ -129,33 +135,34 @@ def approved_run(protocol, itl, seeds, device):
                 pred = predict_window(model, past, itl, protocol["inference"]["num_samples"], w)
                 out_rows.append({"var_key": vk, "sample_id": sid, "domain": d,
                                  "pred": pred, "target": target, "d": dv})
-            # coverage: recomputed target/d are the frozen values themselves; verify row count
             assert len(out_rows) == len(dom_rows)
             store.save(method, domain, base_seed, fp, out_rows)
             dt = time.time() - t0
             print(f"[eval] {method} {domain} s{base_seed}: {len(out_rows)} windows "
                   f"in {dt:.1f}s ({dt / len(out_rows) * 1000:.0f} ms/window)")
 
-    # full coverage check across shards vs Z0 (keys + target/d bitwise)
+    # OFFICIAL full-coverage check per seed via verify_shard_coverage:
+    # row count, uniqueness, exact Z0 key-set equality, per-window target/d bitwise
     z0 = np.load(PROJECT / "data" / "Z0__test.npz", allow_pickle=False)
-    z0_order = {(str(v), str(s)): i for i, (v, s) in
-                enumerate(zip(z0["var_keys"], z0["sample_ids"]))}
+    z0_keys = set(zip([str(x) for x in z0["var_keys"]], [str(x) for x in z0["sample_ids"]]))
     for base_seed in seeds:
-        acc_v, acc_t, acc_d, acc_p = [], [], [], []
+        acc = []
+        preds_by_key = {}
         for domain in data_loader.DOMAIN_NAMES:
-            z = store.load(method, domain, base_seed)
-            for i in range(len(z["var_keys"])):
-                key = (str(z["var_keys"][i]), str(z["sample_ids"][i]))
-                j = z0_order[key]
-                acc_v.append(key)
-                acc_t.append(z["target"][i])
-                acc_d.append(z["d"][i])
-                acc_p.append(z["pred"][i])
-        assert len(acc_v) == 2474
-        if not (np.array_equal(np.array(acc_t), z0["target"][np.array([z0_order[k] for k in acc_v])])
-                and np.array_equal(np.array(acc_d), z0["d"][np.array([z0_order[k] for k in acc_v])])):
-            raise RuntimeError(f"s{base_seed}: target/d mismatch vs frozen data")
-        print(f"[eval] s{base_seed} coverage OK: 2474 keys, target/d bitwise equal to frozen source")
+            npz, _, _ = store._paths(method, domain, base_seed)
+            with np.load(npz, allow_pickle=False) as z:
+                for i in range(len(z["var_keys"])):
+                    key = (str(z["var_keys"][i]), str(z["sample_ids"][i]))
+                    acc.append((key[0], key[1], z["target"][i], float(z["d"][i])))
+                    preds_by_key[key] = z["pred"][i]
+        rep = verify_shard_coverage(acc, expect_full)
+        if z0_keys != set(expect_full):
+            raise RuntimeError("expectation key set != Z0 key set")
+        if not all(np.isfinite(p).all() for p in preds_by_key.values()):
+            raise RuntimeError(f"s{base_seed}: non-finite predictions")
+        print(f"[eval] s{base_seed} coverage OK: {rep['n_rows']} rows, "
+              f"{rep['n_unique_keys']} unique keys == Z0 key set, "
+              f"target/d bitwise equal to frozen source, preds finite")
 
     aggregate.main([method])
     print("[eval] DONE — official evaluation complete (statement: Aurora is NOT "
@@ -176,6 +183,10 @@ def main():
     protocol = json.loads((PROJECT / "protocol.json").read_text())
     seeds = args.seeds or protocol["seeds"]["base_seeds"]
     token = args.i_approve_frozen_protocol
+    if token and args.dry_run:
+        print("[gate] REJECTED: --dry-run and --i-approve-frozen-protocol are "
+              "mutually exclusive; dry-run never performs inference.")
+        return 2
     if token:
         expect = protocol_sha()[:12]
         if token != expect:

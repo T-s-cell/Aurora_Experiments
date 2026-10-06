@@ -18,7 +18,7 @@ Reference point: VisionTS Z0 (EXP-004, commit dcd2425), std-MSE overall
 | `SOURCE_HASHES.json` | provenance of every upstream artifact (hashes) |
 | `load_aurora.py` | integrity-checked loader: sha256 -> package md5 -> bidirectional key diff -> `strict=True` -> `eval()` -> all params frozen; determinism pack applied before first inference |
 | `data_loader.py` | read-only EXP-004 window logic; composite key `(var_key, sample_id)`; 2,474-window hard check |
-| `predict.py` | per-window inference (seeded, sample-mean of 100), fingerprint-bound sharded npz, verified resume + quarantine |
+| `predict.py` | per-window inference (seeded, sample-mean of 100), fingerprint-bound sharded npz, fully-verified resume (header/.done/content-hash/key-completeness) + quarantine; official coverage validator `verify_shard_coverage` |
 | `aggregate.py` | port of EXP-004 aggregation (window -> variable -> 19-domain equal weight -> overall; 3-seed mean±std(ddof=1)); best seed never selected |
 | `verify_aggregate.py` | preflight I: ported aggregation vs ORIGINAL EXP-004 `aggregate.py` at full precision (840 comparisons, bitwise) + 6-dp archive corroboration |
 | `run_preflight.py` | preflight sections A–L driver (synthetic + train/val windows only; zero test-window inference) |

@@ -1,10 +1,16 @@
 {
   "ok": true,
   "resume_bitwise": true,
-  "stored_bitwise": true,
+  "official_coverage_verify_ok": true,
   "reuse_compatible_shard": true,
+  "stored_bitwise": true,
   "stale_fingerprint_rejected": true,
-  "quarantined": true,
-  "duplicate_detected": true,
-  "missing_detected": true
+  "quarantined_count_after_stale": 1,
+  "npz_content_replacement_rejected": true,
+  "dup_missing_shard_rejected": true,
+  "full_2474_coverage_ok": true,
+  "dup_missing_2474_detected": true,
+  "wrong_d_detected": true,
+  "reuse_clean_again": true,
+  "functions_under_test": "predict.build_expectation / predict.verify_shard_coverage / predict.ShardStore (same as run_eval)"
 }

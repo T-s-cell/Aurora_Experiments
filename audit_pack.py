@@ -24,6 +24,8 @@ INCLUDE_FILES = [
     "load_aurora.py", "data_loader.py", "predict.py", "aggregate.py",
     "verify_aggregate.py", "run_preflight.py", "run_eval.py", "audit_pack.py",
     "data/split_manifest.json",
+    "data/data_cache.npz",   # small protocol artifact: enables independent
+    "data/Z0__test.npz",     # recomputation of all window denominators + Z0 metrics
 ]
 INCLUDE_DIRS = ["reference", "preflight"]
 INCLUDE_GLOBS = ["preflight_run*.log", "preflight_final*.log", "logs/preflight_*.log",

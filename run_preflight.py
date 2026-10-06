@@ -426,6 +426,19 @@ def sec_K(model, real_windows, itl):
 
 
 def sec_L(protocol, itl, weights_sha):
+    """Resume/coverage drill exercising the SAME official functions the eval
+    entry uses: build_expectation, verify_shard_coverage, ShardStore
+    save/reuse_or_init (header + .done + content hash + key completeness)."""
+    from predict import (ShardVerificationError, build_expectation,
+                         verify_shard_coverage)
+
+    def raises(fn):
+        try:
+            fn()
+            return False
+        except ShardVerificationError:
+            return True
+
     ok = True
     tmp_dir = PRE / "resume_drill"
     if tmp_dir.exists():
@@ -436,6 +449,7 @@ def sec_L(protocol, itl, weights_sha):
     rows = []
     for vk, sid, dom, past, tgt, dv in data.trainval_rows("climate", max_per_var=1)[:6]:
         rows.append((vk, sid, "__preflight__", past, tgt, dv))
+    expect = build_expectation(rows)
     fp = shard_fingerprint(protocol, itl, 9999, weights_sha)
 
     def run_rows(rows_in, seed_base):
@@ -449,45 +463,84 @@ def sec_L(protocol, itl, weights_sha):
 
     data_model, _ = load_aurora(device="cuda" if torch.cuda.is_available() else None)
 
+    # 1) continuous vs interrupted-resume bitwise
     continuous = run_rows(rows, 9999)
-
-    # interrupted: first 3 rows then "crash" -> nothing persisted
-    _ = run_rows(rows[:3], 9999)
+    _ = run_rows(rows[:3], 9999)  # "crash": nothing persisted
     resumed = run_rows(rows, 9999)
     resume_bitwise = all(
         np.array_equal(a["pred"], b["pred"]) for a, b in zip(continuous, resumed))
     ok &= resume_bitwise
 
+    # 2) clean save -> official coverage verify -> reuse accepted
     store.save("P48", "__preflight__", 9999, fp, continuous)
-    reused = store.reuse_or_init("P48", "__preflight__", 9999, fp)
-    ok &= reused
+    cov_ok = verify_shard_coverage(store.entries("P48", "__preflight__", 9999), expect)["ok"]
+    reused = store.reuse_or_init("P48", "__preflight__", 9999, fp, expect=expect)
     z = store.load("P48", "__preflight__", 9999)
     stored_bitwise = np.array_equal(z["pred"], np.array([r["pred"] for r in continuous]))
-    ok &= stored_bitwise
+    ok &= cov_ok and reused and stored_bitwise
 
+    # 3) stale fingerprint (itl changed) -> reject + quarantine
     fp_tampered = dict(fp)
     fp_tampered["itl"] = 9
-    rejected = not store.reuse_or_init("P48", "__preflight__", 9999, fp_tampered)
-    quarantined = any(p.name.endswith(".npz") for p in
-                      (tmp_dir / "shards" / "quarantine").glob("*.npz")) if (tmp_dir / "shards" / "quarantine").exists() else False
-    ok &= rejected and quarantined
+    stale_rejected = not store.reuse_or_init("P48", "__preflight__", 9999,
+                                             fp_tampered, expect=expect)
+    n_quar_after_stale = len(list(store.quarantine_dir.glob("*.npz")))
+    ok &= stale_rejected and n_quar_after_stale == 1
 
-    # duplicate / missing detection
-    keys = [(r[0], r[1]) for r in rows]
-    dup = keys + keys[:1]
-    missing = keys[1:]
-    dup_detected = len(dup) != len(set(dup))
-    missing_detected = set(missing) != set(keys)
-    ok &= dup_detected and missing_detected
+    # 4) regenerate; then replace NPZ content in place (pred[0][0] += 1),
+    #    header/.done untouched -> content-hash mismatch -> reject
+    store.save("P48", "__preflight__", 9999, fp, continuous)
+    npz_path, _, _ = store._paths("P48", "__preflight__", 9999)
+    with np.load(npz_path, allow_pickle=False) as z:
+        mutated = {k: z[k].copy() for k in z.files}
+    mutated["pred"][0][0] += 1.0
+    np.savez(npz_path, **mutated)
+    content_rejected = not store.reuse_or_init("P48", "__preflight__", 9999,
+                                               fp, expect=expect)
+    ok &= content_rejected
+
+    # 5) shard internally consistent (hashes rewritten) but contains
+    #    duplicate-one-window + missing-one-window -> key-set check -> reject
+    bad_rows = [continuous[0]] + continuous[2:] + [continuous[0]]  # dup first, drop second
+    store.save("P48", "__preflight__", 9999, fp, bad_rows)
+    dupmissing_rejected = not store.reuse_or_init("P48", "__preflight__", 9999,
+                                                  fp, expect=expect)
+    ok &= dupmissing_rejected
+
+    # 6) full-scale coverage-function scenarios on the real 2474-window scope
+    test_rows = data.test_rows()
+    expect_full = build_expectation(test_rows)
+    ents = [(vk, sid, tgt, dv) for vk, sid, _d, _p, tgt, dv in test_rows]
+    full_ok = verify_shard_coverage(ents, expect_full)["ok"]
+    ents_bad = ents[:2000] + [ents[100]] + ents[2001:]  # 2474 rows, dup 100, missing 2000 -> 2473 unique
+    dupmissing_2474_detected = raises(lambda: verify_shard_coverage(ents_bad, expect_full))
+    ents_wrong_d = list(ents)
+    vk0, sid0, tgt0, _dv0 = ents[500]
+    ents_wrong_d[500] = (vk0, sid0, tgt0, _dv0 * (1 + 1e-12))
+    wrong_d_detected = raises(lambda: verify_shard_coverage(ents_wrong_d, expect_full))
+    ok &= full_ok and dupmissing_2474_detected and wrong_d_detected
+
+    # 7) after all rejects, clean regeneration is accepted again
+    store.save("P48", "__preflight__", 9999, fp, continuous)
+    reuse_clean_again = store.reuse_or_init("P48", "__preflight__", 9999, fp, expect=expect)
+    ok &= reuse_clean_again
 
     save("L_resume.json", {"ok": ok,
                            "resume_bitwise": resume_bitwise,
-                           "stored_bitwise": stored_bitwise,
+                           "official_coverage_verify_ok": cov_ok,
                            "reuse_compatible_shard": reused,
-                           "stale_fingerprint_rejected": rejected,
-                           "quarantined": quarantined,
-                           "duplicate_detected": dup_detected,
-                           "missing_detected": missing_detected})
+                           "stored_bitwise": stored_bitwise,
+                           "stale_fingerprint_rejected": stale_rejected,
+                           "quarantined_count_after_stale": n_quar_after_stale,
+                           "npz_content_replacement_rejected": content_rejected,
+                           "dup_missing_shard_rejected": dupmissing_rejected,
+                           "full_2474_coverage_ok": full_ok,
+                           "dup_missing_2474_detected": dupmissing_2474_detected,
+                           "wrong_d_detected": wrong_d_detected,
+                           "reuse_clean_again": reuse_clean_again,
+                           "functions_under_test": "predict.build_expectation / "
+                                                   "predict.verify_shard_coverage / "
+                                                   "predict.ShardStore (same as run_eval)"})
     print(f"L resume: {'OK' if ok else 'FAIL'}")
     return ok
 

@@ -71,3 +71,41 @@ follows the official script precedent. The final freeze is the user's call.
 - `--dry-run` performs full fingerprint checks + plan (7,422 windows = 2,474 × 3
   seeds, 19×3 shards, method tag `A48`) with zero inference.
 - Official run additionally gates on GPU free ≥ 20 GB (observed 23.5 GB idle).
+
+## Review round v2 (2026-10-06, after external audit of the first pack)
+
+The reviewer reproduced three entry-point defects on synthetic data. Fixes and
+re-verification (evidence: `preflight/L_resume.json` from the v2 rerun on eta,
+log `preflight_L2_v2.log`; all checks use the SAME functions run_eval calls):
+
+1. **Coverage check missed duplicate-one-window + missing-one-window**
+   (2,474 rows / 2,473 unique keys passed the old check).
+   Fix: new official validator `predict.verify_shard_coverage(entries, expect)` —
+   hard-fails unless row count == expectation, keys unique, key set == frozen
+   key set exactly, and every target/d bitwise equal. `run_eval.py` now runs it
+   per seed over all shards (plus Z0-key-set equality and pred finiteness).
+   Drill: full-scale 2,474-row / 2,473-unique construction now rejected;
+   wrong-d (rel 1e-12) rejected; clean 2,474 collection passes.
+2. **Resume accepted shards without verifying saved content**
+   (mismatched `.done`, replaced NPZ both reusable).
+   Fix: `ShardStore.save` now records `content_sha256` in header AND `.done`;
+   `reuse_or_init(..., expect=...)` requires header/.done fingerprints to match,
+   both content hashes to match the file, row count == header, predictions
+   finite, and the shard's keys/target/d to pass `verify_shard_coverage` against
+   the domain expectation. Any failure → quarantine + regenerate.
+   Drill: stale fingerprint (itl changed) rejected→quarantined; in-place NPZ
+   content replacement rejected; internally-consistent-but-dup+missing shard
+   rejected; clean regeneration accepted again.
+3. **`--dry-run` combined with a valid approval token entered the official run.**
+   Fix: the two flags are mutually exclusive → exit 2 with an explicit message;
+   dry-run can never inference.
+   Flag matrix (local + eta, identical results): dry-run=0, no-token=1,
+   wrong-token=2, dry-run+token=2.
+
+Packaging: the audit pack now includes `data/data_cache.npz` and
+`data/Z0__test.npz` so all window denominators and the Z0 reference metrics can
+be recomputed independently inside the pack.
+
+Section L of the A–L table above is superseded by the v2 drill (stronger
+checks, same functions as the official entry); the original single-run A–L
+evidence stands for sections A–K.

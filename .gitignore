@@ -2,8 +2,10 @@
 data/*.npz
 data/*.zip
 data/cache/
-# split_manifest.json 为协议件（1.7MB），明确入库：
+# 协议小件明确入库：窗口划分、缓存序列、Z0 参照（独立复算分母与 Z0 指标所需）
 !data/split_manifest.json
+!data/data_cache.npz
+!data/Z0__test.npz
 
 # 预测输出（正式评测大 npz 不入库）
 predictions/*
