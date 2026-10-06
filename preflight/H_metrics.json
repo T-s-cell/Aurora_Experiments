@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "items": [
+    {
+      "case": "pstdev closed form",
+      "expected": 1.118033988749895,
+      "got": 1.118033988749895,
+      "ok": true
+    },
+    {
+      "case": "constant -> fallback_std",
+      "expected": 99.0,
+      "got": 99.0,
+      "ok": true
+    },
+    {
+      "case": "real train window d",
+      "expected": 22.236416636373516,
+      "got": 22.236416636373516,
+      "ok": true
+    },
+    {
+      "case": "std_mse closed form",
+      "expected": 0.625,
+      "got": 0.625,
+      "ok": true
+    }
+  ],
+  "note": "constant window: scoring d=fallback_std, inference uses official revin; the two scales are separate by protocol and never interchanged"
+}

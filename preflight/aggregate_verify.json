@@ -1,0 +1,49 @@
+{
+  "z0_source": "/dev_data/wlt/Aurora_Experiments/data/Z0__test.npz",
+  "original_module_dir": "/dev_data/wlt/Aurora_Experiments/reference/exp004",
+  "original_provenance": "vendored read-only copy (reference/README.md)",
+  "reference_files": {
+    "aggregate.py": {
+      "ok": true,
+      "sha256": "1cd627f80f38d1e94504e155e6516cd0319bdc4e7f941939c9fe348da9e4124c"
+    },
+    "common.py": {
+      "ok": true,
+      "sha256": "371c6f462e37fda0b26e1cb19c921b95ed234f56052a890f2d29d1b62b37dad7"
+    },
+    "timesx_data.py": {
+      "ok": true,
+      "sha256": "a27ec66e9b7e5c11bf95dba8bafc5f7d6b3cfdd6f2683a9774e5da80577a2cfa"
+    },
+    "configs/v1.yaml": {
+      "ok": true,
+      "sha256": "1a3710c9f837a6d65ffe74a716fa261360150d39764a0a6f0335345e8f26d140"
+    }
+  },
+  "n_comparisons": 840,
+  "all_within_atol": true,
+  "bitwise_equal": true,
+  "max_abs_diff": 0.0,
+  "atol": 1e-12,
+  "corroboration_vs_archive_csv": {
+    "overall_mse_vs_archive": {
+      "ported": 3.654699867424306,
+      "archived": 3.6547,
+      "abs_diff": 1.3257569397850943e-07,
+      "ok": true
+    },
+    "overall_mae_vs_archive": {
+      "ported": 1.0490807688239028,
+      "archived": 1.049081,
+      "abs_diff": 2.3117609715406218e-07,
+      "ok": true
+    }
+  },
+  "ported_overall_full_precision": {
+    "mse": 3.654699867424306,
+    "mae": 1.0490807688239028,
+    "raw_mse": 12684618.921118839,
+    "raw_mae": 238.80936109477346
+  },
+  "failed": []
+}

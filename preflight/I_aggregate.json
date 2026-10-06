@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "returncode": 0,
+  "stderr_tail": "",
+  "max_abs_diff": 0.0,
+  "n_comparisons": 840,
+  "corroboration": {
+    "overall_mse_vs_archive": {
+      "ported": 3.654699867424306,
+      "archived": 3.6547,
+      "abs_diff": 1.3257569397850943e-07,
+      "ok": true
+    },
+    "overall_mae_vs_archive": {
+      "ported": 1.0490807688239028,
+      "archived": 1.049081,
+      "abs_diff": 2.3117609715406218e-07,
+      "ok": true
+    }
+  }
+}

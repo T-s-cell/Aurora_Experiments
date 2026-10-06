@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "report": {
+    "determinism": {
+      "cublas_workspace_config": ":4096:8",
+      "tf32_matmul": false,
+      "tf32_cudnn": false,
+      "cudnn_benchmark": false,
+      "deterministic_algorithms": true
+    },
+    "package": {
+      "package_dir": "/dev_data/wlt/conda/envs/aurora/lib/python3.12/site-packages/aurora",
+      "version": "0.2.0",
+      "files": {
+        "__init__.py": {
+          "expected": "55bec5171d216e68eeeb59ce675bac6e",
+          "got": "55bec5171d216e68eeeb59ce675bac6e",
+          "ok": true
+        },
+        "configuration_aurora.py": {
+          "expected": "452cbcf5a954e5a83ef78df5b778df9d",
+          "got": "452cbcf5a954e5a83ef78df5b778df9d",
+          "ok": true
+        },
+        "flow_loss.py": {
+          "expected": "4bc657919426405fa0ce999dc275da53",
+          "got": "4bc657919426405fa0ce999dc275da53",
+          "ok": true
+        },
+        "modality_connector.py": {
+          "expected": "49fbbbc03575a554c83bc1a107c3bdc8",
+          "got": "49fbbbc03575a554c83bc1a107c3bdc8",
+          "ok": true
+        },
+        "modeling_aurora.py": {
+          "expected": "16cc50855050e1d60dc2ae4ce15e3dd0",
+          "got": "16cc50855050e1d60dc2ae4ce15e3dd0",
+          "ok": true
+        },
+        "prototype_retriever.py": {
+          "expected": "77e0438345684dc26f5b290c6a4a34f0",
+          "got": "77e0438345684dc26f5b290c6a4a34f0",
+          "ok": true
+        },
+        "ts_generation_mixin.py": {
+          "expected": "faad71b0796b01ea69a3177c32520cd0",
+          "got": "faad71b0796b01ea69a3177c32520cd0",
+          "ok": true
+        },
+        "util_functions.py": {
+          "expected": "546a7518b1d36bd57092962adf0fe040",
+          "got": "546a7518b1d36bd57092962adf0fe040",
+          "ok": true
+        }
+      },
+      "all_ok": true
+    },
+    "weights": {
+      "path": "/dev_data/wlt/.cache/huggingface/hub/models--DecisionIntelligence--Aurora/blobs/df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+      "bytes": 843564328,
+      "sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+      "ok": true
+    },
+    "key_diff": {
+      "missing": [],
+      "unexpected": [],
+      "n_model_keys": 896,
+      "n_weight_keys": 896
+    },
+    "strict_load": {
+      "missing_keys": [],
+      "unexpected_keys": []
+    },
+    "mode": {
+      "training": false,
+      "trainable_params": 0
+    },
+    "device": "cuda"
+  }
+}

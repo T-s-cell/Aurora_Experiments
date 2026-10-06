@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "resume_bitwise": true,
+  "stored_bitwise": true,
+  "reuse_compatible_shard": true,
+  "stale_fingerprint_rejected": true,
+  "quarantined": true,
+  "duplicate_detected": true,
+  "missing_detected": true
+}

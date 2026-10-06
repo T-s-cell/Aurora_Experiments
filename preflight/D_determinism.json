@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "same_seed": [
+    {
+      "window": "synth_constant",
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "window": "synth_ramp",
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "window": "synth_sine",
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    }
+  ],
+  "diff_seed_differs": true,
+  "settings_live": {
+    "tf32_matmul": false,
+    "tf32_cudnn": false,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "settings_ok": true,
+  "cross_process": {
+    "ok": true,
+    "bitwise_equal": true,
+    "max_abs_diff": 0.0,
+    "shape": [
+      3,
+      12
+    ]
+  }
+}

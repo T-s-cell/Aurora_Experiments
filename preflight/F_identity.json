@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "n_unique_keys": 2474,
+  "spot_checks": [
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+      "past_max_abs_diff": 0.0,
+      "target_max_abs_diff": 0.0,
+      "ok": true
+    },
+    {
+      "var_key": "traffic__air_travel_96_12_4_10events",
+      "sample_id": "traffic__air_travel_96_12_4_10events__20231029T000000",
+      "past_max_abs_diff": 0.0,
+      "target_max_abs_diff": 0.0,
+      "ok": true
+    }
+  ]
+}

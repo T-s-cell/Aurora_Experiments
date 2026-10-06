@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "sections": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true,
+    "F": true,
+    "G": true,
+    "H": true,
+    "I": true,
+    "J": true,
+    "K": true,
+    "L": true
+  },
+  "itl": 48,
+  "device": "cuda",
+  "test_window_inference": 0
+}

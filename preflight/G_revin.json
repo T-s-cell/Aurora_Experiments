@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "items": [
+    {
+      "window": "synth_constant",
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "max_rel": 0.0,
+      "ok": true
+    },
+    {
+      "window": "synth_ramp",
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "max_rel": 0.0,
+      "ok": true
+    },
+    {
+      "window": "synth_sine",
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "max_rel": 0.0,
+      "ok": true
+    },
+    {
+      "window": "synth_noise",
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "max_rel": 0.0,
+      "ok": true
+    }
+  ],
+  "tolerances": {
+    "bitwise_expected": true,
+    "abs_tol": 1e-05,
+    "rel_tol": 1e-06
+  },
+  "note": "Scoring denominator d and Aurora internal RevIN std (std(unbiased=False)+1e-5) are distinct; never blended."
+}

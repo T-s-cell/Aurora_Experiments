@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "windows": [],
+  "itl": {
+    "48": {
+      "geometry": {
+        "itl": 48,
+        "predict_token_num": 1,
+        "padded_output_len": 48,
+        "sliced_to": 12
+      },
+      "shape_ok": true,
+      "finite_all": true,
+      "ms_per_window_mean": 320.259153842926,
+      "per_window": [
+        {
+          "window": "synth_constant",
+          "ms": 321.2890625,
+          "mean": 3.5000000673532488,
+          "std": 9.634650340293198e-08
+        },
+        {
+          "window": "synth_ramp",
+          "ms": 319.92650032043457,
+          "mean": 51.51731807390849,
+          "std": 1.2153144284971606
+        },
+        {
+          "window": "synth_sine",
+          "ms": 322.22604751586914,
+          "mean": -0.08088834705762564,
+          "std": 0.07180646787534269
+        },
+        {
+          "window": "synth_noise",
+          "ms": 318.0413246154785,
+          "mean": 0.25615956970800957,
+          "std": 0.22910341860107825
+        },
+        {
+          "window": "climate__deforestation_96_12_4_10events",
+          "ms": 325.5584239959717,
+          "mean": 36.380739736557004,
+          "std": 5.434261719263055
+        },
+        {
+          "window": "climate__deforestation_96_12_4_10events",
+          "ms": 315.8724308013916,
+          "mean": 34.72346203009287,
+          "std": 10.309775070017205
+        },
+        {
+          "window": "climate__drought_96_12_4_10events",
+          "ms": 320.52111625671387,
+          "mean": 39.512127391497295,
+          "std": 3.02382054923485
+        },
+        {
+          "window": "climate__drought_96_12_4_10events",
+          "ms": 318.6383247375488,
+          "mean": 35.77121213912964,
+          "std": 4.760774024830363
+        }
+      ]
+    },
+    "9": {
+      "geometry": {
+        "itl": 9,
+        "predict_token_num": 2,
+        "padded_output_len": 18,
+        "sliced_to": 12
+      },
+      "shape_ok": true,
+      "finite_all": true,
+      "ms_per_window_mean": 350.5590558052063,
+      "per_window": [
+        {
+          "window": "synth_constant",
+          "ms": 402.5449752807617,
+          "mean": 3.500000020662944,
+          "std": 2.946396656672092e-08
+        },
+        {
+          "window": "synth_ramp",
+          "ms": 346.7998504638672,
+          "mean": 23.443013316790267,
+          "std": 0.20237007476926266
+        },
+        {
+          "window": "synth_sine",
+          "ms": 341.40920639038086,
+          "mean": 0.11922188339134059,
+          "std": 0.007355951533808177
+        },
+        {
+          "window": "synth_noise",
+          "ms": 341.43638610839844,
+          "mean": -0.24954888464262093,
+          "std": 0.020802159938023885
+        },
+        {
+          "window": "climate__deforestation_96_12_4_10events",
+          "ms": 339.72954750061035,
+          "mean": 38.30682329177857,
+          "std": 0.17265165721328343
+        },
+        {
+          "window": "climate__deforestation_96_12_4_10events",
+          "ms": 344.8953628540039,
+          "mean": 39.36250431060791,
+          "std": 0.2325148969547027
+        },
+        {
+          "window": "climate__drought_96_12_4_10events",
+          "ms": 338.91987800598145,
+          "mean": 45.05498263994853,
+          "std": 0.1937355616320352
+        },
+        {
+          "window": "climate__drought_96_12_4_10events",
+          "ms": 348.7372398376465,
+          "mean": 45.0752822971344,
+          "std": 0.23073844992249123
+        }
+      ]
+    }
+  },
+  "verdict": "parallel evidence only; freeze decision belongs to the user; main scheme itl=48 follows the official TimeMMD precedent (Health/Traffic: seq_len=96, inference_token_len=48), itl=9 remains a candidate"
+}

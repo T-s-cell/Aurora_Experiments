@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "ms_per_window_mean": 325.339396794637,
+  "ms_per_window_all": [
+    319.9641704559326,
+    331.437349319458,
+    327.35157012939453,
+    326.20978355407715,
+    327.2106647491455,
+    319.86284255981445
+  ],
+  "peak_vram_gb": 0.8259806632995605,
+  "gpu_free_gb_now": 21.60003662109375,
+  "extrapolation_2474x3_minutes": 40.2444833834966,
+  "gate": "free>=20GB before official run; OOM -> stop and preserve scene"
+}

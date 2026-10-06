@@ -1,0 +1,173 @@
+{
+  "ok": true,
+  "items": [
+    {
+      "window": "synth_constant",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "synth_ramp",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "synth_sine",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "synth_noise",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__deforestation_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__deforestation_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__drought_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__drought_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__endangered_species_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__endangered_species_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__flooding_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    },
+    {
+      "window": "climate__flooding_96_12_4_10events",
+      "shape": [
+        12
+      ],
+      "finite": true,
+      "raw_shape": [
+        1,
+        100,
+        12
+      ],
+      "raw_finite": true,
+      "ok": true
+    }
+  ]
+}
