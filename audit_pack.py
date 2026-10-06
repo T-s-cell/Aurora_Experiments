@@ -26,7 +26,8 @@ INCLUDE_FILES = [
     "data/split_manifest.json",
 ]
 INCLUDE_DIRS = ["reference", "preflight"]
-INCLUDE_GLOBS = ["preflight_run*.log", "results/*.csv", "results/*.json", "results/*.md"]
+INCLUDE_GLOBS = ["preflight_run*.log", "preflight_final*.log", "logs/preflight_*.log",
+                 "results/*.csv", "results/*.json", "results/*.md"]
 
 
 def sha256_file(p, chunk=1 << 22):
