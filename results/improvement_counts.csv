@@ -1,0 +1,5 @@
+method,level,metric,improved,degraded,equal,total
+A48,domain(19),mse,0,19,0,19
+A48,var(190),mse,44,146,0,190
+A48,domain(19),mae,0,19,0,19
+A48,var(190),mae,40,150,0,190

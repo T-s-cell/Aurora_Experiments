@@ -1,0 +1,3 @@
+method,seed_stat,MSE,MAE
+Z0,single,3.654700,1.049081
+A48,mean+-std over 3 seeds,4.293598+/-0.001592,1.200945+/-0.000305

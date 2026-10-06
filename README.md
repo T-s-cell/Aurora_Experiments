@@ -61,8 +61,29 @@ python run_eval.py --itl 48 --dry-run
 python run_eval.py --itl 48 --i-approve-frozen-protocol <12-hex>
 ```
 
+## Official result (2026-10-06, itl=48, method tag `A48`)
+
+Full frozen-protocol run: 2,474 test windows × 3 seeds (2021/2022/2023), batch=1,
+100-sample mean, executed on **theta RTX 3090 (GPU 1, idle card)** after eta's L20
+was fully occupied by another tenant; eta-verified code (identical md5s), same
+torch 2.12.0+cu126 / transformers 4.57.6 stack (`environment_lock_theta.txt`).
+All runtime gates passed; per-seed `verify_shard_coverage` OK (2,474 rows ==
+Z0 key set, target/d bitwise); run log `logs/official_eval_itl48.log` (kept with
+predictions on theta; predictions/ is git-ignored).
+
+| method | std-MSE (19-domain equal weight) | std-MAE |
+|---|---|---|
+| VisionTS Z0 (EXP-004 reference) | 3.654700 | 1.049081 |
+| **Aurora A48** (mean ± std over 3 seeds) | **4.293598 ± 0.001592** | **1.200945 ± 0.000305** |
+
+A48 vs Z0: MSE −17.48%, MAE −14.48% (i.e. Aurora degrades on both). Domain level:
+0/19 domains improved (both metrics); variable level: 44/190 (MSE), 40/190 (MAE)
+improved. Statement: Aurora is **not trained or fine-tuned on TimesX**; pre-training
+overlap unaudited. Full tables: `results/` (domain_summary / variable_level /
+comparisons_vs_z0 / improvement_counts / aggregate_summary).
+
 ## Status
 
 - Code + eta environment (L20) + preflight A–L: complete (see `preflight/` evidence).
-- Official 2,474-window × 3-seed evaluation: **implemented, not started** — awaits
-  explicit protocol approval.
+- Official 2,474-window × 3-seed evaluation (itl=48): **complete** — see above.
+  itl=9 remains an unrun frozen-decision candidate.
