@@ -1,0 +1,11 @@
+# eta installs: pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# torch/numpy come from the cloned pytorch_init template env (torch 2.12.0+cu126, numpy 2.4.4); do NOT pip-upgrade them.
+aurora-model==0.2.0
+transformers<5
+safetensors
+huggingface_hub
+# transformers<5 is a HARD requirement, verified 2026-10-06: the shipped weights use the
+# transformers-4.x ViT module naming (VisionEncoder.model.encoder.layer.N.attention.attention.key ...);
+# under transformers 5.x the vision encoder builds layers.N.attention.k_proj instead, so
+# load_state_dict(strict=True) fails with a 100+ key name mismatch. Local verified working: 4.57.6.
+

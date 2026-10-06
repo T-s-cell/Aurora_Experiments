@@ -1,0 +1,82 @@
+{
+  "protocol_name": "aurora-timesx-v1",
+  "frozen": "2026-10-06",
+  "purpose": "Aurora (aurora-model==0.2.0) unimodal zero-shot baseline on TimesX, aligned with EXP-004 (VisionTS Z0) frozen evaluation protocol.",
+  "declaration": "Aurora is NOT trained or fine-tuned on TimesX. Pre-training data overlap is not audited, so no stronger claim is made.",
+
+  "data": {
+    "zip_sha256": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
+    "split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+    "data_cache_sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+    "z0_reference_sha256": "49d456f5f5e90ca86da000a31108e92028168eaf96fb9b84ba68e962c03df437",
+    "exp004_commit": "dcd2425",
+    "window": "past = series[s:s+96], target = series[s+96:s+108], s = variables[var_key].sample_start_idx[sample_id], test list = variables[var_key].native.test",
+    "test_windows_total": 2474,
+    "variables_total": 190,
+    "domains_total": 19,
+    "window_key": "(var_key, sample_id) composite key; uniqueness and all alignment checks use the composite key only"
+  },
+
+  "model": {
+    "package": "aurora-model==0.2.0",
+    "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+    "weights_bytes": 843564328,
+    "hf_repo": "DecisionIntelligence/Aurora",
+    "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+    "loading": "custom wrapper: sha256 verify -> state_dict key bidirectional diff vs safetensors -> load_state_dict(strict=True) -> eval() -> all params requires_grad_(False); official load_model() not used (strict=False, no eval())"
+  },
+
+  "inference": {
+    "batch_size": 1,
+    "num_samples": 100,
+    "max_output_length": 12,
+    "revin": true,
+    "text_inputs": null,
+    "vision_inputs": null,
+    "itl_main": 48,
+    "itl_candidate": 9,
+    "itl_note": "Main scheme itl=48 follows the official TimeMMD zero-shot precedent (Health/Traffic: seq_len=96, inference_token_len=48). itl=9 is a candidate pending verification; final freeze is a user decision, never inferred from token count alone.",
+    "pred_reduction": "mean over the 100-sample dim -> single point forecast (float64)"
+  },
+
+  "seeds": {
+    "base_seeds": [2021, 2022, 2023],
+    "per_window_rule": "w = int.from_bytes(sha256(f'aurora-timesx-v1|{base_seed}|{var_key}|{sample_id}'.encode()).digest()[:8], 'big') % (2**31 - 1)",
+    "application": "torch.manual_seed(w) immediately before each window's generate() call; no other RNG consumption between seeding and generate()"
+  },
+
+  "determinism": {
+    "timing": "CUBLAS_WORKSPACE_CONFIG=':4096:8' must be set in process env BEFORE any CUDA initialization; torch.use_deterministic_algorithms(True), torch.backends.cuda.matmul.allow_tf32=False, torch.backends.cudnn.allow_tf32=False, torch.backends.cudnn.benchmark=False must all be applied BEFORE the first inference call.",
+    "tf32": "disabled (matmul and cudnn)",
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "cublas_workspace_config": ":4096:8",
+    "error_policy": "If a determinism error names a specific op, record the op and the disposition in the preflight report; never silently fall back to warn_only."
+  },
+
+  "scoring": {
+    "window_d": "d = pstdev(past96, ddof=0); if d < 1e-8: d = fallback_std (precomputed in split_manifest per variable from first training sample past-96)",
+    "std_mse": "mean(((pred - target)/d)^2) per window -> mean per variable -> equal weight within domain -> equal weight across 19 domains",
+    "std_mae": "mean(|pred - target|/d) with the same aggregation ladder",
+    "d_vs_revin_note": "The scoring denominator d (pstdev with fallback) and Aurora's internal RevIN scale (std(unbiased=False)+1e-5) are distinct quantities. Scoring uses only d; inference uses only the official revin path. They are never interchanged or blended. For small-scale sequences their difference can be material; no negligibility claim is made.",
+    "reference": "VisionTS Z0 overall std-MSE 3.6547 / std-MAE 1.0491 at display precision only (not an equality target)"
+  },
+
+  "shard_fingerprint": {
+    "per_shard_header": ["protocol_sha256", "split_manifest_sha256", "data_cache_sha256", "weights_sha256", "hf_revision", "itl", "num_samples", "base_seed", "code_md5 (key source files)", "aurora_package_md5 (key files)"],
+    "resume_policy": "On resume, every header field is re-verified against the current protocol; ANY mismatch -> shard is NOT reused, moved to quarantine/ (never deleted), and re-generated.",
+    "done_marker": ".done JSON with the same fingerprint is written only after atomic shard completion"
+  },
+
+  "outputs": {
+    "npz_schema": "sample_ids(int64)/var_keys(str)/domains(str)/pred(N,12 float64)/target(N,12 float64)/d(N, float64), sharded by (base_seed, domain), Z0-compatible",
+    "aggregate": "domain MSE/MAE CSVs + 19-domain-equal-weight overall + seed mean/std (ddof=1) across the three base seeds; best seed is NEVER selected",
+    "coverage_check": "key set equal to Z0__test.npz keys; target and d recomputed from frozen data and compared with stored values at exact equality (same frozen source)"
+  },
+
+  "eval_gate": {
+    "approval_flag": "--i-approve-frozen-protocol <first 12 hex of protocol.json sha256>",
+    "runtime_checks": "all sha256 fingerprints re-verified at startup; test window count == 2474; composite-key set equals Z0",
+    "status": "implemented but NOT started in this round; requires explicit user approval"
+  }
+}

@@ -1,0 +1,38 @@
+# 数据与缓存（大文件不入库）
+data/*.npz
+data/*.zip
+data/cache/
+# split_manifest.json 为协议件（1.7MB），明确入库：
+!data/split_manifest.json
+
+# 预测输出（正式评测大 npz 不入库）
+predictions/*
+!predictions/.gitkeep
+
+# 日志（常规运行日志不入库；审计证据日志随审计包走）
+logs/*
+!logs/.gitkeep
+
+# 预检中间产物（大数组不入库；断言 JSON/小样例 .npy 明确保留）
+preflight/big_*
+preflight/*.npz
+!preflight/.gitkeep
+
+# 聚合验收 scratch 输出
+scratch/
+
+# 包与环境
+*.tar.gz
+__pycache__/
+*.pyc
+.no_sync
+
+# vendored exp004/common.py 的 import 副作用目录（见 reference/README.md）
+reference/exp004/audit/
+reference/exp004/checkpoints/
+reference/exp004/dataset/
+reference/exp004/logs/
+reference/exp004/manifests/
+reference/exp004/predictions/
+reference/exp004/results/*
+!reference/exp004/results/overall.csv

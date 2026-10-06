@@ -1,0 +1,62 @@
+{
+  "project": "Aurora x TimesX unimodal zero-shot baseline",
+  "created": "2026-10-06",
+  "note": "All source files are read-only copies of frozen upstream artifacts. Verify before use.",
+  "sources": {
+    "timesx_zip": {
+      "path": "data/TimesX_Datasets.zip",
+      "sha256": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
+      "origin": "TimesX_Datasets.zip (same file as VisionTS_Experiments EXP-004 protocol)"
+    },
+    "split_manifest": {
+      "path": "data/split_manifest.json",
+      "sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+      "origin": "VisionTS_Experiments/repro_ln_timesx_v1/manifests/split_manifest.json @ commit dcd2425"
+    },
+    "data_cache": {
+      "path": "data/data_cache.npz",
+      "sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+      "origin": "VisionTS_Experiments/repro_ln_timesx_v1/manifests/data_cache.npz @ commit dcd2425"
+    },
+    "z0_reference": {
+      "path": "data/Z0__test.npz",
+      "sha256": "49d456f5f5e90ca86da000a31108e92028168eaf96fb9b84ba68e962c03df437",
+      "origin": "VisionTS_Experiments/repro_ln_timesx_v1/predictions/Z0__test.npz @ commit dcd2425 (VisionTS zero-shot reference, std-MSE overall 3.6547 display precision)"
+    },
+    "aurora_weights": {
+      "filename": "model.safetensors",
+      "bytes": 843564328,
+      "sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+      "hf_repo": "DecisionIntelligence/Aurora",
+      "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+      "origin": "local HF cache (download via hf-mirror on eta, sha256 must match)"
+    },
+    "aurora_package": {
+      "name": "aurora-model",
+      "version": "0.2.0",
+      "pinned": "aurora-model==0.2.0",
+      "files_md5": {
+        "__init__.py": "55bec5171d216e68eeeb59ce675bac6e",
+        "configuration_aurora.py": "452cbcf5a954e5a83ef78df5b778df9d",
+        "flow_loss.py": "4bc657919426405fa0ce999dc275da53",
+        "modality_connector.py": "49fbbbc03575a554c83bc1a107c3bdc8",
+        "modeling_aurora.py": "16cc50855050e1d60dc2ae4ce15e3dd0",
+        "prototype_retriever.py": "77e0438345684dc26f5b290c6a4a34f0",
+        "ts_generation_mixin.py": "faad71b0796b01ea69a3177c32520cd0",
+        "util_functions.py": "546a7518b1d36bd57092962adf0fe040"
+      },
+      "origin": "PyPI (Tsinghua mirror on eta); file md5 above taken from local aurora_test env install"
+    },
+    "exp004_reference": {
+      "repo": "VisionTS_Experiments",
+      "commit": "dcd2425",
+      "aggregation_source": "repro_ln_timesx_v1/aggregate.py (ported, read-only)",
+      "protocol_doc": "repro_ln_timesx_v1/protocol.json"
+    },
+    "official_timemmd_itl_precedent": {
+      "url": "https://github.com/decisionintelligence/TimeMMD/blob/main/scripts/run_aurora_timemmd_zero_shot.sh",
+      "key_lines": "Health/Traffic: seq_len=96 inference_token_len=48; Security: seq_len=220 inference_token_len=24",
+      "fetched": "2026-10-06"
+    }
+  }
+}
