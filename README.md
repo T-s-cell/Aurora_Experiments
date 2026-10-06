@@ -82,6 +82,19 @@ improved. Statement: Aurora is **not trained or fine-tuned on TimesX**; pre-trai
 overlap unaudited. Full tables: `results/` (domain_summary / variable_level /
 comparisons_vs_z0 / improvement_counts / aggregate_summary).
 
+**Freeze record (2026-10-06).** This round is FROZEN as the Aurora A48 unimodal
+zero-shot baseline: itl=48, batch=1, 100-sample mean, seeds 2021/2022/2023.
+Devices: preflight on **eta L20**; official run on **theta RTX 3090** (idle GPU 1).
+Reviewer-verified: 229-file MANIFEST, 57 prediction shards + config fingerprints
+all consistent; 3 × 2,474-window coverage (no duplicates/missing; target and
+scoring denominator bitwise equal to Z0 source; predictions finite); independent
+recomputation of all six result files reproduced exactly. Reviewed pack:
+`Aurora_TimesX_official_eval_20261006.tar.gz` at commit
+`88667cc40e347513b92190f948d4f3e0a155701b`. The result stands as a **valid
+negative result** (Aurora trails VisionTS Z0 on all 19 domains under this
+protocol); no rerun is required. itl=9 remains an unrun candidate, out of scope
+for the frozen baseline.
+
 ## Status
 
 - Code + eta environment (L20) + preflight A–L: complete (see `preflight/` evidence).
