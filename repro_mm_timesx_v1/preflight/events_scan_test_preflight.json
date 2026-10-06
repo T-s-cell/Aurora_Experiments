@@ -1,0 +1,8 @@
+{
+  "scope": "test_preflight",
+  "n_windows": 2474,
+  "n_flagged": 0,
+  "n_iso_dates_in_stripped_bodies": 0,
+  "note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge — recorded as a limitation, not evidence of absence.",
+  "hits": []
+}

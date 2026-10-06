@@ -30,6 +30,17 @@ __pycache__/
 *.pyc
 .no_sync
 
+# EXP-011 M48T512 子实验：输出与大件不入库（结果表/代码/协议/文本缓存 meta 入库）
+repro_mm_timesx_v1/predictions/*
+!repro_mm_timesx_v1/predictions/.gitkeep
+repro_mm_timesx_v1/logs/*
+!repro_mm_timesx_v1/logs/.gitkeep
+repro_mm_timesx_v1/cache/*
+!repro_mm_timesx_v1/cache/.gitkeep
+repro_mm_timesx_v1/preflight/big_*
+repro_mm_timesx_v1/preflight/*.npz
+!repro_mm_timesx_v1/preflight/.gitkeep
+
 # vendored exp004/common.py 的 import 副作用目录（见 reference/README.md）
 reference/exp004/audit/
 reference/exp004/checkpoints/

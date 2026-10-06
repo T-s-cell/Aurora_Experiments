@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "n_test_windows": 2474,
+  "mapping_problems": 0,
+  "covariate_violations": 0,
+  "covariate_tolerance_hits": 0,
+  "events_flagged": 0,
+  "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge — recorded as a limitation, not evidence of absence."
+}
