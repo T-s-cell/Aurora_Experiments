@@ -260,6 +260,7 @@ def mm_b(model):
     ok = (all(v for k, v in hooks_ok.items() if k.endswith(("_ok", "_not_none",
                                                              "_match_passed", "_unchanged",
                                                              "_changed", "_length")))
+          and all(exact.values())
           and diff_text > 0.0)
     save("MM-B", {
         "ok": ok,
