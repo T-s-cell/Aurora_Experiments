@@ -1,0 +1,9 @@
+comparison,metric,delta,relative_improvement
+M48T512-A48,mse,+0.012884,-0.30%
+M48T512-A48,mae,+0.001746,-0.15%
+A48-Z0,mse,+0.638898,-17.48%
+A48-Z0,mae,+0.151864,-14.48%
+M48T512-Z0,mse,+0.651782,-17.83%
+M48T512-Z0,mae,+0.153610,-14.64%
+M48T512-A48-paired,std_MSE,+0.012884,-0.30%
+M48T512-A48-paired,std_MAE,+0.001746,-0.15%
