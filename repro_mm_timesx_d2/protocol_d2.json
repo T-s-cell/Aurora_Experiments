@@ -1,0 +1,134 @@
+{
+  "protocol_name": "aurora-timesx-mm-d2-v1",
+  "frozen": "2026-10-07",
+  "purpose": "Controlled prediction comparison of the frozen D2 text scheme (deterministic rule cleanup R1-R6 + idle-budget recovery, both frozen at analysis-text-budget-v1 commit 3e09d4b) against the EXP-011 M48T512 baseline: Aurora (aurora-model==0.2.0) zero-shot on the same frozen TimesX test split (2,474 windows, 19 domains), 3 seeds (2021/2022/2023). Only the text token ids/mask change (D0 -> D2); model, weights, windows, seeds, itl, denominators and scoring are EXP-011-identical.",
+  "scope_statement": "This round evaluates the D2 input scheme AS A WHOLE: rule cleanup and budget redistribution change simultaneously, so gains cannot be attributed to either alone. Higher text coverage does NOT imply better prediction; the frozen diagnostic (results/report.md) is coverage-only. Text source, event publication timing and truncation limitations carry over unchanged from EXP-011 (protocol_mm.json).",
+  "declaration": "Aurora is NOT trained or fine-tuned on TimesX. Pre-training data overlap is not audited, so no stronger claim is made. No model modification and no hyperparameter search: D2 rules, budgets and all inference settings are frozen a priori; no scheme may be selected or re-tuned based on this round's test results.",
+  "data": {
+    "zip_sha256": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
+    "split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+    "data_cache_sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+    "z0_reference_sha256": "49d456f5f5e90ca86da000a31108e92028168eaf96fb9b84ba68e962c03df437",
+    "exp011_reference": "EXP-011 M48T512 frozen baseline (branch repro-mm-timesx-v1, commit 2285a24): overall std-MSE 4.306481+/-0.001689, std-MAE 1.202691+/-0.000269 (display precision); all comparisons recompute from full-precision shards.",
+    "window": "past = series[s:s+96], target = series[s+96:s+108], s = variables[var_key].sample_start_idx[sample_id], test list = variables[var_key].native.test",
+    "test_windows_total": 2474,
+    "variables_total": 190,
+    "domains_total": 19,
+    "window_key": "(var_key, sample_id) composite key; uniqueness, text-cache lookup and all alignment checks use the composite key only — never row position"
+  },
+  "model": {
+    "package": "aurora-model==0.2.0",
+    "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+    "weights_bytes": 843564328,
+    "hf_repo": "DecisionIntelligence/Aurora",
+    "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+    "loading": "identical to EXP-010/EXP-011 load_aurora.py: sha256 verify -> state_dict key bidirectional diff vs safetensors -> load_state_dict(strict=True) -> eval() -> all params requires_grad_(False)"
+  },
+  "inference": {
+    "batch_size": 1,
+    "num_samples": 100,
+    "max_output_length": 12,
+    "revin": true,
+    "vision_inputs": null,
+    "itl_main": 48,
+    "itl_note": "itl=48 identical to the frozen EXP-010 A48 baseline and EXP-011 M48T512.",
+    "pred_reduction": "mean over the 100-sample dim -> single point forecast (float64)",
+    "text_tensor_path": "text_input_ids / text_attention_mask / text_token_type_ids passed as explicit Long tensors [1,512] moved to model.device; token_type_ids all zeros; the string path text_inputs= is FORBIDDEN."
+  },
+  "text": {
+    "method_tag": "M48T512_D2",
+    "definition": "D2 = frozen rule cleanup (R1-R6) applied to the four native field strings, then base budgets 48/270/64/128 (including block names), then idle-budget recovery. The D0 scheme itself (normalize -> '<Name>: <field>' -> first-N truncation, NO budget transfer) is defined by repro_mm_timesx_v1/protocol_mm.json and is NOT restated as current here.",
+    "cleanup_rules": "d2_rules.json (frozen, md5 in d2_provenance): R1 scenario-prefix rewrite (keep period dates, drop boilerplate), R2 delete bare numeric citation brackets, R3 background template compression to 'Background: {name}; domain: {domain}; frequency: {freq}.' (unparsed kept verbatim), R4 covariate-prefix compression, R5 holiday-prefix compression, R6 whitespace repair. PRESERVED, never deleted: <N> event tags, event bodies, all numbers/dates/units/negation/forecast wording, covariate statistics.",
+    "budget_rule": "Base allocation min(raw_tokens, budget) per block (Background 48 / Events 270 / Calendar 64 / Covariates 128, budgets INCLUDE block names); leftover content budget (510 - sum) redistributed to still-truncated blocks in the FIXED order Events -> Covariates -> Calendar -> Background; invariant alloc >= base for every block; sum <= 510.",
+    "assembly_rules": [
+      "apply frozen cleanup rules to each field, then whitespace-normalize; skip a block if empty or the literal 'Unknown' (same skip rule as EXP-011)",
+      "per block, tokenize '<Name>: <cleaned field>' with the in-package bert_config BertTokenizer, add_special_tokens=False",
+      "allocate tokens per budget_rule (base budgets + fixed-order idle recovery)",
+      "fixed order Background -> Events -> Calendar -> Covariates; [CLS] + content + [SEP]; right-pad to 512 (pad id 0, attention mask 0)"
+    ],
+    "tokenizer": {
+      "kind": "BertTokenizer (slow) shipped in the aurora package: aurora/bert_config/, local_files_only=True, do_lower_case=true, model_max_length=512",
+      "config_md5": "0939b914fc32135f6c12d8ef281dbd7a",
+      "tokenizer_json_md5": "eac14313ee1816d9e8ef962f7615fd93",
+      "tokenizer_config_md5": "aee76cec0170859d909d411dc7cdaa76",
+      "vocab_md5": "64800d5d8528ce344256daf115d4965e"
+    },
+    "cache": {
+      "npz": "repro_mm_timesx_d2/cache/text_tokens_M48T512_D2.npz",
+      "npz_sha256": "45d929e68dfc411464442613029658cc92bba5164e735e09d4f1164ddfa26cc5",
+      "meta_jsonl": "repro_mm_timesx_d2/cache/text_meta_M48T512_D2.jsonl",
+      "meta_jsonl_sha256": "0de508bad2e18d56581846e20e2ddde13d75156a501efe6666e91f87fcec5e30",
+      "schema": "ids int32 [2474,512], mask int32 [2474,512], explicit key arrays var_keys/sample_ids/domains; meta line per window: D2 trace record (per-block raw/cleaned/alloc token counts, [start,end) boundaries, event/covariate coverage, decoded D2 input)",
+      "provenance": "extracted bitwise by repro_mm_timesx_d2/build_cache_d2.py from the frozen diagnostic trace analysis/text_budget_v1/outputs/trace_D2.npz (sha256 e601f22d4c22f0bab6563cb04f387ebbc4981b9531372f88d669d81ef9d153ed) restricted to manifest native.test; key set == EXP-011 frozen cache == test_rows(); D0 trace rows verified bitwise against the EXP-011 frozen cache; decoded text is for inspection only and is NEVER re-tokenized for prediction."
+    }
+  },
+  "seeds": {
+    "base_seeds": [
+      2021,
+      2022,
+      2023
+    ],
+    "per_window_rule": "w = int.from_bytes(sha256(f'aurora-timesx-v1|{base_seed}|{var_key}|{sample_id}'.encode()).digest()[:8], 'big') % (2**31 - 1)",
+    "application": "torch.manual_seed(w) immediately before each window's generate() call; no other RNG consumption between seeding and generate(); rule and prefix IDENTICAL to EXP-010/EXP-011 so seeds pair with both baselines. The official seed set is EXACTLY these three; no other seeds may be run or reported."
+  },
+  "determinism": {
+    "timing": "CUBLAS_WORKSPACE_CONFIG=':4096:8' must be set in process env BEFORE any CUDA initialization; torch.use_deterministic_algorithms(True), torch.backends.cuda.matmul.allow_tf32=False, torch.backends.cudnn.allow_tf32=False, torch.backends.cudnn.benchmark=False must all be applied BEFORE the first inference call.",
+    "tf32": "disabled (matmul and cudnn)",
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "cublas_workspace_config": ":4096:8",
+    "error_policy": "If a determinism error names a specific op, record the op and the disposition in the preflight report; never silently fall back to warn_only."
+  },
+  "scoring": {
+    "window_d": "d = pstdev(past96, ddof=0); if d < 1e-8: d = fallback_std (precomputed in split_manifest per variable from first training sample past-96)",
+    "std_mse": "mean(((pred - target)/d)^2) per window -> mean per variable -> equal weight within domain -> equal weight across 19 domains",
+    "std_mae": "mean(|pred - target|/d) with the same aggregation ladder",
+    "d_vs_revin_note": "The scoring denominator d (pstdev with fallback) and Aurora's internal RevIN scale are distinct quantities; never interchanged.",
+    "paired_delta_ladder": "PAIRED COMPARISON = M48T512_D2 - EXP-011 M48T512 (same seed, same composite key): window-level paired difference -> mean per variable -> equal weight within domain -> equal weight across 19 domains -> overall. NEVER a plain average over all windows. Negative delta = D2 improves. Relative changes and improved domain/variable counts reported alongside; best seed never selected. A48 and Z0 appear as pre-existing reference columns only (no new inference)."
+  },
+  "shard_fingerprint": {
+    "per_shard_header": [
+      "protocol_d2_sha256",
+      "split_manifest_sha256",
+      "data_cache_sha256",
+      "weights_sha256",
+      "hf_revision",
+      "itl",
+      "num_samples",
+      "base_seed",
+      "text_cache_npz_sha256 (D2 cache)",
+      "code_md5_root (load_aurora/data_loader/predict/aggregate)",
+      "code_md5_d2 (predict_d2/run_eval_d2/aggregate_d2)",
+      "bert_config_md5 (tokenizer files)",
+      "aurora_package_md5 (key files)"
+    ],
+    "resume_policy": "On resume, every header field is re-verified against the current protocol; ANY mismatch -> shard is NOT reused, moved to repro_mm_timesx_d2/predictions/quarantine/ (never deleted), and re-generated.",
+    "done_marker": ".done JSON with the same fingerprint is written only after atomic shard completion"
+  },
+  "outputs": {
+    "npz_schema": "sample_ids/var_keys/domains (str), pred(N,12 float64), target(N,12 float64), d(N, float64), sharded by (base_seed, domain) under repro_mm_timesx_d2/predictions/ with method tag M48T512_D2",
+    "aggregate": "repro_mm_timesx_d2/results/: per-seed, variable-level, 19-domain and overall (mean +/- std ddof=1) for M48T512_D2; M48T512 recomputed at full precision from repro_mm_timesx_v1/predictions/ (headers re-verified); A48 from root predictions/; Z0 from data/Z0__test.npz; paired-difference tables D2 - M48T512 per the frozen ladder",
+    "coverage_check": "per seed: key set equal to Z0__test.npz keys (2,474 rows); target and d recomputed from frozen data and compared bitwise; predictions finite"
+  },
+  "eval_gate": {
+    "approval_flag": "--i-approve-frozen-protocol <first 12 hex of sha256(protocol_d2.json)>; the EXP-010 token (580eb3c3f51d) AND the EXP-011 token (74b08ecac1ed) MUST be rejected by this driver",
+    "runtime_checks": "all sha256 fingerprints re-verified at startup; D2 text cache npz sha + key set equality with the 2,474 frozen test rows; GPU >= 20 GB free; test window count == 2474",
+    "status": "official full run (2,474 windows x seeds 2021/2022/2023) pre-authorized by the user AFTER all preflight sections pass on this frozen configuration"
+  },
+  "d2_provenance": {
+    "source_branch": "analysis-text-budget-v1",
+    "source_commit": "3e09d4b715c2ecdd803688b11ad6856f4231be8e",
+    "exp011_protocol_sha256": "74b08ecac1ed57ea37a88e2369d0070ecb6cec78889afe313c64a777503cef13",
+    "source_code_md5": {
+      "clean_rules.py": "a352994dc5746a73a7dc8c70530ed864",
+      "allocate.py": "8f3e7735359c2c75901c93f46285cb3b",
+      "build_diag.py": "5f3334a36593ec7d2e7f0a64c15afd0d",
+      "d2_rules.json": "ea57dfc94a86cb4bb2c266067655db83",
+      "budget_config.json": "d152afa0c12fcabfcb73c3144da4efab"
+    },
+    "trace_d2_npz_sha256": "e601f22d4c22f0bab6563cb04f387ebbc4981b9531372f88d669d81ef9d153ed",
+    "trace_d2_jsonl_sha256": "2941e1f929b2f3fd3e8fdea1dc9bf93b141592789f71bb18526aaa9026c33d06",
+    "trace_d0_npz_sha256": "d177b8164f0e92521c4dc380e4d607bf01e9de6eeb354e82e3f53f1be0e236be",
+    "preflight_text_npz_sha256": "0fb9786c674662947b64acc3bc7024a7cc2eeab7d3133842ae7b203edbe459cd"
+  }
+}

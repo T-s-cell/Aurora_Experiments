@@ -54,3 +54,14 @@ reference/exp004/results/*
 # analysis/text_budget_v1: bulk per-window traces stay out of git (results/ tables are tracked)
 analysis/text_budget_v1/outputs/*
 !analysis/text_budget_v1/outputs/.gitkeep
+
+# EXP-D2 (repro-mm-timesx-d2): outputs and bulk files stay out of git
+repro_mm_timesx_d2/predictions/*
+!repro_mm_timesx_d2/predictions/.gitkeep
+repro_mm_timesx_d2/logs/*
+!repro_mm_timesx_d2/logs/.gitkeep
+repro_mm_timesx_d2/cache/*
+!repro_mm_timesx_d2/cache/.gitkeep
+repro_mm_timesx_d2/preflight/big_*
+repro_mm_timesx_d2/preflight/*.npz
+!repro_mm_timesx_d2/preflight/.gitkeep

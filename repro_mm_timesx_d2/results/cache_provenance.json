@@ -1,0 +1,29 @@
+{
+  "frozen_source_branch": "analysis-text-budget-v1",
+  "frozen_source_commit": "3e09d4b715c2ecdd803688b11ad6856f4231be8e",
+  "trace_d0_npz_sha256": "d177b8164f0e92521c4dc380e4d607bf01e9de6eeb354e82e3f53f1be0e236be",
+  "trace_d2_npz_sha256": "e601f22d4c22f0bab6563cb04f387ebbc4981b9531372f88d669d81ef9d153ed",
+  "trace_d2_jsonl_sha256": "2941e1f929b2f3fd3e8fdea1dc9bf93b141592789f71bb18526aaa9026c33d06",
+  "cache_npz_sha256": "45d929e68dfc411464442613029658cc92bba5164e735e09d4f1164ddfa26cc5",
+  "cache_meta_jsonl_sha256": "0de508bad2e18d56581846e20e2ddde13d75156a501efe6666e91f87fcec5e30",
+  "preflight_npz_sha256": "0fb9786c674662947b64acc3bc7024a7cc2eeab7d3133842ae7b203edbe459cd",
+  "d2_source_code_md5": {
+    "clean_rules.py": "a352994dc5746a73a7dc8c70530ed864",
+    "allocate.py": "8f3e7735359c2c75901c93f46285cb3b",
+    "build_diag.py": "5f3334a36593ec7d2e7f0a64c15afd0d",
+    "d2_rules.json": "ea57dfc94a86cb4bb2c266067655db83",
+    "budget_config.json": "d152afa0c12fcabfcb73c3144da4efab"
+  },
+  "checks": {
+    "test_rows": 2474,
+    "keys_equal_exp011_cache": true,
+    "keys_equal_test_rows": true,
+    "bitwise_vs_trace_d2": true,
+    "d0_trace_bitwise_exp011_cache": true,
+    "preflight_windows": 8,
+    "preflight_scopes": [
+      "train",
+      "val"
+    ]
+  }
+}
