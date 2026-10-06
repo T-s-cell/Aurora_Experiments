@@ -26,52 +26,66 @@
 
 ## 2. 主结果（全量 8106；测试 2474）
 
+以下三表由 `gen_report_tables.py` 直接从 results/ CSV 生成（`report_tables.md`），不经手抄。
+
 ### 2.1 总体（stats_overall.csv）
 
 | 指标 | D0 | D1 | D2 |
 |---|---|---|---|
 | content 中位（全量） | 451 | 510 | 510 |
-| idle 中位（全量 / 测试） | 59 / 56 | 0 / 0 | 0 / 0 |
-| 仍截断窗比例（全量） | 100% | 99.8% | 99.7% |
-| 仍截断窗比例（测试） | 100% | 100% | 100% |
-| Events 完整 / 总事件（全量） | 10667/66815（16.0%） | 13568（20.3%） | 16323（**24.4%**） |
-| Events 完整（测试） | 3841/22831（16.8%） | 4836（21.2%） | 5690（**24.9%**） |
-| Covariates 完整条目（全量） | 16160/72586 | 17395 | 17916 |
-| Covariates 完整条目（测试） | 4908/22175 | 4908 | 4951 |
+| idle 中位（全量） | 59 | 0 | 0 |
+| 仍截断窗比例（全量） | 100.0% | 99.8% | 99.7% |
+| Events 完整 / 总事件（全量） | 10667/66815 (16.0%) | 13568/66815 (20.3%) | 16323/66815 (24.4%) |
+| Covariates 完整条目（全量） | 16160/72586 | 17395/72586 | 17916/72586 |
+| content 中位（测试） | 454 | 510 | 510 |
+| idle 中位（测试） | 56 | 0 | 0 |
+| 仍截断窗比例（测试） | 100.0% | 100.0% | 100.0% |
+| Events 完整 / 总事件（测试） | 3841/22831 (16.8%) | 4836/22831 (21.2%) | 5690/22831 (24.9%) |
+| Covariates 完整条目（测试） | 4908/22175 | 4908/22175 | 4951/22175 |
 
-### 2.2 逐字段（stats_fields.csv 摘要，中位）
+### 2.2 逐字段 alloc 中位（stats_fields.csv）
 
-| 字段 | raw 中位 | D0 alloc | D1 alloc | D2 清理后 | D2 alloc |
-|---|---|---|---|---|---|
-| Background | 32 | 32 | 32 | 16 | 16–20 |
-| Events（测试） | 1313 | 270 | 349 | 1253 | 365 |
-| Calendar | ~15–25 | 全保留 | 全保留 | −22~24% | 全保留 |
-| Covariates（测试） | ~470 | 128 | 128 | ~465 | 128–133 |
+中位含 skipped 窗（0 值），与 CSV 口径一致。
+
+| 字段 | scope | raw 中位 | D0 alloc | D1 alloc | D2 清理后 | D2 alloc |
+|---|---|---|---|---|---|---|
+| Background | full | 32 | 32 | 32 | 16 | 16 |
+| Background | test | 32 | 32 | 32 | 16 | 16 |
+| Events | full | 1327 | 270 | 327 | 1250 | 350 |
+| Events | test | 1313 | 270 | 326 | 1253 | 349 |
+| Calendar | full | 19 | 19 | 19 | 12 | 12 |
+| Calendar | test | 21 | 21 | 21 | 14 | 14 |
+| Covariates | full | 459 | 128 | 128 | 454 | 128 |
+| Covariates | test | 458 | 128 | 128 | 452 | 128 |
 
 ### 2.3 D2 两指标分开（stats_d2_ratios.csv，逐窗中位）
 
-| 字段 | 清理缩短比例（1−cleaned/raw） | 清理后保留比例（alloc/cleaned） |
-|---|---|---|
-| Background | 0.50 | 1.00（完全放下） |
-| Events | 0.044（测试）~0.062（全量） | 0.28 |
-| Calendar | 0.22–0.24 | 1.00 |
-| Covariates | 0.011 | 0.28–0.30 |
+| 字段 | scope | 清理缩短比例（1−cleaned/raw） | 清理后保留比例（alloc/cleaned） |
+|---|---|---|---|
+| Background | full | 0.500 | 1.000 |
+| Background | test | 0.500 | 1.000 |
+| Events | full | 0.062 | 0.279 |
+| Events | test | 0.044 | 0.277 |
+| Calendar | full | 0.241 | 1.000 |
+| Calendar | test | 0.219 | 1.000 |
+| Covariates | full | 0.011 | 0.300 |
+| Covariates | test | 0.011 | 0.283 |
 
-注意：token 减少 ≠ 信息无损（R3 模板套话除外，R2 删除的引用编号本身无内容）；上表缩短比例小恰说明**规则清理的空间已接近用尽**。
+注意：token 减少 ≠ 信息无损（R3 模板套话除外，R2 删除的引用编号本身无内容）。本轮规则清理的收益有限：Events 仅缩短 4–6%，Background/Calendar 虽缩短明显但体量小，均远不能弥合第 3 节的预算缺口。
 
 ## 3. 四问回答
 
 **Q1 D1 回收了多少预算？**
-闲置位置中位 59（全量）/ 56（测试）→ 0：D1 把闲置预算全部回收（content 中位 451→510）。增益全部流向 Events（alloc 中位 270→349 测试；19 域一致 +42~+75 token），Covariates 在测试窗无增益（leftover 被 Events 按固定顺序先吃光——符合 budget_config 分配规则，非缺陷）。事件完整率相对 +26%（全量 10667→13568）。
+闲置位置中位 59（全量）/ 56（测试）→ 0：D1 把闲置预算全部回收（content 中位 451→510）。增益全部流向 Events（alloc 中位 270→326 测试；19 域一致 +42~+75 token），Covariates 在测试窗无增益（leftover 被 Events 按固定顺序先吃光——符合 budget_config 分配规则，非缺陷）。事件完整率相对 +27.2%（全量 10667→13568）。
 
 **Q2 D2 在 D1 之上多保留多少？**
 事件完整 13568→16323（全量，+20.3% 相对；测试 4836→5690，+17.7%）；Covariates 完整条目 +521（全量）/ +43（测试）。机制：清理省出的 token（Events 中位 1327→1250，Background 32→16，Calendar/Covariates 前缀各省几个）经 D1 分配回流 Events。
 
 **Q3 还有多少窗口放不下？**
-几乎所有窗口仍放不下：全量 still_truncated D1 99.8%、D2 99.7%（测试 100%）。结构性原因：2464/2474 测试窗仅 Events 原文就超过 510（原文中位 1313 token，为总预算 2.6 倍）。即便 D2，Events 只保留 ~27.7%（测试，按 token 和），Covariates ~28%。D2 的清理缩短比例（Events 4–6%）说明确定性规则的回收上限远低于需求缺口。
+几乎所有窗口仍放不下：全量 still_truncated D1 99.8%、D2 99.7%（测试 100%）。结构性原因：2464/2474 测试窗仅 Events 原文就超过 510（原文中位 1313 token，为总预算 2.6 倍）。即便 D2，Events 只保留 27.9%（测试，按 token 和；逐窗中位保留比例 27.7%），Covariates 28.8%（按 token 和）。本轮规则清理的收益有限（Events 仅缩短 4–6%），远低于需求缺口。
 
 **Q4 是否值得进一步设计本地摘要方案？**
-空间存在但天花板明确：预算 510 固定，Events 需求 ~1313，缺口 ~75%；规则清理只能回收其中 ~6%。若目标是让更多事件**完整**进入输入，两个有数据支撑的方向是（a）抽取式事件级摘要/选择（保留 `<N>` 边界，选完整事件子集替代头部截断——当前头部截断导致后半事件大量 absent：全量 43046/66815 未纳入），（b）协变量条目筛选。但按第 0 节边界：覆盖率↑不必然改善预测，任何摘要设计应先做同类统计预研、再以受控预测实验评估收益，本轮不启动。
+空间存在但天花板明确：预算 510 固定，Events 需求中位 1313（测试），D2 后仍只保留 27.9%（按 token 和），缺口 ~72%；规则清理仅使原文缩短 4–6%，相对该缺口收益有限。若目标是让更多事件**完整**进入输入，两个有数据支撑的方向是（a）抽取式事件级摘要/选择（保留 `<N>` 边界，选完整事件子集替代头部截断——当前头部截断导致后半事件大量 absent：全量 43046/66815 未纳入），（b）协变量条目筛选。但按第 0 节边界：覆盖率↑不必然改善预测，任何摘要设计应先做同类统计预研、再以受控预测实验评估收益，本轮不启动。
 
 ## 4. 校验与确定性
 
@@ -100,6 +114,6 @@
 
 ## 6. 交付物
 
-- 代码：`analysis/text_budget_v1/{build_diag,allocate,clean_rules,stats_diag,showcase,verify_struct,patch_meta,compare_traces}.py` + 冻结配置（d2_rules.json / budget_config.json，提交 `cadd2eb`）
+- 代码：`analysis/text_budget_v1/{build_diag,allocate,clean_rules,stats_diag,showcase,verify_struct,patch_meta,compare_traces,gen_report_tables}.py` + 冻结配置（d2_rules.json / budget_config.json，提交 `cadd2eb`）
 - 产物（不入 git）：`outputs/trace_{D0,D1,D2}.{npz,jsonl}`（ids/mask + 全字段元信息、清理文本、删改记录、解码输入）
-- 结果（入 git）：本报告 + 5 张统计表 + reference_check.json + showcase.{md,json} + determinism_*.txt + provenance.json
+- 结果（入 git）：本报告 + 报告表格生成脚本产物（report_tables.md / report_numbers.json）+ 5 张统计表 + reference_check.json + showcase.{md,json} + determinism_*.txt + provenance.json

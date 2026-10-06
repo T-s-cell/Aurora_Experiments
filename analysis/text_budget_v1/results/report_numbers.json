@@ -1,0 +1,24 @@
+{
+  "events_alloc_median_test": {
+    "D0": 270.0,
+    "D1": 326.0,
+    "D2": 349.0
+  },
+  "events_alloc_median_full": {
+    "D0": 270.0,
+    "D1": 327.0,
+    "D2": 350.0
+  },
+  "ev_rel_gain_full_d1_vs_d0": 0.2719602512421486,
+  "ev_rel_gain_full_d2_vs_d1": 0.2030512971698113,
+  "ev_rel_gain_test_d2_vs_d1": 0.1765922249793217,
+  "cv_complete_gain_full_d2_vs_d1": 521,
+  "cv_complete_gain_test_d2_vs_d1": 43,
+  "d2_events_retention_by_sum_test": 0.27886681911398714,
+  "d2_cov_retention_by_sum_test": 0.28839036201607543,
+  "d2_events_absent_full": 43046,
+  "d2_events_shortening_median_w": {
+    "full": 0.06208319832612236,
+    "test": 0.04449793901777299
+  }
+}
