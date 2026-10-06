@@ -1,0 +1,28 @@
+{
+  "transformers_version": "4.57.6",
+  "tokenizer_class": "BertTokenizer (slow, identical to EXP-011)",
+  "bert_config_dir": "/home/wlt/miniconda3/envs/aurora_test/lib/python3.10/site-packages/aurora/bert_config",
+  "local_md5": {
+    "config": "0939b914fc32135f6c12d8ef281dbd7a",
+    "tokenizer_json": "eac14313ee1816d9e8ef962f7615fd93",
+    "tokenizer_config": "aee76cec0170859d909d411dc7cdaa76",
+    "vocab": "64800d5d8528ce344256daf115d4965e"
+  },
+  "local_missing_files": [],
+  "protocol_mm_pinned_md5": {
+    "config": "0939b914fc32135f6c12d8ef281dbd7a",
+    "tokenizer_json": "eac14313ee1816d9e8ef962f7615fd93",
+    "tokenizer_config": "aee76cec0170859d909d411dc7cdaa76",
+    "vocab": "64800d5d8528ce344256daf115d4965e"
+  },
+  "md5_match_protocol_mm": {
+    "config": true,
+    "tokenizer_json": true,
+    "tokenizer_config": true,
+    "vocab": true
+  },
+  "all_matched": true,
+  "zip_sha256": "9adb9540733c128e05e774e81cf0e238a9cc80b37e99da0c883bee9f57988bcc",
+  "built_at": "2026-10-07T03:56:39",
+  "head_commit": "cadd2ebb24c230f582819ddbb79db0913c49c57f"
+}

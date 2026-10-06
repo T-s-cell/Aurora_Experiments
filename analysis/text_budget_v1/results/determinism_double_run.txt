@@ -1,0 +1,4 @@
+[D0] npz_arrays_equal=True jsonl_bytes_equal=True (npz 8106 rows, jsonl 22095025 bytes)
+[D1] npz_arrays_equal=True jsonl_bytes_equal=True (npz 8106 rows, jsonl 24315232 bytes)
+[D2] npz_arrays_equal=True jsonl_bytes_equal=True (npz 8106 rows, jsonl 81476910 bytes)
+RESULT: PASS

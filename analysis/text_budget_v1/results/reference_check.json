@@ -1,0 +1,26 @@
+{
+  "values": {
+    "events_raw_median_test": 1313.0,
+    "idle_median_test": 56.0,
+    "events_alone_over510_test": 2464,
+    "n_test": 2474
+  },
+  "check": {
+    "events_raw_median_test": {
+      "expected": 1313,
+      "recomputed": 1313.0,
+      "match": true
+    },
+    "idle_median_test": {
+      "expected": 56,
+      "recomputed": 56.0,
+      "match": true
+    },
+    "events_alone_over510_test": {
+      "expected": 2464,
+      "recomputed": 2464,
+      "match": true
+    }
+  },
+  "all_match": true
+}
