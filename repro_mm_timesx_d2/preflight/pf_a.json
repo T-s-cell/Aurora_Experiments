@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "n_windows": 8,
+  "seed": 424242,
+  "checks": [
+    {
+      "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+      "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20230926T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+      "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20250106T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
+      "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20230126T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
+      "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20241211T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "arts__art_exhibitions_96_12_4_10events",
+      "sample_id": "arts__art_exhibitions_96_12_4_10events__20231029T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "arts__art_exhibitions_96_12_4_10events",
+      "sample_id": "arts__art_exhibitions_96_12_4_10events__20240609T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20241222T000000",
+      "d0_bitwise_vs_exp011_entry": true,
+      "text_none_bitwise_vs_root": true,
+      "max_abs_diff": 0.0
+    }
+  ]
+}

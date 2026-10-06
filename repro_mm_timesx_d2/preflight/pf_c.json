@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "window": {
+    "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+    "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20230926T000000"
+  },
+  "raw_shape": [
+    1,
+    100,
+    12
+  ],
+  "raw_finite": true,
+  "same_seed_repeat_bitwise": true,
+  "weights_unchanged": true,
+  "n_tensors": 896,
+  "n_bn_modules": 29,
+  "cross_process_bitwise": true,
+  "cross_process_detail": {
+    "rc": 0,
+    "bitwise": true
+  },
+  "ms_per_window_with_text": 43.360233306884766,
+  "peak_vram_gb": 0.8355088233947754
+}

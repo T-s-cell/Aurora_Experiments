@@ -305,7 +305,7 @@ def pf_c(model):
 
     child = subprocess.run(
         [sys.executable, str(SUBDIR / "run_preflight_d2.py"), "--pf-c-child",
-         "--vk", vk, "--sid", sid, "--seed", str(PF_SEED)],
+         vk, sid, "--seed", str(PF_SEED)],
         capture_output=True, text=True)
     cross_ok = False
     cross_detail = {"rc": child.returncode}
@@ -427,6 +427,8 @@ def main():
     ap.add_argument("--pf-c-child", default=None, nargs=2, metavar=("VK", "SID"),
                     help=argparse.SUPPRESS)
     ap.add_argument("--seed", type=int, default=None, help=argparse.SUPPRESS)
+    # values must directly follow --pf-c-child (option-like tokens would be
+    # rejected by argparse for a nargs=2 flag)
     args = ap.parse_args()
 
     global PROTO

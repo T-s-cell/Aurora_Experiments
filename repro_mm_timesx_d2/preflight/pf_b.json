@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "tensors_exact_all_windows": true,
+  "note": "pred_changed_vs_d0 is RECORDED ONLY: different text inputs do not guarantee different predictions; equal outputs are NOT an implementation failure.",
+  "n_windows": 8,
+  "n_changed_vs_d0": 8,
+  "checks": [
+    {
+      "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+      "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20230926T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.4040258789063955,
+      "mean_abs_diff_vs_d0": 0.19440846761064753
+    },
+    {
+      "var_key": "CropsAndStaples__barley_inr_t_96_12_12_10events",
+      "sample_id": "CropsAndStaples__barley_inr_t_96_12_12_10events__20250106T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.08487792968753638,
+      "mean_abs_diff_vs_d0": 0.045989990234375
+    },
+    {
+      "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
+      "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20230126T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 1.212120056148791e-05,
+      "mean_abs_diff_vs_d0": 4.306236902821651e-06
+    },
+    {
+      "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
+      "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20241211T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.0006222021579742609,
+      "mean_abs_diff_vs_d0": 0.00038523554801942844
+    },
+    {
+      "var_key": "arts__art_exhibitions_96_12_4_10events",
+      "sample_id": "arts__art_exhibitions_96_12_4_10events__20231029T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.005312461853023365,
+      "mean_abs_diff_vs_d0": 0.002402887344359191
+    },
+    {
+      "var_key": "arts__art_exhibitions_96_12_4_10events",
+      "sample_id": "arts__art_exhibitions_96_12_4_10events__20240609T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.03890686035155966,
+      "mean_abs_diff_vs_d0": 0.024481693903605144
+    },
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20231029T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.04843782424926957,
+      "mean_abs_diff_vs_d0": 0.03965843200683613
+    },
+    {
+      "var_key": "climate__deforestation_96_12_4_10events",
+      "sample_id": "climate__deforestation_96_12_4_10events__20241222T000000",
+      "text_tensors_exact": true,
+      "inputs_differ": true,
+      "pred_changed_vs_d0": true,
+      "max_abs_diff_vs_d0": 0.001203689575191902,
+      "mean_abs_diff_vs_d0": 0.000873416264852267
+    }
+  ]
+}
