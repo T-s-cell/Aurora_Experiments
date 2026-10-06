@@ -25,6 +25,7 @@ scratch/
 
 # 包与环境
 *.tar.gz
+_pack_*/
 __pycache__/
 *.pyc
 .no_sync

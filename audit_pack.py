@@ -29,6 +29,7 @@ INCLUDE_FILES = [
 ]
 INCLUDE_DIRS = ["reference", "preflight"]
 INCLUDE_GLOBS = ["preflight_run*.log", "preflight_final*.log", "logs/preflight_*.log",
+                 "logs/entry_gate_matrix.log",
                  "results/*.csv", "results/*.json", "results/*.md"]
 
 
@@ -72,6 +73,21 @@ def main():
             dst = dst_root / src.relative_to(PROJECT)
             dst.parent.mkdir(parents=True, exist_ok=True)
             dst.write_bytes(src.read_bytes())
+
+    # record which commit this pack mirrors (staging-only, not committed)
+    import subprocess
+    def _g(*a):
+        r = subprocess.run(["git", *a], cwd=PROJECT, capture_output=True, text=True)
+        return r.stdout.strip() if r.returncode == 0 else f"(git {' '.join(a)} failed)"
+    git_state = "\n".join([
+        f"HEAD: {_g('rev-parse', 'HEAD')}",
+        f"branch: {_g('rev-parse', '--abbrev-ref', 'HEAD')}",
+        f"remote origin: {_g('remote', 'get-url', 'origin')}",
+        f"HEAD subject: {_g('log', '-1', '--pretty=%s')}",
+        "working tree:",
+        _g("status", "--short") or "(clean)",
+    ]) + "\n"
+    (dst_root / "GIT_STATE.txt").write_text(git_state)
 
     # manifest over the payload
     manifest_lines = []
