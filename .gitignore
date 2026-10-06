@@ -55,6 +55,12 @@ reference/exp004/results/*
 analysis/text_budget_v1/outputs/*
 !analysis/text_budget_v1/outputs/.gitkeep
 
+# analysis/event_compression_v1: LLM caches and bulk outputs stay out of git (results/ tracked)
+analysis/event_compression_v1/outputs/*
+!analysis/event_compression_v1/outputs/.gitkeep
+analysis/event_compression_v1/logs/*
+!analysis/event_compression_v1/logs/.gitkeep
+
 # EXP-D2 (repro-mm-timesx-d2): outputs and bulk files stay out of git
 repro_mm_timesx_d2/predictions/*
 !repro_mm_timesx_d2/predictions/.gitkeep

@@ -1,0 +1,54 @@
+{
+  "method_name": "event-compression-v1",
+  "base_commit": "f30f56b6de1d6f5e8c61ae20a0fa09a83be769d8",
+  "base_branch": "repro-mm-timesx-d2 (EXP-012 = frozen D2 prediction comparison)",
+  "purpose": "Train/val Events text-compression diagnostic: D2 (frozen rules, reference) vs E-Extract (LLM verbatim span selection) vs E-Summary (LLM per-event factual summary) under the same per-window Events token quota. No Aurora weights, no test-window text, no prediction.",
+  "scope": {
+    "windows": "manifest native.train / native.val only; composite key (var_key, sample_id); test/excluded keys used for exclusion checks ONLY",
+    "debug_set": "19 windows: 1 train window per domain, domain-median by raw Events Aurora-token length (trace_D2.jsonl blocks.Events.raw_tokens, scope==train), lower-median index (n-1)//2, ties by composite key",
+    "val_set": "57 windows: 3 val windows per domain = shortest / median / longest by the same length ordering, distinct, ties by composite key"
+  },
+  "llm_service": {
+    "base_url": "http://localhost:8020",
+    "base_url_note": "on theta via SSH tunnel: ssh -N -L 8020:localhost:8020 <user>@222.201.144.244; direct theta->zeta:8020 is refused",
+    "route_discovery": "probe GET /v1/models then /models; chat path is <prefix>/chat/completions; do not assume /v1",
+    "model": "main-model:instruct",
+    "api_key_env": "TIMESX_LLM_API_KEY",
+    "api_key_note": "read from env only; never in code, CLI, git, logs, or the audit pack",
+    "temperature": 0,
+    "seed": 2021,
+    "seed_policy": "if the service rejects seed, retry without it and record param_dropped; never switch models",
+    "max_tokens": 1024,
+    "max_tokens_note": "server-side cap for JSON+evidence; finish_reason=length is treated as truncated, never a complete output; Aurora budget is verified separately with the Aurora tokenizer",
+    "timeout_s": 120,
+    "transport_retries": 2,
+    "concurrency": "1 (cap 2); current implementation is sequential",
+    "determinism_note": "temperature=0 is not strict determinism; all outputs cached in outputs/llm_cache.jsonl and reused; first rule-passing output is frozen"
+  },
+  "budget": {
+    "E_definition": "per-window Events token quota = trace_D2.jsonl blocks.Events.alloc (the frozen D2 allocation, base 270 incl. idle-budget recovery)",
+    "overhead": "enc('Events: ' + cleaned_head) + sum(enc('<k>')) for all events; pool = E - overhead",
+    "per_event_rule": "budget_k = pool//n, first (pool%n) events +1; single redistribution pass in original event order gives unused budget of short events to still-overlong events; deterministic from original lengths; shared by E-Extract and E-Summary",
+    "fit_verbatim": "event whose D2-cleaned full prose already fits budget_k is kept verbatim; no LLM call",
+    "failure_policy": "zero/negative budget with nonzero prose, unparseable events, or an event still failing after initial + 2 correction requests => event failure => the window's final candidate falls back to the frozen D2 input, counted separately; never truncate words/numbers/units/sentences to fake success",
+    "hard_gate": "token counts always via the in-package BertTokenizer on the final assembled string; prompt char caps are guidelines only",
+    "assembly": "'Events: ' + head + concat(tag_k + ' ' + new_text_k) in original order; replacement prose = single leading space + stripped text (deterministic); other blocks reuse the frozen D2 kept_ids and allocs; freed budget goes to end padding only; content <= 510, total <= 512",
+    "assembly_gate": "Background/Calendar/Covariates token content must equal D2 bitwise at the recomputed (shifted) block boundaries; Events content = this scheme's generated text with actual length <= E; boundaries recomputed from actual lengths"
+  },
+  "prompts": {
+    "extract": "prompts/extract_v1.md",
+    "summarize": "prompts/summarize_v1.md",
+    "hash_note": "sha256 of each prompt file is recorded in outputs/run_manifest.json at compression time and enters the cache key"
+  },
+  "cache": {
+    "path": "outputs/llm_cache.jsonl",
+    "key_fields": "sha256(event_text) + method + str(event_budget) + prompt_sha + model + params_json + service_version(or null)",
+    "reuse_rule": "identical event text across windows reuses the same cached result; event_id is rebound to the current window's numbering at consumption; first rule-passing output frozen"
+  },
+  "qc": {
+    "coverage_rule": "coverage statistics are computed on the FINAL actual input (final ids/mask); windows that fell back to D2 contribute D2 coverage only, their unused extraction/summary results never count",
+    "nonempty_metric": "'>=3 tokens and not id-only/refusal' is a non-empty-fragment indicator only, never equated with fact coverage; fact fidelity requires original-text review",
+    "fact_screening": "regex screening (lowercased): numbers, ISO dates + month names, units, negation wording, forecast/plan wording; plus new-number detection (numbers in output absent from source) as hallucination screening; screening only, never a zero-hallucination claim"
+  },
+  "outputs_note": "outputs/ is gitignored (LLM cache, attempts, bulk npz); results/ and the audit pack carry the full final products for all 76 windows x 3 schemes"
+}
