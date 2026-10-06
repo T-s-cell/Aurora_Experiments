@@ -7,7 +7,11 @@
       "covariate_violations": 0,
       "covariate_tolerance_hits": 0,
       "events_flagged": 0,
-      "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge \u2014 recorded as a limitation, not evidence of absence."
+      "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge \u2014 recorded as a limitation, not evidence of absence.",
+      "events_english_input_windows": 162,
+      "events_english_full_windows": 323,
+      "events_english_info_noyear_windows": 531,
+      "events_english_review": "PRIMARY flags (year-explicit date >= pred start in the input Events decode) are listed in preflight/events_english_test_preflight_input.csv and require manual classification sign-off before the full run (gate = user verdict, not this scan; flagged != leakage \u2014 advance-published schedules expected). Year-less month-day mentions are informational only."
     },
     "MM-D": {
       "ok": true,
@@ -598,16 +602,16 @@
       "different_text_max_pred_diff": 0.2961678695678671,
       "rear_perturbation": {
         "controls": {
-          "front_125_unchanged": true,
+          "front_126_unchanged": true,
           "mask_unchanged": true,
           "sep_unchanged": true,
           "rear_changed": true,
           "same_length": true
         },
-        "retained_feature_max_abs_diff": 8.527843475341797,
+        "retained_feature_max_abs_diff": 8.504973411560059,
         "retained_features_changed_fraction": 1.0,
-        "pred_max_abs_diff": 0.2033937835693358,
-        "interpretation": "rear tokens (>= position 125) were replaced at equal length with front 125 input tokens and the full attention mask fixed; any feature/prediction change quantifies the contextualization path (BERT attends over all valid positions before the first-125 retention), NOT direct retention of rear features."
+        "pred_max_abs_diff": 0.1985293579101537,
+        "interpretation": "rear tokens (indices >= 126) were replaced at equal length with front input tokens while indices 0..125 ([CLS] + the content positions feeding the 125 retained features) and the full attention mask were fixed; any feature/prediction change quantifies the contextualization path (BERT attends over all valid positions before the first-125 retention), NOT direct retention of rear features."
       }
     },
     "MM-C": {
@@ -627,10 +631,10 @@
         "rc": 0,
         "bitwise": true
       },
-      "ms_per_window_with_text": 48.26807975769043,
+      "ms_per_window_with_text": 45.34792900085449,
       "peak_vram_gb": 0.8364853858947754
     }
   },
-  "total_seconds": 33.145994901657104,
+  "total_seconds": 42.703529357910156,
   "all_ok": true
 }

@@ -5,5 +5,9 @@
   "covariate_violations": 0,
   "covariate_tolerance_hits": 0,
   "events_flagged": 0,
-  "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge — recorded as a limitation, not evidence of absence."
+  "events_note": "flagged for manual reading; publication timing NOT independently audited; calendar references are expected false positives. Event bodies use natural-language dates (e.g. 'On September 13, 2023'), which this ISO-format scan cannot judge — recorded as a limitation, not evidence of absence.",
+  "events_english_input_windows": 162,
+  "events_english_full_windows": 323,
+  "events_english_info_noyear_windows": 531,
+  "events_english_review": "PRIMARY flags (year-explicit date >= pred start in the input Events decode) are listed in preflight/events_english_test_preflight_input.csv and require manual classification sign-off before the full run (gate = user verdict, not this scan; flagged != leakage — advance-published schedules expected). Year-less month-day mentions are informational only."
 }
