@@ -1,0 +1,21 @@
+domain,seed_stat,paired_dMSE,paired_dMAE
+CropsAndStaples,mean+-std over 3 seeds,-0.000880+/-0.000071,-0.000330+/-0.000017
+Currency,mean+-std over 3 seeds,0.000028+/-0.000031,-0.000082+/-0.000029
+EnergyAndFuels,mean+-std over 3 seeds,0.000244+/-0.000107,0.000120+/-0.000078
+LivestockAndFoodProducts,mean+-std over 3 seeds,-0.001322+/-0.000063,-0.000864+/-0.000007
+RawMaterialsAndConstruction,mean+-std over 3 seeds,-0.001111+/-0.000086,0.000183+/-0.000042
+SpecialtyAndAdvancedMaterials,mean+-std over 3 seeds,-0.001366+/-0.000087,-0.000844+/-0.000039
+StrategicAndHighValueMaterials,mean+-std over 3 seeds,-0.001321+/-0.000047,-0.000328+/-0.000032
+arts,mean+-std over 3 seeds,-0.001246+/-0.000041,-0.000027+/-0.000044
+climate,mean+-std over 3 seeds,-0.000402+/-0.000109,0.000146+/-0.000069
+economy,mean+-std over 3 seeds,-0.000212+/-0.000030,0.000048+/-0.000016
+electronic_technology,mean+-std over 3 seeds,-0.000685+/-0.000061,-0.000478+/-0.000026
+finance,mean+-std over 3 seeds,0.000557+/-0.000079,0.000062+/-0.000021
+pets,mean+-std over 3 seeds,-0.002898+/-0.000082,-0.000699+/-0.000025
+public_health,mean+-std over 3 seeds,-0.003493+/-0.000174,-0.000968+/-0.000070
+public_policy,mean+-std over 3 seeds,-0.002593+/-0.000101,-0.000358+/-0.000014
+science,mean+-std over 3 seeds,0.000856+/-0.000179,-0.000078+/-0.000021
+shopping,mean+-std over 3 seeds,0.000219+/-0.000076,0.000401+/-0.000063
+society,mean+-std over 3 seeds,-0.000649+/-0.000074,-0.000085+/-0.000027
+traffic,mean+-std over 3 seeds,-0.001590+/-0.000121,-0.000462+/-0.000012
+OVERALL(19-domain equal weight),mean+-std over 3 seeds,-0.000940+/-0.000021,-0.000244+/-0.000001

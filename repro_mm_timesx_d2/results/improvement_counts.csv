@@ -1,0 +1,17 @@
+method,reference,level,metric,improved,degraded,equal,total
+A48,vs Z0,domain(19),mse,0,19,0,19
+A48,vs Z0,var(190),mse,44,146,0,190
+A48,vs Z0,domain(19),mae,0,19,0,19
+A48,vs Z0,var(190),mae,40,150,0,190
+M48T512,vs A48,domain(19),mse,7,12,0,19
+M48T512,vs A48,var(190),mse,86,104,0,190
+M48T512,vs A48,domain(19),mae,9,10,0,19
+M48T512,vs A48,var(190),mae,85,105,0,190
+M48T512_D2,vs M48T512,domain(19),mse,14,5,0,19
+M48T512_D2,vs M48T512,var(190),mse,110,80,0,190
+M48T512_D2,vs M48T512,domain(19),mae,13,6,0,19
+M48T512_D2,vs M48T512,var(190),mae,109,81,0,190
+M48T512_D2,vs A48,domain(19),mse,7,12,0,19
+M48T512_D2,vs A48,var(190),mse,91,99,0,190
+M48T512_D2,vs A48,domain(19),mae,10,9,0,19
+M48T512_D2,vs A48,var(190),mae,92,98,0,190
