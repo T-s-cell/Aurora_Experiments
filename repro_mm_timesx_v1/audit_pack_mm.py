@@ -42,6 +42,7 @@ INCLUDE_MM_GLOBS = [
     "cache/text_tokens_M48T512.npz", "cache/text_meta_M48T512.jsonl",
     "cache/build_stats_M48T512.json",
     "preflight/*.json", "preflight/mm_c_child_pred.npy",
+    "preflight/events_english_test_preflight_input.csv",
     "logs/preflight_mm.log", "logs/preflight_wrapper_theta.sh",
     "logs/dry_run_mm.log", "logs/environment_lock_theta_mm.txt",
 ]
