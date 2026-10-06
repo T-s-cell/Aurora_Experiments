@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """Build the M48T512 review tar.gz into /home/wlt/MMTS/temp/.
 
-Preflight edition (S6.5 gate): lets a reviewer verify the frozen protocol_mm,
-the text cache (token IDs + decoded text + block boundaries), and every
-preflight assertion — plus independently re-derive token IDs and re-run the
-dry-run plan. No prediction shards exist yet (zero test-window inference has
-been performed).
+Final edition (S8): full-run audit pack. Lets a reviewer verify the frozen
+protocol_mm, the text cache (token IDs + decoded text + block boundaries),
+every preflight assertion, and recompute all reported metrics from the raw
+point-prediction shards.
 
-Included: all mm code, the reused root sources it depends on, protocol_mm +
-SOURCE_MM_HASHES, the full text cache (npz + meta jsonl + build stats),
-preflight evidence JSONs + run log + wrapper + theta dry-run log + env lock,
-data protocol artifacts (split_manifest / data_cache / Z0 reference).
+Included: all mm code + README_MM + review sign-off, the reused root sources,
+protocol_mm + SOURCE_MM_HASHES, the full text cache (npz + meta jsonl + build
+stats), preflight evidence + theta logs + wrappers + env locks, the M48T512
+AND A48 point-prediction shards, results tables, and data protocol artifacts
+(split_manifest / data_cache / Z0 reference).
 
-Excluded: model weights, data/*.zip, __pycache__, mm_e scratch.
+Excluded: model weights, data/*.zip, __pycache__.
 """
 import hashlib
 import shutil
@@ -26,7 +26,7 @@ SUBDIR = Path(__file__).resolve().parent
 TEMP = Path("/home/wlt/MMTS/temp")
 
 INCLUDE_MM_FILES = [
-    "protocol_mm.json", "SOURCE_MM_HASHES.json",
+    "protocol_mm.json", "SOURCE_MM_HASHES.json", "README_MM.md",
     "text_builder.py", "text_cache.py", "predict_mm.py", "run_eval_mm.py",
     "aggregate_mm.py", "run_preflight_mm.py", "audit_pack_mm.py",
 ]
@@ -41,10 +41,16 @@ INCLUDE_ROOT_FILES = [
 INCLUDE_MM_GLOBS = [
     "cache/text_tokens_M48T512.npz", "cache/text_meta_M48T512.jsonl",
     "cache/build_stats_M48T512.json",
-    "preflight/*.json", "preflight/mm_c_child_pred.npy",
+    "preflight/*.json", "preflight/*.md", "preflight/mm_c_child_pred.npy",
     "preflight/events_english_test_preflight_input.csv",
+    "results/*.csv", "results/*.json",
+    "predictions/*.npz", "predictions/*.header.json", "predictions/*.done",
     "logs/preflight_mm.log", "logs/preflight_wrapper_theta.sh",
     "logs/dry_run_mm.log", "logs/environment_lock_theta_mm.txt",
+    "logs/run_mm.log", "logs/run_wrapper_theta.sh",
+]
+INCLUDE_ROOT_GLOBS = [
+    "predictions/*.npz", "predictions/*.header.json", "predictions/*.done",
 ]
 INCLUDE_REFERENCE = PROJECT / "reference" / "exp004" / "timesx_data.py"
 
@@ -62,7 +68,7 @@ def sha256_file(p, chunk=1 << 22):
 
 def main():
     stamp = time.strftime("%Y%m%d")
-    name = f"Aurora_TimesX_mm_preflight_{stamp}"
+    name = f"Aurora_TimesX_mm_final_{stamp}"
     work = SUBDIR / f"_pack_{name}"
     if work.exists():
         shutil.rmtree(work)
@@ -84,6 +90,11 @@ def main():
     for g in INCLUDE_MM_GLOBS:
         for src in SUBDIR.glob(g):
             dst = dst_root / "repro_mm_timesx_v1" / src.relative_to(SUBDIR)
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            dst.write_bytes(src.read_bytes())
+    for g in INCLUDE_ROOT_GLOBS:
+        for src in PROJECT.glob(g):
+            dst = dst_root / src.relative_to(PROJECT)
             dst.parent.mkdir(parents=True, exist_ok=True)
             dst.write_bytes(src.read_bytes())
     dst = dst_root / "reference" / "exp004" / "timesx_data.py"
