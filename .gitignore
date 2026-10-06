@@ -50,3 +50,7 @@ reference/exp004/manifests/
 reference/exp004/predictions/
 reference/exp004/results/*
 !reference/exp004/results/overall.csv
+
+# analysis/text_budget_v1: bulk per-window traces stay out of git (results/ tables are tracked)
+analysis/text_budget_v1/outputs/*
+!analysis/text_budget_v1/outputs/.gitkeep

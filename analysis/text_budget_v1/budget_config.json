@@ -1,0 +1,37 @@
+{
+  "config_name": "text-budget-diag-v1",
+  "base_commit": "2285a24cff759646a53cc11498ea3fb20d42f645",
+  "purpose": "Statistics-only diagnosis of text budget allocation (D1) and rule-based cleanup (D2) against the frozen EXP-011 D0 scheme. No model inference, no training, no LLM.",
+  "total_len": 512,
+  "special_tokens": 2,
+  "content_budget": 510,
+  "blocks": [
+    {"name": "Background", "field": "background", "budget": 48},
+    {"name": "Events", "field": "scenario", "budget": 270},
+    {"name": "Calendar", "field": "holiday_info", "budget": 64},
+    {"name": "Covariates", "field": "covariates_info", "budget": 128}
+  ],
+  "d0": {
+    "definition": "EXP-011 frozen builder (repro_mm_timesx_v1/text_builder.py build_tokens): skip block if field is empty/whitespace or the literal 'Unknown' (case-insensitive after strip); otherwise tokenize 'Name: raw' (add_special_tokens=False) and keep the FIRST min(raw_tokens, budget) tokens; no budget transfer; budgets include the block-name tokens.",
+    "scope": "D0 tokens for the 2474 test windows must be bitwise identical to cache/text_tokens_M48T512.npz"
+  },
+  "d1": {
+    "definition": "Recover idle budget only; field texts, order, and missing-handling identical to D0.",
+    "base_alloc": "alloc[f] = min(raw_tokens[f], budget[f]) for every block (skipped blocks: raw=0)",
+    "redistribute_order": ["Events", "Covariates", "Calendar", "Background"],
+    "redistribute_rule": "leftover = 510 - sum(alloc); walk the order once, giving min(need, leftover) to each block with alloc < raw_tokens; stop when leftover == 0",
+    "invariant": "alloc_d1[f] >= alloc_d0[f] for every block (asserted per window)"
+  },
+  "d2": {
+    "definition": "Deterministic rule cleanup (d2_rules.json) applied to the four field strings FIRST, then the D1 allocation method on the cleaned token counts.",
+    "missing_handling": "identical to D0 (empty/'Unknown' skip); a rule never makes a non-empty field empty"
+  },
+  "assembly": {
+    "order": ["Background", "Events", "Calendar", "Covariates"],
+    "name_prefix": "'{block_name}: ' + field_text, tokenized as one string exactly like D0 (the block name is added HERE and only here; clean functions return field text without the block name)",
+    "structure": "[CLS] + content + [SEP]; right-pad to 512 with pad id 0, attention mask 0",
+    "boundary_meta": "per-block [start, end) token spans inside the 512 sequence"
+  },
+  "token_convention": "raw_tokens and cleaned_tokens are counted on 'Name: <field text>' (name included), matching D0's convention",
+  "missing_values_skip": ["", "unknown"]
+}

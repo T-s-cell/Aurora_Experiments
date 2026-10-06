@@ -1,0 +1,11 @@
+{
+  "n_samples": 8106,
+  "R1_scenario_prefix_matched": 8106,
+  "R3_background_template_matched": 8106,
+  "R4_covariates_prefix_matched": 8106,
+  "R5_holiday_prefix_matched_real": 5702,
+  "R5_holiday_unknown_skipped": 2404,
+  "R2_citation_groups_deleted_total": 109471,
+  "unmatched_background_examples": [],
+  "unmatched_scenario_examples": []
+}
