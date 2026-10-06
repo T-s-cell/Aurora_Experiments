@@ -3,10 +3,11 @@
 
 Included: all code, protocol/provenance JSONs, README, requirements, reference/,
 preflight evidence (assertion JSONs + small sample .npy + run logs),
-environment_lock.txt, results/ CSVs if present.
+environment_lock.txt (+ theta lock), official-run log + launch wrapper, results/
+tables, and ALL official prediction shards (small: ~7 MB total) so every window
+metric and the aggregation can be recomputed independently inside the pack.
 
-Excluded: large data (data/*.zip, data/*.npz), model weights, official-eval
-prediction shards (predictions/*.npz), quarantine shards, __pycache__,
+Excluded: large data (data/*.zip, data/*.npz), model weights, __pycache__,
 resume-drill scratch (its assertions live in preflight/L_resume.json).
 """
 import hashlib
@@ -20,16 +21,17 @@ TEMP = Path("/home/wlt/MMTS/temp")
 
 INCLUDE_FILES = [
     ".gitignore", "README.md", "protocol.json", "SOURCE_HASHES.json",
-    "requirements.txt", "environment_lock.txt",
+    "requirements.txt", "environment_lock.txt", "environment_lock_theta.txt",
     "load_aurora.py", "data_loader.py", "predict.py", "aggregate.py",
     "verify_aggregate.py", "run_preflight.py", "run_eval.py", "audit_pack.py",
     "data/split_manifest.json",
     "data/data_cache.npz",   # small protocol artifact: enables independent
     "data/Z0__test.npz",     # recomputation of all window denominators + Z0 metrics
 ]
-INCLUDE_DIRS = ["reference", "preflight"]
+INCLUDE_DIRS = ["reference", "preflight", "predictions"]
 INCLUDE_GLOBS = ["preflight_run*.log", "preflight_final*.log", "logs/preflight_*.log",
-                 "logs/entry_gate_matrix.log",
+                 "logs/entry_gate_matrix.log", "logs/official_eval_itl48.log",
+                 "logs/eval_wrapper_theta.sh",
                  "results/*.csv", "results/*.json", "results/*.md"]
 
 
@@ -46,7 +48,7 @@ def sha256_file(p, chunk=1 << 22):
 
 def main():
     stamp = time.strftime("%Y%m%d")
-    name = f"Aurora_TimesX_code_preflight_{stamp}"
+    name = f"Aurora_TimesX_official_eval_{stamp}"
     work = PROJECT / f"_pack_{name}"
     if work.exists():
         import shutil
@@ -109,9 +111,12 @@ def main():
 
 def _ignore(dirpath, names):
     ignored = set()
+    keep_npz = str(dirpath).endswith("predictions")
     for n in names:
         p = Path(dirpath) / n
-        if n == "__pycache__" or p.suffix in (".pyc", ".npz"):
+        if n == "__pycache__" or p.suffix == ".pyc":
+            ignored.add(n)
+        elif p.suffix == ".npz" and not keep_npz:
             ignored.add(n)
     # drop import-side-effect dirs of vendored exp004
     if str(dirpath).endswith("exp004"):
