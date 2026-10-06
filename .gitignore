@@ -64,4 +64,5 @@ repro_mm_timesx_d2/cache/*
 !repro_mm_timesx_d2/cache/.gitkeep
 repro_mm_timesx_d2/preflight/big_*
 repro_mm_timesx_d2/preflight/*.npz
+repro_mm_timesx_d2/preflight/scratch_shards/
 !repro_mm_timesx_d2/preflight/.gitkeep

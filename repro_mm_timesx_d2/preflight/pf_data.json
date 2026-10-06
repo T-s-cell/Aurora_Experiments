@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "cache_npz_sha256_ok": true,
+  "meta_sha256_ok": true,
+  "schema_ok": true,
+  "n_rows": 2474,
+  "n_unique_keys": 2474,
+  "keys_equal_test_rows": true,
+  "keys_equal_exp011_cache": true,
+  "bitwise_vs_trace_d2": true,
+  "n_mismatch_vs_trace": 0,
+  "meta_lines": 2474,
+  "meta_rowwise_ok": true,
+  "preflight_npz_ok": true,
+  "preflight_scopes": [
+    "train",
+    "val"
+  ]
+}

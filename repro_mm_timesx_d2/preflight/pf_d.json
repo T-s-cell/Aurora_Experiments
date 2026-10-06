@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "dry_run_ok": true,
+  "reject_returncodes": {
+    "exp010_token": 2,
+    "exp011_token": 2,
+    "wrong_token": 2,
+    "wrong_itl": 2,
+    "token_plus_dryrun": 2,
+    "no_token": 1
+  },
+  "rejects_all_rc2": true,
+  "tampered_cache_sha_refused": true,
+  "fingerprint_mismatch_quarantined": true
+}
