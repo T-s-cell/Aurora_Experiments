@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""S5b LLM-judge screening of E-Summary outputs (screening ONLY, never a
-gate, never a zero-hallucination claim).
+"""S5b LLM-judge screening of adopted compression outputs (screening ONLY,
+never a gate, never a zero-hallucination claim).
 
   python verify_summaries.py --set debug
   python verify_summaries.py --set val
 
-For every adopted E-Summary piece (source llm/cache) the judge model is asked
-to classify its relation to the source event text: supported / omission_only /
+For every adopted piece of BOTH schemes (E-Extract spans-as-assembled and
+E-Summary sentences; source llm/cache, fit_verbatim skipped) the judge model
+classifies its relation to the source event text: supported / omission_only /
 distortion, with a one-sentence reason. Results go to outputs/judge_{set}.jsonl
-and results/judge_summary_{set}.json (all distortion + omission_only cases for
-the report). Judgments are cached in outputs/judge_cache.jsonl keyed by
-sha256(source)+sha256(summary)+judge-prompt-sha so reruns are idempotent.
+and results/judge_summary_{set}.json (per-scheme relations + all distortion
+and omission_only cases for the report). Judgments are cached in
+outputs/judge_cache.jsonl keyed by sha256(source)+sha256(piece)+judge-prompt-sha
+so reruns are idempotent.
 """
 import argparse
 import hashlib
@@ -81,7 +83,7 @@ def main():
     svc = cfg["llm_service"]
     client = LLMClient(svc["base_url"], svc["model"],
                        svc.get("temperature", 0), svc.get("seed", 2021),
-                       512, svc.get("timeout_s", 120),
+                       768, svc.get("timeout_s", 120),
                        svc.get("transport_retries", 2))
     prompt_sha = sha_text(SYSTEM + USER_TPL)
     cache_path = OUT / "judge_cache.jsonl"
@@ -94,7 +96,7 @@ def main():
 
     out_rows, n_req, n_err = [], 0, 0
     for r in recs:
-        if r["scheme"] != "E-Summary" or r["outcome"] != "compressed":
+        if r["outcome"] != "compressed":
             continue
         b = b_by[(r["var_key"], r["sample_id"])]
         for e in r["events"]:
@@ -106,8 +108,8 @@ def main():
                 continue
             key = sha_text(prose) + sha_text(piece) + prompt_sha
             rec = {"var_key": r["var_key"], "sample_id": r["sample_id"],
-                   "domain": r["domain"], "k": e["k"], "key": key,
-                   "cached": key in cache}
+                   "domain": r["domain"], "scheme": r["scheme"],
+                   "k": e["k"], "key": key, "cached": key in cache}
             if key in cache:
                 j = cache[key].get("judge") or {}
                 rec.update({"relation": j.get("relation"),
@@ -163,12 +165,18 @@ def main():
 
     from collections import Counter
     cnt = Counter(rec["relation"] or rec["status"] for rec in out_rows)
+    by_scheme = {}
+    for s in ("E-Extract", "E-Summary"):
+        sub = [x for x in out_rows if x["scheme"] == s]
+        by_scheme[s] = {"judged": len(sub),
+                        **dict(Counter(x["relation"] or x["status"]
+                                       for x in sub))}
     cases = [rec for rec in out_rows if rec["relation"] == "distortion"]
     omissions = [rec for rec in out_rows if rec["relation"] == "omission_only"]
     summary = {
         "set": tag, "judged_pieces": len(out_rows),
         "requests_made": n_req, "errors": n_err,
-        "relations": dict(cnt),
+        "relations": dict(cnt), "by_scheme": by_scheme,
         "distortion_cases": cases,
         "omission_only_cases": omissions,
         "note": "LLM-judge screening only; not a gate, not proof of zero "

@@ -41,8 +41,8 @@ def table_agg(agg, sets):
              fmt_cov(a["coverage_event_weighted"])),
             ("事件进入率（任一源内容进入，事件加权）", lambda a, s:
              fmt_cov(a.get("entry_rate"))),
-            ("事实保留率（7 类事实 token，事件加权）", lambda a, s:
-             fmt_cov(a.get("fact_preserved_event_weighted"))),
+            ("词项匹配率（7 类事实 token，事件加权；非语义正确性）",
+             lambda a, s: fmt_cov(a.get("fact_preserved_event_weighted"))),
             ("新事实 token 事件数（幻觉筛查）", lambda a, s:
              a.get("fact_new_token_events", "—")),
             ("非空片段事件数（≥3 token 且非拒答）", lambda a, s:
@@ -86,13 +86,16 @@ def main():
     L.append("- 硬门槛：最终拼串 BertTokenizer 计数 ≤ E；Background/Calendar/"
              "Covariates 三块 token 内容按新边界与 D2 逐位一致；content ≤510；"
              "任何违例整窗回退 D2 并单独计数。")
-    L.append("- 版本：v3（2026-10-07）——依首轮独立审计四项修正：①撤回 v2 "
-             "「零真实幻觉」结论（人工复核发现改写致语义失真）；②E-Summary "
-             "接受门加入 evidence 硬门+词级 grounding；③修复 content 门"
-             "多算 CLS/SEP 的 bug（曾误杀 1 个 val 窗的两方案）；④改用可比"
-             "口径（事实保留率/事件进入率），不再并提两种语义的「覆盖」。"
-             "E-Extract 仍用冻结的 v2 提示词（缓存全复用）；E-Summary 用 "
-             "summarize_v3 全量重生成；v2 产物留档 *_promptv2_*。\n")
+    L.append("- 版本：v3.1（2026-10-07）——首轮独立审计四修正：①撤回 v2 "
+             "「零真实幻觉」结论；②E-Summary 接受门加入 evidence 硬门+词级 "
+             "grounding；③修复 content 门多算 CLS/SEP 的 bug；④口径拆分。"
+             "二轮审计三修正：⑤E-Extract 增设子句级限定词保留门（span 所在"
+             "源子句含预测/计划/否定措辞时，span 必须保留其一，否则拒绝并"
+             "修正/回退；提示词文件不变，合格缓存复用、不合格输出重处理）；"
+             "⑥LLM 判别筛查扩展到 E-Extract；⑦报告收紧：抽取不再宣称零失真"
+             "（逐字≠保真），「事实保留率」更名**词项匹配率**（词项重叠，"
+             "不代表语义正确），E-Summary 仅作诊断、其预测实验暂停，文本"
+             "方案本轮不冻结。产物留档：v2→*_promptv2_*、v3→*_v3_*。\n")
 
     # 1. headline coverage table
     L.append("## 1. 同预算覆盖对比（全样本，含失败/回退）\n")
@@ -146,7 +149,7 @@ def main():
         for c in data[t][0]["fact_flag_cases"]:
             n_flag += 1
             L.append(f"### 疑似新数值（幻觉筛查命中，待人工审）— {t} "
-                     f"{c['scheme']} {c['var_key'][:48]}..")
+                     f"{c.get('scheme', '?')} {c['var_key'][:48]}..")
             for e in c["events"]:
                 L.append(f"- 事件 {e['k']}：新数值 {e['new']}")
                 L.append(f"  - 原文：{e['prose'][:400]}")
@@ -156,7 +159,7 @@ def main():
         L.append("（无新数值筛查命中；仍需人工抽审，正则筛查不能证明零幻觉。）\n")
 
     # LLM judge screening section
-    L.append(f"## {3 + len(sets)}. LLM 判别筛查（E-Summary 摘要 vs 原文，"
+    L.append(f"## {3 + len(sets)}. LLM 判别筛查（已采用片段 vs 原文，"
              "仅筛查、不进接受门）\n")
     for t in sets:
         jp = RESULTS / f"judge_summary_{t}.json"
@@ -165,16 +168,24 @@ def main():
             continue
         js = json.loads(jp.read_text())
         rel = js["relations"]
-        L.append(f"- {t}：判定 {js['judged_pieces']} 条已采用摘要——"
+        L.append(f"- {t}：判定 {js['judged_pieces']} 条已采用片段——"
                  f"supported {rel.get('supported', 0)} / omission_only "
                  f"{rel.get('omission_only', 0)} / distortion "
                  f"{rel.get('distortion', 0)}；判定错误 "
                  f"{js['errors']}（不参与统计）。")
+        for s in ("E-Extract", "E-Summary"):
+            e = (js.get("by_scheme") or {}).get(s)
+            if e:
+                L.append(f"  - {s}：supported {e.get('supported', 0)} / "
+                         f"omission_only {e.get('omission_only', 0)} / "
+                         f"distortion {e.get('distortion', 0)}"
+                         f"（{e.get('judged', 0)} 条）")
         for c in js["distortion_cases"]:
-            L.append(f"  - **distortion** {c['domain']} "
+            L.append(f"  - **distortion** [{c.get('scheme', '?')}] {c['domain']} "
                      f"{c['var_key'][:44]}.. 事件 {c['k']}：{c['reason']}")
         for c in js.get("omission_only_cases", [])[:3]:
-            L.append(f"  - omission_only 例：{c['domain']} "
+            L.append(f"  - omission_only 例 [{c.get('scheme', '?')}]："
+                     f"{c['domain']} "
                      f"{c['var_key'][:44]}.. 事件 {c['k']}：{c['reason']}")
     L.append("")
     L.append("> 判别模型与压缩模型同一服务（自审局限）：仅作筛查线索，"
@@ -265,17 +276,20 @@ def conclusion(data):
     for t in data:
         jp = RESULTS / f"judge_summary_{t}.json"
         judge[t] = json.loads(jp.read_text()) if jp.exists() else None
-    lines.append("### 口径声明（v3 起）\n")
+    lines.append("### 口径声明（v3.1 起）\n")
     lines.append("- 放弃把「D2 整段原文进入率」与「摘要短句进入率」放在"
                  "同一口径比较：二者语义不同，22.3%→89.3% 一类数字**不是"
-                 "同一种覆盖的提升**。三方案可比的是**事实保留率**（原文 "
+                 "同一种覆盖的提升**。三方案可比的是**词项匹配率**（原文 "
                  "7 类事实 token——数值/年份/月份/季度/单位/否定/预测措辞"
                  "——实际进入最终输入的比例，事件加权、双侧同过 tokenizer "
                  "消除记法偏差）与**事件进入率**（任一源内容进入）。完整"
-                 "事件进入率仅作 D2 语义参照单列。")
-    lines.append("- **v2 报告「筛查零真实幻觉」结论正式撤回**：人工复核"
-                 "发现改写导致的真实语义失真（限定性两段陈述被合并为无"
-                 "条件断言），正则新数值筛查对此结构性漏检。\n")
+                 "事件进入率仅作 D2 语义参照单列。**词项匹配率只是词项"
+                 "重叠比例，不代表语义正确**：主体取舍、限定词截留、关系"
+                 "错位都可能在词项全数命中时仍然失真，语义判定依赖 LLM "
+                 "判别筛查与人工抽审。")
+    lines.append("- **v2 报告「筛查零真实幻觉」结论正式撤回**；抽取方案的"
+                 "「零失真风险」说法同步删除——逐字子串只保证 token 级"
+                 "可对账，不保证语义保真。\n")
     lines.append("### 四问回答\n")
     lines.append("**（1）同预算下谁让更多事件内容进入输入？**")
     for t in data:
@@ -289,17 +303,19 @@ def conclusion(data):
             f"（{su['compressed_windows']}/{su['windows']} 窗成功）；"
             f"事件进入率 D2 {fmt_cov(d2['entry_rate'])} / E-Extract "
             f"{fmt_cov(ee['entry_rate'])} / E-Summary "
-            f"{fmt_cov(su['entry_rate'])}；**事实保留率** D2 "
+            f"{fmt_cov(su['entry_rate'])}；**词项匹配率** D2 "
             f"{fmt_cov(d2['fact_preserved_event_weighted'])} / E-Extract "
             f"{fmt_cov(ee['fact_preserved_event_weighted'])} / E-Summary "
             f"{fmt_cov(su['fact_preserved_event_weighted'])}。")
     lines.append("")
     lines.append("**（2）丢了什么细节？**（对照样例节逐链展示）")
-    lines.append("- D2：预算截断把排后事件整体/尾部丢弃——保留率低来自截断"
+    lines.append("- D2：预算截断把排后事件整体/尾部丢弃——匹配率低来自截断"
                  "而非改写，进入内容皆原文。")
     lines.append("- E-Extract：每事件仅保留 1 个逐字核心子句，源事件其余事实"
-                 "（背景、次要数字、因果）被丢弃；事实保留率仅略高于 D2——"
-                 "「进入事件多」不等于「事实保留多」。")
+                 "（背景、次要数字、因果）被丢弃；词项匹配率仅略高于 D2——"
+                 "「进入事件多」不等于「词项保留多」。且 v3.1 之前 span 选择"
+                 "可截留子句限定词（如把「预计增长 9.9%」抽成裸「增长 "
+                 "9.9%」，预测变断言），v3.1 门已拒绝此类选择并强制修正。")
     lines.append("- E-Summary：改写保留主体+关键数值+时间+情态；v3 门强制"
                  "记法与原文一致、拒绝无证据断言，列表收缩与修饰删除仍是"
                  "设计内损失。")
@@ -307,27 +323,38 @@ def conclusion(data):
     lines.append("**（3）是否失真？**")
     n_flag = {t: sum(len(c["events"]) for c in
                      stats[t]["fact_flag_cases"]) for t in data}
-    lines.append(f"- 新数值筛查（正则）：E-Extract 结构性 0 起（输出皆为原文"
-                 f"子串）；E-Summary debug {n_flag.get('debug', 0)} 起 / "
-                 f"val {n_flag.get('val', 0)} 起（逐条列入报告待人工复核）。")
+    lines.append(f"- 新数值筛查（正则）：E-Extract 输出皆为原文子串（token 级"
+                 f"可对账），新数值 0 起；E-Summary debug {n_flag.get('debug', 0)}"
+                 f" 起 / val {n_flag.get('val', 0)} 起。**逐字只保证可对账，"
+                 f"不保证保真**：两方案都可能丢限定词/主体或错置关系。")
     for t in data:
         if judge.get(t):
             rel = judge[t]["relations"]
+            by = judge[t].get("by_scheme") or {}
+            parts = []
+            for s in ("E-Extract", "E-Summary"):
+                e = by.get(s)
+                if e:
+                    parts.append(f"{s} distortion {e.get('distortion', 0)}/"
+                                 f"{e.get('judged', 0)}")
             lines.append(
                 f"- LLM 判别筛查（{t}，同一服务自审、仅筛查不进门）："
                 f"supported {rel.get('supported', 0)} / omission_only "
                 f"{rel.get('omission_only', 0)} / distortion "
                 f"{rel.get('distortion', 0)}（共 {judge[t]['judged_pieces']} "
-                f"条，错误 {judge[t]['errors']}）。distortion 全部逐条列出"
-                f"待人工复核；omission_only=仅省略、无断言外内容。")
-    lines.append("- v3 接受门（E-Summary）：evidence 非空且逐字可定位；摘要"
-                 "中每个数值/年份/月份/季度/单位/情态 token 与每个实义词"
-                 "必须可追溯到 evidence（词级允许 restarts/restart 类轻度"
-                 "变形）；evidence 含否定而摘要无否定即拒。记法漂移"
-                 "（Q4/5.25 类）与引入新谓词（delaying 类）在门内被拦截。")
+                f"条，错误 {judge[t]['errors']}；{'；'.join(parts)}）。"
+                "distortion 全部逐条列出待人工复核；omission_only=仅省略、"
+                "无断言外内容。")
+    lines.append("- v3.1 接受门：E-Extract 增设**子句级限定词保留门**——span "
+                 "所在源子句含预测/计划/否定措辞时，span 必须保留其中至少"
+                 "一个 token（「预计增长 9.9%」不得抽成裸「增长 9.9%」），"
+                 "违者拒绝并修正/回退；E-Summary 维持 v3 的 evidence 硬门+"
+                 "词级 grounding+否定丢失即拒（记法漂移、新谓词类拦截）。")
     lines.append("- 门仍拦不住的失真：主体-时间-数值**关系**错误且词面全部"
-                 "有据（如「部分 Q2、受损 Q4」被写成单一 Q4 且不引入新词）；"
-                 "依赖 LLM 判别筛查与人工抽审兜底。**不宣称零失真**。")
+                 "有据（如「预计损失超 29 亿美元」写成「已损失超 29 亿"
+                 "美元」若措辞恰好换成已缓存外的同义词面）、主体取舍与跨子句"
+                 "归并；依赖 LLM 判别筛查与人工抽审兜底。**两方案均不宣称"
+                 "零失真**。")
     lines.append("")
     lines.append("**（4）成本可否接受？**")
     tot_req = tot_tok = tot_s = tot_win = 0
@@ -363,32 +390,34 @@ def conclusion(data):
     dist = (jd.get("relations") or {}).get("distortion", 0)
     n_judged = jd.get("judged_pieces", 0)
     sub = compressed_only_fact_pres(stats)
-    lines.append("### 推荐与是否进入三种子预测实验\n")
-    lines.append(f"- **推荐方案：E-Extract**——v3 可比口径下全面占优："
-                 f"{rec_set} 集全窗事件加权事实保留率 {fp_e} vs E-Summary "
+    lines.append("### 候选与三种子预测实验（v3.1 口径）\n")
+    lines.append(f"- **候选方案：E-Extract（带 v3.1 限定词保留门）**——"
+                 f"{rec_set} 集全窗事件加权词项匹配率 {fp_e} vs E-Summary "
                  f"{fp_s} vs D2 {fp_d}；成功 {nw - fb_e}/{nw} 窗 vs "
                  f"E-Summary {nw - fb_s}/{nw} 窗；输出全部为原文逐字子串，"
-                 "结构上不可能改写/引入新事实，逐 token 可对账。代价：每"
-                 "事件仅保留 1 个核心子句，压缩成功窗内事实保留率"
+                 "逐 token 可对账、结构上无新事实。**但逐字 ≠ 保真**："
+                 "抽取仍可能丢限定词/主体（v3.1 门只堵「源子句含预测/"
+                 "计划/否定措辞而 span 未保留」一类），且判别筛查显示"
+                 "非零 distortion。其压缩成功窗内词项匹配率"
                  f"（{sub.get('E-Extract', '—')}）低于 E-Summary 同口径"
-                 f"（{sub.get('E-Summary', '—')}）。")
-    lines.append(f"- **E-Summary（v3 门下）不建议以当前形态进入预测实验**："
-                 f"门过严使 {rec_set} 集 {fb_s}/{nw} 窗回退 D2——它实际"
-                 "改变输入的窗太少，用它做三种子实验接近于重测 D2；且 "
-                 f"判别筛查 {dist}/{n_judged} 条 distortion 待人工复核。"
-                 "压缩成功时其事实保留率最高（见上），说明路线本身有效；"
+                 f"（{sub.get('E-Summary', '—')}）。判别筛查 + 人工抽审"
+                 "仍是必要补充，不因「子串」性质豁免。")
+    lines.append(f"- **E-Summary：仅作诊断保留，预测实验继续暂停**。"
+                 f"{rec_set} 集 {fb_s}/{nw} 窗回退 D2（实际改变输入的窗"
+                 "太少）；判别筛查 distortion 待人工复核（含「预计损失"
+                 "超 29 亿美元」被写成「已损失超 29 亿美元」一类情态"
+                 "错误）。压缩成功时词项匹配率最高，说明路线本身有效；"
                  "若继续该路线，需重平衡接受门（如按事实类别分级的 "
                  "evidence 覆盖要求）并另记版本全量重跑。")
-    lines.append(f"- **是否进入三种子预测实验：建议进入，单方案限定 "
-                 f"E-Extract**。依据：(a) 全窗事实保留率高于 D2 且差距"
-                 "明确；(b) 零结构改写风险，无需依赖筛查兜底；(c) 成功"
-                 f"率 {nw - fb_e}/{nw} 足以使输入分布实际区别于 D2；"
-                 "(d) 回退=D2 无害。**再次声明不构成预测改善承诺**："
-                 "EXP-012（= repro-mm-timesx-d2 @ f30f56b）表明文本清理"
-                 "本身收益仅 +0.02%，三种子实验是对「更多事实语境可能"
-                 "改善文本利用」假设的检验，不是推论。")
-    lines.append("- 若进入预测实验：沿用本轮冻结的 v3 接受规则+预算规则+"
-                 "缓存（新窗事件需新调用），训练/val 文本处理与本轮完全"
+    lines.append("- **文本方案本轮不冻结**：是否进入、以及以何方案进入"
+                 "三种子预测实验，待用户复审 v3.1 审计包（含全部 "
+                 "distortion/qualifier_dropped 案例）后再定。"
+                 "**声明不构成预测改善承诺**：EXP-012（= "
+                 "repro-mm-timesx-d2 @ f30f56b）表明文本清理本身收益仅 "
+                 "+0.02%，三种子实验是对「更多事实语境可能改善文本利用」"
+                 "假设的检验，不是推论。")
+    lines.append("- 若将来进入预测实验：沿用当轮冻结的接受规则+预算规则+"
+                 "缓存（新窗事件需新调用），训练/val 文本处理与该轮完全"
                  "一致；测试集文本处理是否用 LLM 需另行决策（本轮未触碰"
                  "测试集）。")
     return "\n".join(lines)

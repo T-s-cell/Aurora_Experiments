@@ -85,6 +85,41 @@ NEG_RE = re.compile(
     r"suspended|postponed|delayed|shut|stopped|unavailable|failed)\b",
     re.IGNORECASE)
 
+# Qualifier-preservation screen for E-Extract spans: if the source clause
+# (split on .!?;) a span is drawn from contains forecast/plan or negation
+# wording, the span must keep at least one such token — dropping "is
+# expected to" turns a projection into a bare fact. Forecast set is trimmed
+# for this gate ("due to" is causal, not modal).
+QUAL_FUT_RE = re.compile(
+    r"\b(?:expect(?:ed|s)?|plan(?:ned|s|ning)?|may|might|could|will|would|"
+    r"forecast(?:ed|s)?|project(?:ed|s)?|likely|aim(?:s|ed)?|seek(?:s)?|"
+    r"intend(?:s|ed)?|anticipat(?:e|es|ed)|outlook|guidance|estimat(?:e|es|"
+    r"ed)|scheduled)\b", re.IGNORECASE)
+CLAUSE_SPLIT_RE = re.compile(r"(?<=[.!?;])\s+")
+
+def qualifier_dropped(event_text, merged):
+    """Returns None or a reject reason when an extracted span (char ranges
+    `merged` in event_text) loses a modal/negation qualifier present in the
+    clause(s) it was drawn from."""
+    spans = [(a, b) for a, b in merged]
+    low_span = " ".join(event_text[a:b] for a, b in spans).lower()
+    parts = CLAUSE_SPLIT_RE.split(event_text)
+    seps = [m.end() - m.start() for m in CLAUSE_SPLIT_RE.finditer(event_text)]
+    pos, clauses = 0, []
+    for i, part in enumerate(parts):
+        clauses.append((pos, pos + len(part), part.lower()))
+        pos += len(part) + (seps[i] if i < len(seps) else 0)
+    for cs, ce, c_low in clauses:
+        if not any(a < ce and cs < b for a, b in spans):
+            continue
+        fut = {m.group(0).lower() for m in QUAL_FUT_RE.finditer(c_low)}
+        if fut and not any(w in low_span for w in fut):
+            return f"qualifier_dropped(forecast:{sorted(fut)[:2]})"
+        neg = {m.group(0).lower() for m in NEG_RE.finditer(c_low)}
+        if neg and not any(w in low_span for w in neg):
+            return f"qualifier_dropped(negation:{sorted(neg)[:2]})"
+    return None
+
 
 def apply_tpl(tpl, **kw):
     """Substitute {name} placeholders only; literal JSON braces in the
@@ -266,8 +301,15 @@ class WindowCompressor:
                          corr_tpl,
                          reject_reason=str(rec.get("why", "invalid")),
                          char_cap=str(self._cap(method, prose_piece, budget)),
-                         span_hint="Ensure every span is an exact verbatim "
-                                   "substring of the event text."
+                         span_hint="Spans must stay exact verbatim "
+                                   "substrings, but include the subject and "
+                                   "any forecast/plan wording (e.g. "
+                                   "'expects', 'is expected to', 'will', "
+                                   "'may') or negation ('not', "
+                                   "'cancelled') from the sentence your "
+                                   "spans come from — a bare clause or "
+                                   "number without its qualifier is "
+                                   "rejected."
                                    if method == "E-Extract" else
                                    "Ensure the evidence spans are exact "
                                    "verbatim substrings of the event text "
@@ -295,6 +337,9 @@ class WindowCompressor:
                 located.append(r)
             merged = merge_spans(located)
             text = " ".join(event_text[a:b] for a, b in merged)
+            qd = qualifier_dropped(event_text, merged)
+            if qd:
+                return False, qd, None
             if len(self.enc(" " + text.strip())) > budget:
                 return False, f"over_budget({len(self.enc(' ' + text.strip()))}>{budget})", None
             if REFUSAL_RE.search(text):

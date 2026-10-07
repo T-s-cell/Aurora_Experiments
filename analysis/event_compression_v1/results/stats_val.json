@@ -2,61 +2,58 @@
  "set": "val",
  "n_windows": 57,
  "outcomes": {
-  "E-Extract|compressed": 46,
-  "E-Extract|fallback_d2": 11,
-  "E-Summary|compressed": 13,
-  "E-Summary|fallback_d2": 44
+  "E-Extract|compressed": 45,
+  "E-Extract|fallback_d2": 12,
+  "E-Summary|compressed": 17,
+  "E-Summary|fallback_d2": 40
  },
  "assembly_gates": {
-  "compressed_windows": 59,
-  "gate_pass": 59,
+  "compressed_windows": 62,
+  "gate_pass": 62,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Summary": 44,
-  "E-Extract": 11
+  "E-Summary": 40,
+  "E-Extract": 12
  },
  "events_total": 485,
  "fail_events": {
-  "evidence_not_verbatim": 6,
+  "evidence_not_verbatim": 5,
   "ungrounded_words:['global', 'oats', 'reach']": 1,
   "ungrounded_words:['including']": 1,
   "span_not_verbatim": 11,
   "ungrounded_words:['showed']": 1,
-  "ungrounded_words:['added', 'reduced']": 1,
+  "ungrounded_words:['added', 'economy']": 1,
   "ungrounded_words:['add']": 1,
   "ungrounded_words:['usaid']": 1,
-  "ungrounded_words:['led']": 1,
-  "ungrounded_words:['reached']": 2,
+  "ungrounded_words:['reached']": 3,
+  "qualifier_dropped": 1,
   "ungrounded_words:['shows']": 1,
   "ungrounded_words:['causing']": 1,
   "ungrounded_words:['analysts']": 1,
-  "over_budget": 2,
+  "ungrounded_words:['supported']": 1,
   "ungrounded_words:['company']": 1,
-  "not_grounded": 2,
+  "not_grounded": 3,
   "ungrounded_words:['pushed']": 1,
   "ungrounded_words:['experienced', 'noted']": 1,
-  "ungrounded_words:['premiering']": 1,
-  "ungrounded_words:['news', 'presented']": 1,
-  "ungrounded_words:['gathering']": 1,
+  "ungrounded_words:['announced']": 1,
   "ungrounded_words:['increasing']": 1,
-  "ungrounded_words:['delayed']": 1,
   "ungrounded_words:['regarding']": 1,
   "ungrounded_words:['outlines']": 1,
   "ungrounded_words:['secured']": 1,
-  "ungrounded_words:['detailed']": 1,
-  "ungrounded_words:['redefines', 'report']": 1,
+  "ungrounded_words:['removed']": 1,
+  "ungrounded_words:['adult', 'pediatric', 'redefines']": 1,
   "ungrounded_words:['colorado']": 1,
   "ungrounded_words:['began']": 1,
-  "ungrounded_words:['mcrc', 'showing']": 1,
   "ungrounded_words:['predicts']": 1,
-  "ungrounded_words:['beginning', 'event']": 1,
+  "ungrounded_words:['ran', 'walmart']": 1,
+  "over_budget": 1,
   "ungrounded_words:['committee']": 1,
   "ungrounded_words:['involved']": 1,
   "ungrounded_words:['argues', 'sees']": 1,
   "ungrounded_words:['showed', 'vehicle']": 1
  },
- "correction_attempts": 281,
+ "correction_attempts": 184,
  "run_meta": {
   "set": "val",
   "offline": false,
@@ -71,26 +68,26 @@
   "cache": {
    "E-Extract": {
     "hits": 394,
-    "misses": 22
+    "misses": 26
    },
    "E-Summary": {
-    "hits": 0,
-    "misses": 242
+    "hits": 198,
+    "misses": 69
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 46,
-   "E-Extract|fallback_d2": 11,
-   "E-Summary|compressed": 13,
-   "E-Summary|fallback_d2": 44
+   "E-Extract|compressed": 45,
+   "E-Extract|fallback_d2": 12,
+   "E-Summary|compressed": 17,
+   "E-Summary|fallback_d2": 40
   },
-  "requests_made": 545,
+  "requests_made": 320,
   "usage": {
-   "prompt_tokens": 521768,
-   "completion_tokens": 53038,
-   "total_tokens": 574806
+   "prompt_tokens": 298428,
+   "completion_tokens": 24360,
+   "total_tokens": 322788
   },
-  "elapsed_s": 1512.47
+  "elapsed_s": 717.24
  },
  "fact_flag_cases": [],
  "aggregate": {
@@ -107,35 +104,35 @@
   },
   "E-Extract": {
    "windows": 57,
-   "compressed_windows": 46,
-   "coverage_mean": 0.8437621832358677,
-   "coverage_event_weighted": 0.8247422680412371,
+   "compressed_windows": 45,
+   "coverage_mean": 0.8354288499025343,
+   "coverage_event_weighted": 0.8185567010309278,
    "events": 485,
-   "fact_preserved_event_weighted": 0.34093209683656456,
+   "fact_preserved_event_weighted": 0.3371591857187895,
    "fact_preserved_events": 482,
-   "entry_rate": 0.8474226804123711,
+   "entry_rate": 0.843298969072165,
    "fact_new_token_events": 1,
-   "nonempty_fragments": 379,
+   "nonempty_fragments": 371,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.37875955895147684
+   "preserved_numbers_mean": 0.34687574128750637
   },
   "E-Summary": {
    "windows": 57,
-   "compressed_windows": 13,
-   "coverage_mean": 0.40501949317738783,
-   "coverage_event_weighted": 0.38144329896907214,
+   "compressed_windows": 17,
+   "coverage_mean": 0.45414230019493174,
+   "coverage_event_weighted": 0.4247422680412371,
    "events": 485,
-   "fact_preserved_event_weighted": 0.32821757144979286,
+   "fact_preserved_event_weighted": 0.3349501973992239,
    "fact_preserved_events": 482,
-   "entry_rate": 0.46804123711340206,
+   "entry_rate": 0.5030927835051546,
    "fact_new_token_events": 1,
-   "nonempty_fragments": 100,
+   "nonempty_fragments": 129,
    "over_budget_events": 0,
-   "evidence_ok_events": 94,
+   "evidence_ok_events": 123,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.5887906480689986
+   "preserved_numbers_mean": 0.577161595018738
   }
  },
  "slices": {
@@ -143,25 +140,25 @@
    "E-Extract": {
     "1D": {
      "windows": 21,
-     "compressed": 18,
-     "coverage_mean": 0.8904761904761904
+     "compressed": 16,
+     "coverage_mean": 0.8333333333333334
     },
     "1W": {
      "windows": 36,
-     "compressed": 28,
-     "coverage_mean": 0.8165123456790123
+     "compressed": 29,
+     "coverage_mean": 0.8366512345679012
     }
    },
    "E-Summary": {
     "1D": {
      "windows": 21,
-     "compressed": 2,
-     "coverage_mean": 0.33125472411186696
+     "compressed": 3,
+     "coverage_mean": 0.35982615268329554
     },
     "1W": {
      "windows": 36,
-     "compressed": 11,
-     "coverage_mean": 0.4480489417989417
+     "compressed": 14,
+     "coverage_mean": 0.509160052910053
     }
    }
   },
@@ -169,25 +166,25 @@
    "E-Extract": {
     "False": {
      "windows": 47,
-     "compressed": 36,
-     "coverage_mean": 0.8105200945626478
+     "compressed": 37,
+     "coverage_mean": 0.8259456264775413
     },
     "True": {
      "windows": 10,
-     "compressed": 10,
-     "coverage_mean": 1.0
+     "compressed": 8,
+     "coverage_mean": 0.8800000000000001
     }
    },
    "E-Summary": {
     "False": {
      "windows": 47,
-     "compressed": 13,
-     "coverage_mean": 0.4255741303613644
+     "compressed": 16,
+     "coverage_mean": 0.47238264099966215
     },
     "True": {
      "windows": 10,
-     "compressed": 0,
-     "coverage_mean": 0.30841269841269836
+     "compressed": 1,
+     "coverage_mean": 0.3684126984126984
     }
    }
   },
@@ -210,13 +207,13 @@
     },
     "LivestockAndFoodProducts": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.8333333333333334
     },
     "RawMaterialsAndConstruction": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.5
+     "compressed": 0,
+     "coverage_mean": 0.26666666666666666
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 3,
@@ -255,8 +252,8 @@
     },
     "pets": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "public_health": {
      "windows": 3,
@@ -281,7 +278,7 @@
     "society": {
      "windows": 3,
      "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "coverage_mean": 0.7083333333333334
     },
     "traffic": {
      "windows": 3,
@@ -297,8 +294,8 @@
     },
     "Currency": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.26666666666666666
+     "compressed": 1,
+     "coverage_mean": 0.4666666666666666
     },
     "EnergyAndFuels": {
      "windows": 3,
@@ -332,8 +329,8 @@
     },
     "climate": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.18240740740740743
+     "compressed": 1,
+     "coverage_mean": 0.4490740740740741
     },
     "economy": {
      "windows": 3,
@@ -362,13 +359,13 @@
     },
     "public_policy": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.5740740740740741
+     "compressed": 2,
+     "coverage_mean": 0.7407407407407408
     },
     "science": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.4777777777777778
+     "compressed": 2,
+     "coverage_mean": 0.7777777777777777
     },
     "shopping": {
      "windows": 3,
