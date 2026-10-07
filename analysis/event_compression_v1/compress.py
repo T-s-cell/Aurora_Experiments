@@ -30,6 +30,61 @@ REFUSAL_RE = re.compile(
     r"\b(i cannot|i can't|cannot assist|no relevant|not applicable|"
     r"unable to|as an ai|i'm sorry|i am sorry)\b", re.IGNORECASE)
 
+# Grounding screen for E-Summary: every token of these classes in the
+# summary must also appear (same notation) in the verbatim evidence spans.
+NUM_RE = re.compile(r"\d+(?:[.,]\d+)?")
+YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+MONTH_RE = re.compile(
+    r"\b(?:january|february|march|april|may|june|july|august|september|"
+    r"october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|"
+    r"nov|dec)\b", re.IGNORECASE)
+QUARTER_RE = re.compile(r"\bq[1-4]\b", re.IGNORECASE)
+UNIT_RE = re.compile(
+    r"%|\$|€|£|°c|°f|\b(?:mw|mwh|kwh|gw|gwh|twh|kw|kv|ma|barrels?|bbl|"
+    r"tons?|tonnes?|mt|kt|bcf|mcf|mcm|hm3|usd|eur|billion|million|thousand|"
+    r"hectares?|acres?|percent)\b", re.IGNORECASE)
+FUT_RE = re.compile(
+    r"\b(?:expect(?:ed|s)?|plan(?:ned|s|ning)?|may|might|could|will|would|"
+    r"forecast(?:ed|s)?|project(?:ed|s)?|likely|aim(?:s|ed)?|seek(?:s)?|"
+    r"intend(?:s|ed)?|anticipat(?:e|es|ed)|outlook|guidance|estimat(?:e|es|"
+    r"ed)|scheduled|due to)\b", re.IGNORECASE)
+GROUND_RES = (("numbers", NUM_RE), ("years", YEAR_RE), ("months", MONTH_RE),
+              ("quarters", QUARTER_RE), ("units", UNIT_RE),
+              ("forecast", FUT_RE))
+
+# Content-word grounding: every non-function word of the summary must be
+# traceable to an evidence word (exact, or mild suffix variation like
+# restarts/restart). Catches paraphrase drift ("delaying" introduced for
+# "expected to return") that token-class grounding cannot see.
+STOPWORDS = frozenset("""a an the this that these those of in on at to by for
+with from as is are was were be been being am it its their his her our your
+my me you he she they them we us and or but while than then so such if
+because has have had will would can could may might must shall should do
+does did done not no nor s t don now here there when where why how which
+who whom whose what says said say according into onto out up down off over
+under about after before during again further once all any both each few
+more most other same too very just also only own""".split())
+
+
+def content_words(text):
+    return [w for w in re.findall(r"[a-z][a-z'-]*", text.lower())
+            if w not in STOPWORDS and len(w) > 1]
+
+
+def word_covered(w, ground_set):
+    if w in ground_set:
+        return True
+    if len(w) >= 5:
+        for g in ground_set:
+            if len(g) >= 4 and w.startswith(g) and len(w) - len(g) <= 3:
+                return True
+    return False
+
+NEG_RE = re.compile(
+    r"\b(?:not|no|nor|never|cannot|can't|without|cancel(?:l)?ed|halted|"
+    r"suspended|postponed|delayed|shut|stopped|unavailable|failed)\b",
+    re.IGNORECASE)
+
 
 def apply_tpl(tpl, **kw):
     """Substitute {name} placeholders only; literal JSON braces in the
@@ -214,8 +269,12 @@ class WindowCompressor:
                          span_hint="Ensure every span is an exact verbatim "
                                    "substring of the event text."
                                    if method == "E-Extract" else
-                                   "Keep the summary to the essential "
-                                   "facts.")}]
+                                   "Ensure the evidence spans are exact "
+                                   "verbatim substrings of the event text "
+                                   "and contain every number, date, unit and "
+                                   "modality word used in the summary; "
+                                   "match the event text's notation exactly "
+                                   "and keep all scope qualifiers.")}]
         return None, "failed", {"cache_key": key}
 
     def validate(self, method, obj, event_text, budget):
@@ -245,17 +304,42 @@ class WindowCompressor:
             summ = obj.get("summary")
             if not isinstance(summ, str) or not summ.strip():
                 return False, "bad_summary", None
-            ev = obj.get("evidence", [])
-            evidence_ok = isinstance(ev, list) and len(ev) > 0 and all(
-                span_to_original(e, event_text) is not None for e in ev
-                if isinstance(e, str) and e.strip())
+            ev = obj.get("evidence")
+            if not isinstance(ev, list) or not ev:
+                return False, "missing_evidence", None
+            ground_parts = []
+            for e in ev:
+                if not isinstance(e, str) or not e.strip():
+                    return False, "bad_evidence", None
+                r = span_to_original(e, event_text)
+                if r is None:
+                    return False, "evidence_not_verbatim", None
+                ground_parts.append(event_text[r[0]:r[1]])
+            ground = " ".join(ground_parts).lower()
+            s_low = summ.lower()
+            for name, rx in GROUND_RES:
+                need = set(m.group(0).strip().lower()
+                           for m in rx.finditer(s_low))
+                have = set(m.group(0).strip().lower()
+                           for m in rx.finditer(ground))
+                missing = sorted(need - have)
+                if missing:
+                    return False, f"not_grounded({name}:{missing[:3]})", None
+            ground_set = set(content_words(ground))
+            ungrounded = sorted(w for w in content_words(s_low)
+                                if not word_covered(w, ground_set))
+            if ungrounded:
+                return False, f"ungrounded_words:{ungrounded[:4]}", None
+            if NEG_RE.search(ground) and not NEG_RE.search(summ):
+                return False, "negation_dropped", None
             if REFUSAL_RE.search(summ):
                 return False, "refusal_text", None
             if len(self.enc(" " + summ.strip())) > budget:
                 n = len(self.enc(" " + summ.strip()))
                 return False, f"over_budget({n}>{budget})", None
-            obj["_evidence_ok"] = evidence_ok
-            return True, "ok", None
+            obj["_evidence_ok"] = True
+            obj["_evidence_loc"] = ground_parts
+            return True, "ok", ground_parts
 
     def build_piece(self, method, obj, event_text):
         """Returns (piece_text, extra_meta); piece uses the leading-space
@@ -265,15 +349,9 @@ class WindowCompressor:
                                   for s in obj["spans"]])
             piece = " " + " ".join(event_text[a:b] for a, b in merged).strip()
             return piece, {"span_ranges": [[a, b] for a, b in merged]}
-        evidence_loc = []
-        for e in obj.get("evidence", []):
-            if isinstance(e, str) and e.strip():
-                r = span_to_original(e, event_text)
-                if r is not None:
-                    evidence_loc.append(event_text[r[0]:r[1]])
+        evidence_loc = obj["_evidence_loc"]
         return (" " + obj["summary"].strip(),
-                {"evidence_ok": obj.get("_evidence_ok"),
-                 "evidence": evidence_loc})
+                {"evidence_ok": True, "evidence": evidence_loc})
 
 
 def process_window(w, b, wc, tok, z, idx):
@@ -356,8 +434,7 @@ def process_window(w, b, wc, tok, z, idx):
         ids, mask, meta_new = assemble(counts_new, rb["alloc"], tok)
         gates = {
             "events_len_le_E": len(ev_ids) <= b["E"],
-            "content_le_510": len(ids) - sum(
-                1 for x in mask if x == 0) <= 510,
+            "content_le_510": sum(mask) - 2 <= 510,
             "non_events_bitwise": all(
                 meta_new[n]["kept_ids"] == meta_d2[n]["kept_ids"]
                 for n in ("Background", "Calendar", "Covariates")),
@@ -424,7 +501,7 @@ def main():
 
     caches, prompt_parts, prompt_shas = {}, {}, {}
     prompt_files = {"E-Extract": "prompts/extract_v2.md",
-                    "E-Summary": "prompts/summarize_v2.md"}
+                    "E-Summary": "prompts/summarize_v3.md"}
     for m in SCHEMES:
         caches[m] = LLMCache(OUT / "llm_cache.jsonl")
         pf = prompt_files[m]

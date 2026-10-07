@@ -47,6 +47,60 @@ FUT_RE = re.compile(r"\b(?:expect(?:ed|s)?|plan(?:ned|s|ning)?|may|might|"
                     r"likely|aim(?:s|ed)?|seek(?:s)?|intend(?:s|ed)?|"
                     r"anticipat(?:e|es|ed)|outlook|guidance|estimat(?:e|es|"
                     r"ed)|scheduled|due to)\b", re.IGNORECASE)
+QUARTER_RE = re.compile(r"\bq[1-4]\b", re.IGNORECASE)
+
+# comparable fact classes: token-weighted preservation of the SOURCE's facts
+# in whatever actually entered the final input (all three schemes, one metric)
+FACT_RES = (("numbers", NUM_RE), ("years", YEAR_RE), ("months", MONTH_RE),
+            ("quarters", QUARTER_RE), ("units", UNIT_RE),
+            ("negation", NEG_RE), ("forecast", FUT_RE))
+
+
+def fact_preserved(src_text, ent_text, tok):
+    """Token-weighted fact preservation of src_text inside ent_text.
+    Both sides pass through the same tokenizer (decode∘encode) to remove
+    pure notation/spacing drift. Returns (preserved|None, n_new_tokens,
+    n_src_fact_tokens). preserved=None when the source has no fact token."""
+    if not src_text or not src_text.strip():
+        return None, 0, 0
+    nsrc = tok.decode(tok.encode(src_text, add_special_tokens=False))
+    nent = tok.decode(tok.encode(ent_text, add_special_tokens=False)) \
+        if ent_text else ""
+    src_all, ent_all = set(), set()
+    for _, rx in FACT_RES:
+        src_all |= set(m.group(0).strip().lower() for m in rx.finditer(nsrc))
+        ent_all |= set(m.group(0).strip().lower() for m in rx.finditer(nent))
+    if not src_all:
+        return None, len(ent_all), 0
+    return (len(src_all & ent_all) / len(src_all), len(ent_all - src_all),
+            len(src_all))
+
+
+def d2_event_regions(b, enc):
+    """Exact id-level layout of the UNTRUNCATED D2 Events region:
+    (full_ids, [(start_k, end_k) per event], L) with L = min(raw, E) the
+    in-row region length (assemble truncates to alloc E)."""
+    if b["status"] != "ok" or not b.get("n"):
+        return None
+    pre = enc("Events: " + b["head"])
+    full_ids = enc("Events: " + b["head"] + "".join(
+        e["tag"] + (" " + e["prose_clean"].strip() if e["prose_clean"]
+                    else "") for e in b["events"]))
+    L = min(len(full_ids), b["E"])
+    spans, pos = [], len(pre)
+    for e in b["events"]:
+        prose = e["prose_clean"].strip()
+        if not prose:
+            spans.append((pos, pos))
+            continue
+        pid = enc(" " + prose)
+        st = find_slice(pid, full_ids[pos:])
+        if st is None:
+            return None
+        st += pos
+        spans.append((st, st + len(pid)))
+        pos = st + len(pid)
+    return full_ids, spans, L
 
 
 def is_subseq_ids(needle, hay):
@@ -139,6 +193,17 @@ def main():
         assert verify_bitwise_vs_trace(ids_d2, mask_d2, vk, sid, z, idx), \
             f"{vk}|{sid}: D2 row != trace"
 
+        reg = d2_event_regions(b, enc)
+
+        def d2_entered(k):
+            start, end = reg[1][k]
+            prose = b["events"][k]["prose_clean"].strip()
+            n_tok = len(enc(" " + prose)) if prose else 0
+            ent = max(0, min(end, reg[2]) - start)
+            ent_text = tok.decode(reg[0][start:min(end, reg[2])]) \
+                if ent > 0 else ""
+            return ent, (ent / n_tok if n_tok else 1.0), ent_text
+
         # D2 per-event coverage (baseline) is computed inside the loop below
         # -- per scheme
         for si, scheme in enumerate(("D2", "E-Extract", "E-Summary")):
@@ -156,10 +221,23 @@ def main():
                           "covered_events": cov,
                           "coverage_rate": cov / b["n"] if b.get("n") else
                           None})
+                # in-row region must equal the prefix of the untruncated region
+                if reg is not None:
+                    seq0 = ids[1:sum(mask) - 1]
+                    s0 = find_slice(enc("Events: " + b["head"]), seq0)
+                    if s0 is not None:
+                        assert list(reg[0][:reg[2]]) == \
+                            seq0[s0:s0 + reg[2]], \
+                            f"{vk}|{sid}: D2 row Events region != prefix"
                 for k, covk in enumerate(per):
+                    ent, efrac, ent_text = d2_entered(k)
+                    pres, nnew, _ = fact_preserved(
+                        b["events"][k]["prose_clean"], ent_text, tok)
                     ev_rows.append(dict(
                         base, scheme=scheme, k=k + 1,
-                        source="d2", covered=covk,
+                        source="d2", covered=covk, entered=ent > 0,
+                        entered_tokens=ent, entered_frac=efrac,
+                        fact_preserved=pres, fact_new_tokens=nnew,
                         tokens=None, budget=b["events"][k]["budget"]))
                 win_rows.append(dict(base, **{k2: v for k2, v in r.items()
                                               if k2 != "scheme"},
@@ -205,18 +283,31 @@ def main():
                           "nonempty_fragments": nonempty,
                           "compression_rate": comp})
                 for k, (covk, fk) in enumerate(zip(per, facts)):
+                    e = rec["events"][k]
+                    if e.get("source") == "fit_verbatim":
+                        ent_text = b["events"][k]["prose_clean"]
+                        ent = len(enc(" " + ent_text.strip())) if ent_text \
+                            else 0
+                    else:
+                        ent_text = " " + str(e.get("piece"))
+                        ent = len(enc(ent_text))
+                    pres, nnew, _ = fact_preserved(
+                        b["events"][k]["prose_clean"], ent_text, tok)
                     ev_rows.append(dict(
                         base, scheme=scheme, k=k + 1,
-                        source=rec["events"][k].get("source"),
-                        covered=covk, nonempty=fk["nonempty"],
-                        tokens=rec["events"][k].get("tokens"),
-                        budget=rec["events"][k]["budget"],
+                        source=e.get("source"),
+                        covered=covk, entered=bool(covk),
+                        entered_tokens=ent, entered_frac=None,
+                        fact_preserved=pres, fact_new_tokens=nnew,
+                        nonempty=fk["nonempty"],
+                        tokens=e.get("tokens"),
+                        budget=e["budget"],
                         preserved_numbers=fk["preserved_numbers"],
                         new_numbers=fk["new_numbers"],
                         preserved_units=fk["preserved_units"],
                         preserved_negation=fk["preserved_negation"],
                         preserved_forecast=fk["preserved_forecast"],
-                        evidence_ok=rec["events"][k].get("evidence_ok")))
+                        evidence_ok=e.get("evidence_ok")))
                 if any(f["new_numbers"] for f in facts):
                     fact_flags.append({"var_key": vk, "sample_id": sid,
                                        "scheme": scheme, "type": "new_number",
@@ -237,10 +328,15 @@ def main():
                           "coverage_rate": cov / b["n"] if b.get("n") else
                           None})
                 for k, covk in enumerate(per):
+                    ent, efrac, ent_text = d2_entered(k)
+                    pres, nnew, _ = fact_preserved(
+                        b["events"][k]["prose_clean"], ent_text, tok)
                     ev_rows.append(dict(
                         base, scheme=scheme, k=k + 1, source="d2_fallback",
-                        covered=covk, tokens=None,
-                        budget=b["events"][k]["budget"]))
+                        covered=covk, entered=ent > 0,
+                        entered_tokens=ent, entered_frac=efrac,
+                        fact_preserved=pres, fact_new_tokens=nnew,
+                        tokens=None, budget=b["events"][k]["budget"]))
             win_rows.append(dict(base, **{k2: v for k2, v in r.items()
                                           if k2 != "scheme"},
                                  scheme=scheme))
@@ -288,6 +384,15 @@ def main():
              "coverage_event_weighted": (
                  sum(e["covered"] for e in evs) / len(evs)) if evs else None,
              "events": len(evs)}
+        pres2 = [e["fact_preserved"] for e in evs
+                 if e.get("fact_preserved") is not None]
+        a["fact_preserved_event_weighted"] = (sum(pres2) / len(pres2)) \
+            if pres2 else None
+        a["fact_preserved_events"] = len(pres2)
+        a["entry_rate"] = (sum(1 for e in evs if e.get("entered")) / len(evs)
+                           ) if evs else None
+        a["fact_new_token_events"] = sum(
+            1 for e in evs if (e.get("fact_new_tokens") or 0) > 0)
         if scheme != "D2":
             a["nonempty_fragments"] = sum(
                 e.get("nonempty", 0) for e in evs)
@@ -344,7 +449,9 @@ def main():
         wr.writerows(win_rows)
     with open(RESULTS / f"qc_events_{tag}.csv", "w", newline="") as f:
         cols = ["var_key", "sample_id", "domain", "freq", "scheme", "k",
-                "source", "covered", "nonempty", "tokens", "budget",
+                "source", "covered", "entered", "entered_tokens",
+                "entered_frac", "fact_preserved", "fact_new_tokens",
+                "nonempty", "tokens", "budget",
                 "preserved_numbers", "new_numbers", "preserved_units",
                 "preserved_negation", "preserved_forecast", "evidence_ok"]
         wr = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")

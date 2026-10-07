@@ -2,207 +2,116 @@
  "set": "debug",
  "n_windows": 19,
  "outcomes": {
-  "E-Extract|compressed": 12,
-  "E-Extract|fallback_d2": 7,
-  "E-Summary|compressed": 18,
-  "E-Summary|fallback_d2": 1
+  "E-Extract|compressed": 15,
+  "E-Extract|fallback_d2": 4,
+  "E-Summary|compressed": 5,
+  "E-Summary|fallback_d2": 14
  },
  "assembly_gates": {
-  "compressed_windows": 30,
-  "gate_pass": 30,
+  "compressed_windows": 20,
+  "gate_pass": 20,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Summary": 1,
-  "E-Extract": 7
+  "E-Summary": 14,
+  "E-Extract": 4
  },
  "events_total": 167,
  "fail_events": {
   "over_budget": 1,
-  "span_not_verbatim": 7
+  "ungrounded_words:['growth', 'reported']": 1,
+  "ungrounded_words:['indicated']": 1,
+  "evidence_not_verbatim": 2,
+  "ungrounded_words:['reported']": 1,
+  "ungrounded_words:['grow']": 1,
+  "ungrounded_words:['first']": 1,
+  "ungrounded_words:['burned']": 1,
+  "span_not_verbatim": 4,
+  "ungrounded_words:['reached']": 1,
+  "not_grounded": 2,
+  "ungrounded_words:['mit', 'won']": 1,
+  "ungrounded_words:['breach']": 1
  },
- "correction_attempts": 53,
+ "correction_attempts": 121,
  "run_meta": {
   "set": "debug",
   "offline": false,
   "n_windows": 19,
   "prompt_shas": {
    "E-Extract": "f0a7382e3dbb1943c888ee31f744c66b736d0143301e661b70eeb2e08934d74b",
-   "E-Summary": "d01cce4616ba709529651b13611767a40101bce48b0a0b12b601049d89971795"
+   "E-Summary": "7e344ca660696ce10662e6b7b70fa1b4cb0c4722f661d6032be101439feb62a5"
   },
   "params_fingerprint": "{\"json_mode\": true, \"max_tokens\": 1024, \"model\": \"main-model:instruct\", \"seed\": 2021, \"temperature\": 0}",
   "service_version": "None",
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 0,
-    "misses": 132
+    "hits": 125,
+    "misses": 21
    },
    "E-Summary": {
     "hits": 0,
-    "misses": 156
+    "misses": 105
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 12,
-   "E-Extract|fallback_d2": 7,
-   "E-Summary|compressed": 18,
-   "E-Summary|fallback_d2": 1
+   "E-Extract|compressed": 15,
+   "E-Extract|fallback_d2": 4,
+   "E-Summary|compressed": 5,
+   "E-Summary|fallback_d2": 14
   },
-  "requests_made": 341,
+  "requests_made": 247,
   "usage": {
-   "prompt_tokens": 219579,
-   "completion_tokens": 26099,
-   "total_tokens": 245678
+   "prompt_tokens": 229683,
+   "completion_tokens": 22541,
+   "total_tokens": 252224
   },
-  "elapsed_s": 896.76
+  "elapsed_s": 626.08
  },
- "fact_flag_cases": [
-  {
-   "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20231010T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 6,
-     "prose": " On August 30, 2023, the Bureau of Economic Analysis (BEA) released its \"second\" estimate for the second quarter of 2023 Gross Domestic Product (GDP). The report indicated that real GDP increased at an annual rate of 2.1%. This was a downward revision from the 2.4% growth rate reported in the \"advance\" estimate, but still represented solid economic expansion despite restrictive monetary policy. ",
-     "piece": "BEA revised Q2 2023 GDP growth down to 2.1% from 2.4% in its August 30, 2023 second estimate.",
-     "new": [
-      "2"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
-   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " The U.S. Energy Information Administration (EIA) released its September 2023 Short-Term Energy Outlook (STEO) on September 12, 2023. The report forecasted that the Brent crude oil price would average $93 per barrel during the fourth quarter of 2023. This projection was influenced by the expectation of global oil inventories falling through the end of 2023, partly due to Saudi Arabia's decision to continue its voluntary crude oil production cut. ",
-     "piece": "EIA forecasts Brent crude averaging $93 per barrel in Q4 2023, driven by falling inventories.",
-     "new": [
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events",
-   "sample_id": "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events__20231019T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " A report on U.S. Mint bullion coin sales for the third quarter of 2023 confirmed that no American Eagle 1-ounce platinum bullion coins were sold in July, August, or September of that year. The total sales for the year through the end of September remained unchanged at 12,700 coins. All of these sales occurred between March and June 2023. ",
-     "piece": "U.S. Mint sold no American Eagle platinum coins in Q3 2023, keeping year-to-date sales at 12,700.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "economy__inflation_96_12_4_10events",
-   "sample_id": "economy__inflation_96_12_4_10events__20231224T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " On November 13, 2023, the Federal Reserve Bank of Philadelphia published its Fourth Quarter 2023 Survey of Professional Forecasters. The survey, which was conducted between October 27 and November 8, 2023, revealed that forecasters anticipated headline CPI inflation to average 3.3% at an annual rate during the fourth quarter of 2023. ",
-     "piece": "Fed Philadelphia survey forecasters expect Q4 2023 headline CPI inflation to average 3.3% annually.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " The Federal Open Market Committee (FOMC) concluded its two-day meeting on November 1, 2023, deciding to maintain the target range for the federal funds rate at 5-1/4 to 5-1/2 percent. This marked the second consecutive meeting where the committee opted to hold rates steady, following the last hike in July 2023. The decision was unanimous and widely expected. In the post-meeting press conference, Federal Reserve Chair Jerome Powell stated that despite favorable recent inflation data, the process of bringing inflation sustainably down to the 2 percent goal has a long way to go, and the committee remains attentive to inflation risks. The committee's statement noted that while economic activity expanded at a strong pace in the third quarter, tighter financial and credit conditions are likely to weigh on economic activity, hiring, and inflation. The FOMC will continue to reduce its holdings of Treasury securities and agency mortgage-backed securities and is prepared to adjust the stance of monetary policy if new risks emerge that could impede its goals of maximum employment and 2 percent inflation. ",
-     "piece": "FOMC held federal funds rate at 5.25-5.50% on November 1, 2023.",
-     "new": [
-      "5.25",
-      "5.50"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "finance__asset_management_96_12_4_10events",
-   "sample_id": "finance__asset_management_96_12_4_10events__20240121T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 2,
-     "prose": " On December 28, 2023, the U.S. Bureau of Economic Analysis (BEA) released a report on the country's international investment position for the third quarter of 2023. The data, which reflects the position at the end of September 2023, showed that the U.S. net international investment position was a negative $18.16 trillion. This figure is calculated as the difference between U.S. residents' foreign financial assets, which totaled $32.91 trillion, and their liabilities, which were $51.07 trillion. The net investment position saw a slight increase in negativity from the revised negative $18.14 trillion at the end of the second quarter of 2023. ",
-     "piece": "BEA reported U.S. net international investment position was negative $18.16 trillion at end of Q3 2023.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " A review of the first half of 2023 highlighted a challenging period for active management within the US, characterized by significant financial outflows from active equity funds. The analysis, which covered the period from January 2021 to June 2023, found that even among top-decile performers, only a small fraction of active equity funds successfully attracted positive net flows. This trend suggests an increasingly narrow path to growth and success for many firms focused on these strategies. ",
-     "piece": "H1 2023 review shows significant US active equity fund outflows, with few top performers attracting positive net flows.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "traffic__electric_vehicle_96_12_4_10events",
-   "sample_id": "traffic__electric_vehicle_96_12_4_10events__20240414T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 7,
-     "prose": " A report from the U.S. Department of Energy (DOE) and the National Renewable Energy Laboratory (NREL) detailed significant growth in U.S. electric vehicle (EV) charging infrastructure for the third quarter of 2023. The findings, published in the \"Electric Vehicle Charging Infrastructure Trends from the Alternative Fueling Station Locator\" series, showed an 8.4% increase in public Electric Vehicle Supply Equipment (EVSE) ports. This growth brought the total number of all EVSE ports (public and private) to 181,026. Within the public port category, DC fast charging ports saw an 8.3% increase, while Level 2 ports grew by 8.4%. The overall number of EVSE ports in the U.S., including both public and private, grew by 7.7% during this period. ",
-     "piece": "DOE and NREL reported U.S. public EV charging ports grew 8.4% in Q3 2023, reaching a total of 181,026 ports.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  }
- ],
+ "fact_flag_cases": [],
  "aggregate": {
   "D2": {
    "windows": 19,
    "compressed_windows": 0,
    "coverage_mean": 0.23688387635756056,
    "coverage_event_weighted": 0.23952095808383234,
-   "events": 167
+   "events": 167,
+   "fact_preserved_event_weighted": 0.3170930671816568,
+   "fact_preserved_events": 166,
+   "entry_rate": 0.3532934131736527,
+   "fact_new_token_events": 0
   },
   "E-Extract": {
    "windows": 19,
-   "compressed_windows": 12,
-   "coverage_mean": 0.7064327485380116,
-   "coverage_event_weighted": 0.7005988023952096,
+   "compressed_windows": 15,
+   "coverage_mean": 0.8328947368421052,
+   "coverage_event_weighted": 0.8203592814371258,
    "events": 167,
-   "nonempty_fragments": 104,
+   "fact_preserved_event_weighted": 0.37230265012796077,
+   "fact_preserved_events": 166,
+   "entry_rate": 0.844311377245509,
+   "fact_new_token_events": 0,
+   "nonempty_fragments": 129,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.407210804298183
+   "preserved_numbers_mean": 0.4064649326368076
   },
   "E-Summary": {
    "windows": 19,
-   "compressed_windows": 18,
-   "coverage_mean": 0.9649122807017543,
-   "coverage_event_weighted": 0.9640718562874252,
+   "compressed_windows": 5,
+   "coverage_mean": 0.43834586466165415,
+   "coverage_event_weighted": 0.4431137724550898,
    "events": 167,
-   "nonempty_fragments": 158,
+   "fact_preserved_event_weighted": 0.3681795580124965,
+   "fact_preserved_events": 166,
+   "entry_rate": 0.5269461077844312,
+   "fact_new_token_events": 0,
+   "nonempty_fragments": 45,
    "over_budget_events": 0,
-   "evidence_ok_events": 141,
-   "new_number_events": 8,
-   "preserved_numbers_mean": 0.5894636725281885
+   "evidence_ok_events": 42,
+   "new_number_events": 0,
+   "preserved_numbers_mean": 0.605682016396302
   }
  },
  "slices": {
@@ -210,25 +119,25 @@
    "E-Extract": {
     "1D": {
      "windows": 7,
-     "compressed": 6,
-     "coverage_mean": 0.8928571428571429
+     "compressed": 7,
+     "coverage_mean": 1.0
     },
     "1W": {
      "windows": 12,
-     "compressed": 6,
-     "coverage_mean": 0.5976851851851852
+     "compressed": 8,
+     "coverage_mean": 0.7354166666666666
     }
    },
    "E-Summary": {
     "1D": {
      "windows": 7,
-     "compressed": 6,
-     "coverage_mean": 0.9047619047619048
+     "compressed": 1,
+     "coverage_mean": 0.3826530612244898
     },
     "1W": {
      "windows": 12,
-     "compressed": 12,
-     "coverage_mean": 1.0
+     "compressed": 4,
+     "coverage_mean": 0.4708333333333334
     }
    }
   },
@@ -236,8 +145,8 @@
    "E-Extract": {
     "False": {
      "windows": 14,
-     "compressed": 7,
-     "coverage_mean": 0.6015873015873016
+     "compressed": 10,
+     "coverage_mean": 0.7732142857142856
     },
     "True": {
      "windows": 5,
@@ -248,13 +157,13 @@
    "E-Summary": {
     "False": {
      "windows": 14,
-     "compressed": 14,
-     "coverage_mean": 1.0
+     "compressed": 4,
+     "coverage_mean": 0.4333333333333334
     },
     "True": {
      "windows": 5,
-     "compressed": 4,
-     "coverage_mean": 0.8666666666666666
+     "compressed": 1,
+     "coverage_mean": 0.4523809523809524
     }
    }
   },
@@ -287,8 +196,8 @@
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.25
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "StrategicAndHighValueMaterials": {
      "windows": 1,
@@ -327,8 +236,8 @@
     },
     "public_health": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.125
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "public_policy": {
      "windows": 1,
@@ -342,8 +251,8 @@
     },
     "shopping": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.2222222222222222
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "society": {
      "windows": 1,
@@ -364,8 +273,8 @@
     },
     "Currency": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "EnergyAndFuels": {
      "windows": 1,
@@ -374,38 +283,38 @@
     },
     "LivestockAndFoodProducts": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.42857142857142855
     },
     "RawMaterialsAndConstruction": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.16666666666666666
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.25
     },
     "StrategicAndHighValueMaterials": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.3
     },
     "arts": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.25
     },
     "climate": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "economy": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.3
     },
     "electronic_technology": {
      "windows": 1,
@@ -414,13 +323,13 @@
     },
     "finance": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "pets": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.125
     },
     "public_health": {
      "windows": 1,
@@ -434,8 +343,8 @@
     },
     "science": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "shopping": {
      "windows": 1,
@@ -444,13 +353,13 @@
     },
     "society": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.25
     },
     "traffic": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.125
     }
    }
   }

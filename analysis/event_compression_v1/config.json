@@ -37,9 +37,9 @@
   },
   "prompts": {
     "extract": "prompts/extract_v2.md",
-    "summarize": "prompts/summarize_v2.md",
-    "version_note": "v2 frozen after the v1 debug shakedown: v1 E-Extract failed 18/19 debug windows (attempt-0 over-selection, then paraphrase under correction) and v1 E-Summary lost 5/19 to 1-2 token overshoots; v2 = one version bump, BOTH schemes fully re-run (prompt sha enters the cache key, so no cross-version cache reuse), complete debug comparison regenerated; v1 debug artifacts kept as *_promptv1_* for the record; pre-announced freeze rule: adopt v2 unless it is strictly worse than v1 on BOTH schemes",
-    "hash_note": "sha256 of each prompt file is recorded in outputs/run_manifest.json at compression time and enters the cache key"
+    "summarize": "prompts/summarize_v3.md",
+    "version_note": "v3 = v2 prompts plus an E-Summary-only upgrade after the first full audit found real factual distortions in v2 summaries (e.g. a qualified two-part claim 'some units restart in Q2, damaged units in Q4' merged into an unqualified 'restart delayed until Q4') and 35 adopted summaries with failing evidence checks: (a) summarize_v3 adds anti-overgeneralization, exact-notation and evidence-coverage clauses; (b) the E-Summary acceptance rule now REQUIRES non-empty verbatim-locatable evidence AND a grounding screen (every number/date/month/quarter/unit/modality token in the summary must appear in the evidence spans) — previously evidence_ok was recorded but never enforced; (c) a length-gate bug (content+CLS/SEP<=510 instead of content<=510) was fixed, it had falsely rejected one val window under both schemes. E-Extract keeps extract_v2 (cache fully reused); E-Summary is fully re-run (prompt sha enters the cache key, no cross-version reuse); v2 artifacts kept as *_promptv2_* for the record",
+    "hash_note": "sha256 of each prompt file is recorded in outputs/run_meta_*.json at compression time and enters the cache key"
   },
   "cache": {
     "path": "outputs/llm_cache.jsonl",

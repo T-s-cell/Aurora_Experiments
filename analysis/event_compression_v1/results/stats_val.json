@@ -2,603 +2,140 @@
  "set": "val",
  "n_windows": 57,
  "outcomes": {
-  "E-Extract|compressed": 43,
-  "E-Extract|fallback_d2": 14,
-  "E-Summary|compressed": 50,
-  "E-Summary|fallback_d2": 7
+  "E-Extract|compressed": 46,
+  "E-Extract|fallback_d2": 11,
+  "E-Summary|compressed": 13,
+  "E-Summary|fallback_d2": 44
  },
  "assembly_gates": {
-  "compressed_windows": 93,
-  "gate_pass": 93,
+  "compressed_windows": 59,
+  "gate_pass": 59,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Summary": 7,
-  "E-Extract": 14
+  "E-Summary": 44,
+  "E-Extract": 11
  },
  "events_total": 485,
  "fail_events": {
-  "over_budget": 6,
-  "span_not_verbatim": 13
+  "evidence_not_verbatim": 6,
+  "ungrounded_words:['global', 'oats', 'reach']": 1,
+  "ungrounded_words:['including']": 1,
+  "span_not_verbatim": 11,
+  "ungrounded_words:['showed']": 1,
+  "ungrounded_words:['added', 'reduced']": 1,
+  "ungrounded_words:['add']": 1,
+  "ungrounded_words:['usaid']": 1,
+  "ungrounded_words:['led']": 1,
+  "ungrounded_words:['reached']": 2,
+  "ungrounded_words:['shows']": 1,
+  "ungrounded_words:['causing']": 1,
+  "ungrounded_words:['analysts']": 1,
+  "over_budget": 2,
+  "ungrounded_words:['company']": 1,
+  "not_grounded": 2,
+  "ungrounded_words:['pushed']": 1,
+  "ungrounded_words:['experienced', 'noted']": 1,
+  "ungrounded_words:['premiering']": 1,
+  "ungrounded_words:['news', 'presented']": 1,
+  "ungrounded_words:['gathering']": 1,
+  "ungrounded_words:['increasing']": 1,
+  "ungrounded_words:['delayed']": 1,
+  "ungrounded_words:['regarding']": 1,
+  "ungrounded_words:['outlines']": 1,
+  "ungrounded_words:['secured']": 1,
+  "ungrounded_words:['detailed']": 1,
+  "ungrounded_words:['redefines', 'report']": 1,
+  "ungrounded_words:['colorado']": 1,
+  "ungrounded_words:['began']": 1,
+  "ungrounded_words:['mcrc', 'showing']": 1,
+  "ungrounded_words:['predicts']": 1,
+  "ungrounded_words:['beginning', 'event']": 1,
+  "ungrounded_words:['committee']": 1,
+  "ungrounded_words:['involved']": 1,
+  "ungrounded_words:['argues', 'sees']": 1,
+  "ungrounded_words:['showed', 'vehicle']": 1
  },
- "correction_attempts": 154,
+ "correction_attempts": 281,
  "run_meta": {
   "set": "val",
   "offline": false,
   "n_windows": 57,
   "prompt_shas": {
    "E-Extract": "f0a7382e3dbb1943c888ee31f744c66b736d0143301e661b70eeb2e08934d74b",
-   "E-Summary": "d01cce4616ba709529651b13611767a40101bce48b0a0b12b601049d89971795"
+   "E-Summary": "7e344ca660696ce10662e6b7b70fa1b4cb0c4722f661d6032be101439feb62a5"
   },
   "params_fingerprint": "{\"json_mode\": true, \"max_tokens\": 1024, \"model\": \"main-model:instruct\", \"seed\": 2021, \"temperature\": 0}",
   "service_version": "None",
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 0,
-    "misses": 407
+    "hits": 394,
+    "misses": 22
    },
    "E-Summary": {
     "hits": 0,
-    "misses": 425
+    "misses": 242
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 43,
-   "E-Extract|fallback_d2": 14,
-   "E-Summary|compressed": 50,
-   "E-Summary|fallback_d2": 7
+   "E-Extract|compressed": 46,
+   "E-Extract|fallback_d2": 11,
+   "E-Summary|compressed": 13,
+   "E-Summary|fallback_d2": 44
   },
-  "requests_made": 986,
+  "requests_made": 545,
   "usage": {
-   "prompt_tokens": 650269,
-   "completion_tokens": 76907,
-   "total_tokens": 727176
+   "prompt_tokens": 521768,
+   "completion_tokens": 53038,
+   "total_tokens": 574806
   },
-  "elapsed_s": 2735.97
+  "elapsed_s": 1512.47
  },
- "fact_flag_cases": [
-  {
-   "var_key": "Currency__usdtogbp_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtogbp_exchangerate_96_12_12_10events__20250310T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 7,
-     "prose": " Real Gross Domestic Product (GDP) in the United States saw a 2.3% annualized increase in the fourth quarter of 2024, which spans October, November, and December. This indicates a deceleration from the 3.1% growth recorded in the third quarter of the same year. The primary drivers behind this fourth-quarter growth were increases in both consumer and government spending. The advance estimate of this data was released by the Bureau of Economic Analysis (BEA). ",
-     "piece": "US real GDP grew 2.3% annualized in Q4 2024, decelerating from 3.1% in Q3.",
-     "new": [
-      "3",
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "Currency__usdtobrl_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtobrl_exchangerate_96_12_12_10events__20241211T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " A report on U.S.-China agricultural trade for the first quarter of 2024 indicated a total trade volume decrease of 32.8% compared to the same period in 2023. The decline was primarily driven by a significant reduction in U.S. exports of soybeans, corn, and meat products. Conversely, U.S. exports of wheat and cotton to China increased during this timeframe. ",
-     "piece": "U.S.-China ag trade fell 32.8% in Q1 2024 due to lower soybean, corn, meat exports.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "Currency__usdtoinr_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtoinr_exchangerate_96_12_12_10events__20250117T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " A fourth-quarter 2024 report on U.S. home affordability from ATTOM Data Solutions revealed that median-priced single-family homes and condos have become less affordable compared to historical averages in 98% of analyzed counties. This continues a three-year trend of declining affordability, with major homeownership expenses, including mortgage payments, property taxes, and insurance, now consuming 34% of the average national wage. This figure is up over one percentage point from the previous quarter and the same period last year, pushing it further above the 28% lending guideline. The national median home price climbed to a record high of $364,750 in the fourth quarter. Despite a slight decline in mortgage rates, they remained over 6%, contributing to the financial strain on potential buyers. The report highlighted that to afford a median-priced home, an annual income of $89,649 is now required, which is significantly more than the average national wage of $73,918. ",
-     "piece": "Q4 2024 U.S. median home price hit $364,750, requiring $89,649 income, exceeding average wage.",
-     "new": [
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "EnergyAndFuels__uranium_usd_lbs_96_12_12_10events",
-   "sample_id": "EnergyAndFuels__uranium_usd_lbs_96_12_12_10events__20250331T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " A March 2025 report indicated that U.S. uranium producers are planning for continued growth in 2025, following a production increase throughout 2024. In the fourth quarter of 2024, production of uranium concentrate at U.S. facilities reached its highest level since the third quarter of 2018. Producers are now awaiting clearer signals from Washington, D.C., regarding the impacts of tariffs, shifting relationships with global suppliers, and funding designed to increase demand for domestic uranium. ",
-     "piece": "U.S. uranium producers plan continued 2025 growth after Q4 2024 production hit its highest level since Q3 2018, while awaiting tariff and funding signals.",
-     "new": [
-      "3",
-      "4"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " In a statement on January 28, 2025, Sprott Asset Management's CEO, John Ciampaglia, expressed a bullish outlook for the uranium market. He anticipated that uranium prices would strengthen during the first quarter of 2025 as buyers returned to the market. Ciampaglia acknowledged a recent correction in the spot market, with the price ending the previous year around $76, but asserted that the long-term market fundamentals have grown stronger. ",
-     "piece": "Sprott CEO John Ciampaglia predicted uranium prices would strengthen in Q1 2025 as buyers returned, despite a spot correction to $76.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "EnergyAndFuels__rapeseed_eur_t_96_12_12_10events",
-   "sample_id": "EnergyAndFuels__rapeseed_eur_t_96_12_12_10events__20250123T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " Demand for canola oil as a feedstock in the U.S. biofuel sector has experienced a steady increase in recent years, largely driven by policies aimed at reducing emissions. Data from the California Air Resources Board for the first quarter of 2024, ending March 31, 2024, showed that canola oil constituted 32% of the feedstock for biodiesel production in the California market. This represents a significant rise from 8% in 2022 and 21% in 2023. This growth is part of a larger trend of expanding U.S. imports of vegetable oils and animal fats to meet the demand for renewable diesel production. ",
-     "piece": "Canola oil was 32% of California biodiesel feedstock in Q1 2024, up from 8% in 2022.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
-   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20250404T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 6,
-     "prose": " A fire broke out at PBF Energy's 157,000 barrel-per-day refinery in Martinez, California, on Saturday, February 1, 2025. The fire, which occurred during planned maintenance, prompted a multi-agency response and led to the complete shutdown of the facility. Several workers sustained minor injuries. This unplanned outage significantly contributed to a decrease in West Coast refinery utilization during the first quarter of 2025, which fell from between 80% and 90% in January and February to below 75% in late March. The company announced a two-phase restart, with some units expected to resume operations in the second quarter of 2025, while the fire-damaged units are not anticipated to be operational until the fourth quarter. PBF stated that the costs associated with the repairs and the financial losses from the downtime are expected to be largely covered by insurance. ",
-     "piece": "PBF's 157,000 bpd Martinez refinery shut down after a February 2025 fire, delaying restart until Q4.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " The first quarter of 2025 will see an increase in refinery maintenance, a routine process where processing units are temporarily shut down for upkeep and to retool for the production of summer-blend fuels. This planned seasonal activity, described as being heavier than the previous year, is part of a return to more normal maintenance schedules that were disrupted by the COVID-19 pandemic. The maintenance will be particularly significant in the Gulf Coast and PADD-2 regions. These temporary shutdowns reduce the nation's gasoline production capacity, which can, in turn, lead to an increase in fuel prices, particularly on the West Coast initially. Analysts anticipate that prices in most areas are likely to start rising in the weeks following the commencement of maintenance activities. The transition to summer-blend gasoline, which is more expensive to produce, also contributes to potential price hikes. ",
-     "piece": "Heavier Q1 2025 refinery maintenance in Gulf Coast and PADD-2 is planned to reduce gasoline capacity and raise prices.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events__20240701T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 3,
-     "prose": " In a weekly market report for the week ending May 31, 2024, cattle prices showed varied increases across the Southeast. In Alabama, slaughter cattle sold for $2.00 to $6.00 higher, while feeder steers were noted as being mostly steady. For Florida, slaughter cows and bulls were firm to $3.00 higher, and feeder cattle were steady, with some instances of being $5.00 lower. Meanwhile, in Georgia, slaughter cows and bulls were steady to $3.00 higher, and feeder classes sold for steady to $6.00 higher. ",
-     "piece": "Southeast cattle prices rose $2 to $6 in Alabama, Florida, and Georgia during week ending May 31, 2024.",
-     "new": [
-      "2",
-      "6"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events__20240626T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 6,
-     "prose": " On June 4, 2024, the Brazilian government issued Provisional Measure 1227, which restricted the use of PIS/COFINS tax credits for exporters. The measure, which had immediate effect, prevented exporters from using these credits to offset other federal taxes, thereby increasing their operational expenses and reducing margins. This action caused a significant and immediate disruption in the Brazilian grain and oilseed market, leading to a halt in business during the first week of June. The paralysis in Brazil redirected some immediate soybean demand to the U.S., with the USDA reporting that China purchased 208 thousand metric tons of U.S. soybeans during this period. ",
-     "piece": "Brazil's June 2024 tax measure redirected 208,000 tons of Chinese soybean demand to the U.S.",
-     "new": [
-      "208,000"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events",
-   "sample_id": "RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events__20250502T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " On Monday, April 14, 2025, Goldman Sachs revised its aluminum price forecast, adopting a bearish outlook due to the impact of newly imposed US tariffs on aluminum and auto parts imports. The investment bank's updated projection anticipates that aluminum prices will average $2,000 per tonne during the third quarter of 2025. ",
-     "piece": "Goldman Sachs projects aluminum prices will average $2,000 per tonne in Q3 2025 due to US tariffs.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 6,
-     "prose": " U.S. bauxite imports declined by 28% year-over-year in the second quarter of 2024.; Primary aluminum production in the U.S. fell by 12% during the same period. ",
-     "piece": "U.S. bauxite imports fell 28% year-over-year in Q2 2024, while primary aluminum production dropped 12%.",
-     "new": [
-      "2"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " According to preliminary estimates from the Aluminum Association's monthly \"Aluminum Situation\" statistical report, demand for aluminum in North America (U.S. and Canada) increased by 4.3% year-over-year through the first quarter of 2024. This rebound follows an estimated 3.9% drop in demand in 2023. Total demand reached an estimated 6,955 million pounds by the end of March 2024, compared to 6,666 million pounds in the first quarter of 2023. Key drivers for this growth included a 16% increase in primary aluminum ingot shipments and a 6.1% rise in sheet and plate shipments, while shipments for foil and extruded products declined. ",
-     "piece": "North American aluminum demand rose 4.3% year-over-year to 6,955 million pounds in Q1 2024.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events",
-   "sample_id": "RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events__20250113T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " U.S. Steel revised its fourth-quarter 2024 profit forecast downwards, anticipating an adjusted EBITDA of approximately $150 million. This represents a significant decrease from the previously projected range of $225-275 million. The company attributed the lowered expectations to persistently low steel prices and the costs associated with ramping up production at its new Big River 2 (BR2) plant. Shipments from the BR2 facility to customers began in December 2024. U.S. Steel's President and CEO, David B. Burritt, noted that in addition to the BR2 ramp-up costs, depressed steel prices were exerting pressure on the quarter. The company also pointed to weak demand and pricing in Europe as a contributing factor. ",
-     "piece": "U.S. Steel cut Q4 2024 EBITDA forecast to $150 million from $225-275 million.",
-     "new": [
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events",
-   "sample_id": "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events__20250515T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " In its first-quarter 2024 results announced on April 23, 2024, for the period ending March 31, 2024, Freeport-McMoRan reported the sale of 20 million pounds of molybdenum. This represented a 5% increase compared to the same period in the previous year. The company's revenues for the quarter rose approximately 17% year-over-year to $6.321 billion, surpassing analyst estimates. ",
-     "piece": "Freeport-McMoRan's Q1 2024 revenues rose 17% to $6.321 billion, beating estimates.",
-     "new": [
-      "1"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " In the first quarter of 2024, United States molybdenum prices demonstrated remarkable stability, bolstered by robust demand from the steel industry and consistent operations from major producers, including Freeport-McMoRan Inc. and Southern Copper Corp. A notable price increase occurred in February 2024, which was propelled by a significant surge in demand that kept smelters operating at full capacity as steel mills continued to place substantial orders. ",
-     "piece": "US molybdenum prices remained stable in Q1 2024, with a notable February increase driven by steel demand.",
-     "new": [
-      "1"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " According to the International Molybdenum Association (IMOA), global production of molybdenum increased by 1% to 148.5 million pounds in the second quarter of 2023. In North America, production saw a more substantial increase of 5%, reaching 28.4 million pounds during the same period. The data for the quarter, which concluded on June 30, 2023, was publicly released on October 16, 2023. ",
-     "piece": "IMOA reported global molybdenum production rose 1% to 148.5 million pounds in Q2 2023.",
-     "new": [
-      "2"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events",
-   "sample_id": "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events__20250226T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 2,
-     "prose": " MTM Critical Metals (ASX:MTM) announced it is finalizing the design of a one-ton-per-day modular pilot plant that utilizes Flash Joule Heating (FJH) technology to recover critical metals. The company anticipated the completion of the process and mechanical design criteria by the end of February 2025. This demonstration plant is a key milestone in the company's strategy to commercialize its technology, with the plant's startup targeted for the fourth quarter of 2025. MTM aims to achieve commercial production and generate cash flow in 2025, focusing on re-shoring the production of strategic metals like gallium, germanium, and rare earth elements in the United States from various feedstocks, including manufacturing and electronic waste. ",
-     "piece": "MTM Critical Metals is finalizing a one-ton-per-day pilot plant design, targeting startup in Q4 2025 to commercialize critical metal recovery.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " A market research report by Allied Market Research analyzed key trends that shaped the semiconductor and electronics sector in the fourth quarter of 2024. The report highlighted a growing demand for power electronic components, noting that the development of wide-bandgap semiconductors like gallium nitride (GaN) has led to significant advancements in the power electronics industry. Additional key trends included advancements in 3D IC, with the rise of 3D packaging technology fueling market growth. The report also pointed to growth in advanced packaging, driven by factors such as the medical industry's demand for nano-sized robotic surgery equipment and the rapid evolution of wearable and personalized devices. ",
-     "piece": "Allied Market Research reported Q4 2024 semiconductor trends, highlighting growing demand for power electronics driven by wide-bandgap semiconductors.",
-     "new": [
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events",
-   "sample_id": "StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events__20250109T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " In late December 2024, reports emerged of a persistent oversupply in the U.S. steel market that had characterized most of the year and continued into the fourth quarter. This market condition was attributed to a combination of weak domestic demand and an increase in import volumes. Major producers were affected, with both U.S. Steel and Nucor issuing guidance for the fourth quarter that anticipated significantly lower profits, and in the case of U.S. Steel, a potential loss. On December 19, 2024, U.S. Steel specifically guided for an adjusted loss per share, citing depressed steel prices, weak demand, and costs related to its new Big River 2 mill. The broader market softness also impacted demand for key alloying elements such as manganese, which saw oversupply and price volatility throughout 2024 due to reduced purchasing from the steel sector. ",
-     "piece": "U.S. Steel guided for a Q4 2024 adjusted loss per share due to weak demand and high costs.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 7,
-     "prose": " Euro Manganese Inc. announced its financial results for the third fiscal quarter ending June 30, 2024. In the announcement, the company highlighted the successful commissioning of its high-purity manganese Demonstration Plant, which is part of its Chvaletice Manganese Project in the Czech Republic. This milestone allows for the production of bulk, multi-tonne samples of high-purity manganese products for prospective customers' supply chain qualifications, a crucial step for offtake negotiations. While the company is also pursuing an opportunity to produce battery-grade manganese products in Bécancour, Québec, for the North American market, the newly commissioned Demonstration Plant is located at the Chvaletice Project. ",
-     "piece": "Euro Manganese commissioned its Chvaletice high-purity manganese Demonstration Plant in Q3 2024.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " In the second quarter of 2024, global manganese ore prices surged significantly due to major supply disruptions. The primary catalyst was the suspension of operations at South32's Groote Eylandt Mining Company (GEMCO) in Australia, one of the world's largest manganese producers, starting on March 18, 2024. The shutdown was forced by severe structural damage to port infrastructure caused by Tropical Cyclone Megan. The market situation intensified on April 21, 2024, when South32 announced the suspension could last until the first quarter of 2025. This prolonged outlook created a tightening market circulation and prompted some miners and sellers at ports to halt sales quotes. The supply concerns, coupled with increased demand from alloy plants, drove a sharp increase in spot prices for seaborne and port-side manganese ore through April. ",
-     "piece": "Manganese prices surged in 2024 Q2 after Cyclone Megan halted South32 operations until 2025 Q1.",
-     "new": [
-      "1",
-      "2"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "economy__government_spending_96_12_4_10events",
-   "sample_id": "economy__government_spending_96_12_4_10events__20250216T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 8,
-     "prose": " Sweeping changes to Medicare, primarily from the Inflation Reduction Act, took effect in 2025, significantly altering prescription drug coverage. As of January 1, 2025, a $2,000 annual cap on out-of-pocket spending for prescription drugs covered under Medicare Part D was implemented. This cap applies to both standalone Part D plans and drug coverage within Medicare Advantage plans and includes costs like deductibles, copayments, and coinsurance. Concurrently, the Part D coverage gap, also known as the 'donut hole,' was eliminated, simplifying coverage into three phases: a deductible period, an initial coverage phase, and a catastrophic phase where the member pays $0 for covered drugs for the rest of the year. To help manage costs, a new voluntary Medicare Prescription Payment Plan allows beneficiaries to spread their out-of-pocket drug expenses into monthly payments. In addition to the Part D changes, Medicare expanded coverage in other areas. This includes better access to behavioral healthcare by allowing marriage and family therapists and mental health counselors to enroll as Medicare providers. Coverage was also added for atherosclerotic cardiovascular disease risk assessments. Despite the savings on prescription drugs, costs for traditional Medicare (Parts A and B) increased in 2025. The standard monthly premium for Part B rose to $185.00, an increase of $10.30 from 2024, and the annual Part B deductible increased by $17 to $257. For Part A, the inpatient hospital deductible increased by $44 to $1,676. Monthly premiums for those who do not get premium-free Part A also rose.",
-     "piece": "Medicare Part D 2025 changes impose a $2,000 out-of-pocket cap, eliminate the coverage gap, and raise Part B premiums to $185.",
-     "new": [
-      "185"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "electronic_technology__meta_platforms_96_12_4_10events",
-   "sample_id": "electronic_technology__meta_platforms_96_12_4_10events__20250216T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " On October 30, 2024, Meta Platforms, Inc. announced its financial results for the third quarter ending September 30, 2024, reporting significant year-over-year growth. The company posted a total revenue of $40.59 billion, a 19% increase from the previous year, and a net income of $15.69 billion, representing a 35% rise. This resulted in an earnings per share of $6.03. The company's operating income stood at $17.4 billion with a 43% operating margin. Engagement across its Family of Apps also grew, with daily active people (DAP) reaching an average of 3.29 billion for September 2024. Additional financial details revealed capital expenditures of $9.2 billion and a 9% year-over-year increase in headcount to 72,404. The Reality Labs division reported $270 million in revenue against an operating loss of $4.4 billion. Looking ahead, Meta projected its fourth-quarter revenue to be between $45 billion and $48 billion. ",
-     "piece": "Meta reported Q3 2024 revenue of $40.59 billion, net income of $15.69 billion, and projected Q4 revenue between $45 billion and $48 billion.",
-     "new": [
-      "3",
-      "4"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "electronic_technology__alphabet_96_12_4_10events",
-   "sample_id": "electronic_technology__alphabet_96_12_4_10events__20241222T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " On October 29, 2024, Alphabet announced its financial results for the third quarter of 2024, reporting a 15% year-over-year increase in revenue to $88.25 billion, up from $76.7 billion in the same period of the previous year. The strong performance was driven by significant growth in the company's advertising business. Additionally, Google Cloud's revenue surged to $11.3 billion, a year-over-year increase of $2.9 billion, with CEO Sundar Pichai attributing the momentum to AI offerings that are attracting new customers and larger deals. ",
-     "piece": "Alphabet Q3 2024 revenue rose 15% to $88.25 billion.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "electronic_technology__drones_96_12_4_10events",
-   "sample_id": "electronic_technology__drones_96_12_4_10events__20250216T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 5,
-     "prose": " Unusual Machines Inc. (NYSE American: UMAC) announced its third-quarter 2024 financial results, reporting a 9% increase in revenue to $1.53 million compared to the previous quarter. Key achievements highlighted for the quarter, which ended September 30, 2024, included the launch of its US-made, NDAA-compliant Rotor Riot Brave F7 flight controller, announced on July 1, 2024. Subsequently, the flight controller was officially approved for the Department of Defense's Blue UAS Framework on August 7, 2024, a significant milestone making it the first FPV-specific flight controller on the list. Following this approval, the company reported substantial market interest, securing orders for nearly 7,000 units. ",
-     "piece": "Unusual Machines Q3 2024 revenue rose 9% to $1.53 million; Rotor Riot Brave F7 gained DoD approval.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "finance__asset_management_96_12_4_10events",
-   "sample_id": "finance__asset_management_96_12_4_10events__20241222T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 8,
-     "prose": " Multiple financial analyses of the third quarter of 2024 describe the period as volatile, with a notable market rotation and a strong finish for the S&P 500. Reports from firms including Sawgrass Asset Management, Armbruster Capital, and others confirm the S&P 500 gained approximately 6% (reported as 5.9% to 6%). The quarter began with a significant shift as investors moved from mega-cap technology stocks, sometimes referred to as the 'Magnificent Seven,' into cyclical and small-cap stocks, which saw much of their outperformance in July. This rotation was followed by a broad market correction of nearly 10%. However, the market subsequently recovered its losses and rallied to finish the quarter at or near all-time highs, driven by optimism for a potential soft economic landing.",
-     "piece": "S&P 500 gained approximately 6% in Q3 2024 after a volatile rotation and correction, finishing near all-time highs.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "finance__venture_capital_96_12_4_10events",
-   "sample_id": "finance__venture_capital_96_12_4_10events__20250216T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 10,
-     "prose": " A VC Lab survey published on December 17, 2024, provided an outlook on venture capital trends for the first quarter of 2025. The report identified several key positive trends based on responses: an anticipated growth in liquidity and Initial Public Offerings (IPOs) was noted by 24% of respondents, signaling growing confidence in public markets. Additionally, 20% of respondents highlighted the increasing diversity among limited partners, and another 20% pointed to a general rise in investment from LPs. On the negative side, geopolitical uncertainty was a top concern for 20% of those surveyed, who worried about its potential impact on economic stability. Finally, 15% of respondents expressed concern about a potential AI bubble, questioning the sustainability of high valuations for AI startups.",
-     "piece": "A December 2024 VC Lab survey predicted Q1 2025 IPO growth, LP diversity, and geopolitical uncertainty concerns.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "pets__animal_migration_96_12_4_10events",
-   "sample_id": "pets__animal_migration_96_12_4_10events__20241222T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 7,
-     "prose": " The 2024 fall migration of monarch butterflies is being tracked by Journey North, with September reports showing a mix of ongoing northern sightings and significant concerns from scientists. The overwintering population from the 2023-2024 season saw a dramatic 59% decrease, the second lowest on record, largely attributed to habitat loss and climate change factors such as drought and high temperatures impacting milkweed availability. This has led to predictions of fewer monarchs being visible during the fall migration. The migration, which typically runs from late August through October, has seen some delays in arrival to overwintering sites in Mexico. While some late-season egg and larva sightings were reported in northern areas like Wisconsin and Pennsylvania in early September, these have been tailing off. There are conflicting viewpoints on the long-term status of the monarch population; while the recent numbers are alarming to many conservationists, some scientists argue that the overall population remains resilient and that conservation efforts should be carefully considered to avoid unintended harm. The U.S. Fish and Wildlife Service is re-evaluating the monarch's status for potential listing under the Endangered Species Act by the end of 2024. ",
-     "piece": "Monarch population fell 59% in 2023-24; US Fish and Wildlife Service re-evaluates status by end of 2024.",
-     "new": [
-      "24"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "public_health__climate_change_96_12_4_10events",
-   "sample_id": "public_health__climate_change_96_12_4_10events__20250119T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 3,
-     "prose": " In a '2024 in Review' report, Climate Central stated that the United States experienced 24 billion-dollar weather and climate disasters between January and November 2024. This preliminary total was second only to the record 28 such events in 2023. The report also highlighted that human-caused climate change increased the intensity of all eleven Atlantic hurricanes that occurred in 2024. A separate analysis by Climate Central, based on peer-reviewed research, found that elevated sea surface temperatures, made up to 800 times more likely by climate change, increased the maximum wind speeds of these hurricanes by 3 to 14 miles per hour. This intensification was enough to push three of the hurricanes into a higher category on the Saffir-Simpson Hurricane Wind Scale. ",
-     "piece": "Climate Central reported 24 billion-dollar US weather disasters in Jan-Nov 2024, noting climate change increased all 11 Atlantic hurricane intensities by 3-14 mph.",
-     "new": [
-      "11"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "traffic__air_travel_96_12_4_10events",
-   "sample_id": "traffic__air_travel_96_12_4_10events__20250119T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 2,
-     "prose": " In a report released by the Bureau of Transportation Statistics (BTS), it was confirmed that U.S. scheduled passenger airlines collectively earned an after-tax net profit of $2.1 billion during the third quarter of 2024. This financial data is part of the BTS's quarterly filings for the 25 scheduled U.S. passenger airlines. ",
-     "piece": "U.S. scheduled passenger airlines earned a $2.1 billion after-tax net profit in Q3 2024, per BTS.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 3,
-     "prose": " On December 18, 2024, the Bureau of Transportation Statistics (BTS) announced that U.S. scheduled passenger airlines reported a pre-tax operating profit of $3.1 billion for the third quarter of 2024. This figure represents a slight decrease from the $3.3 billion pre-tax operating profit earned in the same quarter of 2023. However, the industry's after-tax net gain for the third quarter of 2024 was $2.1 billion, which is an increase compared to the $1.6 billion after-tax net gain from the third quarter of the previous year. The financial data covers the three-month period ending on September 30, 2024. ",
-     "piece": "U.S. airlines had $3.1B Q3 2024 pre-tax profit, down from $3.3B, and $2.1B after-tax gain.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "traffic__traffic_insurance_96_12_4_10events",
-   "sample_id": "traffic__traffic_insurance_96_12_4_10events__20241222T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 4,
-     "prose": " A TransUnion report revealed a significant increase in auto insurance shopping during the third quarter of 2024, which surged by 19% compared to the same period in 2023. The report, part of the \"2025 Personal and Commercial Lines Annual Insurance Outlook,\" also highlighted a 16% rise in property insurance shopping. Among the different generations, Baby Boomers were the most active, accounting for 34% of auto insurance shoppers, followed by Gen Z (23%), Gen X (18%), and Millennials (8%). This heightened shopping activity translated into a high rate of carrier switching, as 38% of consumers who looked for new insurance in the preceding six months changed their provider. ",
-     "piece": "TransUnion reported a 19% increase in auto insurance shopping in Q3 2024, with 38% of consumers switching providers.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " On November 4, 2024, American International Group, Inc. (AIG) released its financial report for the third quarter ending September 30, 2024. The report highlighted a 7% comparable growth in Global Commercial Lines net premiums written, which amounted to $4.5 billion. The North America Commercial Lines division showed notable strength with an 11% growth in net premiums written. An earlier announcement on October 8, 2024, had scheduled the release of these results for November 4, with a subsequent conference call on November 5. ",
-     "piece": "AIG reported Q3 2024 Global Commercial Lines net premiums written grew 7% to $4.5 billion.",
-     "new": [
-      "3"
-     ]
-    },
-    {
-     "k": 9,
-     "prose": " A mid-year market outlook for commercial auto insurance published in July 2024 reported that average premium increases ranged from 7% to 10.3% during the first quarter of the year. The report also projected that most policyholders can expect persistent rate hikes in the second half of 2024. One of the key factors fueling these challenging market conditions is the issue of \"nuclear verdicts,\" which are jury awards that exceed $10 million. According to a report from the public relations firm Marathon Strategies, the median nuclear verdict reached $44 million in 2023, more than doubling since 2020.",
-     "piece": "July 2024: Q1 auto premiums rose 7-10.3%; 2023 median nuclear verdict $44 million.",
-     "new": [
-      "1"
-     ]
-    }
-   ]
-  },
-  {
-   "var_key": "traffic__used_car_96_12_4_10events",
-   "sample_id": "traffic__used_car_96_12_4_10events__20250119T000000",
-   "scheme": "E-Summary",
-   "type": "new_number",
-   "events": [
-    {
-     "k": 1,
-     "prose": " In the fourth quarter of 2024, a total of 6.1 million vehicles were recalled in the U.S. across 96 recall events. Among all manufacturers, Honda issued the most recalls during this period, with 2.7 million of its vehicles affected. The top four manufacturers, which also included Chrysler/Stellantis, Tesla, and General Motors, were responsible for 85% of all vehicle recalls in the final quarter of the year. For the entire year of 2024, over 27 million vehicles were recalled, a decrease from the 33 million recalled in 2023. ",
-     "piece": "In Q4 2024, 6.1 million U.S. vehicles were recalled across 96 events, with Honda leading at 2.7 million.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 3,
-     "prose": " According to data from Edmunds, the average down payment for a financed used vehicle in the fourth quarter of 2024 was $4,219. This represents a year-over-year increase of $97 and a $54 increase from the third quarter of 2024. In the same period, the average monthly payment for used vehicles decreased to $533, which was $28 lower than the previous year. ",
-     "piece": "Q4 2024 average used vehicle down payment rose to $4,219, while monthly payments fell to $533.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 5,
-     "prose": " In December 2024, the Cox Automotive Dealer Sentiment Index (CADSI) for the fourth quarter revealed a significant rise in optimism among U.S. auto dealers following the U.S. national election in early November. The survey, conducted from November 6th to 18th, 2024, with 933 dealer respondents, showed the market outlook index surged to 54 from 42 in the previous quarter. This optimism was largely attributed to the resolution of political uncertainty. Despite the positive outlook for the future, dealers still perceived the current market as weak, with the current market index only rising two points to 42. Franchised dealers were noted as being more optimistic than independent dealers. Other details from the report included a slight increase in the profit index to 35, an improvement in the new-vehicle sales index to 54, and a high new-vehicle inventory index of 73. ",
-     "piece": "Cox Automotive Q4 2024 Dealer Sentiment Index rose to 54 from 42 post-election.",
-     "new": [
-      "4"
-     ]
-    },
-    {
-     "k": 8,
-     "prose": " The used electric vehicle (EV) market in the U.S. showed significant growth in the third quarter of 2024, with sales rising by a reported 69% year-over-year, according to a forecast from Cox Automotive. This surge brought the used EV market share to approximately 1.7%. Final sales data from the UK also showed a notable, though different, increase of 57% in used battery-electric vehicle sales for the same period. A key driver for this growth is the availability of federal tax credits for used clean vehicles, which offers up to $4,000 for qualifying purchases. This incentive, applicable since January 1, 2023, for used EVs sold by a licensed dealer for $25,000 or less, has made them a more attractive option for consumers. The increased affordability is reflected in data showing that rebate-eligible used EVs sell significantly faster than their non-eligible counterparts. While the market is expanding, with September 2024 marking the sixth consecutive month of new EV sales exceeding 100,000 units in the U.S., used EVs still constitute a small portion of the overall used-vehicle market. ",
-     "piece": "U.S. used EV sales rose 69% in Q3 2024.",
-     "new": [
-      "3"
-     ]
-    }
-   ]
-  }
- ],
+ "fact_flag_cases": [],
  "aggregate": {
   "D2": {
    "windows": 57,
    "compressed_windows": 0,
    "coverage_mean": 0.24145781119465318,
    "coverage_event_weighted": 0.22268041237113403,
-   "events": 485
+   "events": 485,
+   "fact_preserved_event_weighted": 0.2867861269237277,
+   "fact_preserved_events": 482,
+   "entry_rate": 0.3319587628865979,
+   "fact_new_token_events": 2
   },
   "E-Extract": {
    "windows": 57,
-   "compressed_windows": 43,
-   "coverage_mean": 0.8195906432748541,
-   "coverage_event_weighted": 0.797938144329897,
+   "compressed_windows": 46,
+   "coverage_mean": 0.8437621832358677,
+   "coverage_event_weighted": 0.8247422680412371,
    "events": 485,
-   "nonempty_fragments": 359,
+   "fact_preserved_event_weighted": 0.34093209683656456,
+   "fact_preserved_events": 482,
+   "entry_rate": 0.8474226804123711,
+   "fact_new_token_events": 1,
+   "nonempty_fragments": 379,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.3766961392870186
+   "preserved_numbers_mean": 0.37875955895147684
   },
   "E-Summary": {
    "windows": 57,
-   "compressed_windows": 50,
-   "coverage_mean": 0.9087719298245615,
-   "coverage_event_weighted": 0.8927835051546392,
+   "compressed_windows": 13,
+   "coverage_mean": 0.40501949317738783,
+   "coverage_event_weighted": 0.38144329896907214,
    "events": 485,
-   "nonempty_fragments": 423,
+   "fact_preserved_event_weighted": 0.32821757144979286,
+   "fact_preserved_events": 482,
+   "entry_rate": 0.46804123711340206,
+   "fact_new_token_events": 1,
+   "nonempty_fragments": 100,
    "over_budget_events": 0,
-   "evidence_ok_events": 386,
-   "new_number_events": 39,
-   "preserved_numbers_mean": 0.5892956119521932
+   "evidence_ok_events": 94,
+   "new_number_events": 0,
+   "preserved_numbers_mean": 0.5887906480689986
   }
  },
  "slices": {
@@ -606,25 +143,25 @@
    "E-Extract": {
     "1D": {
      "windows": 21,
-     "compressed": 17,
-     "coverage_mean": 0.861904761904762
+     "compressed": 18,
+     "coverage_mean": 0.8904761904761904
     },
     "1W": {
      "windows": 36,
-     "compressed": 26,
-     "coverage_mean": 0.7949074074074073
+     "compressed": 28,
+     "coverage_mean": 0.8165123456790123
     }
    },
    "E-Summary": {
     "1D": {
      "windows": 21,
-     "compressed": 18,
-     "coverage_mean": 0.8761904761904761
+     "compressed": 2,
+     "coverage_mean": 0.33125472411186696
     },
     "1W": {
      "windows": 36,
-     "compressed": 32,
-     "coverage_mean": 0.9277777777777779
+     "compressed": 11,
+     "coverage_mean": 0.4480489417989417
     }
    }
   },
@@ -632,25 +169,25 @@
    "E-Extract": {
     "False": {
      "windows": 47,
-     "compressed": 34,
-     "coverage_mean": 0.7939716312056737
-    },
-    "True": {
-     "windows": 10,
-     "compressed": 9,
-     "coverage_mean": 0.9400000000000001
-    }
-   },
-   "E-Summary": {
-    "False": {
-     "windows": 47,
-     "compressed": 40,
-     "coverage_mean": 0.8893617021276595
+     "compressed": 36,
+     "coverage_mean": 0.8105200945626478
     },
     "True": {
      "windows": 10,
      "compressed": 10,
      "coverage_mean": 1.0
+    }
+   },
+   "E-Summary": {
+    "False": {
+     "windows": 47,
+     "compressed": 13,
+     "coverage_mean": 0.4255741303613644
+    },
+    "True": {
+     "windows": 10,
+     "compressed": 0,
+     "coverage_mean": 0.30841269841269836
     }
    }
   },
@@ -663,8 +200,8 @@
     },
     "Currency": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.5333333333333333
+     "compressed": 2,
+     "coverage_mean": 0.7333333333333334
     },
     "EnergyAndFuels": {
      "windows": 3,
@@ -693,13 +230,13 @@
     },
     "arts": {
      "windows": 3,
-     "compressed": 2,
+     "compressed": 3,
      "coverage_mean": 1.0
     },
     "climate": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7407407407407408
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "economy": {
      "windows": 3,
@@ -755,98 +292,98 @@
    "E-Summary": {
     "CropsAndStaples": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7000000000000001
+     "compressed": 0,
+     "coverage_mean": 0.19999999999999998
     },
     "Currency": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.26666666666666666
     },
     "EnergyAndFuels": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.3206349206349206
     },
     "LivestockAndFoodProducts": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.34074074074074073
     },
     "RawMaterialsAndConstruction": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 0,
+     "coverage_mean": 0.26666666666666666
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7000000000000001
+     "compressed": 1,
+     "coverage_mean": 0.4407407407407408
     },
     "StrategicAndHighValueMaterials": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.48333333333333334
     },
     "arts": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.41203703703703703
     },
     "climate": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.18240740740740743
     },
     "economy": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.7083333333333334
     },
     "electronic_technology": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.7619047619047619
     },
     "finance": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.27499999999999997
     },
     "pets": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.75
     },
     "public_health": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.4444444444444445
     },
     "public_policy": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 1,
+     "coverage_mean": 0.5740740740740741
     },
     "science": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7000000000000001
+     "compressed": 1,
+     "coverage_mean": 0.4777777777777778
     },
     "shopping": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7000000000000001
+     "compressed": 0,
+     "coverage_mean": 0.19523809523809524
     },
     "society": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.19166666666666665
     },
     "traffic": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.40370370370370373
     }
    }
   }

@@ -1,0 +1,313 @@
+{
+ "set": "debug",
+ "judged_pieces": 42,
+ "requests_made": 42,
+ "errors": 0,
+ "relations": {
+  "supported": 15,
+  "omission_only": 26,
+  "distortion": 1
+ },
+ "distortion_cases": [
+  {
+   "var_key": "shopping__christmas_gifts_96_12_4_10events",
+   "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
+   "domain": "shopping",
+   "k": 8,
+   "key": "d311267fe9a6eace7dbe2dc096a46d2f45a9bfca2a58a40792d00ab4d701a6789d56f435d4b12c4038184cd124d77a5ad6385278b3147105a52827aa3414024be51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "distortion",
+   "reason": "The event text states that the program began accepting letters on September 18, 2023, not that the program itself was launched on that date.",
+   "status": "ok"
+  }
+ ],
+ "omission_only_cases": [
+  {
+   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
+   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
+   "domain": "EnergyAndFuels",
+   "k": 5,
+   "key": "1978c1a560bfe10f61629894f207027e6c0faf531d1ad459dcc9232ead0ebc8a1c75ba48c433c8b0be6f9c96c04b026bf40dad95d8d544f93ce4595487f40dd9e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the price increase and timeframe but omits details about demand, oil prices, and hurricane forecasts.",
+   "status": "ok"
+  },
+  {
+   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
+   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
+   "domain": "EnergyAndFuels",
+   "k": 7,
+   "key": "8c7f43cf34590b072f69c3d4c246fc094084fc624b146246688da5f7310f2e5316d78bbb6056a588c428dc0e028f345aba290b015a19e9aeeba324da99e9d7dce51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary correctly states the date, source, and price but omits the detail that the price had risen by three cents over the preceding week.",
+   "status": "ok"
+  },
+  {
+   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
+   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
+   "domain": "EnergyAndFuels",
+   "k": 9,
+   "key": "ce43fc2c38e55048834a30a1103803a316c61b146886d194eca5f8987e92714e6f9c8c7a30d5b0c1fc0399a68187d72b33ce1998dfe5ed4433953398da85b777e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary correctly states the date, price, and that it fell compared to a year prior, but omits specific details like the magnitude of the change and regional variations.",
+   "status": "ok"
+  },
+  {
+   "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
+   "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
+   "domain": "EnergyAndFuels",
+   "k": 10,
+   "key": "b5ce2e8182dd3270690e0f3980b597dbcb4dd359f778ca5afc6cb840d5ca16bec47fc93dd6e6df6fe0540ef9f201ac663bea85818d1fe937383ddbf6fdf71d6ae51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the price rise and amount stated in the event text but omits the mention of OPEC+ production cuts as an influencing factor.",
+   "status": "ok"
+  },
+  {
+   "var_key": "electronic_technology__microsoft_96_12_4_10events",
+   "sample_id": "electronic_technology__microsoft_96_12_4_10events__20240901T000000",
+   "domain": "electronic_technology",
+   "k": 1,
+   "key": "5ac5000f076bef4352463c44445c842536bf5c43e70c433a701428d565ad987adf0cd76cda7d7fb744102604dd991707a97bf3fc35be80026c421c0b4c769788e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states that Microsoft initiated the August 2024 update rollout to Windows Insiders, which is directly supported by the event text, but it omits specific details about the channels (Canary and Dev) and other features.",
+   "status": "ok"
+  },
+  {
+   "var_key": "electronic_technology__microsoft_96_12_4_10events",
+   "sample_id": "electronic_technology__microsoft_96_12_4_10events__20240901T000000",
+   "domain": "electronic_technology",
+   "k": 2,
+   "key": "5d9a52ba476bb40f3a7275ee5fe3bd6b18b83ee9795c8f778fbe429c89ffa2411a7711fc1a01526da909e880f418ceb13a69eadd1ebad9c9a05b6f11f6cd02e3e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the announcement date and effective date but omits details about the specific changes and purpose mentioned in the event text.",
+   "status": "ok"
+  },
+  {
+   "var_key": "electronic_technology__microsoft_96_12_4_10events",
+   "sample_id": "electronic_technology__microsoft_96_12_4_10events__20240901T000000",
+   "domain": "electronic_technology",
+   "k": 4,
+   "key": "8427c1015ffbe9be6e719b649f2cb5516e7cd2d705cc330581699fc06fecff0e845f59ddfefd5401b5e5c2f2be584ea9ad638ba6d02a22bde1959a83facd0e9fe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately captures the date, event, and specific vulnerability counts (two zero-days, five critical flaws) supported by the text, while omitting other details like the total number of patches and CISA actions.",
+   "status": "ok"
+  },
+  {
+   "var_key": "electronic_technology__microsoft_96_12_4_10events",
+   "sample_id": "electronic_technology__microsoft_96_12_4_10events__20240901T000000",
+   "domain": "electronic_technology",
+   "k": 7,
+   "key": "d61c9c84750f60c28dc852db90fec8baafcccc63122ebe6ce3eafa16f92426eae7dcb31f8246953b3be271bef3258811d9dc86a3372704d6a5320078ad27d5c6e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states that Microsoft discontinued Premier Support for US public sector customers as of July 1, 2024, which is directly supported by the event text, although it omits details about the transition to Unified Support and the scope of affected entities.",
+   "status": "ok"
+  },
+  {
+   "var_key": "electronic_technology__microsoft_96_12_4_10events",
+   "sample_id": "electronic_technology__microsoft_96_12_4_10events__20240901T000000",
+   "domain": "electronic_technology",
+   "k": 8,
+   "key": "76d95161ec62c72737c7cc067fd71bd29fd4783ed1bdd4385cf90c2396275a239d3ea8da806aa6daa4e92d6576004a190d95f958c0ded72afef81911766d31cfe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the delay and original date but omits details about the opt-in nature, security changes, and Insider Program rollout.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 1,
+   "key": "f406a1de5ef511583e8e828ca54d64b0c497bee41e5d6f3d7f6dc1171f760f52e3281275693d2649afa70dc733e6da3fc632e045b4d903ddd35225b9e316e640e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states that February 2024 was the warmest on record and cites the correct average temperature of 13.54°C, omitting other details like the specific record streak or regional impacts without introducing errors.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 2,
+   "key": "87202ec609520c5f9a63c1a1d8ff1e7e594eb5bc52338189383a62e33efab64f27c7649081c6c98e1b62c946e95f2d8b68e5a37f21a32731ad1b3a6d43f58374e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the issuer and date of the outlook but omits all details regarding temperature and precipitation forecasts.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 3,
+   "key": "1872f33dcab0467c414006dbe151db709718c2756d3594cf52459e1981cb041df589085f5b87aca3f3df56b43e300113ac41d22f560d892563883c97658aac4ee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary correctly states the launch date but omits other details such as the rocket type, location, and mission purpose.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 4,
+   "key": "92d92e015272af89eda3e81ca9d57b482f3204c5712b4e6288a55fdde3618958a2ad760d2a274aa4a684751bf9aec863b068590dc9104a71a9a619cec693c40ee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the date, plaintiff, and defendants mentioned in the event text, omitting specific company names and details of the allegations without introducing unsupported claims.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 5,
+   "key": "1a040aebddfd7185a1ad4cb01c3fc5935dfd628b48cc5067712355b07240088102ca68b701d2a7c6eafea4cf21d40e550492592f554d8701f68bb7573574ff6ce51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the precipitation rank, total amount, and record count from the event text, omitting details about temperature, specific dates, and flood events without introducing unsupported claims.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 6,
+   "key": "423dc4b1c22e61531fe2d4d2e3f8ecb04d6665c87cf1e7e58c5601a2a9453bb8fb80a157b0aac4b294a1adc96369dcf305022cfcbb63961570265e11746fe20de51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the core finding of above-average temperatures in the northern U.S. but omits details regarding the specific probabilities, the focus on the Northern Plains, and the wetter-than-average conditions in the south.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 7,
+   "key": "5d8c0e26c4dc63c07e1a1fc9552fee09b354a39bb8b0b5a7dc217ee1f9d2323bade1fbbeeb28e97b0accbbfdc4d975c7663f9d5bea431822d593d6c05ff7f1f9e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary correctly identifies the date, plaintiffs (associations), defendant (CARB), and subject matter (SB 253 and SB 261) but omits specific details about the legal arguments and coalition members.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_health__climate_change_96_12_4_10events",
+   "sample_id": "public_health__climate_change_96_12_4_10events__20240317T000000",
+   "domain": "public_health",
+   "k": 8,
+   "key": "a2bf2c43558cc396dce6885e979791316317655f67950c47efdae466664d324e7763b535fbdbaa1b488d6d8684c769d039e307a1180553d87ca268c83bd55720e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately captures the date, actor, and action but omits specific details about the scope (pending approvals to countries without FTAs) and the required analysis.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_policy__human_rights_96_12_4_10events",
+   "sample_id": "public_policy__human_rights_96_12_4_10events__20231126T000000",
+   "domain": "public_policy",
+   "k": 3,
+   "key": "31bbab1e3f2e7e94d73782125c7f0c98ce19fb98665e62b8aa866cc04047df5704dbceb37471b186940af01f092c3132ac651f753e66323138e81f11ac505b87e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately captures the core claim that the ACLU filed a motion on October 25, 2023, arguing the gag order violates the First Amendment, omitting additional details about precedent and specific recommendations found in the event text.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_policy__human_rights_96_12_4_10events",
+   "sample_id": "public_policy__human_rights_96_12_4_10events__20231126T000000",
+   "domain": "public_policy",
+   "k": 4,
+   "key": "1399eb3adebf4c766106c67577b00a306e23036c98adc04c66d60a5a3c7b88deaf920396ce40bf2756ebff888817b96f6ee19fa6e8ab6934cca2fb705542874fe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the date, subject, and actions described in the event text but omits specific details such as the nature of the laws waived and the location.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_policy__human_rights_96_12_4_10events",
+   "sample_id": "public_policy__human_rights_96_12_4_10events__20231126T000000",
+   "domain": "public_policy",
+   "k": 7,
+   "key": "463cc207de05ec646ea55ecb643088997f19a9bcc1a3d4016137c9fd27e8eac94d551022f81afe379bf82418663fc60df6128a6a94adf4bda5d485b61b9257d1e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the judge, ruling, subject, and date found in the event text, omitting only supporting details like the lawsuit originators and specific conditions.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_policy__human_rights_96_12_4_10events",
+   "sample_id": "public_policy__human_rights_96_12_4_10events__20231126T000000",
+   "domain": "public_policy",
+   "k": 8,
+   "key": "d165ae65c2d59ae1eb3f35272b0fb869a62110fb98e5a811b513e9bfdb2072f8c1246f6cbc863e57cc0e0bf73e747877181192640e4e5154d5a30e65bc3b5dcfe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states that DRA filed a lawsuit against Berkeley on September 5, 2023, to prevent evictions, which is directly supported by the event text, though it omits specific details about the encampment location and legal basis.",
+   "status": "ok"
+  },
+  {
+   "var_key": "public_policy__human_rights_96_12_4_10events",
+   "sample_id": "public_policy__human_rights_96_12_4_10events__20231126T000000",
+   "domain": "public_policy",
+   "k": 9,
+   "key": "f7f8a80cec9315832f53a24b089503bf59d46335666322567d17f5a44fdc0c8251acf45eae4c9171cdcb39e254348988f632fc4a2a65c3fb50c06cbbb257ab4ee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the core ruling but omits details about the revised opinion and the reversal of a previous decision.",
+   "status": "ok"
+  },
+  {
+   "var_key": "shopping__christmas_gifts_96_12_4_10events",
+   "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
+   "domain": "shopping",
+   "k": 1,
+   "key": "1e701baaa5ca6408dfa6fc9d8b82a4cee5cbb601528f3668f54401e69f9358b024e5857ae5df97cf822ae7e368db1445425a0c944c59f6c33e3594868f2711c8e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reports the growth percentage and record sales figure but omits the specific date range, comparison year details, and online sales data present in the event text.",
+   "status": "ok"
+  },
+  {
+   "var_key": "shopping__christmas_gifts_96_12_4_10events",
+   "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
+   "domain": "shopping",
+   "k": 3,
+   "key": "9157710dec796882139a689a68eb7d6326d67c05e434bedaaa56b66629b9f40b6e3d05fe939b97eb3c72c974f073a60f9726037319d74019e4fd992cd1d8c16ae51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reports the 3.1% increase for the specified period but omits other details such as the comparison to previous years and specific sector breakdowns.",
+   "status": "ok"
+  },
+  {
+   "var_key": "shopping__christmas_gifts_96_12_4_10events",
+   "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
+   "domain": "shopping",
+   "k": 4,
+   "key": "ad52398f20f7b359cd234ea779792d93ce1a0cc605d0ed1dbd00efacbadb059710ead2ffec85fbb5643509f4992a4e723e53cd27f91425c805193a92d3af95ede51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reports the survey source and the specific statistic regarding clothing, but omits other categories and details present in the event text.",
+   "status": "ok"
+  },
+  {
+   "var_key": "shopping__christmas_gifts_96_12_4_10events",
+   "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
+   "domain": "shopping",
+   "k": 7,
+   "key": "bd21a0ecf0e18e47069f1279f3c2028a2d382a0b760b69954628f7c64a2d5c17997435a12c40922e07a4f3269e653b00b3967019b64571433aa32327ac5ba92fe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects the core claim about the number of children and age limit, omitting other details like the program's history or participation methods without introducing errors.",
+   "status": "ok"
+  }
+ ],
+ "note": "LLM-judge screening only; not a gate, not proof of zero distortion; all distortion cases must be manually reviewed and are quoted in the report."
+}
