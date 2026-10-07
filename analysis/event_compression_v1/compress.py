@@ -113,7 +113,7 @@ def clause_index(event_text):
             break
         if not NEXT_OK_RE.match(event_text[pe:pe + 2]):
             continue
-        wm = re.search(r"([A-Za-z][A-Za-z.]*)\.$", event_text[:p])
+        wm = re.search(r"([A-Za-z][A-Za-z.]*)\.$", event_text[:p + 1])
         if wm and (INITIALS_RE.fullmatch(wm.group(1) + ".")
                    or wm.group(1).lower() in ABBREV_WORDS):
             continue

@@ -1,18 +1,18 @@
 {
  "set": "debug",
- "judged_pieces": 159,
- "requests_made": 22,
+ "judged_pieces": 144,
+ "requests_made": 84,
  "errors": 0,
  "relations": {
-  "supported": 87,
-  "omission_only": 67,
+  "supported": 78,
+  "omission_only": 61,
   "distortion": 5
  },
  "by_scheme": {
   "E-Extract": {
-   "judged": 96,
-   "supported": 61,
-   "omission_only": 35
+   "judged": 81,
+   "supported": 52,
+   "omission_only": 29
   },
   "E-Summary": {
    "judged": 63,
@@ -41,7 +41,7 @@
    "scheme": "E-Summary",
    "k": 7,
    "key": "0e169256fe571f0eb37bde727a05141070dc720a7f9466fae407eb80fb34991243338c9a3e5748a875dcedda9cff917fa67d28068d705cc8a1c53629b237c37be51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "distortion",
    "reason": "The summary incorrectly attributes the detection date of September 2023 to EGLE's confirmation, whereas the event text states EGLE confirmed the detection on October 2, 2023.",
    "status": "ok"
@@ -84,30 +84,6 @@
   }
  ],
  "omission_only_cases": [
-  {
-   "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20231010T000000",
-   "domain": "Currency",
-   "scheme": "E-Extract",
-   "k": 5,
-   "key": "aa17923173972b6137b83b776eaf3f8322d863e8672d39a1443da80535e52cda2bb027f45994767f25a85fe190648fbc880054b9aa545239ae0043ad9efe06afe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately states a specific fact from the event text but omits other details such as job growth figures and sector information.",
-   "status": "ok"
-  },
-  {
-   "var_key": "Currency__usdtoaud_exchangerate_96_12_12_10events",
-   "sample_id": "Currency__usdtoaud_exchangerate_96_12_12_10events__20231010T000000",
-   "domain": "Currency",
-   "scheme": "E-Extract",
-   "k": 9,
-   "key": "a79c3c04f7d9ed1d665e7b37e0e1e42e45bb4f32956950df4a96f707bd065d49c9c01766a49ea074c5a2316d97ffb6cbc81171a47a0130b944008796e41fb4b6e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately repeats a specific detail from the event text regarding data adjustments, but omits all other information about sales figures and market expectations.",
-   "status": "ok"
-  },
   {
    "var_key": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events",
    "sample_id": "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20231023T000000",
@@ -157,78 +133,6 @@
    "status": "ok"
   },
   {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 1,
-   "key": "02e31d749cce46bf9f2a2b9fc15dcbac4cadae227c0cc55f1d15a79cb73ca06040f0c7c45a31bd0d524072abe94e662bd5c62f0dda0b26b34347c026837583a3e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately reflects the first sentence of the event text but omits subsequent details regarding milk production, specific regions, and CME pricing.",
-   "status": "ok"
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 2,
-   "key": "69bed93f045304accf11df9e5ce101ddc8887cea16e5bec8ee074aa1fe907358fd2694d627d35292e33752fc68390bd904bb6782f1fcc19258e96164a3589453e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary is a verbatim excerpt from the event text and omits the broader context regarding supply tightening but contains no unsupported claims.",
-   "status": "ok"
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 4,
-   "key": "5580c615b64829068a7f2d134027ee62d591ec989e6dd46cf7dd3311c933a3a7a7a42b05015422fb64559b393757294b4fb06ece45fee311f3d4739edda2d1afe51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately reflects the first sentence of the event text but omits the information regarding the decline in the national dairy herd size.",
-   "status": "ok"
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 5,
-   "key": "2e0ef9de62fd6fd78a5294fa8861705f7b05c83e679b03fafa5da797f578c7ebbd172966a2ae356b5c5982f9349963224a35bd4378ba0a9664d51ca1b816408ce51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately reproduces the specific forecast details (date, entity, price, unit, and time period) found in the first sentence of the event text, omitting only the subsequent market analysis and context.",
-   "status": "ok"
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 6,
-   "key": "c114fa5c79a58ed5951897cd5930c500c1c3d5e8ce70fc513a096276daa2d5975b98d10a284ac43aea1cdc83b168968b395b668026ec3c93b74b74b3ceaabe38e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately reflects the first part of the event text but omits the final clause regarding the impact on license allocation for importing cheese and other dairy products.",
-   "status": "ok"
-  },
-  {
-   "var_key": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events",
-   "sample_id": "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events__20240403T000000",
-   "domain": "LivestockAndFoodProducts",
-   "scheme": "E-Extract",
-   "k": 7,
-   "key": "864768517389b39ffa39dd6b37621ebba4176e7879ce90e9c6d1c722c1fdaa67f73c1a350a55c4c62852f1a76bb4f6f8327e462d1d7cfb9656c5ab6ee691ba80e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
-   "relation": "omission_only",
-   "reason": "The summary accurately states the date, subject, and action found in the event text but omits the specific details of the recommendations.",
-   "status": "ok"
-  },
-  {
    "var_key": "RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events",
    "sample_id": "RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events__20240208T000000",
    "domain": "RawMaterialsAndConstruction",
@@ -247,7 +151,7 @@
    "scheme": "E-Extract",
    "k": 4,
    "key": "6373925fabc0db6db2c3ce6c85b57214a7838301cced2355f227c683218eb9746be343485a20c3b10d3cf16ac40007c8fc3b311c577b3ed4988a362cca73ce1ee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces the first sentence of the event text but omits the subsequent details regarding gallium and the Defense Production Act.",
    "status": "ok"
@@ -259,7 +163,7 @@
    "scheme": "E-Extract",
    "k": 7,
    "key": "005cc6382a81364d77cec2cfcc5733868a243e907dd304ec9ee831d29e196bc6e46b11670a7c3f42e503ec3f646aa25eceeb8fbee2cf8033a6b6433205399b9ee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately states the conclusion date of the public comment period but omits other details present in the event text.",
    "status": "ok"
@@ -271,7 +175,7 @@
    "scheme": "E-Extract",
    "k": 8,
    "key": "eed8087a5efad0dbd9dcff195d88b2cd4887372e229a70b26106a52d6d522f4ddbe85615e76adf9dccfcff1b03af39b4e53dc9eafbc8f20413da9fcf16207721e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces the specific price figures and dates from the event text but omits the broader context regarding the USGS report, 2022 market trends, and general price movements.",
    "status": "ok"
@@ -283,7 +187,7 @@
    "scheme": "E-Extract",
    "k": 6,
    "key": "9282df495468da204fa287288cef27869a4b2625d447eaee0e990e4e28a2ad10a85fc653535fc0bc0517dfb627ec3c608c838b2d20a2ee16ef938e3827514282e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits the subsequent forecasts and economic context.",
    "status": "ok"
@@ -295,7 +199,7 @@
    "scheme": "E-Extract",
    "k": 8,
    "key": "cfaf6e2abec3faa3d67265242ebdc09643f35efcf0f08eba96fabd57d0868db4f2a5ef768f654e690186c5313d90d62c21eb67329d677123b1bcd560bde9e5b5e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reports the trading range provided in the event text but omits other details such as the price increase and settlement value.",
    "status": "ok"
@@ -307,7 +211,7 @@
    "scheme": "E-Extract",
    "k": 10,
    "key": "080d083747eb7d72bc5fb9fab74e659a3dafc9fc6b8f70e53ae2cd835576fb7b6955f86735f2eb35d3725eb289c60a47a4b346a8c72227df37a8448c16d00ff1e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the price decline and threshold mentioned in the event text but omits the causal context regarding trade conflicts.",
    "status": "ok"
@@ -319,7 +223,7 @@
    "scheme": "E-Extract",
    "k": 1,
    "key": "97b20af970d1c58f2c4d5ebc16fe8abf758c63523c2882e1179a574ed35060f9cb72452e8da0d19b9a540228cb787746d711dc1650982a3ed50c57077a2b5921e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces a specific sentence from the event text but omits other details such as the festival name, date, and lineup.",
    "status": "ok"
@@ -355,7 +259,7 @@
    "scheme": "E-Extract",
    "k": 6,
    "key": "9a272610bf27304958364a281766a7787bfbbb1516adff88c1bf3741e8b902f52a2870451e389e9987887e0f0821ed7e0a631b245e8c148341d339aa8d916adae51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately quotes a specific detail from the event text but omits all other context regarding the festival's disruptions and lawsuits.",
    "status": "ok"
@@ -379,7 +283,7 @@
    "scheme": "E-Extract",
    "k": 8,
    "key": "9c4636725db62175ee0dd9b1d0904ec8eb09cd82edb1eda8b37aff88a8d69da024ea3f12585b957429f3a0aa26f7f7f53ab90a3b19af0e03832b4c07eda0d654e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately states the location and dates of the festival as provided in the event text, omitting other details without introducing errors.",
    "status": "ok"
@@ -391,7 +295,7 @@
    "scheme": "E-Extract",
    "k": 1,
    "key": "5ac5000f076bef4352463c44445c842536bf5c43e70c433a701428d565ad987aa7f57cfd35276e8c00dad72451135ad8c3bbe082e8cc876c676ef1d217397241e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits all subsequent details regarding the update's features and experiments.",
    "status": "ok"
@@ -403,7 +307,7 @@
    "scheme": "E-Extract",
    "k": 3,
    "key": "2e78cebeec6dfbc31247ab126e65ddd2395dd3506763278da923642d988c37ca00e796d2b44625eae02b6a0a32a2df446e539eb52bf66b27f18b22c17ff44d03e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately states the date, event, and number of vulnerabilities mentioned in the text but omits details about CISA alerts and specific affected products.",
    "status": "ok"
@@ -415,7 +319,7 @@
    "scheme": "E-Extract",
    "k": 4,
    "key": "8427c1015ffbe9be6e719b649f2cb5516e7cd2d705cc330581699fc06fecff0efc735d365ad3960bef63a694ae3d8d171b23444dea8d4fc916fa65d86b2c5456e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits all subsequent details regarding specific vulnerabilities, CISA alerts, and deadlines.",
    "status": "ok"
@@ -427,7 +331,7 @@
    "scheme": "E-Extract",
    "k": 5,
    "key": "12b185738b8feed86c32753afb10ee3d082dfcaca82e592b62cf9a09e8bc19ee0d2620677ab501a6fb0a5ebc1ce44c7d98d3b0f9065e008aa9f4ba31ef709a90e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits subsequent details regarding the scope, specific roles affected, and historical context.",
    "status": "ok"
@@ -439,7 +343,7 @@
    "scheme": "E-Extract",
    "k": 8,
    "key": "76d95161ec62c72737c7cc067fd71bd29fd4783ed1bdd4385cf90c2396275a231d7eaa7538d2d01fa34f78d7df88c1855237876ce493986f279f4c74ca014344e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the delay and original launch date stated in the event text but omits details regarding security changes and the Windows Insider Program rollout.",
    "status": "ok"
@@ -511,7 +415,7 @@
    "scheme": "E-Summary",
    "k": 1,
    "key": "e00279e39e4d0a7c6994de4bd0d727b12f8c4832ad9ee77ddd48e5991305fbc0ebba52dfe203643deb4d8a2f282853e3469cdd07eae37bf1fe93dcc3684ada2be51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the prediction of 104 species in eight states for the 2040-2050 period, omitting details about specific state names and impact assessments but containing no unsupported claims.",
    "status": "ok"
@@ -523,7 +427,7 @@
    "scheme": "E-Summary",
    "k": 6,
    "key": "83e4e8fae0b5f82096e1c6ae457249c3eaaf8d2fe1475570a00892cfc807ad1fa72ed000c00a2acee0f2191e58c37b198405df8037afe83582c8cd9559c81916e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately captures the agency, program, deadline, and funding range from the event text but omits details about eligible applicants and activity categories.",
    "status": "ok"
@@ -535,7 +439,7 @@
    "scheme": "E-Extract",
    "k": 1,
    "key": "f406a1de5ef511583e8e828ca54d64b0c497bee41e5d6f3d7f6dc1171f760f521f976850653e3f24a247a8c100a70f0d4ff8baed43857bb1719d11acf9c53b59e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits all subsequent details regarding temperature data and specific weather events.",
    "status": "ok"
@@ -559,7 +463,7 @@
    "scheme": "E-Extract",
    "k": 5,
    "key": "1a040aebddfd7185a1ad4cb01c3fc5935dfd628b48cc5067712355b072400881d3c1abc5d396b30e558779fcf44896ecf5bdedb4ae644968927ca300de5a840ce51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces the first sentence of the event text without altering any numbers, units, or qualifiers, but omits the remaining details about temperature and specific weather events.",
    "status": "ok"
@@ -721,13 +625,61 @@
    "status": "ok"
   },
   {
+   "var_key": "science__nobel_prize_96_12_4_10events",
+   "sample_id": "science__nobel_prize_96_12_4_10events__20240609T000000",
+   "domain": "science",
+   "scheme": "E-Extract",
+   "k": 4,
+   "key": "91ae318392cf1d5ad48ff4d79a60ceb8f9276e48ce453efe7f25675dfb08c2770e2e05418427a24db8e21a680eb406ade3e9df9ca19e0fdc820502340b760a18e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately reflects a specific detail from the event text but omits the majority of the information, including the other laureates and their awards.",
+   "status": "ok"
+  },
+  {
+   "var_key": "science__nobel_prize_96_12_4_10events",
+   "sample_id": "science__nobel_prize_96_12_4_10events__20240609T000000",
+   "domain": "science",
+   "scheme": "E-Extract",
+   "k": 5,
+   "key": "bbaf0eca4d9a490d263bf75f43a538b480f5359e4bc1946ded3cfb34451eb3d56f139109554fb32f0298cdc010934b2a6aa81df8f0eb68d604acb7def8637192e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the announcement and ceremony dates but omits all other details regarding the laureates, their work, and applications.",
+   "status": "ok"
+  },
+  {
+   "var_key": "science__nobel_prize_96_12_4_10events",
+   "sample_id": "science__nobel_prize_96_12_4_10events__20240609T000000",
+   "domain": "science",
+   "scheme": "E-Extract",
+   "k": 9,
+   "key": "c6eecaa94641ab107b791bd8f0c913728b18e3e8579ef0dda1d9e716fc86b85ad16d4fcf999b8c6a3cf6a1b1cf498400c547c87982ddd6f0e3bc2204e96344aee51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states the date and location of the ceremony as described in the event text, but omits all other details regarding the laureates and their achievements.",
+   "status": "ok"
+  },
+  {
+   "var_key": "science__nobel_prize_96_12_4_10events",
+   "sample_id": "science__nobel_prize_96_12_4_10events__20240609T000000",
+   "domain": "science",
+   "scheme": "E-Extract",
+   "k": 10,
+   "key": "ec1fe8419db0470d7c1fd36a195f3589800071eaad050897e3e48bec0bc0b402762482d3803bed1d7944357b13bb7132d336d939cc9b0acd69c24db1e4d92bb7e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
+   "cached": false,
+   "relation": "omission_only",
+   "reason": "The summary accurately states that the laureates were announced in October 2023, which is directly supported by the event text, but it omits all other details regarding the ceremony and recipients.",
+   "status": "ok"
+  },
+  {
    "var_key": "shopping__christmas_gifts_96_12_4_10events",
    "sample_id": "shopping__christmas_gifts_96_12_4_10events__20240218T000000",
    "domain": "shopping",
    "scheme": "E-Extract",
    "k": 1,
    "key": "1e701baaa5ca6408dfa6fc9d8b82a4cee5cbb601528f3668f54401e69f9358b0b91616bbf79f2052585d00d9881dd792ddf518f16359e70c78aff4d3c5562a83e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately states that total sales surpassed the 2022 record of $929.5 billion, which is explicitly supported by the event text, but it omits other details such as the specific growth percentage and online sales figures.",
    "status": "ok"
@@ -739,7 +691,7 @@
    "scheme": "E-Extract",
    "k": 2,
    "key": "8d3ab0926023d65cba1aa09d199550d1c21b1408e757d5569c434f72933502a9d7388f8f30cdb381412e3d461ca217ed4ba02de2e28ddb186cc5505cd3f13ca0e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reports the source, date, and 47% increase statistic but omits the additional details regarding demographics and return rates.",
    "status": "ok"
@@ -751,7 +703,7 @@
    "scheme": "E-Extract",
    "k": 7,
    "key": "bd21a0ecf0e18e47069f1279f3c2028a2d382a0b760b69954628f7c64a2d5c177bf5cf3014464f005fe59ee9fcf222458c1772853c8d9bd83d0ab4892f1f9ba6e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces the first sentence of the event text but omits all subsequent details about the program's history, partners, and timeline.",
    "status": "ok"
@@ -808,30 +760,6 @@
    "var_key": "society__data_privacy_96_12_4_10events",
    "sample_id": "society__data_privacy_96_12_4_10events__20240707T000000",
    "domain": "society",
-   "scheme": "E-Extract",
-   "k": 1,
-   "key": "3df3e0172444be1c8ff2e2eea119035d87a3443326afd6fbb663d0d1b53ca1773f4914ed7fc469e07ff82d43ad6d90d2860d08c9f2dd95c6a7d614e074985f68e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": false,
-   "relation": "omission_only",
-   "reason": "The summary accurately reflects the first sentence of the event text but omits all subsequent details regarding the attack timeline, data types, and legal consequences.",
-   "status": "ok"
-  },
-  {
-   "var_key": "society__data_privacy_96_12_4_10events",
-   "sample_id": "society__data_privacy_96_12_4_10events__20240707T000000",
-   "domain": "society",
-   "scheme": "E-Extract",
-   "k": 7,
-   "key": "bf0c9e57b895eebdda00bda2a6616ab47190a86f39a2b3c70400b6ae1f5794ca4a87641de666c771de8fdd2d82c01b594a05b530117ad25cb0b0ce9b98bc708ae51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
-   "relation": "omission_only",
-   "reason": "The summary accurately reflects the first sentence of the event text but omits all other details regarding the threat actor, method, and data types.",
-   "status": "ok"
-  },
-  {
-   "var_key": "society__data_privacy_96_12_4_10events",
-   "sample_id": "society__data_privacy_96_12_4_10events__20240707T000000",
-   "domain": "society",
    "scheme": "E-Summary",
    "k": 5,
    "key": "d4e7e36b781fb6cd2910f0f6b20e01cbbaca9cc63d07371fdf9cdf24eeda9e3941ed1317b3f5305bc9679f236514f904714229bdb6e0553bfe3863f0fe094e5be51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
@@ -871,7 +799,7 @@
    "scheme": "E-Extract",
    "k": 3,
    "key": "1e33a58d2d45f625d699088e1b8140c0b95b6438455d860ff47062e33148e3ab5dcee6c511f910aa98b2e81691600b01bb59cc3d3ff2c17fd03324c4aad558c9e51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reproduces a specific sentence from the event text but omits other details, without introducing any unsupported claims or distortions.",
    "status": "ok"
@@ -883,7 +811,7 @@
    "scheme": "E-Extract",
    "k": 5,
    "key": "70e4bdc4a76c3d89667d7816209913464be097f4317bf98852ddb765651c7c1eb0222ed4d97d2c57caf05443067b5189863e04b82036d9f2e8e7937f9f0d0a2be51bc12eed63bfa2b5edb9ea781440b5574681324bb43f52acb10d37f33074c4",
-   "cached": true,
+   "cached": false,
    "relation": "omission_only",
    "reason": "The summary accurately reflects the first sentence of the event text but omits all subsequent details regarding employee transitions, layoffs, and executive decisions.",
    "status": "ok"

@@ -86,7 +86,7 @@ def main():
     L.append("- 硬门槛：最终拼串 BertTokenizer 计数 ≤ E；Background/Calendar/"
              "Covariates 三块 token 内容按新边界与 D2 逐位一致；content ≤510；"
              "任何违例整窗回退 D2 并单独计数。")
-    L.append("- 版本：v3.2（2026-10-07）——首轮独立审计四修正：①撤回 v2 "
+    L.append("- 版本：v3.3（2026-10-07）——首轮独立审计四修正：①撤回 v2 "
              "「零真实幻觉」结论；②E-Summary 接受门加入 evidence 硬门+词级 "
              "grounding；③修复 content 门多算 CLS/SEP 的 bug；④口径拆分。"
              "二轮审计三修正：⑤E-Extract 增设子句级限定词保留门；⑥LLM 判别"
@@ -102,8 +102,19 @@ def main():
              "全部更新、输出重新生成；E-Summary 门/提示词/缓存不变全量复用。"
              "过渡态（旧 v2 提示词+整句门）在 val 上崩至 2/57（提示词要求"
              "短语、修正轮无法覆盖），未采用。⑨四起已标记 E-Extract 失真"
-             "输出经复核全部被新门拒绝并重处理/回退。产物留档：v2→"
-             "*_promptv2_*、v3→*_v3_*、v3.1→*_v31_*。\n")
+             "输出经复核全部被新门拒绝并重处理/回退。四轮审计一修正："
+             "⑩缩写边界修复——句界检测的词-句点匹配此前漏掉当前句点"
+             "（切片少含一句点，缩写/首字母检查从未生效），任何「缩写句点"
+             "+大写续词」被误判句界（如 The U.S.｜Department、Lyndon B.｜"
+             "Johnson），使句子前缀型截断 span 通过完整句门；修复后覆盖"
+             "句中缩写、句末缩写（文本以缩写收尾由尾段收束；句中真句末"
+             "缩写保守合并——宁严勿漏）、姓名首字母三类；离线重放 76 窗"
+             "已接受 E-Extract 事件（363/363 piece 对齐）发现 5 事件"
+             "（debug 2、val 3）受影响，均为旧假边界放行的句子前缀。"
+             "暖缓存重处理：未受影响事件全量命中；受影响事件与此前的"
+             "失败事件按缓存协议重试（温度 0 重投掷），后者使部分原"
+             "fallback 窗翻转为 compressed（val 23→27）。产物留档：v2→"
+             "*_promptv2_*、v3→*_v3_*、v3.1→*_v31_*、v3.2→*_v32_*。\n")
 
     # 1. headline coverage table
     L.append("## 1. 同预算覆盖对比（全样本，含失败/回退）\n")
@@ -354,12 +365,15 @@ def conclusion(data):
                 f"条，错误 {judge[t]['errors']}；{'；'.join(parts)}）。"
                 "distortion 全部逐条列出待人工复核；omission_only=仅省略、"
                 "无断言外内容。")
-    lines.append("- v3.2 接受门：E-Extract 重定义为**完整句抽取**（新提示词"
+    lines.append("- v3.2/v3.3 接受门：E-Extract 重定义为**完整句抽取**（新提示词"
                  " extract_v3）——每个 span 必须等于一个完整句子（仅可省略"
                  "句末句号），跨句/截断 span 拒绝并修正/回退；句子边界按"
                  "缩写感知检测（U.S./D.C. 等不切分）；主体、范围限定、预测/"
                  "否定措辞由构造保证保留；非相邻句组装以「 … 」显式分隔"
-                 "（计入预算），拼接歧义在构造上不可能。E-Summary 维持 v3 "
+                 "（计入预算），拼接歧义在构造上不可能。v3.3 修复句界检测"
+                 "漏看当前句点的缺陷（修复前缩写检查从未生效、句子前缀型"
+                 "截断 span 可通过），离线重放定位 5 事件并仅重处理受影响"
+                 "输出。E-Summary 维持 v3 "
                  "的 evidence 硬门+词级 grounding+否定丢失即拒（记法漂移、"
                  "新谓词类拦截）。")
     lines.append("- 门仍拦不住的失真：E-Extract 的整子句逐字输出使单子句内"
@@ -415,8 +429,9 @@ def conclusion(data):
     dist = (jd.get("relations") or {}).get("distortion", 0)
     n_judged = jd.get("judged_pieces", 0)
     sub = compressed_only_fact_pres(stats)
-    lines.append("### 候选与三种子预测实验（v3.2 口径）\n")
-    lines.append(f"- **候选方案：E-Extract（带 v3.2 完整子句门）**——"
+    lines.append("### 候选与三种子预测实验（v3.3 口径）\n")
+    lines.append(f"- **候选方案：E-Extract（带 v3.3 完整子句门，含缩写边界"
+                 f"修复）**——"
                  f"{rec_set} 集全窗事件加权词项匹配率 {fp_e} vs E-Summary "
                  f"{fp_s} vs D2 {fp_d}；成功 {nw - fb_e}/{nw} 窗 vs "
                  f"E-Summary {nw - fb_s}/{nw} 窗；输出为原文完整子句逐字拼接"
@@ -435,7 +450,7 @@ def conclusion(data):
                  "若继续该路线，需重平衡接受门（如按事实类别分级的 "
                  "evidence 覆盖要求）并另记版本全量重跑。")
     lines.append("- **文本方案本轮不冻结，且尚不宜进入正式预测实验**：是否"
-                 "进入、以及以何方案进入三种子预测实验，待用户复审 v3.2 "
+                 "进入、以及以何方案进入三种子预测实验，待用户复审 v3.3 "
                  "审计包（含全部 distortion/门拒绝案例）后再定。"
                  "**声明不构成预测改善承诺**：EXP-012（= "
                  "repro-mm-timesx-d2 @ f30f56b）表明文本清理本身收益仅 "

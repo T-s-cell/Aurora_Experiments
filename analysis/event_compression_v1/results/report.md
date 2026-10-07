@@ -3,42 +3,42 @@
 - 基准：EXP-012（= repro-mm-timesx-d2 @ `f30f56b`，D2 预测对照）冻结的 D2 文本管线；本轮仅做 train/val 文本处理与质量诊断，不加载权重、不训练、不读预测误差。
 - 方法：event-compression-v1；LLM：`main-model:instruct`（temperature=0, seed=2021，缓存复用）；样本：19 联调窗（train）+ 57 验证窗（val），均与 test/excluded 不相交。
 - 硬门槛：最终拼串 BertTokenizer 计数 ≤ E；Background/Calendar/Covariates 三块 token 内容按新边界与 D2 逐位一致；content ≤510；任何违例整窗回退 D2 并单独计数。
-- 版本：v3.2（2026-10-07）——首轮独立审计四修正：①撤回 v2 「零真实幻觉」结论；②E-Summary 接受门加入 evidence 硬门+词级 grounding；③修复 content 门多算 CLS/SEP 的 bug；④口径拆分。二轮审计三修正：⑤E-Extract 增设子句级限定词保留门；⑥LLM 判别筛查扩展到 E-Extract；⑦报告收紧：抽取不再宣称零失真（逐字≠保真），「事实保留率」更名**词项匹配率**（词项重叠，不代表语义正确），E-Summary 仅作诊断、其预测实验暂停。三轮审计两修正：⑧E-Extract 重定义为**完整句抽取**（新提示词 extract_v3：每个 span 必须等于一个完整句子、仅可省略句末句号；缩写感知的句子边界检测——U.S./D.C./Inc. 等缩写句点不切分；跨句/截断span 一律拒绝，主体、范围限定（如「仅适用于 51 人及以上雇主」）、预测/否定措辞由构造保证保留；非相邻句组装用「 … 」显式分隔，省略号计入 token 预算）。因提示词文件变更，E-Extract 缓存键全部更新、输出重新生成；E-Summary 门/提示词/缓存不变全量复用。过渡态（旧 v2 提示词+整句门）在 val 上崩至 2/57（提示词要求短语、修正轮无法覆盖），未采用。⑨四起已标记 E-Extract 失真输出经复核全部被新门拒绝并重处理/回退。产物留档：v2→*_promptv2_*、v3→*_v3_*、v3.1→*_v31_*。
+- 版本：v3.3（2026-10-07）——首轮独立审计四修正：①撤回 v2 「零真实幻觉」结论；②E-Summary 接受门加入 evidence 硬门+词级 grounding；③修复 content 门多算 CLS/SEP 的 bug；④口径拆分。二轮审计三修正：⑤E-Extract 增设子句级限定词保留门；⑥LLM 判别筛查扩展到 E-Extract；⑦报告收紧：抽取不再宣称零失真（逐字≠保真），「事实保留率」更名**词项匹配率**（词项重叠，不代表语义正确），E-Summary 仅作诊断、其预测实验暂停。三轮审计两修正：⑧E-Extract 重定义为**完整句抽取**（新提示词 extract_v3：每个 span 必须等于一个完整句子、仅可省略句末句号；缩写感知的句子边界检测——U.S./D.C./Inc. 等缩写句点不切分；跨句/截断span 一律拒绝，主体、范围限定（如「仅适用于 51 人及以上雇主」）、预测/否定措辞由构造保证保留；非相邻句组装用「 … 」显式分隔，省略号计入 token 预算）。因提示词文件变更，E-Extract 缓存键全部更新、输出重新生成；E-Summary 门/提示词/缓存不变全量复用。过渡态（旧 v2 提示词+整句门）在 val 上崩至 2/57（提示词要求短语、修正轮无法覆盖），未采用。⑨四起已标记 E-Extract 失真输出经复核全部被新门拒绝并重处理/回退。四轮审计一修正：⑩缩写边界修复——句界检测的词-句点匹配此前漏掉当前句点（切片少含一句点，缩写/首字母检查从未生效），任何「缩写句点+大写续词」被误判句界（如 The U.S.｜Department、Lyndon B.｜Johnson），使句子前缀型截断 span 通过完整句门；修复后覆盖句中缩写、句末缩写（文本以缩写收尾由尾段收束；句中真句末缩写保守合并——宁严勿漏）、姓名首字母三类；离线重放 76 窗已接受 E-Extract 事件（363/363 piece 对齐）发现 5 事件（debug 2、val 3）受影响，均为旧假边界放行的句子前缀。暖缓存重处理：未受影响事件全量命中；受影响事件与此前的失败事件按缓存协议重试（温度 0 重投掷），后者使部分原fallback 窗翻转为 compressed（val 23→27）。产物留档：v2→*_promptv2_*、v3→*_v3_*、v3.1→*_v31_*、v3.2→*_v32_*。
 
 ## 1. 同预算覆盖对比（全样本，含失败/回退）
 
 | 指标 | D2 (debug) | E-Extract (debug) | E-Summary (debug) | D2 (val) | E-Extract (val) | E-Summary (val) |
 |---|---|---|---|---|---|---|
-| 成功压缩窗数（compressed/总） | 0/19 | 10/19 | 8/19 | 0/57 | 23/57 | 27/57 |
-| 完整事件进入率（事件加权，D2 语义参照） | 24.0% | 64.1% | 55.1% | 22.3% | 47.6% | 55.5% |
-| 事件进入率（任一源内容进入，事件加权） | 35.3% | 69.5% | 61.7% | 33.2% | 54.2% | 61.2% |
-| 词项匹配率（7 类事实 token，事件加权；非语义正确性） | 31.7% | 36.8% | 39.2% | 28.7% | 30.2% | 36.3% |
+| 成功压缩窗数（compressed/总） | 0/19 | 12/19 | 8/19 | 0/57 | 27/57 | 27/57 |
+| 完整事件进入率（事件加权，D2 语义参照） | 24.0% | 70.1% | 55.1% | 22.3% | 52.8% | 55.5% |
+| 事件进入率（任一源内容进入，事件加权） | 35.3% | 74.3% | 61.7% | 33.2% | 58.8% | 61.2% |
+| 词项匹配率（7 类事实 token，事件加权；非语义正确性） | 31.7% | 36.6% | 39.2% | 28.7% | 31.0% | 36.3% |
 | 新事实 token 事件数（幻觉筛查） | 0 | 0 | 0 | 2 | 1 | 2 |
-| 非空片段事件数（≥3 token 且非拒答） | — | 83 | 67 | — | 165 | 214 |
+| 非空片段事件数（≥3 token 且非拒答） | — | 98 | 67 | — | 196 | 214 |
 | 超预算事件数 | — | 0 | 0 | — | 0 | 0 |
 | evidence 校验通过事件数（仅 E-Summary 适用） | — | — | 63 | — | — | 203 |
 | 新数值事件数（幻觉筛查） | — | 0 | 0 | — | 0 | 0 |
-| 数值保留率均值 | — | 41.6% | 57.5% | — | 36.0% | 56.2% |
+| 数值保留率均值 | — | 41.3% | 57.5% | — | 35.2% | 56.2% |
 
 > 覆盖率以最终实际输入（final ids/mask）为准：逐事件 token 序列在最终 Events 块中连续出现方计覆盖；整窗回退 D2 的窗口按 D2 覆盖计并单列，未使用的抽取/摘要结果不计入。非空片段数（≥3 token 且非拒答）只是辅助指标，不等同事实覆盖。
 
 ## 2. debug 集（19 窗，167 事件）
 
-- 结果分布：{"E-Extract|compressed": 10, "E-Extract|fallback_d2": 9, "E-Summary|compressed": 8, "E-Summary|fallback_d2": 11}
-- 组装硬门：compressed 窗 18，通过 18（通过率 100.0%，要求 100%）
-- 整窗回退：{'E-Extract': 9, 'E-Summary': 11}；事件级失败：{"bad_spans": 1, "over_budget": 4, "partial_clause": 3, "ungrounded_words:['growth', 'reported']": 1, "span_crosses_clauses": 3, "ungrounded_words:['indicated']": 1, "ungrounded_words:['reported']": 1, "ungrounded_words:['grow']": 1, "ungrounded_words:['appeared']": 1, "ungrounded_words:['rose']": 1, "ungrounded_words:['reached']": 1, "ungrounded_words:['won']": 1, "not_grounded": 1}；修正尝试 101 次
-- 开销：请求数 238，tokens {"prompt_tokens": 204934, "completion_tokens": 14388, "total_tokens": 219322}，耗时 476.77s，缓存命中 {"E-Extract": {"hits": 0, "misses": 122}, "E-Summary": {"hits": 110, "misses": 15}}
-- 按 freq：E-Extract: 1D→覆盖 63.7% (3/7窗); 1W→覆盖 67.9% (7/12窗) ｜ E-Summary: 1D→覆盖 50.2% (2/7窗); 1W→覆盖 60.6% (6/12窗)
-- 按 calendar_skipped：E-Extract: False→覆盖 72.5% (9/14窗); True→覆盖 49.2% (1/5窗) ｜ E-Summary: False→覆盖 60.9% (7/14窗); True→覆盖 45.2% (1/5窗)
+- 结果分布：{"E-Extract|compressed": 12, "E-Extract|fallback_d2": 7, "E-Summary|compressed": 8, "E-Summary|fallback_d2": 11}
+- 组装硬门：compressed 窗 20，通过 20（通过率 100.0%，要求 100%）
+- 整窗回退：{'E-Extract': 7, 'E-Summary': 11}；事件级失败：{"bad_spans": 1, "over_budget": 4, "ungrounded_words:['growth', 'reported']": 1, "ungrounded_words:['indicated']": 1, "ungrounded_words:['data', 'shows']": 1, "ungrounded_words:['grow']": 1, "ungrounded_words:['appeared']": 1, "partial_clause": 4, "evidence_not_verbatim": 1, "ungrounded_words:['reached']": 1, "ungrounded_words:['mit', 'won']": 1, "not_grounded": 1}；修正尝试 42 次
+- 开销：请求数 73，tokens {"prompt_tokens": 71262, "completion_tokens": 5866, "total_tokens": 77128}，耗时 157.72s，缓存命中 {"E-Extract": {"hits": 108, "misses": 18}, "E-Summary": {"hits": 114, "misses": 11}}
+- 按 freq：E-Extract: 1D→覆盖 83.3% (5/7窗); 1W→覆盖 67.5% (7/12窗) ｜ E-Summary: 1D→覆盖 50.2% (2/7窗); 1W→覆盖 60.6% (6/12窗)
+- 按 calendar_skipped：E-Extract: False→覆盖 72.1% (9/14窗); True→覆盖 76.7% (3/5窗) ｜ E-Summary: False→覆盖 60.9% (7/14窗); True→覆盖 45.2% (1/5窗)
 
 ## 3. val 集（57 窗，485 事件）
 
-- 结果分布：{"E-Extract|compressed": 23, "E-Extract|fallback_d2": 34, "E-Summary|compressed": 27, "E-Summary|fallback_d2": 30}
-- 组装硬门：compressed 窗 50，通过 50（通过率 100.0%，要求 100%）
-- 整窗回退：{'E-Extract': 34, 'E-Summary': 30}；事件级失败：{"bad_spans": 6, "evidence_not_verbatim": 4, "over_budget": 12, "not_grounded": 4, "ungrounded_words:['report']": 1, "span_crosses_clauses": 5, "ungrounded_words:['showed']": 1, "ungrounded_words:['added', 'economy']": 1, "ungrounded_words:['add']": 1, "ungrounded_words:['reached']": 1, "partial_clause": 11, "ungrounded_words:['update']": 1, "truncated ": 1, "ungrounded_words:['announced']": 1, "ungrounded_words:['pushed']": 1, "ungrounded_words:['closed']": 1, "ungrounded_words:['premiering']": 1, "ungrounded_words:['sets']": 1, "ungrounded_words:['secured']": 1, "ungrounded_words:['research']": 1, "ungrounded_words:['vaccine']": 1, "ungrounded_words:['commission', 'lancet', 'proposing', 'redefined']": 1, "ungrounded_words:['cuts', 'emission', 'targets', 'trips']": 1, "ungrounded_words:['predicts']": 1, "ungrounded_words:['grew', 'reaching']": 1, "ungrounded_words:['committee']": 1, "ungrounded_words:['argues', 'see']": 1, "ungrounded_words:['saw', 'vehicle']": 1}；修正尝试 276 次
-- 开销：请求数 602，tokens {"prompt_tokens": 534360, "completion_tokens": 37307, "total_tokens": 571667}，耗时 3457.74s，缓存命中 {"E-Extract": {"hits": 0, "misses": 284}, "E-Summary": {"hits": 288, "misses": 42}}
-- 按 freq：E-Extract: 1D→覆盖 43.8% (5/21窗); 1W→覆盖 57.7% (18/36窗) ｜ E-Summary: 1D→覆盖 49.2% (7/21窗); 1W→覆盖 63.4% (20/36窗)
-- 按 calendar_skipped：E-Extract: False→覆盖 52.8% (20/47窗); True→覆盖 51.2% (3/10窗) ｜ E-Summary: False→覆盖 61.7% (25/47窗); True→覆盖 41.8% (2/10窗)
+- 结果分布：{"E-Extract|compressed": 27, "E-Extract|fallback_d2": 30, "E-Summary|compressed": 27, "E-Summary|fallback_d2": 30}
+- 组装硬门：compressed 窗 54，通过 54（通过率 100.0%，要求 100%）
+- 整窗回退：{'E-Extract': 30, 'E-Summary': 30}；事件级失败：{"bad_spans": 7, "evidence_not_verbatim": 3, "over_budget": 10, "not_grounded": 4, "partial_clause": 13, "ungrounded_words:['report']": 1, "ungrounded_words:['showed']": 1, "ungrounded_words:['added', 'economy']": 1, "ungrounded_words:['add']": 1, "ungrounded_words:['reached']": 1, "ungrounded_words:['update']": 1, "truncated ": 1, "ungrounded_words:['china', 'faces']": 1, "ungrounded_words:['pushed']": 1, "ungrounded_words:['closed']": 1, "ungrounded_words:['premiering']": 1, "ungrounded_words:['delayed']": 1, "ungrounded_words:['lists']": 1, "ungrounded_words:['secured']": 1, "ungrounded_words:['study']": 1, "ungrounded_words:['vaccine']": 1, "ungrounded_words:['adult', 'pediatric', 'redefines']": 1, "ungrounded_words:['colorado']": 1, "ungrounded_words:['predicts']": 1, "ungrounded_words:['grew', 'reaching']": 1, "ungrounded_words:['committee']": 1, "ungrounded_words:['argues', 'see']": 1, "ungrounded_words:['saw', 'vehicle']": 1}；修正尝试 136 次
+- 开销：请求数 222，tokens {"prompt_tokens": 219160, "completion_tokens": 16665, "total_tokens": 235825}，耗时 493.75s，缓存命中 {"E-Extract": {"hits": 250, "misses": 53}, "E-Summary": {"hits": 300, "misses": 30}}
+- 按 freq：E-Extract: 1D→覆盖 47.4% (6/21窗); 1W→覆盖 64.5% (21/36窗) ｜ E-Summary: 1D→覆盖 49.2% (7/21窗); 1W→覆盖 63.4% (20/36窗)
+- 按 calendar_skipped：E-Extract: False→覆盖 59.7% (24/47窗); True→覆盖 51.2% (3/10窗) ｜ E-Summary: False→覆盖 61.7% (25/47窗); True→覆盖 41.8% (2/10窗)
 
 ## 4. 对照样例（每域 ≥1 个验证窗）与待人工审案例
 
@@ -109,54 +109,33 @@
 - `<6>` 原文(383ch)： A market update published on November 20, 2024, indicated that while the market was experiencing some excitement following the U.S. Presidential Election in early November 2024, this sentiment had not yet translated int
   - 输出：None
 
-### val · StrategicAndHighValueMaterials · StrategicAndHighValueMaterials__manganese_cny_mtu_96..（E=347, 10 事件, D2 raw=1756 tok）
+### val · StrategicAndHighValueMaterials · StrategicAndHighValueMaterials__silver_usd_t_oz_96_1..（E=340, 8 事件, D2 raw=971 tok）
 
 **D2 实际输入 Events 区**（解码，截断前 700 字符）：
 
-> events : prediction period : 2025 - 01 - 09 to 2025 - 01 - 24. < 1 > in late december 2024, reports emerged of a persistent oversupply in the u. s. steel market that had characterized most of the year and continued into the fourth quarter. this market condition was attributed to a combination of weak domestic demand and an increase in import volumes. major producers were affected, with both u. s. steel and nucor issuing guidance for the fourth quarter that anticipated significantly lower profits, and in the case of u. s. steel, a potential loss. on december 19, 2024, u. s. steel specifically guided for an adjusted loss per share, citing depressed steel prices, weak demand, and costs related 
+> events : prediction period : 2024 - 12 - 23 to 2025 - 01 - 09. < 1 > in 2024, silver prices experienced a significant surge, outperforming gold. the price broke through the $ 30 per ounce barrier in may for the first time in over a decade. by late october, the year - to - date gain was reported to be around 35 - 42 %. the year's peak price was $ 34. 72 per ounce, reached on october 22, a 12 - year high. this rally was driven by a combination of factors, including strong industrial demand, particularly from the solar energy and electric vehicle sectors, and significant investor interest in silver as a safe - haven asset amid geopolitical tensions. the market also faced a structural supply def
 
-**E-Extract**（compressed, 289 tok）：
-- `<1>` 原文(858ch)： In late December 2024, reports emerged of a persistent oversupply in the U.S. steel market that had characterized most of the year and continued into the fourth quarter. This market condition was attributed to a combina
-  - 输出：This market condition was attributed to a combination of weak domestic demand and an increase in import volumes
-- `<2>` 原文(644ch)： According to data from the American Iron and Steel Institute (AISI), U.S. steel mills shipped 6,987,092 net tons in October 2024, a 4.9% decrease from the 7,346,373 net tons shipped in October 2023. Shipments in October
-  - 输出：Shipments in October 2024 also represented a 1.4% decline from the previous month, September 2024
-- `<3>` 原文(753ch)： On October 24, 2024, the U.S. Department of the Treasury and the IRS issued final regulations for the Section 45X Advanced Manufacturing Production Credit, a provision of the 2022 Inflation Reduction Act. The rules are 
-  - 输出：The rules are designed to boost domestic production of clean energy property, including solar and wind components, inverters, battery components, and applicable critical minerals
-- `<4>` 原文(632ch)： In late October 2024, Australian mining company Element 25 announced an updated mineral resource estimate for its Butcherbird mine in Western Australia. The new estimate revealed a 142% increase in the measured and indi
-  - 输出：The new estimate revealed a 142% increase in the measured and indicated resource categories, totaling 130 million tonnes at 10.23% manganese.
-- `<5>` 原文(908ch)： The U.S. Department of Energy (DoE) selected Element 25 Ltd. (E25) for a US$166 million grant to support the construction of a high-purity manganese sulfate monohydrate (HPMSM) refinery in Louisiana. Announced on Septem
-  - 输出：The 21,000-square-meter facility will process manganese ore from E25's Butcherbird mine in Western Australia
-- `<6>` 原文(766ch)： Australian manganese producer Element 25 announced it has been selected to receive a US$166 million grant from the U.S. Department of Energy (DOE) for its project to construct a high-purity manganese sulphate monohydrat
-  - 输出：The manganese ore for the refinery will be sourced from Element 25's Butcherbird mine in Western Australia
-- `<7>` 原文(730ch)： Euro Manganese Inc. announced its financial results for the third fiscal quarter ending June 30, 2024. In the announcement, the company highlighted the successful commissioning of its high-purity manganese Demonstration
-  - 输出：Euro Manganese Inc. announced its financial results for the third fiscal quarter ending June 30, 2024.
-- `<8>` 原文(847ch)： In the second quarter of 2024, global manganese ore prices surged significantly due to major supply disruptions. The primary catalyst was the suspension of operations at South32's Groote Eylandt Mining Company (GEMCO) i
-  - 输出：The market situation intensified on April 21, 2024, when South32 announced the suspension could last until the first quarter of 2025.
-- `<9>` 原文(1029ch)： In a January 2024 forecast, analysts predicted that manganese ore prices would see a moderate rise to approximately $520 per tonne in 2024 before declining in the fourth quarter to around $495 per tonne. This Q4 price w
-  - 输出：This Q4 price was projected to be an 8% increase compared to the same period in 2023
-- `<10>` 原文(709ch)： The Henderson City Council voted 4-0 on November 21, 2023, to approve a development project at the site of the former Three Kids Mine, with Mayor Michelle Romero being absent from the meeting. This defunct open-pit mang
-  - 输出：The cleanup is anticipated to begin in 2024, with the first phase of the housing project expected to have a grand opening by early 2026.
-**E-Summary**（compressed, 242 tok）：
-- `<1>` 原文(858ch)： In late December 2024, reports emerged of a persistent oversupply in the U.S. steel market that had characterized most of the year and continued into the fourth quarter. This market condition was attributed to a combina
-  - 输出：In late December 2024, U.S. Steel guided for an adjusted loss per share.
-- `<2>` 原文(644ch)： According to data from the American Iron and Steel Institute (AISI), U.S. steel mills shipped 6,987,092 net tons in October 2024, a 4.9% decrease from the 7,346,373 net tons shipped in October 2023. Shipments in October
-  - 输出：U.S. steel mills shipped 6,987,092 net tons in October 2024, a 4.9% decrease.
-- `<3>` 原文(753ch)： On October 24, 2024, the U.S. Department of the Treasury and the IRS issued final regulations for the Section 45X Advanced Manufacturing Production Credit, a provision of the 2022 Inflation Reduction Act. The rules are 
-  - 输出：Treasury issued final Section 45X regulations on October 24, 2024.
-- `<4>` 原文(632ch)： In late October 2024, Australian mining company Element 25 announced an updated mineral resource estimate for its Butcherbird mine in Western Australia. The new estimate revealed a 142% increase in the measured and indi
-  - 输出：Element 25 announced a 142% resource increase to 130 million tonnes in late October 2024.
-- `<5>` 原文(908ch)： The U.S. Department of Energy (DoE) selected Element 25 Ltd. (E25) for a US$166 million grant to support the construction of a high-purity manganese sulfate monohydrate (HPMSM) refinery in Louisiana. Announced on Septem
-  - 输出：DoE selected Element 25 Ltd. for a US$166 million grant to support HPMSM refinery construction in Louisiana.
-- `<6>` 原文(766ch)： Australian manganese producer Element 25 announced it has been selected to receive a US$166 million grant from the U.S. Department of Energy (DOE) for its project to construct a high-purity manganese sulphate monohydrat
-  - 输出：Element 25 received a US$166 million DOE grant for a Louisiana manganese refinery.
-- `<7>` 原文(730ch)： Euro Manganese Inc. announced its financial results for the third fiscal quarter ending June 30, 2024. In the announcement, the company highlighted the successful commissioning of its high-purity manganese Demonstration
-  - 输出：Euro Manganese Inc. highlighted commissioning of its high-purity manganese Demonstration Plant in June 2024.
-- `<8>` 原文(847ch)： In the second quarter of 2024, global manganese ore prices surged significantly due to major supply disruptions. The primary catalyst was the suspension of operations at South32's Groote Eylandt Mining Company (GEMCO) i
-  - 输出：Global manganese ore prices surged in 2024.
-- `<9>` 原文(1029ch)： In a January 2024 forecast, analysts predicted that manganese ore prices would see a moderate rise to approximately $520 per tonne in 2024 before declining in the fourth quarter to around $495 per tonne. This Q4 price w
-  - 输出：Analysts predicted manganese ore prices would rise to $520 per tonne in 2024, declining to $495 in the fourth quarter.
-- `<10>` 原文(709ch)： The Henderson City Council voted 4-0 on November 21, 2023, to approve a development project at the site of the former Three Kids Mine, with Mayor Michelle Romero being absent from the meeting. This defunct open-pit mang
-  - 输出：Henderson City Council approved a development project for 3,000 homes in 2024.
+**E-Extract**（compressed, 248 tok）：
+- `<1>` 原文(695ch)： In 2024, silver prices experienced a significant surge, outperforming gold. The price broke through the $30 per ounce barrier in May for the first time in over a decade. By late October, the year-to-date gain was report
+  - 输出：The year's peak price was $34.72 per ounce, reached on October 22, a 12-year high.
+- `<2>` 原文(492ch)： A retrospective analysis of the third quarter of 2024 characterized the period as one of consolidation for silver prices. The precious metal experienced a significant retreat, with prices moving towards $26 per ounce. H
+  - 输出：However, a substantial rebound followed, pushing silver to over $32 by the end of September.
+- `<3>` 原文(778ch)： The U.S. Mint is set to release the Benjamin Harrison Presidential silver medal on February 10, 2025. This collector's item is part of the ongoing Presidential Silver Medal Series and is struck from one troy ounce of 99
+  - 输出：The U.S. Mint is set to release the Benjamin Harrison Presidential silver medal on February 10, 2025.
+- `<4>` 原文(485ch)： Driven by heightened geopolitical tensions in the Middle East, silver prices surged on October 22, 2024, as investors sought safe-haven assets. The price reached a 12-year high, with reports indicating it hit a year-to-
+  - 输出：Driven by heightened geopolitical tensions in the Middle East, silver prices surged on October 22, 2024, as investors sought safe-haven assets
+- `<5>` 原文(280ch)： On November 14, 2024, silver prices briefly fell below the $30 mark, reaching an intraday low of $29.75. This was the first instance of silver prices dropping below $30 since September 11, 2024. The dip was short-lived,
+  - 输出：On November 14, 2024, silver prices briefly fell below the $30 mark, reaching an intraday low of $29.75.
+- `<6>` 原文(446ch)： The United States Mint is scheduled to release the Proof 2025-W American Eagle 1-ounce.999 fine silver dollar on January 9, 2025. Concurrently, the limited-edition 2025 Congratulations Set, which includes this proof sil
+  - 输出：The United States Mint is scheduled to release the Proof 2025-W American Eagle 1-ounce.999 fine silver dollar on January 9, 2025.
+- `<7>` [fit-verbatim]  The U.S. Mint's product release schedule for 2025, which included this coin, was initially announced on December 5, 2024. 
+- `<8>` 原文(735ch)： An escalation in the conflict between Russia and Ukraine in mid-November 2024 contributed to a spike in silver prices, as investors sought safe-haven assets. On November 22, 2024, the price of silver reached as high as 
+  - 输出：On November 22, 2024, the price of silver reached as high as $31.34.
+**E-Summary**（fallback_d2, None tok）：
+- `<1>` 原文(695ch)： In 2024, silver prices experienced a significant surge, outperforming gold. The price broke through the $30 per ounce barrier in May for the first time in over a decade. By late October, the year-to-date gain was report
+  - 输出：In 2024, silver prices peaked at $34.72 per ounce on October 22, a 12-year high.
+- `<2>` 原文(492ch)： A retrospective analysis of the third quarter of 2024 characterized the period as one of consolidation for silver prices. The precious metal experienced a significant retreat, with prices moving towards $26 per ounce. H
+  - 输出：None
 
 ### val · arts · arts__art_exhibitions_96_12_4_10events..（E=303, 2 事件, D2 raw=333 tok）
 
@@ -312,50 +291,34 @@
 - `<7>` 原文(837ch)： On September 25, 2024, the ASPCA (The American Society for the Prevention of Cruelty to Animals®) announced a new grant initiative to provide $5 million in funding to support animal shelters across the United States. Th
   - 输出：On September 25, 2024, ASPCA announced a $5 million grant initiative to support US animal shelters.
 
-### val · public_health · public_health__infectious_disease_96_12_4_10events..（E=340, 9 事件, D2 raw=1497 tok）
+### val · public_health · public_health__climate_change_96_12_4_10events..（E=340, 5 事件, D2 raw=959 tok）
 
 **D2 实际输入 Events 区**（解码，截断前 700 字符）：
 
-> events : prediction period : 2025 - 01 - 19 to 2025 - 04 - 06. < 1 > on january 6, 2025, the louisiana department of health announced the first human fatality from h5n1 bird flu in the united states. the patient, who was over 65 years old with underlying health conditions, was infected following exposure to a non - commercial backyard poultry flock and wild birds. this was also the first case of a severe h5n1 infection in the u. s. that required critical care support. the centers for disease control and prevention ( cdc ) confirmed that no person - to - person transmission has been identified and that the risk to the general public remains low. < 2 > in early january 2025, health authorities
+> events : prediction period : 2025 - 01 - 19 to 2025 - 04 - 06. < 1 > the u. s. environmental protection agency ( epa ) announced its interim registration review decisions for the pesticides chlorothalonil, thiophanate - methyl, and carbendazim on january 8, 2025. these decisions are part of the epa's regular 15 - year review process to ensure that registered pesticides continue to meet the safety standards required by the federal insecticide, fungicide, and rodenticide act ( fifra ). the interim decisions for these widely used fungicides address identified risks to human health and the environment by implementing new mitigation measures. for chlorothalonil, which has been in use for nearly 6
 
-**E-Extract**（compressed, 279 tok）：
-- `<1>` 原文(576ch)： On January 6, 2025, the Louisiana Department of Health announced the first human fatality from H5N1 bird flu in the United States. The patient, who was over 65 years old with underlying health conditions, was infected f
-  - 输出：On January 6, 2025, the Louisiana Department of Health announced the first human fatality from H5N1 bird flu in the United States.
-- `<2>` 原文(977ch)： In early January 2025, health authorities confirmed a significant nationwide surge in norovirus cases in the United States that had begun in late 2024. Data from the U.S. Centers for Disease Control and Prevention (CDC)
-  - 输出：In early January 2025, health authorities confirmed a significant nationwide surge in norovirus cases in the United States that had begun in late 2024
-- `<3>` 原文(864ch)： In a December 20, 2024, update to its respiratory disease outlook, the U.S. Centers for Disease Control and Prevention (CDC) maintained its prediction for a season with peak hospitalizations similar to or lower than the
-  - 输出：As of December 13, 2024, overall respiratory virus activity was reported as moderate on a national level.
-- `<4>` 原文(711ch)： A Morbidity and Mortality Weekly Report (MMWR) published by the CDC on December 19, 2024, detailed findings from a school-based surveillance program in a large Missouri public school district. The surveillance, which ra
-  - 输出：The report indicated a spike in cases during the fall of 2024, with 76.2% of infected individuals missing at least one day of school or work.
-- `<5>` 原文(799ch)： A retrospective analysis of the 2024 public health landscape revealed a significant resurgence of pertussis (whooping cough) in the United States. According to a report citing Centers for Disease Control and Prevention 
-  - 输出：The 2024 case count also surpassed figures from the corresponding period in 2019, marking a return to pre-COVID-19 pandemic patterns
-- `<6>` 原文(529ch)： On December 9, 2024, the CDC issued an update on the spread of Candida auris, a multidrug-resistant fungus. The report notes that while the number of clinical cases has consistently increased since it was first identifi
-  - 输出：On December 9, 2024, the CDC issued an update on the spread of Candida auris, a multidrug-resistant fungus.
-- `<7>` 原文(691ch)： On November 25, 2024, the Texas Department of State Health Services announced the state's first locally acquired case of dengue fever for the year, identified in a resident of Cameron County. This development occurred d
-  - 输出：This development occurred during what officials termed a 'highly active year for dengue virus globally,' with Texas recording its highest total number of cases since 2002.
-- `<8>` 原文(1065ch)： Effective January 1, 2025, the Centers for Disease Control and Prevention (CDC) implemented significant changes to the National Notifiable Diseases Surveillance System (NNDSS), removing COVID-19 (Coronavirus disease 201
-  - 输出：The update for novel influenza A was implemented starting September 29, 2024
-- `<9>` 原文(475ch)： The U.S. Centers for Disease Control and Prevention (CDC) released a report in its Morbidity and Mortality Weekly Report (MMWR) on November 21, 2024, providing early insights into the uptake of seasonal respiratory viru
-  - 输出：The data analyzed in the report covers a period that began on September 1, 2024.
-**E-Summary**（fallback_d2, None tok）：
-- `<1>` 原文(576ch)： On January 6, 2025, the Louisiana Department of Health announced the first human fatality from H5N1 bird flu in the United States. The patient, who was over 65 years old with underlying health conditions, was infected f
-  - 输出：On January 6, 2025, Louisiana announced the first U.S. H5N1 human fatality; no person-to-person transmission identified.
-- `<2>` 原文(977ch)： In early January 2025, health authorities confirmed a significant nationwide surge in norovirus cases in the United States that had begun in late 2024. Data from the U.S. Centers for Disease Control and Prevention (CDC)
-  - 输出：There were 91 norovirus outbreaks during the first week of December 2024.
-- `<3>` 原文(864ch)： In a December 20, 2024, update to its respiratory disease outlook, the U.S. Centers for Disease Control and Prevention (CDC) maintained its prediction for a season with peak hospitalizations similar to or lower than the
-  - 输出：CDC maintained its December 20, 2024 prediction for peak hospitalizations similar to or lower than the previous year.
-- `<4>` 原文(711ch)： A Morbidity and Mortality Weekly Report (MMWR) published by the CDC on December 19, 2024, detailed findings from a school-based surveillance program in a large Missouri public school district. The surveillance, which ra
-  - 输出：CDC surveillance monitored Mycoplasma pneumoniae trends from August 18 to November 6, 2024.
-- `<5>` 原文(799ch)： A retrospective analysis of the 2024 public health landscape revealed a significant resurgence of pertussis (whooping cough) in the United States. According to a report citing Centers for Disease Control and Prevention 
-  - 输出：By November 30, 2024, over 28,000 pertussis cases were reported in the United States.
-- `<6>` 原文(529ch)： On December 9, 2024, the CDC issued an update on the spread of Candida auris, a multidrug-resistant fungus. The report notes that while the number of clinical cases has consistently increased since it was first identifi
-  - 输出：CDC update December 9, 2024: Candida auris cases increased since 2016, increase slowed since 2022.
-- `<7>` 原文(691ch)： On November 25, 2024, the Texas Department of State Health Services announced the state's first locally acquired case of dengue fever for the year, identified in a resident of Cameron County. This development occurred d
-  - 输出：Texas announced its first locally acquired dengue case in Cameron County on November 25, 2024.
-- `<8>` 原文(1065ch)： Effective January 1, 2025, the Centers for Disease Control and Prevention (CDC) implemented significant changes to the National Notifiable Diseases Surveillance System (NNDSS), removing COVID-19 (Coronavirus disease 201
-  - 输出：Effective January 1, 2025, CDC implemented changes removing COVID-19 from NNDSS.
-- `<9>` 原文(475ch)： The U.S. Centers for Disease Control and Prevention (CDC) released a report in its Morbidity and Mortality Weekly Report (MMWR) on November 21, 2024, providing early insights into the uptake of seasonal respiratory viru
-  - 输出：None
+**E-Extract**（compressed, 224 tok）：
+- `<1>` 原文(1111ch)： The U.S. Environmental Protection Agency (EPA) announced its interim registration review decisions for the pesticides chlorothalonil, thiophanate-methyl, and carbendazim on January 8, 2025. These decisions are part of t
+  - 输出：The U.S. Environmental Protection Agency (EPA) announced its interim registration review decisions for the pesticides chlorothalonil, thiophanate-methyl, and carbendazim on January 8, 2025.
+- `<2>` 原文(504ch)： An analysis by the SUN DAY Campaign, reviewing new data from the Federal Energy Regulatory Commission (FERC) and the U.S. Energy Information Administration (EIA), revealed that renewable energy sources accounted for alm
+  - 输出：The primary contributors were solar, which added 21,425 MW, and wind, which added 2,799 MW
+- `<3>` 原文(774ch)： In a '2024 in Review' report, Climate Central stated that the United States experienced 24 billion-dollar weather and climate disasters between January and November 2024. This preliminary total was second only to the re
+  - 输出：In a '2024 in Review' report, Climate Central stated that the United States experienced 24 billion-dollar weather and climate disasters between January and November 2024. ... The report also highlighted that human-caused climate change increased the intensity 
+- `<4>` 原文(1190ch)： The Bureau of Ocean Energy Management (BOEM) announced on December 3, 2024, its final approval of the Construction and Operations Plan (COP) for the Maryland Offshore Wind project, developed by US Wind, Inc. This marks 
+  - 输出：The approved plan encompasses the construction and operation of up to 114 wind turbines and up to four offshore substation platforms
+- `<5>` 原文(785ch)： On December 2, 2024, the National Oceanic and Atmospheric Administration (NOAA) announced the selection of 33 fellowship positions to support recipients of the Climate Resilience Regional Challenge grant. This competiti
+  - 输出：On December 2, 2024, the National Oceanic and Atmospheric Administration (NOAA) announced the selection of 33 fellowship positions to support recipients of the Climate Resilience Regional Challenge grant.
+**E-Summary**（compressed, 160 tok）：
+- `<1>` 原文(1111ch)： The U.S. Environmental Protection Agency (EPA) announced its interim registration review decisions for the pesticides chlorothalonil, thiophanate-methyl, and carbendazim on January 8, 2025. These decisions are part of t
+  - 输出：EPA announced interim registration review decisions for chlorothalonil, thiophanate-methyl, and carbendazim on January 8, 2025.
+- `<2>` 原文(504ch)： An analysis by the SUN DAY Campaign, reviewing new data from the Federal Energy Regulatory Commission (FERC) and the U.S. Energy Information Administration (EIA), revealed that renewable energy sources accounted for alm
+  - 输出：Renewable energy sources accounted for almost 90.5% of new U.S. electrical generating capacity added during the first ten months of 2024.
+- `<3>` 原文(774ch)： In a '2024 in Review' report, Climate Central stated that the United States experienced 24 billion-dollar weather and climate disasters between January and November 2024. This preliminary total was second only to the re
+  - 输出：The US experienced 24 billion-dollar weather disasters between January and November 2024.
+- `<4>` 原文(1190ch)： The Bureau of Ocean Energy Management (BOEM) announced on December 3, 2024, its final approval of the Construction and Operations Plan (COP) for the Maryland Offshore Wind project, developed by US Wind, Inc. This marks 
+  - 输出：BOEM approved the Maryland Offshore Wind COP on December 3, 2024, for up to 114 turbines.
+- `<5>` 原文(785ch)： On December 2, 2024, the National Oceanic and Atmospheric Administration (NOAA) announced the selection of 33 fellowship positions to support recipients of the Climate Resilience Regional Challenge grant. This competiti
+  - 输出：NOAA announced 33 fellowship positions on December 2, 2024, in a $575 million Climate Resilience Regional Challenge.
 
 ### val · public_policy · public_policy__healthcare_policy_96_12_4_10events..（E=354, 4 事件, D2 raw=816 tok）
 
@@ -452,7 +415,7 @@
 
 > events : prediction period : 2025 - 01 - 19 to 2025 - 04 - 06. < 1 > workers at 15 nonprofit legal aid agencies in new york city, represented by two united auto workers ( uaw ) locals and one service employees international union ( seiu ) local, have aligned their contracts to expire on june 30, 2025. this synchronized expiration date sets the stage for potential coordinated bargaining and a possible strike. < 2 > a protest was scheduled at new york's city hall at 4 p. m. on december 18, 2024, recognized as international migrants day, to oppose the scapegoating of migrants and mass deportations. the demonstration was a response to new york city mayor eric adams'collaboration with the incomin
 
-**E-Extract**（compressed, 274 tok）：
+**E-Extract**（compressed, 237 tok）：
 - `<1>` 原文(340ch)： Workers at 15 nonprofit legal aid agencies in New York City, represented by two United Auto Workers (UAW) locals and one Service Employees International Union (SEIU) local, have aligned their contracts to expire on June
   - 输出：Workers at 15 nonprofit legal aid agencies in New York City, represented by two United Auto Workers (UAW) locals and one Service Employees International Union (SEIU) local, have aligned their contracts to expire on June 30, 2025
 - `<2>` 原文(767ch)： A protest was scheduled at New York's City Hall at 4 p.m. on December 18, 2024, recognized as International Migrants Day, to oppose the scapegoating of migrants and mass deportations. The demonstration was a response to
@@ -460,12 +423,12 @@
 - `<3>` 原文(828ch)： Dozens of local teacher unions across California, representing tens of thousands of educators, have aligned their contract expiration dates to June 2025 to create leverage for coordinated bargaining and potential statew
   - 输出：The primary goals of this united front are to secure better wages, improved class sizes, increased student resources, and greater school staffing stability
 - `<4>` 原文(543ch)： On December 12, 2024, activists from the climate group Climate Defiance blockaded entrances to the Department of Energy's headquarters in Washington D.C. The protest, which involved about 100 activists, was organized to
-  - 输出：The protest, which involved about 100 activists, was organized to demand that the Biden administration reject pending permits for new liquefied natural gas (LNG) export terminals.
+  - 输出：During the nonviolent blockade, Homeland Security Officers arrested 13 protesters
 - `<5>` [fit-verbatim]  Contrary to the provided claim, which is based on a hypothetical premise, 
 - `<6>` 原文(771ch)： Following Donald Trump's victory in the 2024 presidential election, protests emerged across the United States, beginning the day after the results were announced. On November 6, 2024, demonstrations were reported in cit
   - 输出：On November 6, 2024, demonstrations were reported in cities including Chicago, New York City, and Philadelphia.
 - `<7>` 原文(981ch)： In the month leading up to the U.S. presidential election, thousands of activists participated in demonstrations across several American cities, including Washington D.C., New York, and Los Angeles, demanding an end to 
-  - 输出：A specific demonstration occurred on October 27, 2024, just over a week before the election, where protesters targeted a speech by Vice President Kamala Harris in Washington D.C.
+  - 输出：The protests involved a wide range of groups, including student organizations, labor unions, and faith-based activists
 - `<8>` 原文(606ch)： A report from the Crowd Counting Consortium, a joint project of Harvard Kennedy School and the University of Connecticut, found that between October 7, 2023, and June 7, 2024, there were nearly 12,400 pro-Palestine prot
   - 输出：The data, gathered from multiple public sources, also recorded information on crowd sizes, arrests, and police presence at these events
 **E-Summary**（fallback_d2, None tok）：
@@ -523,6 +486,78 @@
 - `<7>` 原文(362ch)： On December 11, 2024, the Department of Transportation published its Air Travel Consumer Report covering the month of September 2024. The report highlighted a strong on-time performance for reporting marketing carriers,
   - 输出：September 2024 on-time arrival rate was 84.0% and cancellation rate 0.6%.
 - `<8>` [fit-verbatim]  The initial announcement of this major route expansion, which included Atlanta and nine other new destinations for 2025, was reported as early as November and December 2024.
+
+### debug · Currency · Currency__usdtoaud_exchangerate_96_12_12_10events..（E=361, 10 事件, D2 raw=1354 tok）
+
+**D2 实际输入 Events 区**（解码，截断前 700 字符）：
+
+> events : prediction period : 2023 - 10 - 10 to 2023 - 10 - 25. < 1 > on september 29, 2023, the u. s. bureau of economic analysis ( bea ) released data for august 2023, revealing that the personal consumption expenditures ( pce ) price index, the federal reserve's preferred inflation gauge, increased by 0. 4 percent for the month. the annual pce inflation rate consequently rose to 3. 5 percent. the core pce price index, which excludes volatile food and energy prices, saw its year - over - year increase decelerate to 3. 9 percent. < 2 > as the september 30, 2023, deadline for budget legislation approached, concerns over a potential u. s. government shutdown intensified due to disagreements wi
+
+**E-Extract**（compressed, 242 tok）：
+- `<1>` 原文(456ch)： On September 29, 2023, the U.S. Bureau of Economic Analysis (BEA) released data for August 2023, revealing that the Personal Consumption Expenditures (PCE) price index, the Federal Reserve's preferred inflation gauge, i
+  - 输出：The annual PCE inflation rate consequently rose to 3.5 percent.
+- `<2>` 原文(596ch)： As the September 30, 2023, deadline for budget legislation approached, concerns over a potential U.S. government shutdown intensified due to disagreements within Congress. The uncertainty was particularly fueled by infi
+  - 输出：The uncertainty was particularly fueled by infighting among Republicans in the House of Representatives, which threatened to scuttle any stopgap measures
+- `<3>` 原文(529ch)： The U.S. Bureau of Labor Statistics announced on September 14, 2023, that the Producer Price Index (PPI) for final demand, covering the month of August 2023, saw a seasonally adjusted increase of 0.7%. This was the most
+  - 输出：This was the most significant monthly advance since the 0.9% rise in June 2022
+- `<4>` 原文(747ch)： The Reserve Bank of Australia (RBA) board decided to maintain the cash rate target at 4.10% during its meeting on September 5, 2023, marking the third consecutive month the rate has been held steady. This decision was i
+  - 输出：The central forecast anticipates inflation returning to the 2-3% target range in late 2025
+- `<5>` 原文(673ch)： On September 1, 2023, the U.S. Bureau of Labor Statistics released the Non-Farm Payrolls report for August 2023. The report indicated that total nonfarm payroll employment increased by 187,000 jobs, which was less than 
+  - 输出：The unemployment rate rose by 0.3 percentage point to 3.8 percent
+- `<6>` 原文(398ch)： On August 30, 2023, the Bureau of Economic Analysis (BEA) released its "second" estimate for the second quarter of 2023 Gross Domestic Product (GDP). The report indicated that real GDP increased at an annual rate of 2.1
+  - 输出：The report indicated that real GDP increased at an annual rate of 2.1%.
+- `<7>` 原文(556ch)： During his speech at the annual Jackson Hole Economic Symposium on August 25, 2023, Federal Reserve Chair Jerome Powell stated that the central bank is "prepared to raise rates further if appropriate" to achieve its 2% 
+  - 输出：Powell firmly reiterated, "Two percent is and will remain our inflation target."
+- `<8>` 原文(567ch)： At the annual Jackson Hole economic symposium, Federal Reserve Chair Jerome Powell stated that the U.S. central bank is prepared to raise interest rates further if appropriate. He emphasized the intention to maintain a 
+  - 输出：He emphasized the intention to maintain a restrictive policy stance until there is confidence that inflation is sustainably moving towards the 2 percent target.
+- `<9>` 原文(420ch)： The U.S. Census Bureau announced that advance estimates for U.S. retail and food services sales in July 2023 reached $696.4 billion, marking a 0.7% increase from the previous month. This growth exceeded market expectati
+  - 输出：The figures are adjusted for seasonal variations and holidays, but not for price changes
+- `<10>` 原文(849ch)： The U.S. Bureau of Labor Statistics reported that the Consumer Price Index for All Urban Consumers (CPI-U) increased by 0.2 percent in July 2023 on a seasonally adjusted basis, which was the same rate of increase as in 
+  - 输出：The food index also saw a modest increase of 0.2 percent, while the energy index rose by 0.1 percent
+**E-Summary**（fallback_d2, None tok）：
+- `<1>` 原文(456ch)： On September 29, 2023, the U.S. Bureau of Economic Analysis (BEA) released data for August 2023, revealing that the Personal Consumption Expenditures (PCE) price index, the Federal Reserve's preferred inflation gauge, i
+  - 输出：August 2023 PCE price index rose 0.4 percent, annual rate 3.5 percent.
+- `<2>` 原文(596ch)： As the September 30, 2023, deadline for budget legislation approached, concerns over a potential U.S. government shutdown intensified due to disagreements within Congress. The uncertainty was particularly fueled by infi
+  - 输出：Moody's warned on September 25, 2023, that a shutdown would be credit negative for the United States.
+- `<3>` 原文(529ch)： The U.S. Bureau of Labor Statistics announced on September 14, 2023, that the Producer Price Index (PPI) for final demand, covering the month of August 2023, saw a seasonally adjusted increase of 0.7%. This was the most
+  - 输出：The Producer Price Index for final demand saw a seasonally adjusted increase of 0.7%.
+- `<4>` 原文(747ch)： The Reserve Bank of Australia (RBA) board decided to maintain the cash rate target at 4.10% during its meeting on September 5, 2023, marking the third consecutive month the rate has been held steady. This decision was i
+  - 输出：RBA maintained the cash rate target at 4.10% on September 5, 2023.
+- `<5>` 原文(673ch)： On September 1, 2023, the U.S. Bureau of Labor Statistics released the Non-Farm Payrolls report for August 2023. The report indicated that total nonfarm payroll employment increased by 187,000 jobs, which was less than 
+  - 输出：August 2023 nonfarm payroll employment increased by 187,000 jobs, while the unemployment rate rose to 3.8 percent.
+- `<6>` 原文(398ch)： On August 30, 2023, the Bureau of Economic Analysis (BEA) released its "second" estimate for the second quarter of 2023 Gross Domestic Product (GDP). The report indicated that real GDP increased at an annual rate of 2.1
+  - 输出：None
+
+### debug · LivestockAndFoodProducts · LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10..（E=366, 7 事件, D2 raw=757 tok）
+
+**D2 实际输入 Events 区**（解码，截断前 700 字符）：
+
+> events : prediction period : 2024 - 04 - 03 to 2024 - 04 - 18. < 1 > in its dairy market news report for the week ending march 15, 2024, the usda noted that cheese inventories were ample. this was supported by continued growth in farm - level milk production, with the east region being particularly strong. the report, published on march 18, 2024, detailed that at the close of the week on the chicago mercantile exchange ( cme ), cheese barrels were priced at $ 1. 4425 and 40 # blocks were at $ 1. 4700. < 2 > a market update issued on march 18, 2024, indicated that despite a tightening milk supply in the u. s. and internationally, dairy prices were being suppressed by poor demand. specifically
+
+**E-Extract**（compressed, 292 tok）：
+- `<1>` 原文(430ch)： In its Dairy Market News report for the week ending March 15, 2024, the USDA noted that cheese inventories were ample. This was supported by continued growth in farm-level milk production, with the East region being par
+  - 输出：In its Dairy Market News report for the week ending March 15, 2024, the USDA noted that cheese inventories were ample
+- `<2>` 原文(324ch)： A market update issued on March 18, 2024, indicated that despite a tightening milk supply in the U.S. and internationally, dairy prices were being suppressed by poor demand. Specifically, the report highlighted that lac
+  - 输出：Specifically, the report highlighted that lackluster demand for cheese and nonfat dry milk (NDM) was preventing prices from increasing at that time.
+- `<3>` 原文(731ch)： In early 2024, the U.S. Food and Drug Administration (FDA) announced its plan to issue a draft guidance titled 'Labeling of Plant-Based Alternatives to Animal-Derived Foods' within the year. This follows a 2023 draft gu
+  - 输出：In early 2024, the U.S. Food and Drug Administration (FDA) announced its plan to issue a draft guidance titled 'Labeling of Plant-Based Alternatives to Animal-Derived Foods' within the year.
+- `<4>` 原文(284ch)： The U.S. Department of Agriculture (USDA) released its December 2023 Milk Production and Cold Storage reports; which showed a 0.3% decrease in milk production compared to the previous year.; The national dairy herd also
+  - 输出：The U.S. Department of Agriculture (USDA) released its December 2023 Milk Production and Cold Storage reports; which showed a 0.3% decrease in milk production compared to the previous year.
+- `<5>` 原文(618ch)： On December 15, 2023, HighGround Dairy analysts published a forecast predicting the average CME Block cheese price would be $1.6850 per pound for the first quarter of 2024. This prediction was made as the U.S. cheese ma
+  - 输出：On December 15, 2023, HighGround Dairy analysts published a forecast predicting the average CME Block cheese price would be $1.6850 per pound for the first quarter of 2024
+- `<6>` 原文(352ch)： The USDA's Foreign Agricultural Service announced a regulatory adjustment for the 2023 quota year; transferring certain dairy import quota amounts from the historical license category to the nonhistorical (lottery) lice
+  - 输出：The USDA's Foreign Agricultural Service announced a regulatory adjustment for the 2023 quota year; transferring certain dairy import quota amounts from the historical license category to the nonhistorical (lottery) license category
+- `<7>` 原文(654ch)： On June 7, 2023, the National Milk Producers Federation (NMPF) board of directors unanimously approved a comprehensive suite of recommendations for the 2023 Farm Bill. The proposals aimed to enhance risk management tool
+  - 输出：On June 7, 2023, the National Milk Producers Federation (NMPF) board of directors unanimously approved a comprehensive suite of recommendations for the 2023 Farm Bill.
+**E-Summary**（fallback_d2, None tok）：
+- `<1>` 原文(430ch)： In its Dairy Market News report for the week ending March 15, 2024, the USDA noted that cheese inventories were ample. This was supported by continued growth in farm-level milk production, with the East region being par
+  - 输出：USDA noted ample cheese inventories week ending March 15, 2024; barrels $1.4425, blocks $1.4700.
+- `<2>` 原文(324ch)： A market update issued on March 18, 2024, indicated that despite a tightening milk supply in the U.S. and internationally, dairy prices were being suppressed by poor demand. Specifically, the report highlighted that lac
+  - 输出：On March 18, 2024, dairy prices were suppressed by poor demand for cheese and nonfat dry milk despite tightening supply.
+- `<3>` 原文(731ch)： In early 2024, the U.S. Food and Drug Administration (FDA) announced its plan to issue a draft guidance titled 'Labeling of Plant-Based Alternatives to Animal-Derived Foods' within the year. This follows a 2023 draft gu
+  - 输出：In early 2024, the FDA announced its plan to issue draft guidance on labeling plant-based alternatives within the year.
+- `<4>` 原文(284ch)： The U.S. Department of Agriculture (USDA) released its December 2023 Milk Production and Cold Storage reports; which showed a 0.3% decrease in milk production compared to the previous year.; The national dairy herd also
+  - 输出：None
 
 ### debug · RawMaterialsAndConstruction · RawMaterialsAndConstruction__polyethylene_cny_t_96_1..（E=348, 6 事件, D2 raw=1048 tok）
 
@@ -803,47 +838,6 @@
 - `<8>` 原文(1076ch)： On January 26, 2024, the Biden administration announced a temporary pause on pending approvals for new liquefied natural gas (LNG) export projects to countries without a free trade agreement with the U.S. This decision,
   - 输出：On January 26, 2024, the Biden administration announced a temporary pause on new LNG export approvals.
 
-### debug · science · science__nobel_prize_96_12_4_10events..（E=341, 10 事件, D2 raw=1564 tok）
-
-**D2 实际输入 Events 区**（解码，截断前 700 字符）：
-
-> events : prediction period : 2024 - 06 - 09 to 2024 - 08 - 25. < 1 > daniel kahneman, an israeli - american psychologist and nobel laureate, passed away on march 27, 2024, at the age of 90. his death was confirmed by his stepdaughter, deborah treisman. kahneman, a professor of psychology and public affairs emeritus at princeton university, was awarded the 2002 nobel memorial prize in economic sciences for his influential work on the psychology of judgment and decision - making, which laid the foundation for behavioral economics. his research, often conducted with his late collaborator amos tversky, challenged the traditional economic assumption of rational human behavior by demonstrating the
-
-**E-Extract**（compressed, 243 tok）：
-- `<1>` 原文(981ch)： Daniel Kahneman, an Israeli-American psychologist and Nobel laureate, passed away on March 27, 2024, at the age of 90. His death was confirmed by his stepdaughter, Deborah Treisman. Kahneman, a professor of psychology a
-  - 输出：Daniel Kahneman, an Israeli-American psychologist and Nobel laureate, passed away on March 27, 2024, at the age of 90.
-- `<2>` [fit-verbatim]  The 60th annual Nobel Conference, the only event in the United States authorized to use the Nobel name by the Nobel Foundation, 
-- `<3>` 原文(718ch)： Claudia Goldin of Harvard University was awarded the Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2023 for her extensive research that has advanced the understanding of women's outcomes in the 
-  - 输出：Goldin is the third woman to receive the economics prize.
-- `<4>` 原文(531ch)： The U.S. National Science Foundation (NSF) released a statement on October 4, 2023, to congratulate Moungi G. Bawendi, Louis E. Brus, and Alexei I. Ekimov on winning the 2023 Nobel Prize in Chemistry for their work on q
-  - 输出：Brus also received multiple NSF awards throughout his career
-- `<5>` 原文(638ch)： The 2023 Nobel Prize in Chemistry was awarded to Moungi G. Bawendi of the Massachusetts Institute of Technology (MIT), Louis E. Brus of Columbia University, and Alexei I. Ekimov of Nanocrystals Technology Inc. for their
-  - 输出：The announcement of the prize was made on October 4, 2023, and the official award ceremony took place on December 10, 2023.
-- `<6>` 原文(768ch)： Alexei I. Ekimov, a Russian-born physicist affiliated with Nanocrystals Technology Inc. in New York, USA since 1999, was a co-recipient of the 2023 Nobel Prize in Chemistry. He shared the prize with Moungi G. Bawendi an
-  - 输出：This discovery of semiconductor nanocrystals, now known as quantum dots, was a pivotal moment in nanotechnology
-- `<7>` 原文(925ch)： The Massachusetts Institute of Technology (MIT) held a virtual press conference on October 4, 2023, to celebrate Professor Moungi G. Bawendi winning the 2023 Nobel Prize in Chemistry. Bawendi, the Lester Wolfe Professor
-  - 输出：During the press conference, MIT President Sally Kornbluth described the achievement as a 'banner day' for the institute
-- `<8>` 原文(577ch)： On October 4, 2023, the same day the award was announced, Columbia University's Chemistry Department hosted a reception to celebrate Professor Emeritus Louis E. Brus, who was named a co-recipient of the 2023 Nobel Prize
-  - 输出：Subsequently, Brus delivered his official Nobel Prize lecture on December 8, 2023
-- `<9>` 原文(710ch)： On October 3, 2023, the Royal Swedish Academy of Sciences announced that Pierre Agostini, a professor emeritus of physics at The Ohio State University, was a co-recipient of the 2023 Nobel Prize in Physics. He shares th
-  - 输出：The formal award ceremony took place in Stockholm on December 10, 2023
-- `<10>` 原文(658ch)： The official award ceremony for the 2023 Nobel Prizes in Physics, Chemistry, Physiology or Medicine, Literature, and the Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel occurred at the Stockholm C
-  - 输出：The laureates for all prizes were initially announced in October 2023.
-**E-Summary**（fallback_d2, None tok）：
-- `<1>` 原文(981ch)： Daniel Kahneman, an Israeli-American psychologist and Nobel laureate, passed away on March 27, 2024, at the age of 90. His death was confirmed by his stepdaughter, Deborah Treisman. Kahneman, a professor of psychology a
-  - 输出：Nobel laureate Daniel Kahneman passed away on March 27, 2024, at age 90.
-- `<2>` [fit-verbatim]  The 60th annual Nobel Conference, the only event in the United States authorized to use the Nobel name by the Nobel Foundation, 
-- `<3>` 原文(718ch)： Claudia Goldin of Harvard University was awarded the Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2023 for her extensive research that has advanced the understanding of women's outcomes in the 
-  - 输出：Harvard's Claudia Goldin was awarded the 2023 Nobel Prize in Economics.
-- `<4>` 原文(531ch)： The U.S. National Science Foundation (NSF) released a statement on October 4, 2023, to congratulate Moungi G. Bawendi, Louis E. Brus, and Alexei I. Ekimov on winning the 2023 Nobel Prize in Chemistry for their work on q
-  - 输出：NSF congratulated Bawendi, Brus, and Ekimov on winning the 2023 Nobel Prize in Chemistry for quantum dots.
-- `<5>` 原文(638ch)： The 2023 Nobel Prize in Chemistry was awarded to Moungi G. Bawendi of the Massachusetts Institute of Technology (MIT), Louis E. Brus of Columbia University, and Alexei I. Ekimov of Nanocrystals Technology Inc. for their
-  - 输出：The 2023 Nobel Prize in Chemistry was awarded on October 4, 2023.
-- `<6>` 原文(768ch)： Alexei I. Ekimov, a Russian-born physicist affiliated with Nanocrystals Technology Inc. in New York, USA since 1999, was a co-recipient of the 2023 Nobel Prize in Chemistry. He shared the prize with Moungi G. Bawendi an
-  - 输出：Alexei I. Ekimov was a co-recipient of the 2023 Nobel Prize in Chemistry.
-- `<7>` 原文(925ch)： The Massachusetts Institute of Technology (MIT) held a virtual press conference on October 4, 2023, to celebrate Professor Moungi G. Bawendi winning the 2023 Nobel Prize in Chemistry. Bawendi, the Lester Wolfe Professor
-  - 输出：None
-
 ### debug · shopping · shopping__christmas_gifts_96_12_4_10events..（E=354, 9 事件, D2 raw=1503 tok）
 
 **D2 实际输入 Events 区**（解码，截断前 700 字符）：
@@ -889,6 +883,45 @@
 - `<9>` 原文(745ch)： A report from automation company Celigo, titled the “2023 Holiday Shopping Trends Report,” indicates a shift in consumer behavior for the holiday season. The survey of over 1,000 U.S. consumers revealed that 75% plan to
   - 输出：Celigo report: 75% plan to conduct most holiday shopping online.
 
+### debug · society · society__data_privacy_96_12_4_10events..（E=356, 8 事件, D2 raw=1469 tok）
+
+**D2 实际输入 Events 区**（解码，截断前 700 字符）：
+
+> events : prediction period : 2024 - 07 - 07 to 2024 - 09 - 22. < 1 > infosys mccamish systems ( ims ), a u. s. subsidiary of the indian it company infosys that provides services to the insurance and financial industries, was the target of a significant ransomware attack affecting 6, 078, 263 individuals. a forensic investigation determined that an unauthorized actor had access to ims systems between october 29, 2023, and november 2, 2023. the lockbit ransomware group claimed responsibility for the attack on november 4, 2023, stating it had exfiltrated 50 gb of data and encrypted over 2, 000 computers. the compromised data was extensive and varied by individual, but included names, social sec
+
+**E-Extract**（compressed, 303 tok）：
+- `<1>` 原文(1143ch)： Infosys McCamish Systems (IMS), a U.S. subsidiary of the Indian IT company Infosys that provides services to the insurance and financial industries, was the target of a significant ransomware attack affecting 6,078,263 
+  - 输出：Infosys McCamish Systems (IMS), a U.S. subsidiary of the Indian IT company Infosys that provides services to the insurance and financial industries, was the target of a significant ransomware attack affecting 6,078,263 individuals.
+- `<2>` [fit-verbatim]  The act was signed into law by Governor Kathy Hochul on June 20, 2024. 
+- `<3>` 原文(955ch)： A federal court in Minnesota granted final approval on June 17, 2024, to a $2.9 million class-action settlement with Star Tribune Media Co. LLC. The lawsuit, brought by plaintiff Kyle Feldman, alleged that the news webs
+  - 输出：The case, titled Kyle Feldman, et al. v. Star Tribune Media Company LLC, was filed in the U.S. District Court for the District of Minnesota
+- `<4>` 原文(526ch)： Panera Bread, a U.S. chain of bakery-cafe fast casual restaurants, began notifying employees in June 2024 of a data breach resulting from a ransomware attack. The company discovered the security incident on March 23, 20
+  - 输出：An investigation concluded in mid-May 2024 confirmed that the attackers stole sensitive personal information of current and former employees, specifically including their names and Social Security Numbers.
+- `<5>` 原文(1046ch)： On June 13, 2024, California Attorney General Rob Bonta announced a $6.75 million settlement with software company Blackbaud Inc. over violations of state consumer protection and privacy laws. The settlement, which is s
+  - 输出：The settlement, which is subject to court approval, resolves California's investigation into a 2020 data breach where Blackbaud failed to implement adequate data security
+- `<6>` 原文(1204ch)： In late May 2024, the notorious hacker group ShinyHunters claimed it had breached Ticketmaster and was offering a 1.3TB database containing the personal information of 560 million users for sale. The group advertised th
+  - 输出：Ticketmaster's parent company, Live Nation, officially confirmed the incident in a U.S. Securities and Exchange Commission (SEC) filing on May 31, 2024
+- `<7>` 原文(1169ch)： Dell Technologies confirmed a significant data breach in May 2024, impacting approximately 49 million customers. A threat actor, identified as Menelik, claimed responsibility after putting the stolen data up for sale on
+  - 输出：Dell Technologies confirmed a significant data breach in May 2024, impacting approximately 49 million customers.
+- `<8>` 原文(681ch)： On May 1, 2024, the Federal Trade Commission (FTC) finalized a settlement with data broker InMarket Media, prohibiting it from selling, licensing, or otherwise sharing precise location data. This action resolves allegat
+  - 输出：On May 1, 2024, the Federal Trade Commission (FTC) finalized a settlement with data broker InMarket Media, prohibiting it from selling, licensing, or otherwise sharing precise location data.
+**E-Summary**（compressed, 229 tok）：
+- `<1>` 原文(1143ch)： Infosys McCamish Systems (IMS), a U.S. subsidiary of the Indian IT company Infosys that provides services to the insurance and financial industries, was the target of a significant ransomware attack affecting 6,078,263 
+  - 输出：LockBit claimed responsibility for an October 29, 2023 ransomware attack on Infosys McCamish Systems affecting 6,078,263 individuals.
+- `<2>` [fit-verbatim]  The act was signed into law by Governor Kathy Hochul on June 20, 2024. 
+- `<3>` 原文(955ch)： A federal court in Minnesota granted final approval on June 17, 2024, to a $2.9 million class-action settlement with Star Tribune Media Co. LLC. The lawsuit, brought by plaintiff Kyle Feldman, alleged that the news webs
+  - 输出：A federal court granted final approval to a $2.9 million class-action settlement with Star Tribune Media Co. LLC on June 17, 2024.
+- `<4>` 原文(526ch)： Panera Bread, a U.S. chain of bakery-cafe fast casual restaurants, began notifying employees in June 2024 of a data breach resulting from a ransomware attack. The company discovered the security incident on March 23, 20
+  - 输出：Panera Bread began notifying employees in June 2024 of a March 23, 2024 ransomware breach.
+- `<5>` 原文(1046ch)： On June 13, 2024, California Attorney General Rob Bonta announced a $6.75 million settlement with software company Blackbaud Inc. over violations of state consumer protection and privacy laws. The settlement, which is s
+  - 输出：California announced a $6.75 million settlement with Blackbaud over a 2020 data breach.
+- `<6>` 原文(1204ch)： In late May 2024, the notorious hacker group ShinyHunters claimed it had breached Ticketmaster and was offering a 1.3TB database containing the personal information of 560 million users for sale. The group advertised th
+  - 输出：Live Nation confirmed ShinyHunters breached Ticketmaster, offering 560 million users' personal information for $500,000 in May 2024.
+- `<7>` 原文(1169ch)： Dell Technologies confirmed a significant data breach in May 2024, impacting approximately 49 million customers. A threat actor, identified as Menelik, claimed responsibility after putting the stolen data up for sale on
+  - 输出：Dell confirmed a May 2024 breach impacting 49 million customers.
+- `<8>` 原文(681ch)： On May 1, 2024, the Federal Trade Commission (FTC) finalized a settlement with data broker InMarket Media, prohibiting it from selling, licensing, or otherwise sharing precise location data. This action resolves allegat
+  - 输出：On May 1, 2024, the FTC finalized a settlement prohibiting data broker InMarket Media from sharing precise location data.
+
 ### debug · traffic · traffic__electric_vehicle_96_12_4_10events..（E=341, 8 事件, D2 raw=1432 tok）
 
 **D2 实际输入 Events 区**（解码，截断前 700 字符）：
@@ -920,19 +953,19 @@
 
 ## 5. LLM 判别筛查（已采用片段 vs 原文，仅筛查、不进接受门）
 
-- debug：判定 144 条已采用片段——supported 78 / omission_only 61 / distortion 5；判定错误 0（不参与统计）。
-  - E-Extract：supported 52 / omission_only 29 / distortion 0（81 条）
+- debug：判定 159 条已采用片段——supported 87 / omission_only 67 / distortion 5；判定错误 0（不参与统计）。
+  - E-Extract：supported 61 / omission_only 35 / distortion 0（96 条）
   - E-Summary：supported 26 / omission_only 32 / distortion 5（63 条）
   - **distortion** [E-Summary] RawMaterialsAndConstruction RawMaterialsAndConstruction__polyethylene_cn.. 事件 5：The summary attributes the $1.1 billion decline to 'China HDPE sales value' generally, whereas the event text specifies this decline applied only to the 'top eight global exporters,' making the summary an overgeneralization.
   - **distortion** [E-Summary] pets pets__invasive_species_96_12_4_10events.. 事件 7：The summary incorrectly attributes the detection date of September 2023 to EGLE's confirmation, whereas the event text states EGLE confirmed the detection on October 2, 2023.
   - **distortion** [E-Summary] shopping shopping__christmas_gifts_96_12_4_10events.. 事件 8：The event text states that the program began accepting letters on September 18, 2023, not that the program itself was launched on that date.
   - **distortion** [E-Summary] society society__data_privacy_96_12_4_10events.. 事件 1：The summary incorrectly attributes the start date of the unauthorized access (October 29, 2023) as the date of the attack claimed by LockBit, whereas the event text states the ransomware group claimed responsibility on November 4, 2023.
   - **distortion** [E-Summary] society society__data_privacy_96_12_4_10events.. 事件 6：The summary asserts that Live Nation confirmed ShinyHunters breached Ticketmaster, whereas the event text states Live Nation only confirmed detecting unauthorized activity and that a threat actor offered data for sale, noting experts expressed skepticism about the hackers' specific claims.
+  - omission_only 例 [E-Extract]：Currency Currency__usdtoaud_exchangerate_96_12_12_10e.. 事件 5：The summary accurately states a specific fact from the event text but omits other details such as job growth figures and sector information.
+  - omission_only 例 [E-Extract]：Currency Currency__usdtoaud_exchangerate_96_12_12_10e.. 事件 9：The summary accurately repeats a specific detail from the event text regarding data adjustments, but omits all other information about sales figures and market expectations.
   - omission_only 例 [E-Summary]：EnergyAndFuels EnergyAndFuels__gasoline_usd_gal_96_12_12_10.. 事件 5：The summary accurately states the price increase and timeframe but omits details about demand, oil prices, and hurricane forecasts.
-  - omission_only 例 [E-Summary]：EnergyAndFuels EnergyAndFuels__gasoline_usd_gal_96_12_12_10.. 事件 7：The summary correctly states the date, source, and price but omits the detail that the price had risen by three cents over the preceding week.
-  - omission_only 例 [E-Summary]：EnergyAndFuels EnergyAndFuels__gasoline_usd_gal_96_12_12_10.. 事件 9：The summary correctly states the date, price, and that it fell compared to a year prior, but omits specific details like the magnitude of the change and regional variations.
-- val：判定 363 条已采用片段——supported 223 / omission_only 131 / distortion 8；判定错误 1（不参与统计）。
-  - E-Extract：supported 115 / omission_only 44 / distortion 0（160 条）
+- val：判定 393 条已采用片段——supported 244 / omission_only 141 / distortion 8；判定错误 0（不参与统计）。
+  - E-Extract：supported 136 / omission_only 54 / distortion 0（190 条）
   - E-Summary：supported 108 / omission_only 87 / distortion 8（203 条）
   - **distortion** [E-Summary] LivestockAndFoodProducts LivestockAndFoodProducts__soybeans_usd_bu_96.. 事件 10：The event text states that one report indicated a drop of 15 ¾¢, whereas the summary asserts this as a definitive fact without the attribution qualifier.
   - **distortion** [E-Summary] StrategicAndHighValueMaterials StrategicAndHighValueMaterials__manganese_cn.. 事件 10：The summary asserts the project occurred in 2024, whereas the event text states the approval happened in 2023 and the cleanup is only anticipated to begin in 2024.
@@ -958,8 +991,8 @@
 ### 四问回答
 
 **（1）同预算下谁让更多事件内容进入输入？**
-- debug：完整事件进入率（D2 语义参照）D2 24.0% / E-Extract 64.1% （10/19 窗成功）/ E-Summary 55.1%（8/19 窗成功）；事件进入率 D2 35.3% / E-Extract 69.5% / E-Summary 61.7%；**词项匹配率** D2 31.7% / E-Extract 36.8% / E-Summary 39.2%。
-- val：完整事件进入率（D2 语义参照）D2 22.3% / E-Extract 47.6% （23/57 窗成功）/ E-Summary 55.5%（27/57 窗成功）；事件进入率 D2 33.2% / E-Extract 54.2% / E-Summary 61.2%；**词项匹配率** D2 28.7% / E-Extract 30.2% / E-Summary 36.3%。
+- debug：完整事件进入率（D2 语义参照）D2 24.0% / E-Extract 70.1% （12/19 窗成功）/ E-Summary 55.1%（8/19 窗成功）；事件进入率 D2 35.3% / E-Extract 74.3% / E-Summary 61.7%；**词项匹配率** D2 31.7% / E-Extract 36.6% / E-Summary 39.2%。
+- val：完整事件进入率（D2 语义参照）D2 22.3% / E-Extract 52.8% （27/57 窗成功）/ E-Summary 55.5%（27/57 窗成功）；事件进入率 D2 33.2% / E-Extract 58.8% / E-Summary 61.2%；**词项匹配率** D2 28.7% / E-Extract 31.0% / E-Summary 36.3%。
 
 **（2）丢了什么细节？**（对照样例节逐链展示）
 - D2：预算截断把排后事件整体/尾部丢弃——匹配率低来自截断而非改写，进入内容皆原文。
@@ -968,21 +1001,21 @@
 
 **（3）是否失真？**
 - 新数值筛查（正则）：E-Extract 输出皆为原文子串（token 级可对账），新数值 0 起；E-Summary debug 0 起 / val 0 起。**逐字只保证可对账，不保证保真**：两方案都可能丢限定词/主体或错置关系。
-- LLM 判别筛查（debug，同一服务自审、仅筛查不进门）：supported 78 / omission_only 61 / distortion 5（共 144 条，错误 0；E-Extract distortion 0/81；E-Summary distortion 5/63）。distortion 全部逐条列出待人工复核；omission_only=仅省略、无断言外内容。
-- LLM 判别筛查（val，同一服务自审、仅筛查不进门）：supported 223 / omission_only 131 / distortion 8（共 363 条，错误 1；E-Extract distortion 0/160；E-Summary distortion 8/203）。distortion 全部逐条列出待人工复核；omission_only=仅省略、无断言外内容。
-- v3.2 接受门：E-Extract 重定义为**完整句抽取**（新提示词 extract_v3）——每个 span 必须等于一个完整句子（仅可省略句末句号），跨句/截断 span 拒绝并修正/回退；句子边界按缩写感知检测（U.S./D.C. 等不切分）；主体、范围限定、预测/否定措辞由构造保证保留；非相邻句组装以「 … 」显式分隔（计入预算），拼接歧义在构造上不可能。E-Summary 维持 v3 的 evidence 硬门+词级 grounding+否定丢失即拒（记法漂移、新谓词类拦截）。
+- LLM 判别筛查（debug，同一服务自审、仅筛查不进门）：supported 87 / omission_only 67 / distortion 5（共 159 条，错误 0；E-Extract distortion 0/96；E-Summary distortion 5/63）。distortion 全部逐条列出待人工复核；omission_only=仅省略、无断言外内容。
+- LLM 判别筛查（val，同一服务自审、仅筛查不进门）：supported 244 / omission_only 141 / distortion 8（共 393 条，错误 0；E-Extract distortion 0/190；E-Summary distortion 8/203）。distortion 全部逐条列出待人工复核；omission_only=仅省略、无断言外内容。
+- v3.2/v3.3 接受门：E-Extract 重定义为**完整句抽取**（新提示词 extract_v3）——每个 span 必须等于一个完整句子（仅可省略句末句号），跨句/截断 span 拒绝并修正/回退；句子边界按缩写感知检测（U.S./D.C. 等不切分）；主体、范围限定、预测/否定措辞由构造保证保留；非相邻句组装以「 … 」显式分隔（计入预算），拼接歧义在构造上不可能。v3.3 修复句界检测漏看当前句点的缺陷（修复前缩写检查从未生效、句子前缀型截断 span 可通过），离线重放定位 5 事件并仅重处理受影响输出。E-Summary 维持 v3 的 evidence 硬门+词级 grounding+否定丢失即拒（记法漂移、新谓词类拦截）。
 - 门仍拦不住的失真：E-Extract 的整子句逐字输出使单子句内关系错置与跨子句归并在构造上不再可能，但仍可能因**省略上下文而改变读法**（如抽走转折/条件所在的相邻子句）；E-Summary 的主体-时间-数值**关系**错误且词面全部有据（如「预计损失超 29 亿美元」写成「已损失超 29 亿美元」）仍依赖 LLM 判别筛查与人工抽审兜底。**两方案均不宣称零失真**。
 
 **（4）成本可否接受？**
-- live 总开销（本 run_meta 所记生成）：840 次请求 / 790989 LLM tokens / 3935s，覆盖 76 窗×2 方案——≈ 6 请求、5.2K tokens、26s 每窗每方案（串行、并发 1）。
-- v3.2 缓存结构：extract_v3 提示词变更使 E-Extract 缓存键全部更新、输出重新生成（两集合 0/406 命中）；E-Summary 门/提示词/缓存不变全量复用（398/455 命中，misses 为此前失败事件按同键重调）。温度 0+缓存：跨窗同事件复用。
+- live 总开销（本 run_meta 所记生成）：295 次请求 / 312953 LLM tokens / 651s，覆盖 76 窗×2 方案——≈ 2 请求、2.1K tokens、4s 每窗每方案（串行、并发 1）。
+- v3.2 缓存结构：extract_v3 提示词变更使 E-Extract 缓存键全部更新、输出重新生成（两集合 358/429 命中）；E-Summary 门/提示词/缓存不变全量复用（414/455 命中，misses 为此前失败事件按同键重调）。温度 0+缓存：跨窗同事件复用。
 - 对全量 8106 窗外推约为每方案 ~25K 请求量级，属可接受的一次性离线成本；但若纳入训练管线则每次数据重建都要付出该成本（或依赖缓存失效风险）。
 
-### 候选与三种子预测实验（v3.2 口径）
+### 候选与三种子预测实验（v3.3 口径）
 
-- **候选方案：E-Extract（带 v3.2 完整子句门）**——val 集全窗事件加权词项匹配率 30.2% vs E-Summary 36.3% vs D2 28.7%；成功 23/57 窗 vs E-Summary 27/57 窗；输出为原文完整子句逐字拼接（非相邻以「 … 」分隔），逐 token 可对账、结构上无新事实，主体/范围/情态由构造保留。**残余风险**：抽走转折/条件子句可改变读法；判别筛查 distortion 待人工复核。其压缩成功窗内词项匹配率（37.1%）低于 E-Summary 同口径（48.3%）。判别筛查 + 人工抽审仍是必要补充，不因「子串」性质豁免。
+- **候选方案：E-Extract（带 v3.3 完整子句门，含缩写边界修复）**——val 集全窗事件加权词项匹配率 31.0% vs E-Summary 36.3% vs D2 28.7%；成功 27/57 窗 vs E-Summary 27/57 窗；输出为原文完整子句逐字拼接（非相邻以「 … 」分隔），逐 token 可对账、结构上无新事实，主体/范围/情态由构造保留。**残余风险**：抽走转折/条件子句可改变读法；判别筛查 distortion 待人工复核。其压缩成功窗内词项匹配率（37.1%）低于 E-Summary 同口径（48.3%）。判别筛查 + 人工抽审仍是必要补充，不因「子串」性质豁免。
 - **E-Summary：仅作诊断保留，预测实验继续暂停**。val 集 30/57 窗回退 D2（实际改变输入的窗太少）；判别筛查 distortion 待人工复核（含「预计损失超 29 亿美元」被写成「已损失超 29 亿美元」一类情态错误）。压缩成功时词项匹配率最高，说明路线本身有效；若继续该路线，需重平衡接受门（如按事实类别分级的 evidence 覆盖要求）并另记版本全量重跑。
-- **文本方案本轮不冻结，且尚不宜进入正式预测实验**：是否进入、以及以何方案进入三种子预测实验，待用户复审 v3.2 审计包（含全部 distortion/门拒绝案例）后再定。**声明不构成预测改善承诺**：EXP-012（= repro-mm-timesx-d2 @ f30f56b）表明文本清理本身收益仅 +0.02%，三种子实验是对「更多事实语境可能改善文本利用」假设的检验，不是推论。
+- **文本方案本轮不冻结，且尚不宜进入正式预测实验**：是否进入、以及以何方案进入三种子预测实验，待用户复审 v3.3 审计包（含全部 distortion/门拒绝案例）后再定。**声明不构成预测改善承诺**：EXP-012（= repro-mm-timesx-d2 @ f30f56b）表明文本清理本身收益仅 +0.02%，三种子实验是对「更多事实语境可能改善文本利用」假设的检验，不是推论。
 - 若将来进入预测实验：沿用当轮冻结的接受规则+预算规则+缓存（新窗事件需新调用），训练/val 文本处理与该轮完全一致；测试集文本处理是否用 LLM 需另行决策（本轮未触碰测试集）。
 
 - 报告声明：本报告全部数字由脚本从产物计算生成；覆盖/失败/事实保留统计可由审计包内 final ids/mask + 逐事件映射独立复算；正则筛查与 LLM 判别均仅为筛查，不宣称零幻觉/零失真；v2 版报告的「零真实幻觉」结论已撤回；本报告不得引申为「压缩率↑所以预测↑」。

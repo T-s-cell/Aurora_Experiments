@@ -2,37 +2,36 @@
  "set": "debug",
  "n_windows": 19,
  "outcomes": {
-  "E-Extract|compressed": 10,
-  "E-Extract|fallback_d2": 9,
+  "E-Extract|compressed": 12,
+  "E-Extract|fallback_d2": 7,
   "E-Summary|compressed": 8,
   "E-Summary|fallback_d2": 11
  },
  "assembly_gates": {
-  "compressed_windows": 18,
-  "gate_pass": 18,
+  "compressed_windows": 20,
+  "gate_pass": 20,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Extract": 9,
+  "E-Extract": 7,
   "E-Summary": 11
  },
  "events_total": 167,
  "fail_events": {
   "bad_spans": 1,
   "over_budget": 4,
-  "partial_clause": 3,
   "ungrounded_words:['growth', 'reported']": 1,
-  "span_crosses_clauses": 3,
   "ungrounded_words:['indicated']": 1,
-  "ungrounded_words:['reported']": 1,
+  "ungrounded_words:['data', 'shows']": 1,
   "ungrounded_words:['grow']": 1,
   "ungrounded_words:['appeared']": 1,
-  "ungrounded_words:['rose']": 1,
+  "partial_clause": 4,
+  "evidence_not_verbatim": 1,
   "ungrounded_words:['reached']": 1,
-  "ungrounded_words:['won']": 1,
+  "ungrounded_words:['mit', 'won']": 1,
   "not_grounded": 1
  },
- "correction_attempts": 101,
+ "correction_attempts": 42,
  "run_meta": {
   "set": "debug",
   "offline": false,
@@ -46,27 +45,27 @@
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 0,
-    "misses": 122
+    "hits": 108,
+    "misses": 18
    },
    "E-Summary": {
-    "hits": 110,
-    "misses": 15
+    "hits": 114,
+    "misses": 11
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 10,
-   "E-Extract|fallback_d2": 9,
+   "E-Extract|compressed": 12,
+   "E-Extract|fallback_d2": 7,
    "E-Summary|compressed": 8,
    "E-Summary|fallback_d2": 11
   },
-  "requests_made": 238,
+  "requests_made": 73,
   "usage": {
-   "prompt_tokens": 204934,
-   "completion_tokens": 14388,
-   "total_tokens": 219322
+   "prompt_tokens": 71262,
+   "completion_tokens": 5866,
+   "total_tokens": 77128
   },
-  "elapsed_s": 476.77
+  "elapsed_s": 157.72
  },
  "fact_flag_cases": [],
  "aggregate": {
@@ -83,19 +82,19 @@
   },
   "E-Extract": {
    "windows": 19,
-   "compressed_windows": 10,
-   "coverage_mean": 0.6637844611528821,
-   "coverage_event_weighted": 0.6407185628742516,
+   "compressed_windows": 12,
+   "coverage_mean": 0.7333333333333332,
+   "coverage_event_weighted": 0.7005988023952096,
    "events": 167,
-   "fact_preserved_event_weighted": 0.3682781898546663,
+   "fact_preserved_event_weighted": 0.36635756490516114,
    "fact_preserved_events": 166,
-   "entry_rate": 0.6946107784431138,
+   "entry_rate": 0.7425149700598802,
    "fact_new_token_events": 0,
-   "nonempty_fragments": 83,
+   "nonempty_fragments": 98,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.4160348353119438
+   "preserved_numbers_mean": 0.413427388937593
   },
   "E-Summary": {
    "windows": 19,
@@ -119,13 +118,13 @@
    "E-Extract": {
     "1D": {
      "windows": 7,
-     "compressed": 3,
-     "coverage_mean": 0.6374149659863946
+     "compressed": 5,
+     "coverage_mean": 0.8333333333333333
     },
     "1W": {
      "windows": 12,
      "compressed": 7,
-     "coverage_mean": 0.6791666666666667
+     "coverage_mean": 0.6750000000000002
     }
    },
    "E-Summary": {
@@ -146,12 +145,12 @@
     "False": {
      "windows": 14,
      "compressed": 9,
-     "coverage_mean": 0.725
+     "coverage_mean": 0.7214285714285715
     },
     "True": {
      "windows": 5,
-     "compressed": 1,
-     "coverage_mean": 0.4923809523809524
+     "compressed": 3,
+     "coverage_mean": 0.7666666666666666
     }
    },
    "E-Summary": {
@@ -176,8 +175,8 @@
     },
     "Currency": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.2
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "EnergyAndFuels": {
      "windows": 1,
@@ -186,8 +185,8 @@
     },
     "LivestockAndFoodProducts": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.42857142857142855
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "RawMaterialsAndConstruction": {
      "windows": 1,
@@ -246,8 +245,8 @@
     },
     "science": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "shopping": {
      "windows": 1,
@@ -256,8 +255,8 @@
     },
     "society": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.25
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "traffic": {
      "windows": 1,

@@ -2,52 +2,52 @@
  "set": "val",
  "n_windows": 57,
  "outcomes": {
-  "E-Extract|compressed": 23,
-  "E-Extract|fallback_d2": 34,
+  "E-Extract|compressed": 27,
+  "E-Extract|fallback_d2": 30,
   "E-Summary|compressed": 27,
   "E-Summary|fallback_d2": 30
  },
  "assembly_gates": {
-  "compressed_windows": 50,
-  "gate_pass": 50,
+  "compressed_windows": 54,
+  "gate_pass": 54,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Extract": 34,
+  "E-Extract": 30,
   "E-Summary": 30
  },
  "events_total": 485,
  "fail_events": {
-  "bad_spans": 6,
-  "evidence_not_verbatim": 4,
-  "over_budget": 12,
+  "bad_spans": 7,
+  "evidence_not_verbatim": 3,
+  "over_budget": 10,
   "not_grounded": 4,
+  "partial_clause": 13,
   "ungrounded_words:['report']": 1,
-  "span_crosses_clauses": 5,
   "ungrounded_words:['showed']": 1,
   "ungrounded_words:['added', 'economy']": 1,
   "ungrounded_words:['add']": 1,
   "ungrounded_words:['reached']": 1,
-  "partial_clause": 11,
   "ungrounded_words:['update']": 1,
   "truncated ": 1,
-  "ungrounded_words:['announced']": 1,
+  "ungrounded_words:['china', 'faces']": 1,
   "ungrounded_words:['pushed']": 1,
   "ungrounded_words:['closed']": 1,
   "ungrounded_words:['premiering']": 1,
-  "ungrounded_words:['sets']": 1,
+  "ungrounded_words:['delayed']": 1,
+  "ungrounded_words:['lists']": 1,
   "ungrounded_words:['secured']": 1,
-  "ungrounded_words:['research']": 1,
+  "ungrounded_words:['study']": 1,
   "ungrounded_words:['vaccine']": 1,
-  "ungrounded_words:['commission', 'lancet', 'proposing', 'redefined']": 1,
-  "ungrounded_words:['cuts', 'emission', 'targets', 'trips']": 1,
+  "ungrounded_words:['adult', 'pediatric', 'redefines']": 1,
+  "ungrounded_words:['colorado']": 1,
   "ungrounded_words:['predicts']": 1,
   "ungrounded_words:['grew', 'reaching']": 1,
   "ungrounded_words:['committee']": 1,
   "ungrounded_words:['argues', 'see']": 1,
   "ungrounded_words:['saw', 'vehicle']": 1
  },
- "correction_attempts": 276,
+ "correction_attempts": 136,
  "run_meta": {
   "set": "val",
   "offline": false,
@@ -61,27 +61,27 @@
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 0,
-    "misses": 284
+    "hits": 250,
+    "misses": 53
    },
    "E-Summary": {
-    "hits": 288,
-    "misses": 42
+    "hits": 300,
+    "misses": 30
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 23,
-   "E-Extract|fallback_d2": 34,
+   "E-Extract|compressed": 27,
+   "E-Extract|fallback_d2": 30,
    "E-Summary|compressed": 27,
    "E-Summary|fallback_d2": 30
   },
-  "requests_made": 602,
+  "requests_made": 222,
   "usage": {
-   "prompt_tokens": 534360,
-   "completion_tokens": 37307,
-   "total_tokens": 571667
+   "prompt_tokens": 219160,
+   "completion_tokens": 16665,
+   "total_tokens": 235825
   },
-  "elapsed_s": 3457.74
+  "elapsed_s": 493.75
  },
  "fact_flag_cases": [],
  "aggregate": {
@@ -98,19 +98,19 @@
   },
   "E-Extract": {
    "windows": 57,
-   "compressed_windows": 23,
-   "coverage_mean": 0.5255360623781676,
-   "coverage_event_weighted": 0.4762886597938144,
+   "compressed_windows": 27,
+   "coverage_mean": 0.5821150097465887,
+   "coverage_event_weighted": 0.5278350515463918,
    "events": 485,
-   "fact_preserved_event_weighted": 0.30240243246613635,
+   "fact_preserved_event_weighted": 0.3096413841552953,
    "fact_preserved_events": 482,
-   "entry_rate": 0.5422680412371134,
+   "entry_rate": 0.5876288659793815,
    "fact_new_token_events": 1,
-   "nonempty_fragments": 165,
+   "nonempty_fragments": 196,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.3603958302577383
+   "preserved_numbers_mean": 0.3519484730118214
   },
   "E-Summary": {
    "windows": 57,
@@ -134,13 +134,13 @@
    "E-Extract": {
     "1D": {
      "windows": 21,
-     "compressed": 5,
-     "coverage_mean": 0.43783068783068785
+     "compressed": 6,
+     "coverage_mean": 0.4735449735449735
     },
     "1W": {
      "windows": 36,
-     "compressed": 18,
-     "coverage_mean": 0.5766975308641974
+     "compressed": 21,
+     "coverage_mean": 0.6454475308641975
     }
    },
    "E-Summary": {
@@ -160,8 +160,8 @@
    "E-Extract": {
     "False": {
      "windows": 47,
-     "compressed": 20,
-     "coverage_mean": 0.5283687943262411
+     "compressed": 24,
+     "coverage_mean": 0.5969858156028369
     },
     "True": {
      "windows": 10,
@@ -216,13 +216,13 @@
     },
     "StrategicAndHighValueMaterials": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.48333333333333334
+     "compressed": 2,
+     "coverage_mean": 0.7333333333333334
     },
     "arts": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.41203703703703703
+     "compressed": 2,
+     "coverage_mean": 0.7037037037037037
     },
     "climate": {
      "windows": 3,
@@ -241,8 +241,8 @@
     },
     "finance": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "pets": {
      "windows": 3,
@@ -251,8 +251,8 @@
     },
     "public_health": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.47407407407407404
+     "compressed": 2,
+     "coverage_mean": 0.7407407407407408
     },
     "public_policy": {
      "windows": 3,
