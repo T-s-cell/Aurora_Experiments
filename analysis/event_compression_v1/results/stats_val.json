@@ -2,64 +2,58 @@
  "set": "val",
  "n_windows": 57,
  "outcomes": {
-  "E-Extract|compressed": 45,
-  "E-Extract|fallback_d2": 12,
-  "E-Summary|compressed": 17,
-  "E-Summary|fallback_d2": 40
+  "E-Extract|compressed": 23,
+  "E-Extract|fallback_d2": 34,
+  "E-Summary|compressed": 27,
+  "E-Summary|fallback_d2": 30
  },
  "assembly_gates": {
-  "compressed_windows": 62,
-  "gate_pass": 62,
+  "compressed_windows": 50,
+  "gate_pass": 50,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Summary": 40,
-  "E-Extract": 12
+  "E-Extract": 34,
+  "E-Summary": 30
  },
  "events_total": 485,
  "fail_events": {
-  "evidence_not_verbatim": 5,
-  "ungrounded_words:['global', 'oats', 'reach']": 1,
-  "ungrounded_words:['including']": 1,
-  "span_not_verbatim": 11,
+  "bad_spans": 6,
+  "evidence_not_verbatim": 4,
+  "over_budget": 12,
+  "not_grounded": 4,
+  "ungrounded_words:['report']": 1,
+  "span_crosses_clauses": 5,
   "ungrounded_words:['showed']": 1,
   "ungrounded_words:['added', 'economy']": 1,
   "ungrounded_words:['add']": 1,
-  "ungrounded_words:['usaid']": 1,
-  "ungrounded_words:['reached']": 3,
-  "qualifier_dropped": 1,
-  "ungrounded_words:['shows']": 1,
-  "ungrounded_words:['causing']": 1,
-  "ungrounded_words:['analysts']": 1,
-  "ungrounded_words:['supported']": 1,
-  "ungrounded_words:['company']": 1,
-  "not_grounded": 3,
-  "ungrounded_words:['pushed']": 1,
-  "ungrounded_words:['experienced', 'noted']": 1,
+  "ungrounded_words:['reached']": 1,
+  "partial_clause": 11,
+  "ungrounded_words:['update']": 1,
+  "truncated ": 1,
   "ungrounded_words:['announced']": 1,
-  "ungrounded_words:['increasing']": 1,
-  "ungrounded_words:['regarding']": 1,
-  "ungrounded_words:['outlines']": 1,
+  "ungrounded_words:['pushed']": 1,
+  "ungrounded_words:['closed']": 1,
+  "ungrounded_words:['premiering']": 1,
+  "ungrounded_words:['sets']": 1,
   "ungrounded_words:['secured']": 1,
-  "ungrounded_words:['removed']": 1,
-  "ungrounded_words:['adult', 'pediatric', 'redefines']": 1,
-  "ungrounded_words:['colorado']": 1,
-  "ungrounded_words:['began']": 1,
+  "ungrounded_words:['research']": 1,
+  "ungrounded_words:['vaccine']": 1,
+  "ungrounded_words:['commission', 'lancet', 'proposing', 'redefined']": 1,
+  "ungrounded_words:['cuts', 'emission', 'targets', 'trips']": 1,
   "ungrounded_words:['predicts']": 1,
-  "ungrounded_words:['ran', 'walmart']": 1,
-  "over_budget": 1,
+  "ungrounded_words:['grew', 'reaching']": 1,
   "ungrounded_words:['committee']": 1,
-  "ungrounded_words:['involved']": 1,
-  "ungrounded_words:['argues', 'sees']": 1,
-  "ungrounded_words:['showed', 'vehicle']": 1
+  "ungrounded_words:['argues', 'see']": 1,
+  "ungrounded_words:['saw', 'vehicle']": 1
  },
- "correction_attempts": 184,
+ "correction_attempts": 276,
  "run_meta": {
   "set": "val",
   "offline": false,
   "n_windows": 57,
   "prompt_shas": {
-   "E-Extract": "f0a7382e3dbb1943c888ee31f744c66b736d0143301e661b70eeb2e08934d74b",
+   "E-Extract": "fd102d9adcec925e34e849049bd11f61a9a20f912e88752b69e83f4b8bde980d",
    "E-Summary": "7e344ca660696ce10662e6b7b70fa1b4cb0c4722f661d6032be101439feb62a5"
   },
   "params_fingerprint": "{\"json_mode\": true, \"max_tokens\": 1024, \"model\": \"main-model:instruct\", \"seed\": 2021, \"temperature\": 0}",
@@ -67,27 +61,27 @@
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 394,
-    "misses": 26
+    "hits": 0,
+    "misses": 284
    },
    "E-Summary": {
-    "hits": 198,
-    "misses": 69
+    "hits": 288,
+    "misses": 42
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 45,
-   "E-Extract|fallback_d2": 12,
-   "E-Summary|compressed": 17,
-   "E-Summary|fallback_d2": 40
+   "E-Extract|compressed": 23,
+   "E-Extract|fallback_d2": 34,
+   "E-Summary|compressed": 27,
+   "E-Summary|fallback_d2": 30
   },
-  "requests_made": 320,
+  "requests_made": 602,
   "usage": {
-   "prompt_tokens": 298428,
-   "completion_tokens": 24360,
-   "total_tokens": 322788
+   "prompt_tokens": 534360,
+   "completion_tokens": 37307,
+   "total_tokens": 571667
   },
-  "elapsed_s": 717.24
+  "elapsed_s": 3457.74
  },
  "fact_flag_cases": [],
  "aggregate": {
@@ -104,35 +98,35 @@
   },
   "E-Extract": {
    "windows": 57,
-   "compressed_windows": 45,
-   "coverage_mean": 0.8354288499025343,
-   "coverage_event_weighted": 0.8185567010309278,
+   "compressed_windows": 23,
+   "coverage_mean": 0.5255360623781676,
+   "coverage_event_weighted": 0.4762886597938144,
    "events": 485,
-   "fact_preserved_event_weighted": 0.3371591857187895,
+   "fact_preserved_event_weighted": 0.30240243246613635,
    "fact_preserved_events": 482,
-   "entry_rate": 0.843298969072165,
+   "entry_rate": 0.5422680412371134,
    "fact_new_token_events": 1,
-   "nonempty_fragments": 371,
+   "nonempty_fragments": 165,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.34687574128750637
+   "preserved_numbers_mean": 0.3603958302577383
   },
   "E-Summary": {
    "windows": 57,
-   "compressed_windows": 17,
-   "coverage_mean": 0.45414230019493174,
-   "coverage_event_weighted": 0.4247422680412371,
+   "compressed_windows": 27,
+   "coverage_mean": 0.5819688109161794,
+   "coverage_event_weighted": 0.554639175257732,
    "events": 485,
-   "fact_preserved_event_weighted": 0.3349501973992239,
+   "fact_preserved_event_weighted": 0.3630904486004763,
    "fact_preserved_events": 482,
-   "entry_rate": 0.5030927835051546,
-   "fact_new_token_events": 1,
-   "nonempty_fragments": 129,
+   "entry_rate": 0.6123711340206186,
+   "fact_new_token_events": 2,
+   "nonempty_fragments": 214,
    "over_budget_events": 0,
-   "evidence_ok_events": 123,
+   "evidence_ok_events": 203,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.577161595018738
+   "preserved_numbers_mean": 0.5621990046990046
   }
  },
  "slices": {
@@ -140,25 +134,25 @@
    "E-Extract": {
     "1D": {
      "windows": 21,
-     "compressed": 16,
-     "coverage_mean": 0.8333333333333334
+     "compressed": 5,
+     "coverage_mean": 0.43783068783068785
     },
     "1W": {
      "windows": 36,
-     "compressed": 29,
-     "coverage_mean": 0.8366512345679012
+     "compressed": 18,
+     "coverage_mean": 0.5766975308641974
     }
    },
    "E-Summary": {
     "1D": {
      "windows": 21,
-     "compressed": 3,
-     "coverage_mean": 0.35982615268329554
+     "compressed": 7,
+     "coverage_mean": 0.4921012849584277
     },
     "1W": {
      "windows": 36,
-     "compressed": 14,
-     "coverage_mean": 0.509160052910053
+     "compressed": 20,
+     "coverage_mean": 0.6343915343915343
     }
    }
   },
@@ -166,25 +160,25 @@
    "E-Extract": {
     "False": {
      "windows": 47,
-     "compressed": 37,
-     "coverage_mean": 0.8259456264775413
+     "compressed": 20,
+     "coverage_mean": 0.5283687943262411
     },
     "True": {
      "windows": 10,
-     "compressed": 8,
-     "coverage_mean": 0.8800000000000001
+     "compressed": 3,
+     "coverage_mean": 0.5122222222222222
     }
    },
    "E-Summary": {
     "False": {
      "windows": 47,
-     "compressed": 16,
-     "coverage_mean": 0.47238264099966215
+     "compressed": 25,
+     "coverage_mean": 0.6167679837892603
     },
     "True": {
      "windows": 10,
-     "compressed": 1,
-     "coverage_mean": 0.3684126984126984
+     "compressed": 2,
+     "coverage_mean": 0.41841269841269846
     }
    }
   },
@@ -192,13 +186,13 @@
    "E-Extract": {
     "CropsAndStaples": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.19999999999999998
     },
     "Currency": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 0,
+     "coverage_mean": 0.26666666666666666
     },
     "EnergyAndFuels": {
      "windows": 3,
@@ -207,33 +201,33 @@
     },
     "LivestockAndFoodProducts": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.8333333333333334
+     "compressed": 0,
+     "coverage_mean": 0.34074074074074073
     },
     "RawMaterialsAndConstruction": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.26666666666666666
+     "compressed": 1,
+     "coverage_mean": 0.5
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2740740740740741
     },
     "StrategicAndHighValueMaterials": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.48333333333333334
     },
     "arts": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.41203703703703703
     },
     "climate": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.4490740740740741
     },
     "economy": {
      "windows": 3,
@@ -242,28 +236,28 @@
     },
     "electronic_technology": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 1,
+     "coverage_mean": 0.40370370370370373
     },
     "finance": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.7333333333333334
     },
     "pets": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.7333333333333334
     },
     "public_health": {
      "windows": 3,
      "compressed": 1,
-     "coverage_mean": 0.4444444444444445
+     "coverage_mean": 0.47407407407407404
     },
     "public_policy": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7333333333333334
+     "compressed": 1,
+     "coverage_mean": 0.4740740740740741
     },
     "science": {
      "windows": 3,
@@ -272,18 +266,18 @@
     },
     "shopping": {
      "windows": 3,
-     "compressed": 3,
-     "coverage_mean": 1.0
+     "compressed": 2,
+     "coverage_mean": 0.7000000000000001
     },
     "society": {
      "windows": 3,
      "compressed": 2,
-     "coverage_mean": 0.7083333333333334
+     "coverage_mean": 0.7333333333333334
     },
     "traffic": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.75
+     "compressed": 1,
+     "coverage_mean": 0.40370370370370373
     }
    },
    "E-Summary": {
@@ -304,13 +298,13 @@
     },
     "LivestockAndFoodProducts": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.34074074074074073
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "RawMaterialsAndConstruction": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.26666666666666666
+     "compressed": 1,
+     "coverage_mean": 0.5333333333333333
     },
     "SpecialtyAndAdvancedMaterials": {
      "windows": 3,
@@ -324,13 +318,13 @@
     },
     "arts": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.41203703703703703
+     "compressed": 2,
+     "coverage_mean": 0.7083333333333334
     },
     "climate": {
      "windows": 3,
-     "compressed": 1,
-     "coverage_mean": 0.4490740740740741
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "economy": {
      "windows": 3,
@@ -344,8 +338,8 @@
     },
     "finance": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.27499999999999997
+     "compressed": 1,
+     "coverage_mean": 0.44166666666666665
     },
     "pets": {
      "windows": 3,
@@ -364,8 +358,8 @@
     },
     "science": {
      "windows": 3,
-     "compressed": 2,
-     "coverage_mean": 0.7777777777777777
+     "compressed": 3,
+     "coverage_mean": 1.0
     },
     "shopping": {
      "windows": 3,
@@ -374,8 +368,8 @@
     },
     "society": {
      "windows": 3,
-     "compressed": 0,
-     "coverage_mean": 0.19166666666666665
+     "compressed": 1,
+     "coverage_mean": 0.4583333333333333
     },
     "traffic": {
      "windows": 3,

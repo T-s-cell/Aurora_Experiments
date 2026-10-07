@@ -85,40 +85,84 @@ NEG_RE = re.compile(
     r"suspended|postponed|delayed|shut|stopped|unavailable|failed)\b",
     re.IGNORECASE)
 
-# Qualifier-preservation screen for E-Extract spans: if the source clause
-# (split on .!?;) a span is drawn from contains forecast/plan or negation
-# wording, the span must keep at least one such token — dropping "is
-# expected to" turns a projection into a bare fact. Forecast set is trimmed
-# for this gate ("due to" is causal, not modal).
-QUAL_FUT_RE = re.compile(
-    r"\b(?:expect(?:ed|s)?|plan(?:ned|s|ning)?|may|might|could|will|would|"
-    r"forecast(?:ed|s)?|project(?:ed|s)?|likely|aim(?:s|ed)?|seek(?:s)?|"
-    r"intend(?:s|ed)?|anticipat(?:e|es|ed)|outlook|guidance|estimat(?:e|es|"
-    r"ed)|scheduled)\b", re.IGNORECASE)
-CLAUSE_SPLIT_RE = re.compile(r"(?<=[.!?;])\s+")
+# v3.2 whole-clause gate for E-Extract: every span must be exactly one
+# complete trimmed sentence (final punctuation may be dropped). Whole
+# sentences retain subject, scope qualifiers ("for employers with 51 or
+# more employees") and forecast/negation wording by construction, and
+# facts from different sentences can no longer be spliced into one
+# reading; assembled pieces separate non-adjacent spans with " ... ".
+# Sentence boundaries are abbreviation-aware: news text shatters at
+# "U.S." / "D.C." / "Inc." / "Jan." periods, so a boundary only counts
+# when the token before the punctuation is not an abbreviation/initials
+# and the next non-space char starts a sentence (upper/digit/quote).
+BOUND_CAND_RE = re.compile(r"([.!?;])(\s+)")
+NEXT_OK_RE = re.compile(r"""["'(\[]?[A-Z0-9]""")
+INITIALS_RE = re.compile(r"(?:[A-Za-z]\.)+")
+ABBREV_WORDS = frozenset("""mr mrs ms dr prof vs etc al inc ltd llc corp co
+jr sr st mt ft gov sen rep capt col gen rev hon no vol pp approx est dept
+univ assn jan feb mar apr jun jul aug sep sept oct nov dec mon tue tues wed
+thu thur thurs fri sat sun min max ave blvd""".split())
 
-def qualifier_dropped(event_text, merged):
-    """Returns None or a reject reason when an extracted span (char ranges
-    `merged` in event_text) loses a modal/negation qualifier present in the
-    clause(s) it was drawn from."""
-    spans = [(a, b) for a, b in merged]
-    low_span = " ".join(event_text[a:b] for a, b in spans).lower()
-    parts = CLAUSE_SPLIT_RE.split(event_text)
-    seps = [m.end() - m.start() for m in CLAUSE_SPLIT_RE.finditer(event_text)]
-    pos, clauses = 0, []
-    for i, part in enumerate(parts):
-        clauses.append((pos, pos + len(part), part.lower()))
-        pos += len(part) + (seps[i] if i < len(seps) else 0)
-    for cs, ce, c_low in clauses:
-        if not any(a < ce and cs < b for a, b in spans):
+
+def clause_index(event_text):
+    """Complete-sentence ranges [(cs, ce)] in original char coords."""
+    out, start, n = [], 0, len(event_text)
+    for m in BOUND_CAND_RE.finditer(event_text):
+        p, pe = m.start(), m.end()
+        if pe >= n:
+            break
+        if not NEXT_OK_RE.match(event_text[pe:pe + 2]):
             continue
-        fut = {m.group(0).lower() for m in QUAL_FUT_RE.finditer(c_low)}
-        if fut and not any(w in low_span for w in fut):
-            return f"qualifier_dropped(forecast:{sorted(fut)[:2]})"
-        neg = {m.group(0).lower() for m in NEG_RE.finditer(c_low)}
-        if neg and not any(w in low_span for w in neg):
-            return f"qualifier_dropped(negation:{sorted(neg)[:2]})"
+        wm = re.search(r"([A-Za-z][A-Za-z.]*)\.$", event_text[:p])
+        if wm and (INITIALS_RE.fullmatch(wm.group(1) + ".")
+                   or wm.group(1).lower() in ABBREV_WORDS):
+            continue
+        seg = event_text[start:p + 1]
+        s = start + (len(seg) - len(seg.lstrip()))
+        e = start + len(seg.rstrip())
+        if e > s:
+            out.append((s, e))
+        start = pe
+    seg = event_text[start:]
+    s = start + (len(seg) - len(seg.lstrip()))
+    e = start + len(seg.rstrip())
+    if e > s:
+        out.append((s, e))
+    return out
+
+
+def clause_gate(event_text, located):
+    """Returns None or a reject reason: each span must lie within exactly
+    one clause and equal it in full (optional final-punctuation drop)."""
+    clauses = clause_index(event_text)
+    for a, b in located:
+        hit = [c for c in clauses if a < c[1] and c[0] < b]
+        if len(hit) > 1:
+            return "span_crosses_clauses"
+        if not hit:
+            return "partial_clause"
+        cs, ce = hit[0]
+        if (a, b) == (cs, ce):
+            continue
+        if a == cs and b == ce - 1 and event_text[ce - 1] in ".!?;":
+            continue
+        return "partial_clause"
     return None
+
+
+def assemble_spans(event_text, merged):
+    """Deterministic piece from original-text ranges: ranges separated by
+    more than one whitespace char (i.e. skipped source material) are joined
+    with an explicit ' ... ' separator so facts from different clauses
+    cannot read as one claim; gap==1 means the clauses are adjacent in the
+    original text and keep a plain space."""
+    parts = [event_text[a:b].strip() for a, b in merged]
+    out = [parts[0]]
+    for i in range(1, len(merged)):
+        gap = merged[i][0] - merged[i - 1][1]
+        out.append(" ... " if gap > 1 else " ")
+        out.append(parts[i])
+    return " " + "".join(out).strip()
 
 
 def apply_tpl(tpl, **kw):
@@ -301,15 +345,18 @@ class WindowCompressor:
                          corr_tpl,
                          reject_reason=str(rec.get("why", "invalid")),
                          char_cap=str(self._cap(method, prose_piece, budget)),
-                         span_hint="Spans must stay exact verbatim "
-                                   "substrings, but include the subject and "
-                                   "any forecast/plan wording (e.g. "
-                                   "'expects', 'is expected to', 'will', "
-                                   "'may') or negation ('not', "
-                                   "'cancelled') from the sentence your "
-                                   "spans come from — a bare clause or "
-                                   "number without its qualifier is "
-                                   "rejected."
+                         span_hint="Each span must be ONE COMPLETE clause "
+                                   "copied verbatim in full, from its first "
+                                   "word through its last word (only the "
+                                   "final period may be dropped). Do not "
+                                   "cross or cut clauses: a partial "
+                                   "fragment, a number without its subject "
+                                   "or scope (e.g. 'for employers with 51 "
+                                   "or more employees'), or forecast/"
+                                   "negation wording stripped from its "
+                                   "clause is rejected. If several clauses "
+                                   "are needed, they are joined with "
+                                   "' ... ' separators automatically."
                                    if method == "E-Extract" else
                                    "Ensure the evidence spans are exact "
                                    "verbatim substrings of the event text "
@@ -336,12 +383,12 @@ class WindowCompressor:
                     return False, "span_not_verbatim", None
                 located.append(r)
             merged = merge_spans(located)
-            text = " ".join(event_text[a:b] for a, b in merged)
-            qd = qualifier_dropped(event_text, merged)
+            qd = clause_gate(event_text, located)
             if qd:
                 return False, qd, None
-            if len(self.enc(" " + text.strip())) > budget:
-                return False, f"over_budget({len(self.enc(' ' + text.strip()))}>{budget})", None
+            text = assemble_spans(event_text, merged)
+            if len(self.enc(text)) > budget:
+                return False, f"over_budget({len(self.enc(text))}>{budget})", None
             if REFUSAL_RE.search(text):
                 return False, "refusal_text", None
             return True, "ok", merged
@@ -392,7 +439,7 @@ class WindowCompressor:
         if method == "E-Extract":
             merged = merge_spans([span_to_original(s, event_text)
                                   for s in obj["spans"]])
-            piece = " " + " ".join(event_text[a:b] for a, b in merged).strip()
+            piece = assemble_spans(event_text, merged)
             return piece, {"span_ranges": [[a, b] for a, b in merged]}
         evidence_loc = obj["_evidence_loc"]
         return (" " + obj["summary"].strip(),
@@ -545,7 +592,7 @@ def main():
               f"dropped={client.dropped_params}")
 
     caches, prompt_parts, prompt_shas = {}, {}, {}
-    prompt_files = {"E-Extract": "prompts/extract_v2.md",
+    prompt_files = {"E-Extract": "prompts/extract_v3.md",
                     "E-Summary": "prompts/summarize_v3.md"}
     for m in SCHEMES:
         caches[m] = LLMCache(OUT / "llm_cache.jsonl")

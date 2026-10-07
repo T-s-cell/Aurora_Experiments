@@ -2,40 +2,43 @@
  "set": "debug",
  "n_windows": 19,
  "outcomes": {
-  "E-Extract|compressed": 14,
-  "E-Extract|fallback_d2": 5,
-  "E-Summary|compressed": 7,
-  "E-Summary|fallback_d2": 12
+  "E-Extract|compressed": 10,
+  "E-Extract|fallback_d2": 9,
+  "E-Summary|compressed": 8,
+  "E-Summary|fallback_d2": 11
  },
  "assembly_gates": {
-  "compressed_windows": 21,
-  "gate_pass": 21,
+  "compressed_windows": 18,
+  "gate_pass": 18,
   "pass_rate": 1.0
  },
  "fallback_windows": {
-  "E-Summary": 12,
-  "E-Extract": 5
+  "E-Extract": 9,
+  "E-Summary": 11
  },
  "events_total": 167,
  "fail_events": {
+  "bad_spans": 1,
   "over_budget": 4,
-  "ungrounded_words:['growth', 'showed']": 1,
-  "ungrounded_words:['data']": 1,
+  "partial_clause": 3,
+  "ungrounded_words:['growth', 'reported']": 1,
+  "span_crosses_clauses": 3,
+  "ungrounded_words:['indicated']": 1,
   "ungrounded_words:['reported']": 1,
-  "span_not_verbatim": 4,
   "ungrounded_words:['grow']": 1,
   "ungrounded_words:['appeared']": 1,
+  "ungrounded_words:['rose']": 1,
   "ungrounded_words:['reached']": 1,
-  "not_grounded": 2,
-  "ungrounded_words:['won']": 1
+  "ungrounded_words:['won']": 1,
+  "not_grounded": 1
  },
- "correction_attempts": 53,
+ "correction_attempts": 101,
  "run_meta": {
   "set": "debug",
   "offline": false,
   "n_windows": 19,
   "prompt_shas": {
-   "E-Extract": "f0a7382e3dbb1943c888ee31f744c66b736d0143301e661b70eeb2e08934d74b",
+   "E-Extract": "fd102d9adcec925e34e849049bd11f61a9a20f912e88752b69e83f4b8bde980d",
    "E-Summary": "7e344ca660696ce10662e6b7b70fa1b4cb0c4722f661d6032be101439feb62a5"
   },
   "params_fingerprint": "{\"json_mode\": true, \"max_tokens\": 1024, \"model\": \"main-model:instruct\", \"seed\": 2021, \"temperature\": 0}",
@@ -43,27 +46,27 @@
   "dropped_params": [],
   "cache": {
    "E-Extract": {
-    "hits": 135,
-    "misses": 11
+    "hits": 0,
+    "misses": 122
    },
    "E-Summary": {
-    "hits": 91,
-    "misses": 24
+    "hits": 110,
+    "misses": 15
    }
   },
   "outcomes": {
-   "E-Extract|compressed": 14,
-   "E-Extract|fallback_d2": 5,
-   "E-Summary|compressed": 7,
-   "E-Summary|fallback_d2": 12
+   "E-Extract|compressed": 10,
+   "E-Extract|fallback_d2": 9,
+   "E-Summary|compressed": 8,
+   "E-Summary|fallback_d2": 11
   },
-  "requests_made": 94,
+  "requests_made": 238,
   "usage": {
-   "prompt_tokens": 88423,
-   "completion_tokens": 7772,
-   "total_tokens": 96195
+   "prompt_tokens": 204934,
+   "completion_tokens": 14388,
+   "total_tokens": 219322
   },
-  "elapsed_s": 209.11
+  "elapsed_s": 476.77
  },
  "fact_flag_cases": [],
  "aggregate": {
@@ -80,35 +83,35 @@
   },
   "E-Extract": {
    "windows": 19,
-   "compressed_windows": 14,
-   "coverage_mean": 0.7921052631578948,
-   "coverage_event_weighted": 0.7844311377245509,
+   "compressed_windows": 10,
+   "coverage_mean": 0.6637844611528821,
+   "coverage_event_weighted": 0.6407185628742516,
    "events": 167,
-   "fact_preserved_event_weighted": 0.3644271588187345,
+   "fact_preserved_event_weighted": 0.3682781898546663,
    "fact_preserved_events": 166,
-   "entry_rate": 0.8143712574850299,
+   "entry_rate": 0.6946107784431138,
    "fact_new_token_events": 0,
-   "nonempty_fragments": 121,
+   "nonempty_fragments": 83,
    "over_budget_events": 0,
    "evidence_ok_events": 0,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.3895988626757859
+   "preserved_numbers_mean": 0.4160348353119438
   },
   "E-Summary": {
    "windows": 19,
-   "compressed_windows": 7,
-   "coverage_mean": 0.5216791979949874,
-   "coverage_event_weighted": 0.5089820359281437,
+   "compressed_windows": 8,
+   "coverage_mean": 0.5677318295739348,
+   "coverage_event_weighted": 0.5508982035928144,
    "events": 167,
-   "fact_preserved_event_weighted": 0.3842696509851196,
+   "fact_preserved_event_weighted": 0.3921505251310541,
    "fact_preserved_events": 166,
-   "entry_rate": 0.5808383233532934,
+   "entry_rate": 0.6167664670658682,
    "fact_new_token_events": 0,
-   "nonempty_fragments": 59,
+   "nonempty_fragments": 67,
    "over_budget_events": 0,
-   "evidence_ok_events": 55,
+   "evidence_ok_events": 63,
    "new_number_events": 0,
-   "preserved_numbers_mean": 0.5892272410129553
+   "preserved_numbers_mean": 0.5749116335053835
   }
  },
  "slices": {
@@ -116,13 +119,13 @@
    "E-Extract": {
     "1D": {
      "windows": 7,
-     "compressed": 6,
-     "coverage_mean": 0.9
+     "compressed": 3,
+     "coverage_mean": 0.6374149659863946
     },
     "1W": {
      "windows": 12,
-     "compressed": 8,
-     "coverage_mean": 0.7291666666666666
+     "compressed": 7,
+     "coverage_mean": 0.6791666666666667
     }
    },
    "E-Summary": {
@@ -133,8 +136,8 @@
     },
     "1W": {
      "windows": 12,
-     "compressed": 5,
-     "coverage_mean": 0.5333333333333333
+     "compressed": 6,
+     "coverage_mean": 0.6062500000000001
     }
    }
   },
@@ -142,20 +145,20 @@
    "E-Extract": {
     "False": {
      "windows": 14,
-     "compressed": 10,
-     "coverage_mean": 0.7678571428571429
+     "compressed": 9,
+     "coverage_mean": 0.725
     },
     "True": {
      "windows": 5,
-     "compressed": 4,
-     "coverage_mean": 0.86
+     "compressed": 1,
+     "coverage_mean": 0.4923809523809524
     }
    },
    "E-Summary": {
     "False": {
      "windows": 14,
-     "compressed": 6,
-     "coverage_mean": 0.5464285714285715
+     "compressed": 7,
+     "coverage_mean": 0.6089285714285715
     },
     "True": {
      "windows": 5,
@@ -168,23 +171,23 @@
    "E-Extract": {
     "CropsAndStaples": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.3333333333333333
     },
     "Currency": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "EnergyAndFuels": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.5
     },
     "LivestockAndFoodProducts": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.42857142857142855
     },
     "RawMaterialsAndConstruction": {
      "windows": 1,
@@ -198,8 +201,8 @@
     },
     "StrategicAndHighValueMaterials": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.3
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "arts": {
      "windows": 1,
@@ -208,8 +211,8 @@
     },
     "climate": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "economy": {
      "windows": 1,
@@ -218,8 +221,8 @@
     },
     "electronic_technology": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.125
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "finance": {
      "windows": 1,
@@ -228,8 +231,8 @@
     },
     "pets": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.125
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "public_health": {
      "windows": 1,
@@ -238,8 +241,8 @@
     },
     "public_policy": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.2
     },
     "science": {
      "windows": 1,
@@ -253,8 +256,8 @@
     },
     "society": {
      "windows": 1,
-     "compressed": 1,
-     "coverage_mean": 1.0
+     "compressed": 0,
+     "coverage_mean": 0.25
     },
     "traffic": {
      "windows": 1,
@@ -325,8 +328,8 @@
     },
     "pets": {
      "windows": 1,
-     "compressed": 0,
-     "coverage_mean": 0.125
+     "compressed": 1,
+     "coverage_mean": 1.0
     },
     "public_health": {
      "windows": 1,
