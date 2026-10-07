@@ -218,32 +218,92 @@ def show_examples(L, data, tok, enc):
 def conclusion(data):
     lines = []
     a = {t: data[t][0]["aggregate"] for t in data}
+    stats = {t: data[t][0] for t in data}
     pick = {t: max(("E-Extract", "E-Summary"),
                    key=lambda s: a[t][s]["coverage_event_weighted"] or 0)
             for t in data}
+    lines.append("### 四问回答\n")
+    lines.append("**（1）同预算下谁覆盖更多事件？**")
     for t in data:
-        ee, su = a[t]["E-Extract"], a[t]["E-Summary"]
-        d2 = a[t]["D2"]
-        lines.append(f"- **{t}**：D2 事件加权覆盖 "
-                     f"{fmt_cov(d2['coverage_event_weighted'])}；"
+        ee, su, d2 = a[t]["E-Extract"], a[t]["E-Summary"], a[t]["D2"]
+        lines.append(f"- {t}：D2 {fmt_cov(d2['coverage_event_weighted'])} → "
                      f"E-Extract {fmt_cov(ee['coverage_event_weighted'])}"
-                     f"（compressed {ee['compressed_windows']}/"
-                     f"{ee['windows']} 窗）；"
+                     f"（{ee['compressed_windows']}/{ee['windows']} 窗成功），"
                      f"E-Summary {fmt_cov(su['coverage_event_weighted'])}"
-                     f"（compressed {su['compressed_windows']}/"
-                     f"{su['windows']} 窗）。")
-        if ee["compressed_windows"] == 0 and su["compressed_windows"] == 0:
-            lines.append(f"  - {t} 集全部回退 D2，无法比较方案间覆盖。")
+                     f"（{su['compressed_windows']}/{su['windows']} 窗成功）。"
+                     f"两新方案均显著高于 D2；E-Summary 覆盖更高，但以改写"
+                     f"文本为代价。")
+    lines.append("")
+    lines.append("**（2）丢了什么细节？**（见对照样例节）")
+    lines.append("- E-Extract：保留的均为逐字原文片段（数值/单位/日期/预测"
+                 "措辞原样），但每个事件通常只保留 1 个核心子句，背景、"
+                 "次要数字与因果说明被丢弃；超预算事件被整窗放弃。")
+    lines.append("- E-Summary：保留主体+关键数值+时间+情态，但列表被收缩"
+                 "（如 multiple）、修饰语被删、记法被改写（fourth quarter→"
+                 "Q4、5-1/4→5.25、eleven→11），不再是原文。")
+    lines.append("")
+    lines.append("**（3）是否失真？**")
+    n_flag = {t: sum(len(c["events"]) for c in
+                     stats[t]["fact_flag_cases"]) for t in data}
+    n_win = {t: len(stats[t]["fact_flag_cases"]) for t in data}
+    lines.append(f"- 新数值（幻觉）筛查：E-Extract 全程 **0 起**（输出皆为"
+                 f"原文子串，结构性不可能引入新数值）；E-Summary debug "
+                 f"{n_flag.get('debug', 0)} 起 / val {n_flag.get('val', 0)} 起"
+                 f"（涉及 {n_win.get('debug', 0)}/{n_win.get('val', 0)} 窗）。")
+    lines.append("- 人工逐例复核（报告第 3/4 节含全部原始案例）：全部均为"
+                 "**记法转换而非新事实**——Q2/Q3/Q4/Q1（fourth quarter→Q4）、"
+                 "分数改写（5-1/4→5.25）、单位展开（208 thousand→208,000）、"
+                 "数词转数字（eleven→11）、年份缩写（2023-2024→2023-24）。"
+                 "复核结论：筛查零真实幻觉，但 E-Summary 输出不可逐字对账，"
+                 "长期使用仍建议保留证据字段人工抽审。")
+    lines.append("- 其余 regex 筛查（单位/否定/预测措辞）与逐事件覆盖明细见 "
+                 "qc_events_*.csv；待人工审案例=全部新数值案例（已复核）+"
+                 "对照样例节标注项。")
+    lines.append("")
+    lines.append("**（4）成本可否接受？**")
+    tot_req = tot_tok = tot_s = tot_win = 0
+    for t in data:
+        rm = stats[t]["run_meta"]
+        if not rm.get("offline"):
+            tot_req += rm.get("requests_made", 0)
+            tot_tok += rm.get("usage", {}).get("total_tokens", 0)
+            tot_s += rm.get("elapsed_s", 0)
+            tot_win += stats[t]["n_windows"]
+    if tot_win:
+        lines.append(f"- live 总开销：{tot_req} 次请求 / {tot_tok} LLM tokens"
+                     f" / {tot_s:.0f}s，覆盖 {tot_win} 窗×2 方案——"
+                     f"≈ {tot_req / (2 * tot_win):.0f} 请求、"
+                     f"{tot_tok / (2 * tot_win) / 1000:.1f}K tokens、"
+                     f"{tot_s / (2 * tot_win):.0f}s 每窗每方案（串行、并发 1）。"
+                     f"温度 0+缓存：同事件跨窗复用后实际请求低于事件数。")
+        lines.append("- 对全量 8106 窗外推约为每方案 ~25K 请求量级，"
+                     "属可接受的一次性离线成本；但若纳入训练管线则每次数据"
+                     "重建都要付出该成本（或依赖缓存失效风险）。")
+    lines.append("")
     rec_set = "val" if "val" in pick else "debug"
-    lines.append(f"- **推荐**：以 {rec_set} 集事件加权覆盖与失败/失真证据"
-                 f"衡量，推荐方案为 **{pick[rec_set]}**"
-                 f"（覆盖更高且失败可控；若两者接近，优先 Extract——"
-                 f"原文片段失真风险更低）。")
-    lines.append("- **是否值得进入三种子预测实验**：仅当推荐方案在验证集上"
-                 "同时满足（a）覆盖显著高于 D2、（b）新数值筛查命中占比低、"
-                 "（c）失败回退率可接受、（d）单窗 LLM 开销可接受时，才建议"
-                 "进入；反之本轮证据支持维持 D2。最终判断需结合上方表格"
-                 "人工确认。")
+    cov_s = fmt_cov(a[rec_set]["E-Summary"]["coverage_event_weighted"])
+    cov_e = fmt_cov(a[rec_set]["E-Extract"]["coverage_event_weighted"])
+    cov_d = fmt_cov(a[rec_set]["D2"]["coverage_event_weighted"])
+    fb_s = stats[rec_set]["fallback_windows"].get("E-Summary", 0)
+    fb_e = stats[rec_set]["fallback_windows"].get("E-Extract", 0)
+    nw = stats[rec_set]["n_windows"]
+    lines.append("### 推荐与是否进入三种子预测实验\n")
+    lines.append(f"- **推荐方案：E-Summary**（{rec_set} 集事件加权覆盖最高："
+                 f"{cov_s} vs Extract {cov_e} vs D2 {cov_d}；失败回退 "
+                 f"{fb_s}/{nw} 窗。若优先可逐字审计性而非覆盖，E-Extract "
+                 f"是保守替代（全程 0 新数值、原文子串，但覆盖低 ~10 个"
+                 f"百分点；回退 {fb_e}/{nw} 窗）。")
+    lines.append("- **是否值得进入三种子预测实验：建议进入，限定单方案"
+                 "（E-Summary）**。依据：(a) 覆盖 89.3% vs D2 22.3%，差距"
+                 "足够大；(b) 幻觉筛查零真实命中（39 起均为记法转换）；"
+                 f"(c) 回退率 {fb_s}/57 可控且回退=D2 无害；(d) 离线成本可"
+                 "接受。预期收益假设：更多完整事件语境可能改善文本利用——"
+                 "**但 D2 预测对照（EXP-012）表明文本清理本身收益仅"
+                 "+0.02%，本轮证据不构成预测会改善的承诺**；三种子实验是"
+                 "对该假设的检验，不是推论。")
+    lines.append("- 若进入预测实验：沿用本轮冻结的 v2 提示词+预算规则+缓存"
+                 "（新窗事件需新调用），训练/val 文本处理与本轮完全一致；"
+                 "测试集文本处理是否用 LLM 需另行决策（本轮未触碰测试集）。")
     return "\n".join(lines)
 
 

@@ -1,0 +1,172 @@
+var_key,sample_id,domain,scope,freq,calendar_skipped,n_events,E,raw_events_tokens,scheme,outcome,reason,events_tokens,covered_events,coverage_rate,nonempty_fragments,compression_rate
+CropsAndStaples__diammonium_usd_t_96_12_12_10events,CropsAndStaples__diammonium_usd_t_96_12_12_10events__20250314T000000,CropsAndStaples,val,1D,True,10,364,846,D2,d2_reference,,,4,0.4,,
+CropsAndStaples__diammonium_usd_t_96_12_12_10events,CropsAndStaples__diammonium_usd_t_96_12_12_10events__20250314T000000,CropsAndStaples,val,1D,True,10,364,846,E-Extract,compressed,,260,10,1.0,10,0.6926713947990544
+CropsAndStaples__diammonium_usd_t_96_12_12_10events,CropsAndStaples__diammonium_usd_t_96_12_12_10events__20250314T000000,CropsAndStaples,val,1D,True,10,364,846,E-Summary,compressed,,296,10,1.0,10,0.6501182033096926
+CropsAndStaples__oat_usd_bu_96_12_12_10events,CropsAndStaples__oat_usd_bu_96_12_12_10events__20241226T000000,CropsAndStaples,val,1D,False,10,350,1376,D2,d2_reference,,,1,0.1,,
+CropsAndStaples__oat_usd_bu_96_12_12_10events,CropsAndStaples__oat_usd_bu_96_12_12_10events__20241226T000000,CropsAndStaples,val,1D,False,10,350,1376,E-Extract,compressed,,207,10,1.0,10,0.8495639534883721
+CropsAndStaples__oat_usd_bu_96_12_12_10events,CropsAndStaples__oat_usd_bu_96_12_12_10events__20241226T000000,CropsAndStaples,val,1D,False,10,350,1376,E-Summary,fallback_d2,"[4, 'event_failed:over_budget(33>30)']",,1,0.1,,
+CropsAndStaples__wheat_usd_bu_96_12_12_10events,CropsAndStaples__wheat_usd_bu_96_12_12_10events__20250411T000000,CropsAndStaples,val,1D,True,10,366,1683,D2,d2_reference,,,1,0.1,,
+CropsAndStaples__wheat_usd_bu_96_12_12_10events,CropsAndStaples__wheat_usd_bu_96_12_12_10events__20250411T000000,CropsAndStaples,val,1D,True,10,366,1683,E-Extract,compressed,,231,10,1.0,10,0.8627450980392157
+CropsAndStaples__wheat_usd_bu_96_12_12_10events,CropsAndStaples__wheat_usd_bu_96_12_12_10events__20250411T000000,CropsAndStaples,val,1D,True,10,366,1683,E-Summary,compressed,,293,10,1.0,10,0.8259061200237671
+Currency__usdtogbp_exchangerate_96_12_12_10events,Currency__usdtogbp_exchangerate_96_12_12_10events__20250310T000000,Currency,val,1D,True,10,360,896,D2,d2_reference,,,4,0.4,,
+Currency__usdtogbp_exchangerate_96_12_12_10events,Currency__usdtogbp_exchangerate_96_12_12_10events__20250310T000000,Currency,val,1D,True,10,360,896,E-Extract,fallback_d2,"[2, 'event_failed:span_not_verbatim']",,4,0.4,,
+Currency__usdtogbp_exchangerate_96_12_12_10events,Currency__usdtogbp_exchangerate_96_12_12_10events__20250310T000000,Currency,val,1D,True,10,360,896,E-Summary,compressed,,291,10,1.0,10,0.6752232142857143
+Currency__usdtobrl_exchangerate_96_12_12_10events,Currency__usdtobrl_exchangerate_96_12_12_10events__20241211T000000,Currency,val,1D,False,10,348,1435,D2,d2_reference,,,2,0.2,,
+Currency__usdtobrl_exchangerate_96_12_12_10events,Currency__usdtobrl_exchangerate_96_12_12_10events__20241211T000000,Currency,val,1D,False,10,348,1435,E-Extract,fallback_d2,"[5, 'event_failed:span_not_verbatim']",,2,0.2,,
+Currency__usdtobrl_exchangerate_96_12_12_10events,Currency__usdtobrl_exchangerate_96_12_12_10events__20241211T000000,Currency,val,1D,False,10,348,1435,E-Summary,compressed,,300,10,1.0,10,0.7909407665505226
+Currency__usdtoinr_exchangerate_96_12_12_10events,Currency__usdtoinr_exchangerate_96_12_12_10events__20250117T000000,Currency,val,1D,False,10,344,1951,D2,d2_reference,,,2,0.2,,
+Currency__usdtoinr_exchangerate_96_12_12_10events,Currency__usdtoinr_exchangerate_96_12_12_10events__20250117T000000,Currency,val,1D,False,10,344,1951,E-Extract,compressed,,228,10,1.0,10,0.8831368528959508
+Currency__usdtoinr_exchangerate_96_12_12_10events,Currency__usdtoinr_exchangerate_96_12_12_10events__20250117T000000,Currency,val,1D,False,10,344,1951,E-Summary,compressed,,305,10,1.0,10,0.8436699128651973
+EnergyAndFuels__uranium_usd_lbs_96_12_12_10events,EnergyAndFuels__uranium_usd_lbs_96_12_12_10events__20250331T000000,EnergyAndFuels,val,1D,True,7,366,777,D2,d2_reference,,,3,0.42857142857142855,,
+EnergyAndFuels__uranium_usd_lbs_96_12_12_10events,EnergyAndFuels__uranium_usd_lbs_96_12_12_10events__20250331T000000,EnergyAndFuels,val,1D,True,7,366,777,E-Extract,compressed,,206,7,1.0,7,0.7348777348777349
+EnergyAndFuels__uranium_usd_lbs_96_12_12_10events,EnergyAndFuels__uranium_usd_lbs_96_12_12_10events__20250331T000000,EnergyAndFuels,val,1D,True,7,366,777,E-Summary,compressed,,269,7,1.0,7,0.6537966537966537
+EnergyAndFuels__rapeseed_eur_t_96_12_12_10events,EnergyAndFuels__rapeseed_eur_t_96_12_12_10events__20250123T000000,EnergyAndFuels,val,1D,True,9,363,1246,D2,d2_reference,,,3,0.3333333333333333,,
+EnergyAndFuels__rapeseed_eur_t_96_12_12_10events,EnergyAndFuels__rapeseed_eur_t_96_12_12_10events__20250123T000000,EnergyAndFuels,val,1D,True,9,363,1246,E-Extract,compressed,,231,9,1.0,9,0.8146067415730337
+EnergyAndFuels__rapeseed_eur_t_96_12_12_10events,EnergyAndFuels__rapeseed_eur_t_96_12_12_10events__20250123T000000,EnergyAndFuels,val,1D,True,9,363,1246,E-Summary,compressed,,304,9,1.0,9,0.7560192616372392
+EnergyAndFuels__gasoline_usd_gal_96_12_12_10events,EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20250404T000000,EnergyAndFuels,val,1D,True,10,366,1618,D2,d2_reference,,,2,0.2,,
+EnergyAndFuels__gasoline_usd_gal_96_12_12_10events,EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20250404T000000,EnergyAndFuels,val,1D,True,10,366,1618,E-Extract,compressed,,243,10,1.0,10,0.8498145859085291
+EnergyAndFuels__gasoline_usd_gal_96_12_12_10events,EnergyAndFuels__gasoline_usd_gal_96_12_12_10events__20250404T000000,EnergyAndFuels,val,1D,True,10,366,1618,E-Summary,compressed,,300,10,1.0,10,0.8145859085290482
+LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events,LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events__20240724T000000,LivestockAndFoodProducts,val,1D,True,10,366,766,D2,d2_reference,,,5,0.5,,
+LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events,LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events__20240724T000000,LivestockAndFoodProducts,val,1D,True,10,366,766,E-Extract,compressed,,287,10,1.0,10,0.6253263707571801
+LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events,LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events__20240724T000000,LivestockAndFoodProducts,val,1D,True,10,366,766,E-Summary,compressed,,319,10,1.0,10,0.5835509138381201
+LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events,LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events__20240701T000000,LivestockAndFoodProducts,val,1D,False,9,353,1312,D2,d2_reference,,,2,0.2222222222222222,,
+LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events,LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events__20240701T000000,LivestockAndFoodProducts,val,1D,False,9,353,1312,E-Extract,compressed,,204,9,1.0,9,0.8445121951219512
+LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events,LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events__20240701T000000,LivestockAndFoodProducts,val,1D,False,9,353,1312,E-Summary,compressed,,276,9,1.0,9,0.7896341463414634
+LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events,LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events__20240626T000000,LivestockAndFoodProducts,val,1D,False,10,352,1622,D2,d2_reference,,,3,0.3,,
+LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events,LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events__20240626T000000,LivestockAndFoodProducts,val,1D,False,10,352,1622,E-Extract,compressed,,260,10,1.0,10,0.8397040690505548
+LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events,LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events__20240626T000000,LivestockAndFoodProducts,val,1D,False,10,352,1622,E-Summary,compressed,,309,10,1.0,10,0.8094944512946979
+RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events,RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events__20250502T000000,RawMaterialsAndConstruction,val,1D,True,10,366,901,D2,d2_reference,,,3,0.3,,
+RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events,RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events__20250502T000000,RawMaterialsAndConstruction,val,1D,True,10,366,901,E-Extract,compressed,,238,10,1.0,10,0.7358490566037736
+RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events,RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events__20250502T000000,RawMaterialsAndConstruction,val,1D,True,10,366,901,E-Summary,compressed,,309,10,1.0,10,0.6570477247502775
+RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events,RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events__20250113T000000,RawMaterialsAndConstruction,val,1D,False,10,349,1300,D2,d2_reference,,,3,0.3,,
+RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events,RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events__20250113T000000,RawMaterialsAndConstruction,val,1D,False,10,349,1300,E-Extract,fallback_d2,"[7, 'event_failed:span_not_verbatim']",,3,0.3,,
+RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events,RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events__20250113T000000,RawMaterialsAndConstruction,val,1D,False,10,349,1300,E-Summary,compressed,,306,10,1.0,10,0.7646153846153846
+RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events,RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events__20250107T000000,RawMaterialsAndConstruction,val,1D,False,10,350,1756,D2,d2_reference,,,2,0.2,,
+RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events,RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events__20250107T000000,RawMaterialsAndConstruction,val,1D,False,10,350,1756,E-Extract,fallback_d2,"[8, 'event_failed:span_not_verbatim']",,2,0.2,,
+RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events,RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events__20250107T000000,RawMaterialsAndConstruction,val,1D,False,10,350,1756,E-Summary,fallback_d2,"[1, 'event_failed:over_budget(34>31)']",,2,0.2,,
+SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events__20250515T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,349,866,D2,d2_reference,,,5,0.5,,
+SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events__20250515T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,349,866,E-Extract,compressed,,275,10,1.0,10,0.6824480369515011
+SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events__20250515T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,349,866,E-Summary,compressed,,323,10,1.0,10,0.6270207852193995
+SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events__20250226T000000,SpecialtyAndAdvancedMaterials,val,1D,True,9,364,1466,D2,d2_reference,,,2,0.2222222222222222,,
+SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events__20250226T000000,SpecialtyAndAdvancedMaterials,val,1D,True,9,364,1466,E-Extract,compressed,,237,9,1.0,9,0.8383356070941337
+SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events__20250226T000000,SpecialtyAndAdvancedMaterials,val,1D,True,9,364,1466,E-Summary,compressed,,300,9,1.0,9,0.7953615279672579
+SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events__20250613T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,347,2089,D2,d2_reference,,,1,0.1,,
+SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events__20250613T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,347,2089,E-Extract,compressed,,264,10,1.0,10,0.8736237434179033
+SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events,SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events__20250613T000000,SpecialtyAndAdvancedMaterials,val,1D,False,10,347,2089,E-Summary,fallback_d2,"[2, 'event_failed:over_budget(32>30)']",,1,0.1,,
+StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events__20241223T000000,StrategicAndHighValueMaterials,val,1D,False,8,340,971,D2,d2_reference,,,2,0.25,,
+StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events__20241223T000000,StrategicAndHighValueMaterials,val,1D,False,8,340,971,E-Extract,compressed,,227,8,1.0,8,0.7662203913491246
+StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events__20241223T000000,StrategicAndHighValueMaterials,val,1D,False,8,340,971,E-Summary,compressed,,263,8,1.0,8,0.729145211122554
+StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events__20241206T000000,StrategicAndHighValueMaterials,val,1D,True,10,365,1454,D2,d2_reference,,,2,0.2,,
+StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events__20241206T000000,StrategicAndHighValueMaterials,val,1D,True,10,365,1454,E-Extract,compressed,,252,10,1.0,10,0.8266850068775791
+StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events,StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events__20241206T000000,StrategicAndHighValueMaterials,val,1D,True,10,365,1454,E-Summary,compressed,,313,10,1.0,10,0.7847317744154058
+StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events,StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events__20250109T000000,StrategicAndHighValueMaterials,val,1D,False,10,347,1756,D2,d2_reference,,,1,0.1,,
+StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events,StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events__20250109T000000,StrategicAndHighValueMaterials,val,1D,False,10,347,1756,E-Extract,compressed,,261,10,1.0,10,0.851366742596811
+StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events,StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events__20250109T000000,StrategicAndHighValueMaterials,val,1D,False,10,347,1756,E-Summary,compressed,,285,10,1.0,10,0.8376993166287016
+arts__art_exhibitions_96_12_4_10events,arts__art_exhibitions_96_12_4_10events__20240609T000000,arts,val,1W,False,2,303,333,D2,d2_reference,,,2,1.0,,
+arts__art_exhibitions_96_12_4_10events,arts__art_exhibitions_96_12_4_10events__20240609T000000,arts,val,1W,False,2,303,333,E-Extract,fallback_d2,gate_fail:content_le_510,,2,1.0,,
+arts__art_exhibitions_96_12_4_10events,arts__art_exhibitions_96_12_4_10events__20240609T000000,arts,val,1W,False,2,303,333,E-Summary,fallback_d2,gate_fail:content_le_510,,2,1.0,,
+arts__national_football_league_96_12_4_10events,arts__national_football_league_96_12_4_10events__20240707T000000,arts,val,1W,False,8,355,1254,D2,d2_reference,,,1,0.125,,
+arts__national_football_league_96_12_4_10events,arts__national_football_league_96_12_4_10events__20240707T000000,arts,val,1W,False,8,355,1254,E-Extract,compressed,,219,8,1.0,8,0.8253588516746412
+arts__national_football_league_96_12_4_10events,arts__national_football_league_96_12_4_10events__20240707T000000,arts,val,1W,False,8,355,1254,E-Summary,compressed,,245,8,1.0,8,0.8046251993620415
+arts__comic_con_96_12_4_10events,arts__comic_con_96_12_4_10events__20240804T000000,arts,val,1W,False,9,346,1639,D2,d2_reference,,,1,0.1111111111111111,,
+arts__comic_con_96_12_4_10events,arts__comic_con_96_12_4_10events__20240804T000000,arts,val,1W,False,9,346,1639,E-Extract,compressed,,212,9,1.0,9,0.8706528370957901
+arts__comic_con_96_12_4_10events,arts__comic_con_96_12_4_10events__20240804T000000,arts,val,1W,False,9,346,1639,E-Summary,compressed,,285,9,1.0,9,0.8261134838316047
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20241222T000000,climate,val,1W,False,5,317,1100,D2,d2_reference,,,1,0.2,,
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20241222T000000,climate,val,1W,False,5,317,1100,E-Extract,compressed,,190,5,1.0,5,0.8272727272727273
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20241222T000000,climate,val,1W,False,5,317,1100,E-Summary,compressed,,189,5,1.0,5,0.8281818181818181
+climate__global_warming_96_12_4_10events,climate__global_warming_96_12_4_10events__20250216T000000,climate,val,1W,False,9,354,1499,D2,d2_reference,,,2,0.2222222222222222,,
+climate__global_warming_96_12_4_10events,climate__global_warming_96_12_4_10events__20250216T000000,climate,val,1W,False,9,354,1499,E-Extract,fallback_d2,"[8, 'event_failed:span_not_verbatim']",,2,0.2222222222222222,,
+climate__global_warming_96_12_4_10events,climate__global_warming_96_12_4_10events__20250216T000000,climate,val,1W,False,9,354,1499,E-Summary,compressed,,279,9,1.0,9,0.8138759172781854
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20250119T000000,climate,val,1W,False,8,340,1767,D2,d2_reference,,,1,0.125,,
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20250119T000000,climate,val,1W,False,8,340,1767,E-Extract,compressed,,220,8,1.0,8,0.8754951895868704
+climate__deforestation_96_12_4_10events,climate__deforestation_96_12_4_10events__20250119T000000,climate,val,1W,False,8,340,1767,E-Summary,compressed,,246,8,1.0,8,0.8607809847198642
+economy__minimum_wage_96_12_4_10events,economy__minimum_wage_96_12_4_10events__20241222T000000,economy,val,1W,False,3,317,578,D2,d2_reference,,,1,0.3333333333333333,,
+economy__minimum_wage_96_12_4_10events,economy__minimum_wage_96_12_4_10events__20241222T000000,economy,val,1W,False,3,317,578,E-Extract,compressed,,163,3,1.0,3,0.7179930795847751
+economy__minimum_wage_96_12_4_10events,economy__minimum_wage_96_12_4_10events__20241222T000000,economy,val,1W,False,3,317,578,E-Summary,compressed,,163,3,1.0,3,0.7179930795847751
+economy__healthcare_costs_96_12_4_10events,economy__healthcare_costs_96_12_4_10events__20250216T000000,economy,val,1W,False,7,354,1341,D2,d2_reference,,,2,0.2857142857142857,,
+economy__healthcare_costs_96_12_4_10events,economy__healthcare_costs_96_12_4_10events__20250216T000000,economy,val,1W,False,7,354,1341,E-Extract,compressed,,233,7,1.0,7,0.8262490678598061
+economy__healthcare_costs_96_12_4_10events,economy__healthcare_costs_96_12_4_10events__20250216T000000,economy,val,1W,False,7,354,1341,E-Summary,compressed,,252,7,1.0,7,0.8120805369127517
+economy__government_spending_96_12_4_10events,economy__government_spending_96_12_4_10events__20250216T000000,economy,val,1W,False,8,354,1763,D2,d2_reference,,,1,0.125,,
+economy__government_spending_96_12_4_10events,economy__government_spending_96_12_4_10events__20250216T000000,economy,val,1W,False,8,354,1763,E-Extract,compressed,,232,8,1.0,8,0.8684061259217244
+economy__government_spending_96_12_4_10events,economy__government_spending_96_12_4_10events__20250216T000000,economy,val,1W,False,8,354,1763,E-Summary,compressed,,274,8,1.0,8,0.8445830969937607
+electronic_technology__meta_platforms_96_12_4_10events,electronic_technology__meta_platforms_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,7,354,1183,D2,d2_reference,,,2,0.2857142857142857,,
+electronic_technology__meta_platforms_96_12_4_10events,electronic_technology__meta_platforms_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,7,354,1183,E-Extract,compressed,,206,7,1.0,7,0.8258664412510566
+electronic_technology__meta_platforms_96_12_4_10events,electronic_technology__meta_platforms_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,7,354,1183,E-Summary,compressed,,232,7,1.0,7,0.8038884192730347
+electronic_technology__alphabet_96_12_4_10events,electronic_technology__alphabet_96_12_4_10events__20241222T000000,electronic_technology,val,1W,False,9,318,1506,D2,d2_reference,,,1,0.1111111111111111,,
+electronic_technology__alphabet_96_12_4_10events,electronic_technology__alphabet_96_12_4_10events__20241222T000000,electronic_technology,val,1W,False,9,318,1506,E-Extract,compressed,,198,9,1.0,9,0.8685258964143426
+electronic_technology__alphabet_96_12_4_10events,electronic_technology__alphabet_96_12_4_10events__20241222T000000,electronic_technology,val,1W,False,9,318,1506,E-Summary,compressed,,253,9,1.0,9,0.8320053120849934
+electronic_technology__drones_96_12_4_10events,electronic_technology__drones_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,10,355,1839,D2,d2_reference,,,1,0.1,,
+electronic_technology__drones_96_12_4_10events,electronic_technology__drones_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,10,355,1839,E-Extract,compressed,,231,10,1.0,10,0.8743882544861338
+electronic_technology__drones_96_12_4_10events,electronic_technology__drones_96_12_4_10events__20250216T000000,electronic_technology,val,1W,False,10,355,1839,E-Summary,compressed,,287,10,1.0,10,0.843936922240348
+finance__financial_regulation_96_12_4_10events,finance__financial_regulation_96_12_4_10events__20250119T000000,finance,val,1W,False,4,340,564,D2,d2_reference,,,2,0.5,,
+finance__financial_regulation_96_12_4_10events,finance__financial_regulation_96_12_4_10events__20250119T000000,finance,val,1W,False,4,340,564,E-Extract,compressed,,150,4,1.0,4,0.7340425531914894
+finance__financial_regulation_96_12_4_10events,finance__financial_regulation_96_12_4_10events__20250119T000000,finance,val,1W,False,4,340,564,E-Summary,compressed,,183,4,1.0,4,0.675531914893617
+finance__asset_management_96_12_4_10events,finance__asset_management_96_12_4_10events__20241222T000000,finance,val,1W,False,8,317,1546,D2,d2_reference,,,1,0.125,,
+finance__asset_management_96_12_4_10events,finance__asset_management_96_12_4_10events__20241222T000000,finance,val,1W,False,8,317,1546,E-Extract,compressed,,194,8,1.0,8,0.8745148771021992
+finance__asset_management_96_12_4_10events,finance__asset_management_96_12_4_10events__20241222T000000,finance,val,1W,False,8,317,1546,E-Summary,compressed,,256,8,1.0,8,0.8344113842173351
+finance__venture_capital_96_12_4_10events,finance__venture_capital_96_12_4_10events__20250216T000000,finance,val,1W,False,10,354,1996,D2,d2_reference,,,2,0.2,,
+finance__venture_capital_96_12_4_10events,finance__venture_capital_96_12_4_10events__20250216T000000,finance,val,1W,False,10,354,1996,E-Extract,compressed,,230,10,1.0,10,0.8847695390781563
+finance__venture_capital_96_12_4_10events,finance__venture_capital_96_12_4_10events__20250216T000000,finance,val,1W,False,10,354,1996,E-Summary,compressed,,286,10,1.0,10,0.8567134268537074
+pets__animal_rescue_96_12_4_10events,pets__animal_rescue_96_12_4_10events__20250119T000000,pets,val,1W,False,7,340,1104,D2,d2_reference,,,2,0.2857142857142857,,
+pets__animal_rescue_96_12_4_10events,pets__animal_rescue_96_12_4_10events__20250119T000000,pets,val,1W,False,7,340,1104,E-Extract,compressed,,173,7,1.0,7,0.8432971014492754
+pets__animal_rescue_96_12_4_10events,pets__animal_rescue_96_12_4_10events__20250119T000000,pets,val,1W,False,7,340,1104,E-Summary,compressed,,199,7,1.0,7,0.8197463768115942
+pets__marine_life_96_12_4_10events,pets__marine_life_96_12_4_10events__20250216T000000,pets,val,1W,False,8,354,1337,D2,d2_reference,,,2,0.25,,
+pets__marine_life_96_12_4_10events,pets__marine_life_96_12_4_10events__20250216T000000,pets,val,1W,False,8,354,1337,E-Extract,compressed,,224,8,1.0,8,0.8324607329842932
+pets__marine_life_96_12_4_10events,pets__marine_life_96_12_4_10events__20250216T000000,pets,val,1W,False,8,354,1337,E-Summary,compressed,,249,8,1.0,8,0.8137621540762903
+pets__animal_migration_96_12_4_10events,pets__animal_migration_96_12_4_10events__20241222T000000,pets,val,1W,False,10,317,1829,D2,d2_reference,,,2,0.2,,
+pets__animal_migration_96_12_4_10events,pets__animal_migration_96_12_4_10events__20241222T000000,pets,val,1W,False,10,317,1829,E-Extract,fallback_d2,"[4, 'event_failed:span_not_verbatim']",,2,0.2,,
+pets__animal_migration_96_12_4_10events,pets__animal_migration_96_12_4_10events__20241222T000000,pets,val,1W,False,10,317,1829,E-Summary,compressed,,280,10,1.0,10,0.8469108802624385
+public_health__climate_change_96_12_4_10events,public_health__climate_change_96_12_4_10events__20250119T000000,public_health,val,1W,False,5,340,959,D2,d2_reference,,,1,0.2,,
+public_health__climate_change_96_12_4_10events,public_health__climate_change_96_12_4_10events__20250119T000000,public_health,val,1W,False,5,340,959,E-Extract,compressed,,169,5,1.0,5,0.8237747653806048
+public_health__climate_change_96_12_4_10events,public_health__climate_change_96_12_4_10events__20250119T000000,public_health,val,1W,False,5,340,959,E-Summary,compressed,,202,5,1.0,5,0.7893639207507821
+public_health__infectious_disease_96_12_4_10events,public_health__infectious_disease_96_12_4_10events__20250119T000000,public_health,val,1W,False,9,340,1497,D2,d2_reference,,,1,0.1111111111111111,,
+public_health__infectious_disease_96_12_4_10events,public_health__infectious_disease_96_12_4_10events__20250119T000000,public_health,val,1W,False,9,340,1497,E-Extract,fallback_d2,"[9, 'event_failed:span_not_verbatim']",,1,0.1111111111111111,,
+public_health__infectious_disease_96_12_4_10events,public_health__infectious_disease_96_12_4_10events__20250119T000000,public_health,val,1W,False,9,340,1497,E-Summary,compressed,,266,9,1.0,9,0.822311289245157
+public_health__obesity_96_12_4_10events,public_health__obesity_96_12_4_10events__20250216T000000,public_health,val,1W,False,9,355,1833,D2,d2_reference,,,2,0.2222222222222222,,
+public_health__obesity_96_12_4_10events,public_health__obesity_96_12_4_10events__20250216T000000,public_health,val,1W,False,9,355,1833,E-Extract,fallback_d2,"[2, 'event_failed:span_not_verbatim']",,2,0.2222222222222222,,
+public_health__obesity_96_12_4_10events,public_health__obesity_96_12_4_10events__20250216T000000,public_health,val,1W,False,9,355,1833,E-Summary,compressed,,273,9,1.0,9,0.851063829787234
+public_policy__healthcare_policy_96_12_4_10events,public_policy__healthcare_policy_96_12_4_10events__20250216T000000,public_policy,val,1W,False,4,354,816,D2,d2_reference,,,2,0.5,,
+public_policy__healthcare_policy_96_12_4_10events,public_policy__healthcare_policy_96_12_4_10events__20250216T000000,public_policy,val,1W,False,4,354,816,E-Extract,compressed,,156,4,1.0,4,0.8088235294117647
+public_policy__healthcare_policy_96_12_4_10events,public_policy__healthcare_policy_96_12_4_10events__20250216T000000,public_policy,val,1W,False,4,354,816,E-Summary,compressed,,192,4,1.0,4,0.7647058823529411
+public_policy__carbon_emissions_96_12_4_10events,public_policy__carbon_emissions_96_12_4_10events__20250119T000000,public_policy,val,1W,False,9,340,1465,D2,d2_reference,,,2,0.2222222222222222,,
+public_policy__carbon_emissions_96_12_4_10events,public_policy__carbon_emissions_96_12_4_10events__20250119T000000,public_policy,val,1W,False,9,340,1465,E-Extract,compressed,,224,9,1.0,9,0.847098976109215
+public_policy__carbon_emissions_96_12_4_10events,public_policy__carbon_emissions_96_12_4_10events__20250119T000000,public_policy,val,1W,False,9,340,1465,E-Summary,compressed,,264,9,1.0,9,0.8197952218430034
+public_policy__immigration_reform_96_12_4_10events,public_policy__immigration_reform_96_12_4_10events__20250216T000000,public_policy,val,1W,False,10,354,1795,D2,d2_reference,,,2,0.2,,
+public_policy__immigration_reform_96_12_4_10events,public_policy__immigration_reform_96_12_4_10events__20250216T000000,public_policy,val,1W,False,10,354,1795,E-Extract,fallback_d2,"[5, 'event_failed:span_not_verbatim']",,2,0.2,,
+public_policy__immigration_reform_96_12_4_10events,public_policy__immigration_reform_96_12_4_10events__20250216T000000,public_policy,val,1W,False,10,354,1795,E-Summary,fallback_d2,"[2, 'event_failed:over_budget(37>31)']",,2,0.2,,
+science__data_breach_96_12_4_10events,science__data_breach_96_12_4_10events__20250216T000000,science,val,1W,False,6,354,1048,D2,d2_reference,,,2,0.3333333333333333,,
+science__data_breach_96_12_4_10events,science__data_breach_96_12_4_10events__20250216T000000,science,val,1W,False,6,354,1048,E-Extract,compressed,,188,6,1.0,6,0.8206106870229007
+science__data_breach_96_12_4_10events,science__data_breach_96_12_4_10events__20250216T000000,science,val,1W,False,6,354,1048,E-Summary,compressed,,226,6,1.0,6,0.7843511450381679
+science__gene_editing_96_12_4_10events,science__gene_editing_96_12_4_10events__20250216T000000,science,val,1W,False,9,354,1660,D2,d2_reference,,,1,0.1111111111111111,,
+science__gene_editing_96_12_4_10events,science__gene_editing_96_12_4_10events__20250216T000000,science,val,1W,False,9,354,1660,E-Extract,fallback_d2,"[1, 'event_failed:span_not_verbatim']",,1,0.1111111111111111,,
+science__gene_editing_96_12_4_10events,science__gene_editing_96_12_4_10events__20250216T000000,science,val,1W,False,9,354,1660,E-Summary,compressed,,280,9,1.0,9,0.8313253012048193
+science__cancer_research_96_12_4_10events,science__cancer_research_96_12_4_10events__20250216T000000,science,val,1W,False,10,354,1998,D2,d2_reference,,,1,0.1,,
+science__cancer_research_96_12_4_10events,science__cancer_research_96_12_4_10events__20250216T000000,science,val,1W,False,10,354,1998,E-Extract,fallback_d2,"[2, 'event_failed:span_not_verbatim']",,1,0.1,,
+science__cancer_research_96_12_4_10events,science__cancer_research_96_12_4_10events__20250216T000000,science,val,1W,False,10,354,1998,E-Summary,fallback_d2,"[2, 'event_failed:over_budget(33>31)']",,1,0.1,,
+shopping__christmas_gifts_96_12_4_10events,shopping__christmas_gifts_96_12_4_10events__20250119T000000,shopping,val,1W,False,7,340,1021,D2,d2_reference,,,2,0.2857142857142857,,
+shopping__christmas_gifts_96_12_4_10events,shopping__christmas_gifts_96_12_4_10events__20250119T000000,shopping,val,1W,False,7,340,1021,E-Extract,compressed,,215,7,1.0,7,0.7894221351616063
+shopping__christmas_gifts_96_12_4_10events,shopping__christmas_gifts_96_12_4_10events__20250119T000000,shopping,val,1W,False,7,340,1021,E-Summary,compressed,,250,7,1.0,7,0.7551420176297747
+shopping__black_friday_deals_96_12_4_10events,shopping__black_friday_deals_96_12_4_10events__20250216T000000,shopping,val,1W,False,10,353,1591,D2,d2_reference,,,2,0.2,,
+shopping__black_friday_deals_96_12_4_10events,shopping__black_friday_deals_96_12_4_10events__20250216T000000,shopping,val,1W,False,10,353,1591,E-Extract,compressed,,257,10,1.0,10,0.8384663733500943
+shopping__black_friday_deals_96_12_4_10events,shopping__black_friday_deals_96_12_4_10events__20250216T000000,shopping,val,1W,False,10,353,1591,E-Summary,compressed,,306,10,1.0,10,0.8076681332495286
+shopping__air_conditioner_96_12_4_10events,shopping__air_conditioner_96_12_4_10events__20241222T000000,shopping,val,1W,False,10,316,1883,D2,d2_reference,,,1,0.1,,
+shopping__air_conditioner_96_12_4_10events,shopping__air_conditioner_96_12_4_10events__20241222T000000,shopping,val,1W,False,10,316,1883,E-Extract,compressed,,231,10,1.0,10,0.8773234200743494
+shopping__air_conditioner_96_12_4_10events,shopping__air_conditioner_96_12_4_10events__20241222T000000,shopping,val,1W,False,10,316,1883,E-Summary,fallback_d2,"[4, 'event_failed:over_budget(28>27)']",,1,0.1,,
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250119T000000,society,val,1W,False,8,341,1071,D2,d2_reference,,,2,0.25,,
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250119T000000,society,val,1W,False,8,341,1071,E-Extract,compressed,,229,8,1.0,8,0.7861811391223156
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250119T000000,society,val,1W,False,8,341,1071,E-Summary,compressed,,244,8,1.0,8,0.7721755368814193
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250216T000000,society,val,1W,False,8,355,1402,D2,d2_reference,,,1,0.125,,
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250216T000000,society,val,1W,False,8,355,1402,E-Extract,compressed,,237,8,1.0,8,0.8309557774607703
+society__protest_96_12_4_10events,society__protest_96_12_4_10events__20250216T000000,society,val,1W,False,8,355,1402,E-Summary,compressed,,263,8,1.0,8,0.8124108416547788
+society__cybersecurity_96_12_4_10events,society__cybersecurity_96_12_4_10events__20250216T000000,society,val,1W,False,10,352,1884,D2,d2_reference,,,2,0.2,,
+society__cybersecurity_96_12_4_10events,society__cybersecurity_96_12_4_10events__20250216T000000,society,val,1W,False,10,352,1884,E-Extract,fallback_d2,"[3, 'event_failed:span_not_verbatim']",,2,0.2,,
+society__cybersecurity_96_12_4_10events,society__cybersecurity_96_12_4_10events__20250216T000000,society,val,1W,False,10,352,1884,E-Summary,compressed,,296,10,1.0,10,0.8428874734607219
+traffic__air_travel_96_12_4_10events,traffic__air_travel_96_12_4_10events__20250119T000000,traffic,val,1W,False,8,340,820,D2,d2_reference,,,2,0.25,,
+traffic__air_travel_96_12_4_10events,traffic__air_travel_96_12_4_10events__20250119T000000,traffic,val,1W,False,8,340,820,E-Extract,fallback_d2,"[4, 'event_failed:span_not_verbatim']",,2,0.25,,
+traffic__air_travel_96_12_4_10events,traffic__air_travel_96_12_4_10events__20250119T000000,traffic,val,1W,False,8,340,820,E-Summary,compressed,,266,8,1.0,8,0.6756097560975609
+traffic__traffic_insurance_96_12_4_10events,traffic__traffic_insurance_96_12_4_10events__20241222T000000,traffic,val,1W,False,9,317,1550,D2,d2_reference,,,1,0.1111111111111111,,
+traffic__traffic_insurance_96_12_4_10events,traffic__traffic_insurance_96_12_4_10events__20241222T000000,traffic,val,1W,False,9,317,1550,E-Extract,compressed,,197,9,1.0,9,0.8729032258064516
+traffic__traffic_insurance_96_12_4_10events,traffic__traffic_insurance_96_12_4_10events__20241222T000000,traffic,val,1W,False,9,317,1550,E-Summary,compressed,,272,9,1.0,9,0.824516129032258
+traffic__used_car_96_12_4_10events,traffic__used_car_96_12_4_10events__20250119T000000,traffic,val,1W,False,10,340,1895,D2,d2_reference,,,1,0.1,,
+traffic__used_car_96_12_4_10events,traffic__used_car_96_12_4_10events__20250119T000000,traffic,val,1W,False,10,340,1895,E-Extract,compressed,,209,10,1.0,10,0.8897097625329815
+traffic__used_car_96_12_4_10events,traffic__used_car_96_12_4_10events__20250119T000000,traffic,val,1W,False,10,340,1895,E-Summary,compressed,,269,10,1.0,10,0.8580474934036939
