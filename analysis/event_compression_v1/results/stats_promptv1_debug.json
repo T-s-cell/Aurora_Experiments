@@ -1,0 +1,332 @@
+{
+ "set": "debug",
+ "n_windows": 19,
+ "outcomes": {
+  "E-Extract|fallback_d2": 19,
+  "E-Summary|fallback_d2": 19
+ },
+ "assembly_gates": {
+  "compressed_windows": 0,
+  "gate_pass": 0,
+  "pass_rate": null
+ },
+ "fallback_windows": {
+  "E-Extract": 19,
+  "E-Summary": 19
+ },
+ "events_total": 167,
+ "fail_events": {
+  "offline mode": 38
+ },
+ "correction_attempts": 0,
+ "run_meta": {
+  "set": "debug",
+  "offline": true,
+  "n_windows": 19,
+  "prompt_shas": {
+   "E-Extract": "a1fb643fd4613e8d0ad33fff350f5523092918c6525930bb1c933ffc0ac0cb71",
+   "E-Summary": "d9bbff1d35a09a47cabb3174a7b3627c8544d4c3475228bb819e23d334315785"
+  },
+  "params_fingerprint": "offline",
+  "service_version": null,
+  "dropped_params": [],
+  "cache": {
+   "E-Extract": {
+    "hits": 0,
+    "misses": 19
+   },
+   "E-Summary": {
+    "hits": 0,
+    "misses": 19
+   }
+  },
+  "outcomes": {
+   "E-Extract|fallback_d2": 19,
+   "E-Summary|fallback_d2": 19
+  }
+ },
+ "fact_flag_cases": [],
+ "aggregate": {
+  "D2": {
+   "windows": 19,
+   "compressed_windows": 0,
+   "coverage_mean": 0.23688387635756056,
+   "coverage_event_weighted": 0.23952095808383234,
+   "events": 167
+  },
+  "E-Extract": {
+   "windows": 19,
+   "compressed_windows": 0,
+   "coverage_mean": 0.23688387635756056,
+   "coverage_event_weighted": 0.23952095808383234,
+   "events": 167,
+   "nonempty_fragments": 0,
+   "over_budget_events": 0,
+   "evidence_ok_events": 0,
+   "new_number_events": 0,
+   "preserved_numbers_mean": null
+  },
+  "E-Summary": {
+   "windows": 19,
+   "compressed_windows": 0,
+   "coverage_mean": 0.23688387635756056,
+   "coverage_event_weighted": 0.23952095808383234,
+   "events": 167,
+   "nonempty_fragments": 0,
+   "over_budget_events": 0,
+   "evidence_ok_events": 0,
+   "new_number_events": 0,
+   "preserved_numbers_mean": null
+  }
+ },
+ "slices": {
+  "freq": {
+   "E-Extract": {
+    "1D": {
+     "windows": 7,
+     "compressed": 0,
+     "coverage_mean": 0.3112244897959183
+    },
+    "1W": {
+     "windows": 12,
+     "compressed": 0,
+     "coverage_mean": 0.1935185185185185
+    }
+   },
+   "E-Summary": {
+    "1D": {
+     "windows": 7,
+     "compressed": 0,
+     "coverage_mean": 0.3112244897959183
+    },
+    "1W": {
+     "windows": 12,
+     "compressed": 0,
+     "coverage_mean": 0.1935185185185185
+    }
+   }
+  },
+  "calendar_skipped": {
+   "E-Extract": {
+    "False": {
+     "windows": 14,
+     "compressed": 0,
+     "coverage_mean": 0.19563492063492063
+    },
+    "True": {
+     "windows": 5,
+     "compressed": 0,
+     "coverage_mean": 0.35238095238095235
+    }
+   },
+   "E-Summary": {
+    "False": {
+     "windows": 14,
+     "compressed": 0,
+     "coverage_mean": 0.19563492063492063
+    },
+    "True": {
+     "windows": 5,
+     "compressed": 0,
+     "coverage_mean": 0.35238095238095235
+    }
+   }
+  },
+  "domain": {
+   "E-Extract": {
+    "CropsAndStaples": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3333333333333333
+    },
+    "Currency": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "EnergyAndFuels": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.5
+    },
+    "LivestockAndFoodProducts": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.42857142857142855
+    },
+    "RawMaterialsAndConstruction": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.16666666666666666
+    },
+    "SpecialtyAndAdvancedMaterials": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "StrategicAndHighValueMaterials": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3
+    },
+    "arts": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "climate": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "economy": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3
+    },
+    "electronic_technology": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "finance": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "pets": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "public_health": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "public_policy": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "science": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "shopping": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2222222222222222
+    },
+    "society": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "traffic": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    }
+   },
+   "E-Summary": {
+    "CropsAndStaples": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3333333333333333
+    },
+    "Currency": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "EnergyAndFuels": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.5
+    },
+    "LivestockAndFoodProducts": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.42857142857142855
+    },
+    "RawMaterialsAndConstruction": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.16666666666666666
+    },
+    "SpecialtyAndAdvancedMaterials": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "StrategicAndHighValueMaterials": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3
+    },
+    "arts": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "climate": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "economy": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.3
+    },
+    "electronic_technology": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "finance": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "pets": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "public_health": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    },
+    "public_policy": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "science": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2
+    },
+    "shopping": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.2222222222222222
+    },
+    "society": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.25
+    },
+    "traffic": {
+     "windows": 1,
+     "compressed": 0,
+     "coverage_mean": 0.125
+    }
+   }
+  }
+ }
+}

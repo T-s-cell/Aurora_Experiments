@@ -36,8 +36,9 @@
     "assembly_gate": "Background/Calendar/Covariates token content must equal D2 bitwise at the recomputed (shifted) block boundaries; Events content = this scheme's generated text with actual length <= E; boundaries recomputed from actual lengths"
   },
   "prompts": {
-    "extract": "prompts/extract_v1.md",
-    "summarize": "prompts/summarize_v1.md",
+    "extract": "prompts/extract_v2.md",
+    "summarize": "prompts/summarize_v2.md",
+    "version_note": "v2 frozen after the v1 debug shakedown: v1 E-Extract failed 18/19 debug windows (attempt-0 over-selection, then paraphrase under correction) and v1 E-Summary lost 5/19 to 1-2 token overshoots; v2 = one version bump, BOTH schemes fully re-run (prompt sha enters the cache key, so no cross-version cache reuse), complete debug comparison regenerated; v1 debug artifacts kept as *_promptv1_* for the record; pre-announced freeze rule: adopt v2 unless it is strictly worse than v1 on BOTH schemes",
     "hash_note": "sha256 of each prompt file is recorded in outputs/run_manifest.json at compression time and enters the cache key"
   },
   "cache": {
