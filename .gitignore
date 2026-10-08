@@ -72,3 +72,17 @@ repro_mm_timesx_d2/preflight/big_*
 repro_mm_timesx_d2/preflight/*.npz
 repro_mm_timesx_d2/preflight/scratch_shards/
 !repro_mm_timesx_d2/preflight/.gitkeep
+
+# EXP-013 (E-Extract v3.3): caches, predictions and preflight tensors stay out of git
+repro_mm_timesx_eextract_v33/outputs/*
+!repro_mm_timesx_eextract_v33/outputs/.gitkeep
+repro_mm_timesx_eextract_v33/cache/*
+!repro_mm_timesx_eextract_v33/cache/.gitkeep
+repro_mm_timesx_eextract_v33/predictions/*
+!repro_mm_timesx_eextract_v33/predictions/.gitkeep
+repro_mm_timesx_eextract_v33/preflight/*.npz
+repro_mm_timesx_eextract_v33/preflight/scratch_shards/
+!repro_mm_timesx_eextract_v33/preflight/.gitkeep
+repro_mm_timesx_eextract_v33/logs/*
+!repro_mm_timesx_eextract_v33/logs/.gitkeep
+repro_mm_timesx_eextract_v33/__pycache__/

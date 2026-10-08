@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""M48T512_E33 per-window inference + fingerprint-bound shards.
+
+Fork of repro_mm_timesx_d2/predict_d2.py: predict_window_mm body is
+line-identical; only the protocol file (protocol_e33.json), the text cache
+(frozen E-Extract v3.3 test cache), and the E33 code files differ. The cache
+was produced by build_cache_e33.py from the frozen diagnostic v3.3 pipeline
+(analysis-event-compression-v1 @ 8fe2320).
+"""
+import hashlib
+import sys
+from pathlib import Path
+
+import numpy as np
+import torch
+
+SUBDIR = Path(__file__).resolve().parent
+PROJECT = SUBDIR.parent
+sys.path.insert(0, str(PROJECT))
+sys.path.insert(0, str(PROJECT / "repro_mm_timesx_v1"))
+sys.path.insert(0, str(PROJECT / "repro_mm_timesx_d2"))
+
+from predict import (ShardVerificationError, aurora_pkg_md5,  # noqa: E402,F401
+                     build_expectation, code_md5 as root_code_md5, derive_seed,
+                     verify_shard_coverage)
+
+E33_CODE_FILES = ["predict_e33.py", "run_eval_e33.py", "aggregate_e33.py"]
+CACHE_NPZ = SUBDIR / "cache" / "text_tokens_M48T512_E33.npz"
+
+
+def protocol_e33_sha():
+    return hashlib.sha256((SUBDIR / "protocol_e33.json").read_bytes()).hexdigest()
+
+
+def e33_code_md5():
+    out = {}
+    for name in E33_CODE_FILES:
+        h = hashlib.md5()
+        h.update((SUBDIR / name).read_bytes())
+        out[name] = h.hexdigest()
+    return out
+
+
+def shard_fingerprint_e33(protocol, itl, base_seed, weights_sha):
+    from predict_d2 import bert_config_md5
+    return {
+        "protocol_e33_sha256": protocol_e33_sha(),
+        "split_manifest_sha256": protocol["data"]["split_manifest_sha256"],
+        "data_cache_sha256": protocol["data"]["data_cache_sha256"],
+        "weights_sha256": weights_sha,
+        "hf_revision": protocol["model"]["hf_revision"],
+        "itl": itl,
+        "num_samples": protocol["inference"]["num_samples"],
+        "base_seed": base_seed,
+        "text_cache_npz_sha256": protocol["text"]["cache"]["npz_sha256"],
+        "code_md5_root": root_code_md5(),
+        "code_md5_e33": e33_code_md5(),
+        "bert_config_md5": bert_config_md5(),
+        "aurora_package_md5": aurora_pkg_md5(),
+    }
+
+
+class TextTokenStore:
+    """Loads the frozen E33 text cache; lookup STRICTLY by (var_key, sample_id)."""
+
+    def __init__(self, protocol=None):
+        import json
+        protocol = protocol or json.loads(
+            (SUBDIR / "protocol_e33.json").read_text())
+        got = hashlib.sha256(CACHE_NPZ.read_bytes()).hexdigest()
+        expect = protocol["text"]["cache"]["npz_sha256"]
+        if got != expect:
+            raise ShardVerificationError(
+                f"text cache sha256 mismatch: got {got} != frozen {expect}")
+        z = np.load(CACHE_NPZ, allow_pickle=False)
+        self._keys = list(zip([str(x) for x in z["var_keys"]],
+                              [str(x) for x in z["sample_ids"]]))
+        if len(set(self._keys)) != len(self._keys):
+            raise ShardVerificationError("duplicate composite keys in text cache")
+        self._ids = z["ids"]
+        self._mask = z["mask"]
+        self._index = {k: i for i, k in enumerate(self._keys)}
+
+    def keys(self):
+        return set(self._keys)
+
+    def get(self, var_key, sample_id, device):
+        i = self._index.get((var_key, sample_id))
+        if i is None:
+            raise KeyError(f"window missing from text cache: {(var_key, sample_id)}")
+        ids = torch.from_numpy(self._ids[i].astype(np.int64)).unsqueeze(0).to(device)
+        mask = torch.from_numpy(self._mask[i].astype(np.int64)).unsqueeze(0).to(device)
+        ttids = torch.zeros_like(ids)
+        return ids, mask, ttids
+
+
+def predict_window_mm(model, past, itl, num_samples, seed,
+                      text_ids=None, text_mask=None, text_typeids=None):
+    """past: float64 (96,) -> float64 (12,) point forecast (sample-mean).
+
+    Line-identical to repro_mm_timesx_d2/predict_d2.predict_window_mm; text
+    tensors (already on model.device) are passed explicitly, string path
+    text_inputs= stays None."""
+    x = torch.from_numpy(np.asarray(past, dtype=np.float32)).unsqueeze(0)
+    x = x.to(next(model.parameters()).device)
+    torch.manual_seed(int(seed))
+    with torch.inference_mode():
+        out = model.generate(
+            inputs=x,
+            text_inputs=None,
+            text_input_ids=text_ids,
+            text_attention_mask=text_mask,
+            text_token_type_ids=text_typeids,
+            vision_inputs=None,
+            revin=True,
+            num_samples=num_samples,
+            max_output_length=12,
+            inference_token_len=itl,
+        )
+    pred = out.to(torch.float64).mean(dim=1).squeeze(0).cpu().numpy()
+    return pred
