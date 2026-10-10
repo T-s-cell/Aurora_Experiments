@@ -1,0 +1,93 @@
+{
+ "stage": "S3_preflight",
+ "created": "2026-10-10T14:26:37",
+ "sample_sha256": "7b2bc81ac7f643a665bde6315900fb1de95c5f02e2de90da53d33eaf814e025f",
+ "forward_binding": {
+  "protocol_version": "Aurora-timesx-all-native-A48-v1",
+  "inventory_sha256": "0cb6e73971b0f8b54077ff3df5a332f7dbe34493b337ab0a2b9744aa88c217de",
+  "arrays_sha256": "fb0c0c454afd8f7b9f276b99704450bdc6c99a454c8d774ea8846f729fa9423d",
+  "vars_sha256": "22018d215b0dfe8ccc842846cf5e04bb2050828d993548728c72215681267068",
+  "vts_preds_sha256": "0ceeb654c3dc78e86aca9c56f7a7ee1f5c8db590785cd23a7e37eb938de041b0",
+  "ln_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "old_split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "old_data_cache_sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+  "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+  "weights_bytes": 843564328,
+  "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+  "itl": 48,
+  "num_samples": 100,
+  "seeds": [
+   2021,
+   2022,
+   2023
+  ],
+  "seed_rule": "w = int.from_bytes(sha256(f'aurora-timesx-v1|{base_seed}|{var_key}|{sample_id}'.encode()).digest()[:8], 'big') % (2**31 - 1); torch.manual_seed(w) immediately before each window's generate(); no other RNG consumption in between",
+  "code_md5_forward": {
+   "protocol.py": "97e2db784172ee74020b2045145fc00b",
+   "common.py": "e13769bca8371a0a2f85f2e9f774cf2c",
+   "preflight.py": "8e5f7ce7273a510aa40eb14599967e6a",
+   "infer_fill.py": "fa9b3dbb9761f9ff6302501126a30caa"
+  },
+  "code_md5_reused_old": {
+   "predict.py": "3a1feb602ed67e5534a6c7214cdb8628",
+   "load_aurora.py": "8600b42714d7ccd7ea5e5bd85d8cc501",
+   "data_loader.py": "505af22e7da7095816cec08fc57809d1"
+  },
+  "aurora_package_md5": {
+   "__init__.py": "55bec5171d216e68eeeb59ce675bac6e",
+   "configuration_aurora.py": "452cbcf5a954e5a83ef78df5b778df9d",
+   "flow_loss.py": "4bc657919426405fa0ce999dc275da53",
+   "modality_connector.py": "49fbbbc03575a554c83bc1a107c3bdc8",
+   "modeling_aurora.py": "16cc50855050e1d60dc2ae4ce15e3dd0",
+   "prototype_retriever.py": "77e0438345684dc26f5b290c6a4a34f0",
+   "ts_generation_mixin.py": "faad71b0796b01ea69a3177c32520cd0",
+   "util_functions.py": "546a7518b1d36bd57092962adf0fe040"
+  },
+  "env": {
+   "python": "3.12.13",
+   "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+   "host": "theta",
+   "cublas_workspace_config": ":4096:8",
+   "torch": "2.12.0+cu126",
+   "cuda_available": true,
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "cuda_visible_devices": "1",
+   "numpy": "2.4.4",
+   "aurora_model": "0.2.0"
+  }
+ },
+ "model_load_report": {
+  "determinism": {
+   "cublas_workspace_config": ":4096:8",
+   "tf32_matmul": false,
+   "tf32_cudnn": false,
+   "cudnn_benchmark": false,
+   "deterministic_algorithms": true
+  },
+  "weights": {
+   "path": "/dev_data/wlt/.cache/huggingface/hub/models--DecisionIntelligence--Aurora/snapshots/c495b02c1b151be52a3c174237ed240aa66e6384/model.safetensors",
+   "bytes": 843564328,
+   "sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+   "ok": true
+  },
+  "mode": {
+   "training": false,
+   "trainable_params": 0
+  },
+  "device": "cuda"
+ },
+ "criteria": {
+  "c1_max_rel": 1e-05,
+  "c2_max_over_d": 0.0001
+ },
+ "stats": {
+  "n_checked": 582,
+  "n_compare": 570,
+  "n_new_only": 12,
+  "n_failed_(seed,var)": 0,
+  "c1_max": 0.0,
+  "c2_max": 0.0
+ },
+ "failed_detail": [],
+ "elapsed_s": 42.4
+}

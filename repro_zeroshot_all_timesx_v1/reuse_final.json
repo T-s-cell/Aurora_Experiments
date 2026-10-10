@@ -1,0 +1,3051 @@
+{
+ "stage": "S3_preflight_final",
+ "created": "2026-10-10T14:26:37",
+ "forward_binding": {
+  "protocol_version": "Aurora-timesx-all-native-A48-v1",
+  "inventory_sha256": "0cb6e73971b0f8b54077ff3df5a332f7dbe34493b337ab0a2b9744aa88c217de",
+  "arrays_sha256": "fb0c0c454afd8f7b9f276b99704450bdc6c99a454c8d774ea8846f729fa9423d",
+  "vars_sha256": "22018d215b0dfe8ccc842846cf5e04bb2050828d993548728c72215681267068",
+  "vts_preds_sha256": "0ceeb654c3dc78e86aca9c56f7a7ee1f5c8db590785cd23a7e37eb938de041b0",
+  "ln_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "old_split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "old_data_cache_sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+  "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+  "weights_bytes": 843564328,
+  "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+  "itl": 48,
+  "num_samples": 100,
+  "seeds": [
+   2021,
+   2022,
+   2023
+  ],
+  "seed_rule": "w = int.from_bytes(sha256(f'aurora-timesx-v1|{base_seed}|{var_key}|{sample_id}'.encode()).digest()[:8], 'big') % (2**31 - 1); torch.manual_seed(w) immediately before each window's generate(); no other RNG consumption in between",
+  "code_md5_forward": {
+   "protocol.py": "97e2db784172ee74020b2045145fc00b",
+   "common.py": "e13769bca8371a0a2f85f2e9f774cf2c",
+   "preflight.py": "8e5f7ce7273a510aa40eb14599967e6a",
+   "infer_fill.py": "fa9b3dbb9761f9ff6302501126a30caa"
+  },
+  "code_md5_reused_old": {
+   "predict.py": "3a1feb602ed67e5534a6c7214cdb8628",
+   "load_aurora.py": "8600b42714d7ccd7ea5e5bd85d8cc501",
+   "data_loader.py": "505af22e7da7095816cec08fc57809d1"
+  },
+  "aurora_package_md5": {
+   "__init__.py": "55bec5171d216e68eeeb59ce675bac6e",
+   "configuration_aurora.py": "452cbcf5a954e5a83ef78df5b778df9d",
+   "flow_loss.py": "4bc657919426405fa0ce999dc275da53",
+   "modality_connector.py": "49fbbbc03575a554c83bc1a107c3bdc8",
+   "modeling_aurora.py": "16cc50855050e1d60dc2ae4ce15e3dd0",
+   "prototype_retriever.py": "77e0438345684dc26f5b290c6a4a34f0",
+   "ts_generation_mixin.py": "faad71b0796b01ea69a3177c32520cd0",
+   "util_functions.py": "546a7518b1d36bd57092962adf0fe040"
+  },
+  "env": {
+   "python": "3.12.13",
+   "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+   "host": "theta",
+   "cublas_workspace_config": ":4096:8",
+   "torch": "2.12.0+cu126",
+   "cuda_available": true,
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "cuda_visible_devices": "1",
+   "numpy": "2.4.4",
+   "aurora_model": "0.2.0"
+  }
+ },
+ "variables": {
+  "2021|CropsAndStaples__barley_inr_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__canola_cad_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2021|CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__urea_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|Currency__usdtoaud_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtobrl_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtocad_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtochf_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtogbp_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtohkd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtoinr_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtokrw_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|Currency__usdtomxn_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|Currency__usdtosgd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2021|StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|arts__art_exhibitions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|arts__broadway_shows_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|arts__comic_con_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__esports_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__film_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__food_wine_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__major_league_baseball_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__music_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__national_basketball_association_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|arts__national_football_league_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__deforestation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__drought_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__endangered_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__flooding_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__global_warming_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__heatwave_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__heavy_rainfall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__marine_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|climate__sustainable_fashion_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|climate__water_scarcity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|economy__cost_of_living_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__federal_budget_deficit_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|economy__government_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__healthcare_costs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__inflation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__international_trade_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__minimum_wage_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__student_loans_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|economy__taxes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|economy__unemployment_rate_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__alphabet_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|electronic_technology__amazon_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__apple_inc_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__artificial_intelligence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__consumer_electronics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__drones_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__meta_platforms_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__microsoft_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|electronic_technology__nvidia_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|electronic_technology__robotics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__asset_management_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__cryptocurrency_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__financial_regulation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__goldman_sachs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__hedge_funds_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__investment_banking_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|finance__mortgage_rates_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__private_equity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|finance__stock_market_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|finance__venture_capital_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__animal_migration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__animal_rescue_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__animal_welfare_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|pets__beekeeping_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__biodiversity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__invasive_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__marine_life_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|pets__pest_control_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__pet_adoption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|pets__pet_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__air_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|public_health__climate_change_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|public_health__diabetes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__drug_overdose_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__food_safety_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__hiv_aids_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__infectious_disease_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__mental_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__obesity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_health__opioid_crisis_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__carbon_emissions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__federal_reserve_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__healthcare_policy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|public_policy__human_rights_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__immigration_reform_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|public_policy__national_debt_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__presidential_election_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__refugee_support_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__renewable_energy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__space_exploration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|public_policy__wildlife_conservation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__cancer_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|science__data_breach_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__earthquake_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__food_recall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__gene_editing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__meteor_shower_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__nobel_prize_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__quantum_computing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|science__vaccine_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|science__volcanic_eruption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__air_conditioner_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__back_to_school_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|shopping__black_friday_deals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__christmas_gifts_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__fashion_week_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__flu_shot_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|shopping__halloween_costumes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__organic_food_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__ski_gear_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|shopping__tax_software_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__affordable_housing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__cybersecurity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__data_privacy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__domestic_violence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|society__gender_equality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__homelessness_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|society__income_inequality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__infrastructure_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__protest_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|society__wildfires_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__air_travel_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__autonomous_driving_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__electric_vehicle_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__formula_1_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__gas_prices_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__rocket_launch_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|traffic__tesla_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__tour_de_france_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2021|traffic__traffic_insurance_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2021|traffic__used_car_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2021,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__barley_inr_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__canola_cad_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2022|CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__urea_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|Currency__usdtoaud_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtobrl_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtocad_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtochf_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtogbp_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtohkd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtoinr_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtokrw_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|Currency__usdtomxn_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|Currency__usdtosgd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2022|StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|arts__art_exhibitions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|arts__broadway_shows_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|arts__comic_con_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__esports_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__film_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__food_wine_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__major_league_baseball_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__music_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__national_basketball_association_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|arts__national_football_league_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__deforestation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__drought_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__endangered_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__flooding_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__global_warming_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__heatwave_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__heavy_rainfall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__marine_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|climate__sustainable_fashion_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|climate__water_scarcity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|economy__cost_of_living_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__federal_budget_deficit_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|economy__government_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__healthcare_costs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__inflation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__international_trade_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__minimum_wage_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__student_loans_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|economy__taxes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|economy__unemployment_rate_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__alphabet_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|electronic_technology__amazon_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__apple_inc_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__artificial_intelligence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__consumer_electronics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__drones_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__meta_platforms_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__microsoft_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|electronic_technology__nvidia_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|electronic_technology__robotics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__asset_management_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__cryptocurrency_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__financial_regulation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__goldman_sachs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__hedge_funds_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__investment_banking_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|finance__mortgage_rates_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__private_equity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|finance__stock_market_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|finance__venture_capital_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__animal_migration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__animal_rescue_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__animal_welfare_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|pets__beekeeping_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__biodiversity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__invasive_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__marine_life_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|pets__pest_control_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__pet_adoption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|pets__pet_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__air_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|public_health__climate_change_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|public_health__diabetes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__drug_overdose_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__food_safety_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__hiv_aids_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__infectious_disease_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__mental_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__obesity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_health__opioid_crisis_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__carbon_emissions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__federal_reserve_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__healthcare_policy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|public_policy__human_rights_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__immigration_reform_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|public_policy__national_debt_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__presidential_election_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__refugee_support_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__renewable_energy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__space_exploration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|public_policy__wildlife_conservation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__cancer_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|science__data_breach_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__earthquake_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__food_recall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__gene_editing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__meteor_shower_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__nobel_prize_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__quantum_computing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|science__vaccine_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|science__volcanic_eruption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__air_conditioner_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__back_to_school_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|shopping__black_friday_deals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__christmas_gifts_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__fashion_week_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__flu_shot_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|shopping__halloween_costumes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__organic_food_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__ski_gear_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|shopping__tax_software_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__affordable_housing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__cybersecurity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__data_privacy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__domestic_violence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|society__gender_equality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__homelessness_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|society__income_inequality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__infrastructure_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__protest_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|society__wildfires_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__air_travel_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__autonomous_driving_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__electric_vehicle_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__formula_1_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__gas_prices_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__rocket_launch_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|traffic__tesla_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__tour_de_france_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2022|traffic__traffic_insurance_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2022|traffic__used_car_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2022,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__barley_inr_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__canola_cad_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2023|CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__urea_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|Currency__usdtoaud_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtobrl_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtocad_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtochf_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtogbp_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtohkd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtoinr_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtokrw_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|Currency__usdtomxn_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|Currency__usdtosgd_exchangerate_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 2
+  },
+  "2023|StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|arts__art_exhibitions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|arts__broadway_shows_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|arts__comic_con_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__esports_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__film_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__food_wine_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__major_league_baseball_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__music_festivals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__national_basketball_association_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|arts__national_football_league_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__deforestation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__drought_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__endangered_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__flooding_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__global_warming_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__heatwave_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__heavy_rainfall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__marine_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|climate__sustainable_fashion_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|climate__water_scarcity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|economy__cost_of_living_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__federal_budget_deficit_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|economy__government_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__healthcare_costs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__inflation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__international_trade_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__minimum_wage_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__student_loans_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|economy__taxes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|economy__unemployment_rate_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__alphabet_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|electronic_technology__amazon_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__apple_inc_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__artificial_intelligence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__consumer_electronics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__drones_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__meta_platforms_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__microsoft_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|electronic_technology__nvidia_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|electronic_technology__robotics_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__asset_management_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__cryptocurrency_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__financial_regulation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__goldman_sachs_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__hedge_funds_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__investment_banking_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|finance__mortgage_rates_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__private_equity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|finance__stock_market_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|finance__venture_capital_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__animal_migration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__animal_rescue_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__animal_welfare_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|pets__beekeeping_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__biodiversity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__invasive_species_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__marine_life_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|pets__pest_control_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__pet_adoption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|pets__pet_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__air_pollution_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|public_health__climate_change_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|public_health__diabetes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__drug_overdose_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__food_safety_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__hiv_aids_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__infectious_disease_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__mental_health_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__obesity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_health__opioid_crisis_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__carbon_emissions_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__federal_reserve_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__healthcare_policy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|public_policy__human_rights_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__immigration_reform_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|public_policy__national_debt_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__presidential_election_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__refugee_support_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__renewable_energy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__space_exploration_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|public_policy__wildlife_conservation_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__cancer_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|science__data_breach_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__earthquake_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__food_recall_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__gene_editing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__meteor_shower_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__nobel_prize_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__quantum_computing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|science__vaccine_research_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|science__volcanic_eruption_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__air_conditioner_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__back_to_school_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|shopping__black_friday_deals_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__christmas_gifts_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__fashion_week_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__flu_shot_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|shopping__halloween_costumes_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__organic_food_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__ski_gear_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|shopping__tax_software_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__affordable_housing_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__cybersecurity_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__data_privacy_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__domestic_violence_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|society__gender_equality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__homelessness_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|society__income_inequality_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__infrastructure_spending_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__protest_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|society__wildfires_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__air_travel_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__autonomous_driving_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__electric_vehicle_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__formula_1_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__gas_prices_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__rocket_launch_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|traffic__tesla_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__tour_de_france_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  },
+  "2023|traffic__traffic_insurance_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": null,
+   "n_checked": 5
+  },
+  "2023|traffic__used_car_96_12_4_10events": {
+   "verdict": "reuse",
+   "seed": 2023,
+   "reason": "not sampled (S1b verified)"
+  }
+ },
+ "totals": {
+  "per_seed": {
+   "2021": {
+    "reuse_vars": 190,
+    "reuse_windows": 2474,
+    "fill_windows": 5632
+   },
+   "2022": {
+    "reuse_vars": 190,
+    "reuse_windows": 2474,
+    "fill_windows": 5632
+   },
+   "2023": {
+    "reuse_vars": 190,
+    "reuse_windows": 2474,
+    "fill_windows": 5632
+   }
+  },
+  "pred_total": 24318,
+  "note": "fill_windows = 8106 - actually-covered cached windows per seed; the LN-test KEY SET stays fixed at 2,474 regardless"
+ }
+}

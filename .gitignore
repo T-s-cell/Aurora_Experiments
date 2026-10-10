@@ -86,3 +86,12 @@ repro_mm_timesx_eextract_v33/preflight/scratch_shards/
 repro_mm_timesx_eextract_v33/logs/*
 !repro_mm_timesx_eextract_v33/logs/.gitkeep
 repro_mm_timesx_eextract_v33/__pycache__/
+
+# EXP aurora-zeroshot-all-timesx v1: bulk regenerable fill shards and runtime
+# state stay out of git; frozen VisionTS refs, merged per-window predictions
+# and results tables ARE tracked so independent recompute runs from git alone.
+repro_zeroshot_all_timesx_v1/cache_all/*
+!repro_zeroshot_all_timesx_v1/cache_all/.gitkeep
+repro_zeroshot_all_timesx_v1/logs/*
+!repro_zeroshot_all_timesx_v1/logs/.gitkeep
+repro_zeroshot_all_timesx_v1/.state/

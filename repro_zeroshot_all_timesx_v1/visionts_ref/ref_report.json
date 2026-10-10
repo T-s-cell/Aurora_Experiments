@@ -1,0 +1,33 @@
+{
+ "stage": "S1a_freeze_ref",
+ "protocol_version": "Aurora-timesx-all-native-A48-v1",
+ "sources": {
+  "inventory.json": {
+   "sha256": "0cb6e73971b0f8b54077ff3df5a332f7dbe34493b337ab0a2b9744aa88c217de"
+  },
+  "frozen_arrays.npz": {
+   "sha256": "fb0c0c454afd8f7b9f276b99704450bdc6c99a454c8d774ea8846f729fa9423d"
+  },
+  "vars.json": {
+   "sha256": "22018d215b0dfe8ccc842846cf5e04bb2050828d993548728c72215681267068"
+  },
+  "preds.jsonl.gz": {
+   "sha256": "0ceeb654c3dc78e86aca9c56f7a7ee1f5c8db590785cd23a7e37eb938de041b0"
+  }
+ },
+ "ln_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+ "windows": 8106,
+ "vars": 190,
+ "domains": 19,
+ "split_census": {
+  "train_region": 1451,
+  "val": 4736,
+  "test": 1677,
+  "cross_boundary_removed": 242
+ },
+ "ln_test_keys": 2474,
+ "calib_fallback_windows": 4,
+ "d_mismatch": 0,
+ "denom_source_mismatch": 0,
+ "vts_pred_rows": 8106
+}

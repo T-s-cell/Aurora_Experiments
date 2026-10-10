@@ -1,0 +1,46 @@
+{
+ "protocol_version": "Aurora-timesx-all-native-A48-v1",
+ "aurora": {
+  "per_seed": {
+   "2021": {
+    "n_domains": 19,
+    "std_mse": 4.536663664984695,
+    "std_mae": 0.9847268754426165
+   },
+   "2022": {
+    "n_domains": 19,
+    "std_mse": 4.5369085781033025,
+    "std_mae": 0.9849097975276069
+   },
+   "2023": {
+    "n_domains": 19,
+    "std_mse": 4.543890926182317,
+    "std_mae": 0.985256277184483
+   }
+  },
+  "std_mse_mean": 4.539154389756772,
+  "std_mse_std": 0.004103788322002707,
+  "std_mae_mean": 0.9849643167182355,
+  "std_mae_std": 0.00026887879738449677
+ },
+ "visionts": {
+  "n_domains": 19,
+  "std_mse": 4.2122984787894,
+  "std_mae": 0.856010666064058
+ },
+ "delta": {
+  "std_mse": 0.3268559109673719,
+  "std_mae": 0.12895365065417752
+ },
+ "improvement_counts": {
+  "domains": {
+   "mse": 1,
+   "mae": 0
+  },
+  "variables": {
+   "mse": 27,
+   "mae": 28
+  }
+ },
+ "note": "delta = Aurora(3-seed mean) - VisionTS; negative = Aurora better"
+}

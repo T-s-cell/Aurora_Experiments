@@ -1,0 +1,4612 @@
+{
+ "protocol_version": "Aurora-timesx-all-native-A48-v1",
+ "created": "2026-10-10T14:15:00",
+ "pins": {
+  "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+  "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+  "itl": 48,
+  "num_samples": 100,
+  "old_split_manifest_sha256": "b47feebfe5e7fbf6c650ce2d23735794d853b515774c43c658724cf8328363a9",
+  "old_data_cache_sha256": "f83924d9f459da096c45ccd880f204efc095fbed5513794a5d706d71371881aa",
+  "old_code_md5": {
+   "load_aurora.py": "8600b42714d7ccd7ea5e5bd85d8cc501",
+   "data_loader.py": "505af22e7da7095816cec08fc57809d1",
+   "predict.py": "3a1feb602ed67e5534a6c7214cdb8628",
+   "aggregate.py": "f32430262bf73a2da3b9b9847ea69851"
+  },
+  "aurora_package_md5_expected_on_gpu": {
+   "__init__.py": "55bec5171d216e68eeeb59ce675bac6e",
+   "configuration_aurora.py": "452cbcf5a954e5a83ef78df5b778df9d",
+   "flow_loss.py": "4bc657919426405fa0ce999dc275da53",
+   "modality_connector.py": "49fbbbc03575a554c83bc1a107c3bdc8",
+   "modeling_aurora.py": "16cc50855050e1d60dc2ae4ce15e3dd0",
+   "prototype_retriever.py": "77e0438345684dc26f5b290c6a4a34f0",
+   "ts_generation_mixin.py": "faad71b0796b01ea69a3177c32520cd0",
+   "util_functions.py": "546a7518b1d36bd57092962adf0fe040"
+  }
+ },
+ "per_seed": {
+  "2021": {
+   "vars": {
+    "CropsAndStaples__barley_inr_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__canola_cad_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__urea_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2021__test.npz",
+     "sha256": "87faa5a9bd9cab6bb3ce11e0c33cc52e7d211af5a6465800b58da5fd31bd481f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "Currency__usdtoaud_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtobrl_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtocad_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtochf_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtogbp_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtohkd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtoinr_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtokrw_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtomxn_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtosgd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2021__test.npz",
+     "sha256": "6859f777921a1aaa7eda88826a56cd84491ea42f9708af444eea0955ac9df76a",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2021__test.npz",
+     "sha256": "ddf4a72582f4892626b680b9f7ae8c8474928ba4f7502af1900216dc08e0f140",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 36,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 10,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2021__test.npz",
+     "sha256": "76862b51af949281d4b19d77dfe6a5d3e0fc94471349a4084b5bbb7e7908296b",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2021__test.npz",
+     "sha256": "ac4eab24d01bb6ea2703bd7afe275836c64b3f142bc7deab0820e6268668bffe",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2021__test.npz",
+     "sha256": "82a0efe706a79c4fbb89486c13f67ef0220e188ce9b72dc5fe755a65ba8ae9e5",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 19,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2021__test.npz",
+     "sha256": "57e99a38efc05dfb2c541a19c6962f20d201eac0b6bc6733691ae87bc231c442",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "arts__art_exhibitions_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__broadway_shows_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__comic_con_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__esports_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__film_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__food_wine_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 7,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__major_league_baseball_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__music_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_basketball_association_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_football_league_96_12_4_10events": {
+     "file": "A48__arts__s2021__test.npz",
+     "sha256": "8a85907b91f87afd5d15efd0ecbe642b53d78c5dbc2c732929e31f52a51dfbf5",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "climate__deforestation_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__drought_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__endangered_species_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__flooding_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__global_warming_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heatwave_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heavy_rainfall_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__marine_pollution_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__sustainable_fashion_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__water_scarcity_96_12_4_10events": {
+     "file": "A48__climate__s2021__test.npz",
+     "sha256": "f00b339aa952d78a632958167a1a1e53e3431ceaa6d7133d59a92733a15f13a2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "economy__cost_of_living_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__federal_budget_deficit_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__government_spending_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__healthcare_costs_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__inflation_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__international_trade_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__minimum_wage_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__student_loans_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__taxes_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__unemployment_rate_96_12_4_10events": {
+     "file": "A48__economy__s2021__test.npz",
+     "sha256": "cd53fccae292c9a8caddf08778cd11ee03adeddd93c8771a399ccca3c7b7f92e",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "electronic_technology__alphabet_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__amazon_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__apple_inc_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__artificial_intelligence_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__consumer_electronics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__drones_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__meta_platforms_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__microsoft_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__nvidia_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__robotics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2021__test.npz",
+     "sha256": "5d0d9c18e2bc0ed21aa8fe0c8b137f6204e929b6a7906f143b8ce05bdc6de27c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "finance__asset_management_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__cryptocurrency_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__financial_regulation_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__goldman_sachs_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__hedge_funds_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__investment_banking_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__mortgage_rates_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__private_equity_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__stock_market_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__venture_capital_96_12_4_10events": {
+     "file": "A48__finance__s2021__test.npz",
+     "sha256": "31ff3faec285277b80c11a12248a7c0d7be2444534d29e405a09f768d1db0a8b",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "pets__animal_migration_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_rescue_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_welfare_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__beekeeping_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__biodiversity_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__invasive_species_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__marine_life_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pest_control_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_adoption_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_health_96_12_4_10events": {
+     "file": "A48__pets__s2021__test.npz",
+     "sha256": "63928183729dc546705fc62ca11b989a67670aa80bdc29d5635056aad8427400",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "public_health__air_pollution_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__climate_change_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__diabetes_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__drug_overdose_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__food_safety_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__hiv_aids_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__infectious_disease_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__mental_health_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__obesity_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__opioid_crisis_96_12_4_10events": {
+     "file": "A48__public_health__s2021__test.npz",
+     "sha256": "889de82f9beb52aa866e3cf7b16c5fb480afdcacc5a1c99837f724e92689c38c",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_policy__carbon_emissions_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__federal_reserve_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__healthcare_policy_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__human_rights_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__immigration_reform_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__national_debt_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__presidential_election_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__refugee_support_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__renewable_energy_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__space_exploration_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__wildlife_conservation_96_12_4_10events": {
+     "file": "A48__public_policy__s2021__test.npz",
+     "sha256": "90539652f7f9d2cdbee0295c5791f87c7281c85bceed6f219071e50641b4baa0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "science__cancer_research_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__data_breach_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__earthquake_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__food_recall_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__gene_editing_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__meteor_shower_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__nobel_prize_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__quantum_computing_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__vaccine_research_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__volcanic_eruption_96_12_4_10events": {
+     "file": "A48__science__s2021__test.npz",
+     "sha256": "88b34ae8380f0743e03aa7d9afccffda985308194684b289b0cb9a628e5082a8",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "shopping__air_conditioner_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__back_to_school_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__black_friday_deals_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__christmas_gifts_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__fashion_week_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__flu_shot_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__halloween_costumes_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__organic_food_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__ski_gear_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__tax_software_96_12_4_10events": {
+     "file": "A48__shopping__s2021__test.npz",
+     "sha256": "9e5338ddf24e1f4992a12cc5a8218e6bd0484f8a90c9a15d9f61d16ee550079a",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "society__affordable_housing_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__cybersecurity_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__data_privacy_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__domestic_violence_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__gender_equality_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__homelessness_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__income_inequality_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__infrastructure_spending_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__protest_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__wildfires_96_12_4_10events": {
+     "file": "A48__society__s2021__test.npz",
+     "sha256": "8f766beb518ac85e15ac7e09136e76c3346425f4d34d3168dd60c9849d856b47",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "traffic__air_travel_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__autonomous_driving_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__electric_vehicle_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__formula_1_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__gas_prices_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__rocket_launch_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tesla_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tour_de_france_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__traffic_insurance_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__used_car_96_12_4_10events": {
+     "file": "A48__traffic__s2021__test.npz",
+     "sha256": "649950c56f27d0cf64a1c6624fbd9968ee10a4ae2d01302e39e8c04c4d91d2f0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    }
+   },
+   "n_test_fixed": 2474,
+   "n_reuse_vars": 190,
+   "n_reuse_windows": 2474
+  },
+  "2022": {
+   "vars": {
+    "CropsAndStaples__barley_inr_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__canola_cad_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__urea_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2022__test.npz",
+     "sha256": "2307e5825ff1527fa007ba44c0df3be0850f85925d7e7a6e197f58c28017e1d0",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "Currency__usdtoaud_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtobrl_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtocad_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtochf_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtogbp_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtohkd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtoinr_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtokrw_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtomxn_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtosgd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2022__test.npz",
+     "sha256": "4a18c8a609111d527ede5c9c8057275fcc23ff9045b1e08ae1eb93f375434fc5",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2022__test.npz",
+     "sha256": "dddc5eda6baa082db28a09a4e72d5fc85a390b404a31e6d10ad51becea6e8c62",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 36,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 10,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2022__test.npz",
+     "sha256": "0df09fbfb72f42ebd9966b8d5d7b53940b723fea34bc207812de41091dbe5bdc",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2022__test.npz",
+     "sha256": "23291ebea4345398b56b7f37f24013f501c6237dbf24edf9e326a38a54117e95",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2022__test.npz",
+     "sha256": "405c4cf9b8adcb48e0266be2ec60228e35eff687b66c39d604f69e20e4313a83",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 19,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2022__test.npz",
+     "sha256": "81e0bb82246085c073b2335ad77f036c433d2740f298580715f26dd700d87a7d",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "arts__art_exhibitions_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__broadway_shows_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__comic_con_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__esports_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__film_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__food_wine_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 7,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__major_league_baseball_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__music_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_basketball_association_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_football_league_96_12_4_10events": {
+     "file": "A48__arts__s2022__test.npz",
+     "sha256": "f4cfb0664db604e980e96b4fb0446b1adf7b6a2f6f5bd259b1f1518f077945a6",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "climate__deforestation_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__drought_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__endangered_species_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__flooding_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__global_warming_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heatwave_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heavy_rainfall_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__marine_pollution_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__sustainable_fashion_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__water_scarcity_96_12_4_10events": {
+     "file": "A48__climate__s2022__test.npz",
+     "sha256": "dcb43f368e732a437a06dce844ed0822a097ae43b69204e27cffbbbbe7eadccd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "economy__cost_of_living_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__federal_budget_deficit_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__government_spending_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__healthcare_costs_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__inflation_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__international_trade_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__minimum_wage_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__student_loans_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__taxes_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__unemployment_rate_96_12_4_10events": {
+     "file": "A48__economy__s2022__test.npz",
+     "sha256": "8601974ce03062f916448b6a424aedb2c4303e53449505af1d753a394c3a45fe",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "electronic_technology__alphabet_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__amazon_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__apple_inc_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__artificial_intelligence_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__consumer_electronics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__drones_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__meta_platforms_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__microsoft_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__nvidia_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__robotics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2022__test.npz",
+     "sha256": "d175176b6fb225dd3469d83c1287f3bcc66defe53826fb99a59aac9ad9b62aa6",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "finance__asset_management_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__cryptocurrency_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__financial_regulation_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__goldman_sachs_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__hedge_funds_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__investment_banking_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__mortgage_rates_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__private_equity_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__stock_market_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__venture_capital_96_12_4_10events": {
+     "file": "A48__finance__s2022__test.npz",
+     "sha256": "7b7efb8407035361627fa9d5e9ccdde1d115c8fa8eafc136755746ef17e29dd9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "pets__animal_migration_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_rescue_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_welfare_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__beekeeping_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__biodiversity_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__invasive_species_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__marine_life_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pest_control_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_adoption_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_health_96_12_4_10events": {
+     "file": "A48__pets__s2022__test.npz",
+     "sha256": "22b8d0afb415050d5e2530801d5870c78eb79ac408f971dfe03ffe0e686376e2",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "public_health__air_pollution_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__climate_change_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__diabetes_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__drug_overdose_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__food_safety_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__hiv_aids_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__infectious_disease_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__mental_health_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__obesity_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__opioid_crisis_96_12_4_10events": {
+     "file": "A48__public_health__s2022__test.npz",
+     "sha256": "c52cba5a4a44e7490ac19d2564f3eb933792d46ab17fbbac238845b5def32f02",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_policy__carbon_emissions_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__federal_reserve_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__healthcare_policy_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__human_rights_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__immigration_reform_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__national_debt_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__presidential_election_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__refugee_support_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__renewable_energy_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__space_exploration_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__wildlife_conservation_96_12_4_10events": {
+     "file": "A48__public_policy__s2022__test.npz",
+     "sha256": "7ce359721c54218470fb101791ede80800955b8ad1e7d7bff3fae1f3283a55a5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "science__cancer_research_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__data_breach_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__earthquake_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__food_recall_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__gene_editing_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__meteor_shower_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__nobel_prize_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__quantum_computing_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__vaccine_research_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__volcanic_eruption_96_12_4_10events": {
+     "file": "A48__science__s2022__test.npz",
+     "sha256": "9173e9ec0c8a5cddf605a5bf0c580bcd1e7c3ebe30229c43712492ebcdb8745d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "shopping__air_conditioner_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__back_to_school_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__black_friday_deals_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__christmas_gifts_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__fashion_week_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__flu_shot_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__halloween_costumes_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__organic_food_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__ski_gear_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__tax_software_96_12_4_10events": {
+     "file": "A48__shopping__s2022__test.npz",
+     "sha256": "eea27a3836669e93e8d1e93f7a1152332e30c053c739788b26e5e7cb9c7d5752",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "society__affordable_housing_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__cybersecurity_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__data_privacy_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__domestic_violence_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__gender_equality_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__homelessness_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__income_inequality_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__infrastructure_spending_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__protest_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__wildfires_96_12_4_10events": {
+     "file": "A48__society__s2022__test.npz",
+     "sha256": "3f94aaca1ea31c8e59a53de3c8e7568ec2f7f603cd548f6a3b1ac70f74d9b5bd",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "traffic__air_travel_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__autonomous_driving_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__electric_vehicle_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__formula_1_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__gas_prices_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__rocket_launch_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tesla_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tour_de_france_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__traffic_insurance_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__used_car_96_12_4_10events": {
+     "file": "A48__traffic__s2022__test.npz",
+     "sha256": "b145fe2f1d46d324743c62eb81ed61d9ea405da7c162a0fe8bcb18eb929dfbc5",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    }
+   },
+   "n_test_fixed": 2474,
+   "n_reuse_vars": 190,
+   "n_reuse_windows": 2474
+  },
+  "2023": {
+   "vars": {
+    "CropsAndStaples__barley_inr_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__canola_cad_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cocoa_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__cotton_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__diammonium_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__oat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__potatoes_eur_100kg_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__rice_usd_cwt_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__sugar_usd_lbs_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__urea_usd_t_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "CropsAndStaples__wheat_usd_bu_96_12_12_10events": {
+     "file": "A48__CropsAndStaples__s2023__test.npz",
+     "sha256": "bfd60a0638568ddae5b5dbf5e16d41a1bcc918d1eb1483bc38137593d8276ac8",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "CropsAndStaples"
+    },
+    "Currency__usdtoaud_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtobrl_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtocad_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtochf_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtogbp_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtohkd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtoinr_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtokrw_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtomxn_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "Currency__usdtosgd_exchangerate_96_12_12_10events": {
+     "file": "A48__Currency__s2023__test.npz",
+     "sha256": "c1079d818a4a47d6120b1f2bacd5a1a123bcb73558ba381f43556d08f2cb1651",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "Currency"
+    },
+    "EnergyAndFuels__bitumen_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__brent_usd_bbl_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__coal_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__ethanol_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__gasoline_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__methanol_cny_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__naphtha_usd_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__propane_usd_gal_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__rapeseed_eur_t_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "EnergyAndFuels__uranium_usd_lbs_96_12_12_10events": {
+     "file": "A48__EnergyAndFuels__s2023__test.npz",
+     "sha256": "e7408831d134bad4da083db361221f0832eb13e967f6c4808ed5e922ce1134a2",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "EnergyAndFuels"
+    },
+    "LivestockAndFoodProducts__beef_brl_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__butter_eur_t_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__cheese_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__coffee_usd_lbs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 35,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__corn_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__milk_usd_cwt_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 36,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__poultry_brl_kgs_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 33,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__salmon_nok_kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 10,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__soybeans_usd_bu_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "LivestockAndFoodProducts__wool_aud_100kg_96_12_12_10events": {
+     "file": "A48__LivestockAndFoodProducts__s2023__test.npz",
+     "sha256": "4372be4087cdaedbee0fdf3db763d5a381be2baab00892d468c7072d947ffa6a",
+     "n": 34,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "LivestockAndFoodProducts"
+    },
+    "RawMaterialsAndConstruction__aluminum_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__copper_usd_lbs_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lead_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__lumber_usd_1000_board_feet_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polyethylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__polypropylene_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__rubber_usd_cents_kg_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__steel_cny_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__tin_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "RawMaterialsAndConstruction__zinc_usd_t_96_12_12_10events": {
+     "file": "A48__RawMaterialsAndConstruction__s2023__test.npz",
+     "sha256": "3aff71549c193f13645360ca3696d9e5ca6f28ddab9251ac028c7d91ee123c39",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "RawMaterialsAndConstruction"
+    },
+    "SpecialtyAndAdvancedMaterials__gallium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__germanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__indium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__magnesium_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__molybdenum_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__polyvinyl_cny_t_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__tellurium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 15,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "SpecialtyAndAdvancedMaterials__titanium_cny_kg_96_12_12_10events": {
+     "file": "A48__SpecialtyAndAdvancedMaterials__s2023__test.npz",
+     "sha256": "8a775deb2cbe1f6732028a68bf56118588877d137311cfbf5e49f7befb9e3bee",
+     "n": 14,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "SpecialtyAndAdvancedMaterials"
+    },
+    "StrategicAndHighValueMaterials__cobalt_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__gold_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__lithium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__manganese_cny_mtu_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__neodymium_cny_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 17,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__nickel_usd_t_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__palladium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__platinum_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 19,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__rhodium_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "StrategicAndHighValueMaterials__silver_usd_t_oz_96_12_12_10events": {
+     "file": "A48__StrategicAndHighValueMaterials__s2023__test.npz",
+     "sha256": "ec6eacf2b2b78793edf06633279c3238a0da501e36316f5c4e32b4c1b1b2810f",
+     "n": 18,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "StrategicAndHighValueMaterials"
+    },
+    "arts__art_exhibitions_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__broadway_shows_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__comic_con_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__esports_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__film_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__food_wine_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 7,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__major_league_baseball_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__music_festivals_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_basketball_association_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "arts__national_football_league_96_12_4_10events": {
+     "file": "A48__arts__s2023__test.npz",
+     "sha256": "b02e104e472e2e40b4c8f2bcaab1dc1c6b336f7f79837bf94452eecdc1e1a1e3",
+     "n": 16,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "arts"
+    },
+    "climate__deforestation_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__drought_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__endangered_species_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__flooding_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__global_warming_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heatwave_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__heavy_rainfall_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__marine_pollution_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__sustainable_fashion_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "climate__water_scarcity_96_12_4_10events": {
+     "file": "A48__climate__s2023__test.npz",
+     "sha256": "26f42487c37692d49842febe97e75ec60c34531ba03a0fd85f61c0d13a0db910",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "climate"
+    },
+    "economy__cost_of_living_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__federal_budget_deficit_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__government_spending_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__healthcare_costs_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__inflation_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__international_trade_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__minimum_wage_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__student_loans_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__taxes_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "economy__unemployment_rate_96_12_4_10events": {
+     "file": "A48__economy__s2023__test.npz",
+     "sha256": "8bceeeca187fd7d158b145157278fec6c74b2a610193e0265b19d5711d6cea22",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "economy"
+    },
+    "electronic_technology__alphabet_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__amazon_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__apple_inc_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__artificial_intelligence_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__consumer_electronics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__drones_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__meta_platforms_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__microsoft_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__nvidia_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "electronic_technology__robotics_96_12_4_10events": {
+     "file": "A48__electronic_technology__s2023__test.npz",
+     "sha256": "3222a1acaa9a184a8c04cfc74c220a40e68a8baafd5c2b9a9f20158b13b3859d",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "electronic_technology"
+    },
+    "finance__asset_management_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__cryptocurrency_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__financial_regulation_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__goldman_sachs_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__hedge_funds_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__investment_banking_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__mortgage_rates_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__private_equity_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__stock_market_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "finance__venture_capital_96_12_4_10events": {
+     "file": "A48__finance__s2023__test.npz",
+     "sha256": "62afc628bb101bc36399ce238f5036516e6f6ffbbc8d2fba0a2e7ce7c8f0ef60",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "finance"
+    },
+    "pets__animal_migration_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_rescue_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__animal_welfare_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__beekeeping_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__biodiversity_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__invasive_species_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__marine_life_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pest_control_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_adoption_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "pets__pet_health_96_12_4_10events": {
+     "file": "A48__pets__s2023__test.npz",
+     "sha256": "3cb1cfdab1a489963ec84d90150f863888e870b0cf142221dd456e81c0472ad1",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "pets"
+    },
+    "public_health__air_pollution_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__climate_change_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__diabetes_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__drug_overdose_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__food_safety_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__hiv_aids_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__infectious_disease_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__mental_health_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__obesity_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_health__opioid_crisis_96_12_4_10events": {
+     "file": "A48__public_health__s2023__test.npz",
+     "sha256": "267bb4a1010abf1fb86d257a99ddbdab3c88e1a062a64cf7b1b2a8f4445701e9",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_health"
+    },
+    "public_policy__carbon_emissions_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__federal_reserve_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__healthcare_policy_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__human_rights_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__immigration_reform_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__national_debt_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__presidential_election_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__refugee_support_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__renewable_energy_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__space_exploration_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "public_policy__wildlife_conservation_96_12_4_10events": {
+     "file": "A48__public_policy__s2023__test.npz",
+     "sha256": "21d4b0c67c046c8f6e2e8ccbe1f743d5a3c3bf5e63617e5c9ebb00c6a6ecc485",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "public_policy"
+    },
+    "science__cancer_research_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__data_breach_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__earthquake_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__food_recall_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__gene_editing_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__meteor_shower_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__nobel_prize_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__quantum_computing_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__vaccine_research_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "science__volcanic_eruption_96_12_4_10events": {
+     "file": "A48__science__s2023__test.npz",
+     "sha256": "14bf29825fb2e033acd5eb9be3410304105a0ee4101d6226514464b5b2398f54",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "science"
+    },
+    "shopping__air_conditioner_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__back_to_school_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__black_friday_deals_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__christmas_gifts_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__fashion_week_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__flu_shot_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__halloween_costumes_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__organic_food_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__ski_gear_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "shopping__tax_software_96_12_4_10events": {
+     "file": "A48__shopping__s2023__test.npz",
+     "sha256": "1622d11f3a0227910e9309428c763869f3dbbe0db3f1e3db8d6ce03c985d7366",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "shopping"
+    },
+    "society__affordable_housing_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__cybersecurity_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__data_privacy_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__domestic_violence_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__gender_equality_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__homelessness_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__income_inequality_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__infrastructure_spending_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__protest_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "society__wildfires_96_12_4_10events": {
+     "file": "A48__society__s2023__test.npz",
+     "sha256": "9f5b5b70e66ceb4607e55346457a774696230bda06d88760ed0a6e2a0c951b11",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "society"
+    },
+    "traffic__air_travel_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__autonomous_driving_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__electric_vehicle_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__formula_1_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__gas_prices_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__rocket_launch_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tesla_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__tour_de_france_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__traffic_insurance_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    },
+    "traffic__used_car_96_12_4_10events": {
+     "file": "A48__traffic__s2023__test.npz",
+     "sha256": "e794c34371924179bf574dd0c61e8d1ce93c0b1831fb54fbcddad404f36370c0",
+     "n": 9,
+     "verdict": "reuse_candidate",
+     "reason": null,
+     "domain": "traffic"
+    }
+   },
+   "n_test_fixed": 2474,
+   "n_reuse_vars": 190,
+   "n_reuse_windows": 2474
+  }
+ },
+ "note": "LN-test KEY SET is fixed at 2,474 per seed; n_reuse_windows is the ACTUAL verified-reusable count and may be smaller. aurora_package_md5_expected_on_gpu is re-asserted at S3."
+}

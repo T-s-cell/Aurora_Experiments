@@ -1,0 +1,17 @@
+{
+ "stage": "S5a_assemble",
+ "rows": 24318,
+ "cache_rows": 7422,
+ "new_rows": 16896,
+ "cache_rows_per_seed": {
+  "2021": 2474,
+  "2022": 2474,
+  "2023": 2474
+ },
+ "new_rows_per_seed": {
+  "2021": 5632,
+  "2022": 5632,
+  "2023": 5632
+ },
+ "fill_equals_set_difference": true
+}

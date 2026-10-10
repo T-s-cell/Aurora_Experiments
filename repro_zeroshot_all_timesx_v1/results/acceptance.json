@@ -1,0 +1,29 @@
+{
+ "stage": "acceptance",
+ "passed": true,
+ "rules": {
+  "R1_keyset_equal_frozen": true,
+  "R2_finite_shape": true,
+  "R3_constant_windows_4x3_calib": true,
+  "R4_provenance_file_sha_npz_row": true,
+  "R5_recompute_pass": true,
+  "R6_vts_gate_1e-12": true,
+  "R7_fill_equals_set_difference": true
+ },
+ "counts": {
+  "rows": 24318,
+  "cache": 7422,
+  "new": 16896,
+  "constant_rows_per_seed": {
+   "2021": 4,
+   "2022": 4,
+   "2023": 4
+  }
+ },
+ "subset_2474": {
+  "n_rows": 7422,
+  "pure_cache": true,
+  "reproduced": true
+ },
+ "failures": []
+}

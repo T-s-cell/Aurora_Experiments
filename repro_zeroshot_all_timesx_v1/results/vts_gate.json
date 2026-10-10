@@ -1,0 +1,17 @@
+{
+ "reference": {
+  "std_mse": 4.2122984787894,
+  "std_mae": 0.856010666064058
+ },
+ "recomputed": {
+  "n_domains": 19,
+  "std_mse": 4.2122984787894,
+  "std_mae": 0.856010666064058
+ },
+ "rel_err": {
+  "std_mse": 0.0,
+  "std_mae": 0.0
+ },
+ "tol": 1e-12,
+ "passed": true
+}
