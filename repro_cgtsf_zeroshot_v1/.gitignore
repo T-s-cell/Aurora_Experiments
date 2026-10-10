@@ -1,0 +1,11 @@
+data/
+predictions/
+results/
+logs/
+quarantine/
+pack_out/
+visionts_ref/
+__pycache__/
+*.pyc
+*.tmp
+*.tmp.npz
