@@ -47,3 +47,37 @@ nothing is pushed without explicit approval.
 No model/package source is modified; the old-root loader
 (`../load_aurora.py`) and old `predict.py` are read-only and md5-pinned by
 the protocol, as are the 8 aurora package source files.
+
+## Archival notes (2026-10-11, user-approved freeze)
+
+- **Primary result = a COMPLETE RE-RUN on RTX 5060 Ti / WSL2 (host "dt")**
+  after a fresh on-host preflight (token `9c164222d4b9`, PASS). The
+  frozen code commit is `3526c68673d55c8bcd4ae47aed4b950743d3b70f`; no
+  theta shards are mixed in. Environment: `torch_50_series` env
+  (py3.10 + torch 2.13.0+cu129, sm_120), aurora-model==0.2.0 (package
+  md5s pinned and verified), weights snapshot sha `df2fb968…` revision
+  `c495b02c`. Per the user's ruling this is a VERIFICATION experiment
+  with too many co-tenants on the other hosts, so machine-induced
+  numeric differences (different torch/GPU) are intentionally not
+  chased; all on-host hard gates passed self-consistently.
+- Full run: 201/201 shards, 101,079 forwards, 0 quarantined,
+  **124.8 minutes** wall (~74 ms/window). Verification chain on the full
+  set: verify_cache 101,079/101,079 zero anomalies; recompute_check and
+  verify_visionts_ref both max abs diff = 0.0 (rtol=atol=1e-12).
+- Results (Aurora mean±std(ddof=1) vs VisionTS, original units):
+  PTF MSE 11653.213497±8.760588 vs 13602.87 / MAE 66.911664±0.013326 vs
+  63.215; LEU MSE 0.064015±0.000029 vs 0.074473 / MAE 0.128443±0.000025
+  vs 0.127683; MSPG MSE 20.470400±0.009472 vs 23.8101 / MAE
+  1.650005±0.000315 vs 1.492204. **MSE lower by ~14% on all three
+  subsets; MAE higher on all three.**
+- Known reporting bug: `preflight_report.json`'s `full_run_eta_hours`
+  uses a weighted-averaging mistake and is NOT trustworthy (e.g. dt
+  reports 174.97 h); actual measured wall time above is authoritative.
+- theta/iota partial parallel runs (stopped per user ruling at 78/201
+  and 170/201) are archived locally only (predictions/, predictions_iota/,
+  logs_theta_archive/, logs_iota_archive/); they are not part of the
+  primary result and are not committed.
+- Final audit pack:
+  temp/Aurora_CGTSF_zeroshot_final_20261011_1603.tar.gz (681 files,
+  sha256 7722ee4ec8f33ae3fca2010912dbc375666e97b7065d1fe346ef9fb6b15cd729).
+

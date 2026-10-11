@@ -1,7 +1,13 @@
 data/
 predictions/
+predictions_dt/
+predictions_iota/
 results/
+results_dt/
 logs/
+logs_dt/
+logs_theta_archive/
+logs_iota_archive/
 quarantine/
 pack_out/
 visionts_ref/
