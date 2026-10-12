@@ -1,0 +1,39 @@
+{
+  "purpose": "Reference anchors for the EXP-022 three-way comparison. Per-H values are recomputed at full precision from the FROZEN npz of each anchor experiment at evaluate time; only the 4H-mean blocks below are hard gates (atol 1e-5), cross-checked against each anchor's frozen summary.",
+  "exp020_aurora_chrono": {
+    "exp_id": "EXP-020",
+    "dir": "repro_timemmd_economy_chrono_v1",
+    "protocol_token": "712d06fb9900",
+    "freeze_commit": "dea73ba4886512b5686cc4ca57cb23b9e8d4877a",
+    "model": "Aurora official script (TimeMMD), zero-shot",
+    "row_order": "ascending (EXP-020 whole-row stable sort)",
+    "test_period": "2017-04 .. 2024-03",
+    "reference_4h_mean_mse_float32": 0.276172,
+    "reference_4h_mean_mae_float32": 0.413902,
+    "note": "recomputed read-only from EXP-020 frozen npz; gate atol 1e-5"
+  },
+  "exp021_visionts_raw_order": {
+    "exp_id": "EXP-021",
+    "dir": "repro_timemmd_visionts_zeroshot_v1",
+    "protocol_token": "06c003f25618",
+    "freeze_commit": "c905d43db23caad732afad91dbbffc48ae693b62",
+    "model": "vendored VisionTS (mae_base, finetune none), zero-shot",
+    "row_order": "original CSV order (year-descending blocks)",
+    "selected_P": 12,
+    "test_period": "1989-01 .. 1995-12",
+    "reference_4h_mean_mse_float32": 0.017808,
+    "reference_4h_mean_mae_float32": 0.112694,
+    "note": "recomputed read-only from EXP-021 frozen Economy npz; gate atol 1e-5"
+  },
+  "exp022_ours": {
+    "exp_id": "EXP-022",
+    "row_order": "ascending (EXP-020 protocol)",
+    "test_period": "2017-04 .. 2024-03",
+    "note": "VisionTS with P selected on the ASCENDING validation split; metric = official float32 replica primary, float64 appendix"
+  },
+  "main_question": "Under the SAME ascending test windows and standardization, which has lower error: VisionTS (EXP-022) or the measured Aurora (EXP-020)?",
+  "attribution_boundaries": {
+    "vs_exp020": "spans model AND input modality (univariate numeric vs text+numeric); cannot be attributed to the text modality alone",
+    "vs_exp021": "different test period, history window, standardization statistics and selection basis; describes the two protocols, not row order alone"
+  }
+}

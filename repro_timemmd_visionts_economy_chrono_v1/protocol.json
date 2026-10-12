@@ -1,0 +1,176 @@
+{
+ "exp_id": "EXP-022",
+ "protocol_name": "repro_timemmd_visionts_economy_chrono_v1",
+ "label": "Economy 升序协议（EXP-020 数据口径）× 原版 VisionTS zero-shot 复评 v1（升序验证集按 VisionTS 论文方法选 P）",
+ "base_data": {
+  "exp_id": "EXP-020",
+  "dir": "repro_timemmd_economy_chrono_v1",
+  "add_commit": "244e953",
+  "freeze_commit": "dea73ba4886512b5686cc4ca57cb23b9e8d4877a",
+  "protocol_sha256": "712d06fb9900cb2d634920d189dd1e6d6a8d6d78fa896166ebf260cf1fba7997",
+  "protocol_token": "712d06fb9900",
+  "role": "data protocol: Economy whole-row stable ascending sort, official split/scaler/windows"
+ },
+ "base_method": {
+  "exp_id": "EXP-021",
+  "dir": "repro_timemmd_visionts_zeroshot_v1",
+  "add_commit": "d95004d4edb70595a54ae13dd188cc3b28b5cc88",
+  "freeze_commit": "c905d43db23caad732afad91dbbffc48ae693b62",
+  "protocol_sha256": "06c003f25618665914939bf641d41f217edb6320db9baebda8c0a3dd63706eda",
+  "protocol_token": "06c003f25618",
+  "role": "method: vendored VisionTS + validation-set periodicity selection (VisionTS paper method)"
+ },
+ "provenance": {
+  "visionts_code_md5": {
+   "visionts/__init__.py": "60249b5b1f0bd22cc6b0bd76e5eee077",
+   "visionts/model.py": "621f3f87b299c4bfeb5a64c87eefaa62",
+   "visionts/models_mae.py": "20edd0d6da5b21455d6c2ffb35de3d43",
+   "visionts/pos_embed.py": "d31375b8ea4a1f1a9803a68b3c292399",
+   "visionts/util.py": "d14f84b9bd2650c5bfdab3128457b540"
+  },
+  "visionts_repo_commit": "a169bb39b23c6708048f206e6df9951c7e439e73",
+  "exp018_cgtsf_token": "a4c01683793a",
+  "weights_file": "mae_visualize_vit_base.pth",
+  "weights_sha256": "c551c37b63a221a3e6d7d7f49e96f34078c9b183f788bedc0387493521bade0e",
+  "weights_bytes": 447725789,
+  "weights_dir_on_dt": "/home/wlt/VisionTS_Experiments/ckpt",
+  "scaler": {
+   "fit_rows": "[0, n_train) = [0, 296) ascending OT, sklearn StandardScaler (official-loader replica)",
+   "mean_ot": -35405.91486486487,
+   "scale_ot": 23084.49105192197,
+   "gate": "fitted mean_/scale_ must equal the EXP-020 split_report values exactly (bitwise float64), else HARD STOP"
+  }
+ },
+ "run_settings": {
+  "arch": "mae_base",
+  "finetune_type": "none",
+  "norm_const": 0.4,
+  "align_const": 0.4,
+  "interpolation": "bilinear",
+  "fp64": false,
+  "input_dtype": "float32",
+  "autocast": "disabled",
+  "tf32_matmul": false,
+  "tf32_cudnn": false,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "seed": 2021,
+  "cublas_workspace_config": ":4096:8",
+  "inference_mode": true,
+  "features": "S",
+  "target": "OT",
+  "preferred_batch": 256,
+  "batch_ladder": [
+   256,
+   128,
+   64,
+   32,
+   16
+  ]
+ },
+ "selection_rule": {
+  "source": "VisionTS paper (Keytoyze) A.2 / Table 5 monthly candidate set, re-selected on the ASCENDING validation split (2013-09..2017-03) — EXP-021's raw-order choice P=12 is recorded only as a reference (exp021_selected_P_raw_order)",
+  "candidates": [
+   1,
+   3,
+   6,
+   12
+  ],
+  "metric": "standardized-space validation MSE, official float32 replica (np.mean default dtype); float64 kept as appendix",
+  "aggregate": "equal-weight mean of the 4 horizon MSEs per candidate P, then argmin; ties resolved to the SMALLER P",
+  "val_windows": "s in [max(n_train, seq_len), val_end - H] closed (= [296, 339-H], 38/36/34/32 windows for H=6/8/10/12); hist [s-L, s), label [s, s+H); stride 1; no test row is ever touched",
+  "weight_updates": "none — model stays in eval() with all parameters frozen during selection",
+  "shared_by_test": "the single selected P is used for all 4 test horizons"
+ },
+ "domain_order": [
+  "Economy"
+ ],
+ "datasets": {
+  "Economy": {
+   "seq_len": 192,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 79,
+    "8": 77,
+    "10": 75,
+    "12": 73
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    296,
+    43,
+    84
+   ],
+   "exp021_selected_P_raw_order": 12,
+   "csv_sha256": "023292b969b915a73185e047debfb18f5572544f9463b23e64e9f496a0b52b26",
+   "original_csv_sha256": "c35325f0181a426a78c35b9172d8908f64639796a535c5fdc8b082b538030e5d",
+   "sort_mapping_sha256": "43c3fd29f6275eb346066c2d3d6e2182f4f174bfd9d8bd6c6ab75d0492cc74b2",
+   "order_assert": {
+    "first_date": "1989-01-01",
+    "last_date": "2024-03-01"
+   },
+   "val_first_window_history_rows": [
+    104,
+    295
+   ],
+   "test_first_window_history_rows": [
+    147,
+    338
+   ],
+   "test_last_pred_start_rows": {
+    "6": 417,
+    "8": 415,
+    "10": 413,
+    "12": 411
+   },
+   "selected_periodicity": 12,
+   "row_order": "whole rows stably sorted ascending by parsed date (EXP-020 protocol; sort mapping provenance in results/base_evidence/)",
+   "dates": {
+    "first": "1989-01-01",
+    "last": "2024-03-01",
+    "val_end": "2017-04-01",
+    "test_first": "2017-04-01",
+    "test_last": "2024-03-01",
+    "val_first": "2013-09-01"
+   }
+  }
+ },
+ "total_test_windows": 304,
+ "selected_periodicities": {
+  "Economy": 12
+ },
+ "selected_p_sha256": "b45296322f639559bbb36994126a81ec966d399ed2522d1d4b9dca84e16a4409",
+ "argmin_recheck": "PASS",
+ "data_prep_sha256": "682821e3d773e4e1b8190e9900cd9d168983b6501366ed4f7d815e86328a6453",
+ "runtime": {
+  "python": "3.10.20",
+  "executable": "/home/wlt/miniconda3/envs/diag_vts_env/bin/python",
+  "numpy": "2.2.6",
+  "torch": "2.13.0+cu129",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 5060 Ti",
+  "gpu_total_mem_gib": 15.9,
+  "torchvision": "0.28.0+cu129",
+  "timm": "0.9.16",
+  "einops": "0.8.1",
+  "pillow": "MISSING",
+  "huggingface_hub": "0.36.2",
+  "sklearn": "1.7.2"
+ },
+ "interpretation_boundary_notes": {
+  "vs_exp020_aurora": "same ascending test windows and same standardization; the comparison still spans model AND input modality (univariate numeric vs text+numeric), so it cannot be attributed to the text modality alone",
+  "vs_exp021_raw_order": "different test period (2017-04..2024-03 vs 1989-01..1995-12), different history window, different standardization statistics and different selection basis — the difference describes the two protocols, not row order alone",
+  "periodicity_unknown_upstream": "Aurora paper does not disclose the periodicity P / history L used for its VisionTS column; P here is re-selected on the ascending validation split"
+ }
+}
