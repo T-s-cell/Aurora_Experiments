@@ -1,0 +1,472 @@
+{
+ "exp_id": "EXP-021",
+ "protocol_name": "repro_timemmd_visionts_zeroshot_v1",
+ "label": "Aurora 官方数据协议（TimeMMD 原始行序）、原版 VisionTS zero-shot 复评 v1（按 VisionTS 论文方法在验证集选 P）",
+ "base": {
+  "exp_id": "EXP-019",
+  "dir": "repro_timemmd_zeroshot_v1",
+  "add_commit": "36a92942366e9185bc1356e6a0d2e3ba1b459a0a",
+  "freeze_commit": "8878412fd5ab68ff97143bca71c9c2de4e7bcdfb",
+  "protocol_sha256": "32b843660cc3434cb32e350f24e39985e6d855eebc0edfec4aa4ba7f442e2b3d",
+  "protocol_token": "32b843660cc3"
+ },
+ "provenance": {
+  "visionts_code_md5": {
+   "visionts/__init__.py": "60249b5b1f0bd22cc6b0bd76e5eee077",
+   "visionts/model.py": "621f3f87b299c4bfeb5a64c87eefaa62",
+   "visionts/models_mae.py": "20edd0d6da5b21455d6c2ffb35de3d43",
+   "visionts/pos_embed.py": "d31375b8ea4a1f1a9803a68b3c292399",
+   "visionts/util.py": "d14f84b9bd2650c5bfdab3128457b540"
+  },
+  "visionts_repo_commit": "a169bb39b23c6708048f206e6df9951c7e439e73",
+  "exp018_cgtsf_token": "a4c01683793a",
+  "weights_file": "mae_visualize_vit_base.pth",
+  "weights_sha256": "c551c37b63a221a3e6d7d7f49e96f34078c9b183f788bedc0387493521bade0e",
+  "weights_bytes": 447725789,
+  "weights_dir_on_dt": "/home/wlt/VisionTS_Experiments/ckpt"
+ },
+ "run_settings": {
+  "arch": "mae_base",
+  "finetune_type": "none",
+  "norm_const": 0.4,
+  "align_const": 0.4,
+  "interpolation": "bilinear",
+  "fp64": false,
+  "input_dtype": "float32",
+  "autocast": "disabled",
+  "tf32_matmul": false,
+  "tf32_cudnn": false,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "seed": 2021,
+  "cublas_workspace_config": ":4096:8",
+  "inference_mode": true,
+  "features": "S",
+  "target": "OT",
+  "preferred_batch": 256,
+  "batch_ladder": [
+   256,
+   128,
+   64,
+   32,
+   16
+  ]
+ },
+ "selection_rule": {
+  "source": "VisionTS paper (Keytoyze) A.2 / Table 5 candidate sets by dataset frequency",
+  "candidates_by_frequency": {
+   "monthly": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "weekly": [
+    1,
+    4,
+    52
+   ],
+   "daily": [
+    1,
+    7,
+    30,
+    365
+   ]
+  },
+  "metric": "standardized-space validation MSE, official float32 replica (np.mean default dtype); float64 kept as appendix",
+  "aggregate": "equal-weight mean of the 4 horizon MSEs per candidate P, then argmin; ties resolved to the SMALLER P",
+  "val_windows": "s in [max(n_train, seq_len), val_end - H] closed; hist [s-L, s), label [s, s+H); stride 1; no test row is ever touched",
+  "weight_updates": "none — model stays in eval() with all parameters frozen during selection",
+  "shared_by_test": "the single selected P per domain is used for all 4 test horizons"
+ },
+ "domain_order": [
+  "Agriculture",
+  "Climate",
+  "Economy",
+  "Energy",
+  "Environment",
+  "Health",
+  "Security",
+  "Traffic",
+  "SocialGood"
+ ],
+ "datasets": {
+  "Agriculture": {
+   "seq_len": 192,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 94,
+    "8": 92,
+    "10": 90,
+    "12": 88
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    347,
+    50,
+    99
+   ],
+   "csv_sha256": "41203f1af2c4fd9f3207ec286f0a1462df146b5ae8b6d9cdcec6cb569c57a0be",
+   "selected_periodicity": 6,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1983-01-01",
+    "last": "2024-04-01",
+    "val_end": "2016-02-01",
+    "test_first": "2016-02-01",
+    "test_last": "2024-04-01",
+    "val_first": "2011-12-01"
+   }
+  },
+  "Climate": {
+   "seq_len": 192,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 94,
+    "8": 92,
+    "10": 90,
+    "12": 88
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    347,
+    50,
+    99
+   ],
+   "csv_sha256": "4096994d5e8691de404b15d16ab9e2a98d69b03eb1d4eafa4283ea44ead0e51b",
+   "selected_periodicity": 1,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1983-01-01",
+    "last": "2024-04-01",
+    "val_end": "2016-02-01",
+    "test_first": "2016-02-01",
+    "test_last": "2024-04-01",
+    "val_first": "2011-12-01"
+   }
+  },
+  "Economy": {
+   "seq_len": 192,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 79,
+    "8": 77,
+    "10": 75,
+    "12": 73
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    296,
+    43,
+    84
+   ],
+   "csv_sha256": "c35325f0181a426a78c35b9172d8908f64639796a535c5fdc8b082b538030e5d",
+   "selected_periodicity": 12,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "2024-01-01",
+    "last": "1989-12-01",
+    "val_end": "1995-01-01",
+    "test_first": "1995-01-01",
+    "test_last": "1989-12-01",
+    "val_first": "1999-06-01"
+   }
+  },
+  "Energy": {
+   "seq_len": 1056,
+   "horizons": [
+    12,
+    24,
+    36,
+    48
+   ],
+   "windows": {
+    "12": 284,
+    "24": 272,
+    "36": 260,
+    "48": 248
+   },
+   "candidates": [
+    1,
+    4,
+    52
+   ],
+   "frequency": "weekly",
+   "split_rows": [
+    1035,
+    149,
+    295
+   ],
+   "csv_sha256": "fdef4b4f58ab319656b60e49c96d1dc4158d2c5b17467456d4d12d746ff55cd5",
+   "selected_periodicity": 4,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1996-01-01",
+    "last": "2024-04-29",
+    "val_end": "2018-09-10",
+    "test_first": "2018-09-10",
+    "test_last": "2024-04-29",
+    "val_first": "2015-11-02"
+   }
+  },
+  "Environment": {
+   "seq_len": 528,
+   "horizons": [
+    48,
+    96,
+    192,
+    336
+   ],
+   "windows": {
+    "48": 3002,
+    "96": 2954,
+    "192": 2858,
+    "336": 2714
+   },
+   "candidates": [
+    1,
+    7,
+    30,
+    365
+   ],
+   "frequency": "daily",
+   "split_rows": [
+    10673,
+    1526,
+    3049
+   ],
+   "csv_sha256": "3bcda88e0831294678d412807fa2eac2022c5665a9f1f044cd23cff65657a0d6",
+   "selected_periodicity": 7,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1982-01-01",
+    "last": "2023-09-30",
+    "val_end": "2015-05-27",
+    "test_first": "2015-05-27",
+    "test_last": "2023-09-30",
+    "val_first": "2011-03-23"
+   }
+  },
+  "Health": {
+   "seq_len": 96,
+   "horizons": [
+    12,
+    24,
+    36,
+    48
+   ],
+   "windows": {
+    "12": 266,
+    "24": 254,
+    "36": 242,
+    "48": 230
+   },
+   "candidates": [
+    1,
+    4,
+    52
+   ],
+   "frequency": "weekly",
+   "split_rows": [
+    972,
+    140,
+    277
+   ],
+   "csv_sha256": "88a81d443533991b8e2b55da8db0a6496d68fc510077b1c0f568d6f186394cf8",
+   "selected_periodicity": 52,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1997-09-29",
+    "last": "2024-05-06",
+    "val_end": "2019-01-21",
+    "test_first": "2019-01-21",
+    "test_last": "2024-05-06",
+    "val_first": "2016-05-09"
+   }
+  },
+  "Security": {
+   "seq_len": 220,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 54,
+    "8": 52,
+    "10": 50,
+    "12": 48
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    207,
+    31,
+    59
+   ],
+   "csv_sha256": "adea376a0e6858979b2d42cde6f3901d7d60639bb78cd64eec6f58e2e85ed23c",
+   "selected_periodicity": 1,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1999-09-01",
+    "last": "2024-05-01",
+    "val_end": "2019-07-01",
+    "test_first": "2019-07-01",
+    "test_last": "2024-05-01",
+    "val_first": "2016-12-01"
+   }
+  },
+  "Traffic": {
+   "seq_len": 96,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 101,
+    "8": 99,
+    "10": 97,
+    "12": 95
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    371,
+    54,
+    106
+   ],
+   "csv_sha256": "82439ff69196789968f48245d8bce699ac09a566f24f027dabd6b99333417311",
+   "selected_periodicity": 12,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1980-01-01",
+    "last": "2024-03-01",
+    "val_end": "2015-06-01",
+    "test_first": "2015-06-01",
+    "test_last": "2024-03-01",
+    "val_first": "2010-12-01"
+   }
+  },
+  "SocialGood": {
+   "seq_len": 192,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 173,
+    "8": 171,
+    "10": 169,
+    "12": 167
+   },
+   "candidates": [
+    1,
+    3,
+    6,
+    12
+   ],
+   "frequency": "monthly",
+   "split_rows": [
+    624,
+    90,
+    178
+   ],
+   "csv_sha256": "a6f25ea421d1e74b9c7aa29b0119c2dcd49bcd5b6c266ab7cd4ba498a5f814cf",
+   "selected_periodicity": 3,
+   "row_order": "original CSV order (Economy kept year-descending)",
+   "dates": {
+    "first": "1950-01-01",
+    "last": "2024-04-01",
+    "val_end": "2009-07-01",
+    "test_first": "2009-07-01",
+    "test_last": "2024-04-01",
+    "val_first": "2002-01-01"
+   }
+  }
+ },
+ "total_test_windows": 15892,
+ "selected_periodicities": {
+  "Agriculture": 6,
+  "Climate": 1,
+  "Economy": 12,
+  "Energy": 4,
+  "Environment": 7,
+  "Health": 52,
+  "Security": 1,
+  "Traffic": 12,
+  "SocialGood": 3
+ },
+ "selected_p_sha256": "91b0d5887938a32cf89272d148b5fde2a94a94065b8552913914c25c78e1e05a",
+ "argmin_recheck": "PASS",
+ "data_prep_sha256": "89e3dbfcd25a0dc0b3adfaf0241fef34546b7a889591d0c9095cd249dedff37f",
+ "runtime": {
+  "python": "3.10.20",
+  "executable": "/home/wlt/miniconda3/envs/diag_vts_env/bin/python",
+  "numpy": "2.2.6",
+  "torch": "2.13.0+cu129",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 5060 Ti",
+  "gpu_total_mem_gib": 15.9,
+  "torchvision": "0.28.0+cu129",
+  "timm": "0.9.16",
+  "einops": "0.8.1",
+  "pillow": "MISSING",
+  "huggingface_hub": "0.36.2",
+  "sklearn": "1.7.2"
+ },
+ "paper_deviation_notes": {
+  "past_tokens": "paper A.4: past tokens maintained at a constant value of 11; official script instead pins per-dataset seq_len (this run follows the script, same as EXP-019)",
+  "periodicity_unknown": "Aurora paper does not disclose the periodicity P / history length L it used for its VisionTS column; this run selects P by the VisionTS paper's own validation-set method — a re-scoring under the same data protocol, NOT a bit-identical replication of the paper's VisionTS numbers",
+  "environment_rows": "paper Table 7 says 11,102; actual CSV has 15,248",
+  "socialgood_rows": "paper Table 7 says 900; actual CSV has 892",
+  "economy_order": "CSV row order is year-descending blocks (2024 first, 1989 last); kept as-is per the frozen EXP-019 base protocol"
+ }
+}

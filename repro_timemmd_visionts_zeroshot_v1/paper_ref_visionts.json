@@ -1,0 +1,49 @@
+{
+ "source": "Aurora paper (TimeMMD) /home/wlt/MMTS/papers/Aurora/full.md",
+ "transcribed_from": {
+  "table12_line": 727,
+  "table1_line": 258,
+  "verification": "second transcription pass 2026-10-12: Table 12 VisionTS column re-extracted from HTML cells[5:7] for all 36 rows and both Avg rows; Table 1 VisionTS MSE/MAE re-read and matched to Table 12 Avg for all 9 domains",
+  "security_ocr_note": "Table 12 Security cells use thousands-separator commas as decimal points in this markdown rendering (e.g. '71,453' = 71.453); conversion comma->decimal applied and cross-checked against Table 1 (79.598/4.597)"
+ },
+ "domains": {
+  "Agriculture": {
+   "per_H": {"6": {"mse": 0.210, "mae": 0.289}, "8": {"mse": 0.266, "mae": 0.323}, "10": {"mse": 0.307, "mae": 0.348}, "12": {"mse": 0.376, "mae": 0.386}},
+   "table1_mean": {"mse": 0.290, "mae": 0.336}
+  },
+  "Climate": {
+   "per_H": {"6": {"mse": 1.316, "mae": 0.932}, "8": {"mse": 1.312, "mae": 0.935}, "10": {"mse": 1.302, "mae": 0.928}, "12": {"mse": 1.297, "mae": 0.925}},
+   "table1_mean": {"mse": 1.307, "mae": 0.930}
+  },
+  "Economy": {
+   "per_H": {"6": {"mse": 0.270, "mae": 0.420}, "8": {"mse": 0.296, "mae": 0.440}, "10": {"mse": 0.307, "mae": 0.446}, "12": {"mse": 0.329, "mae": 0.462}},
+   "table1_mean": {"mse": 0.301, "mae": 0.442}
+  },
+  "Energy": {
+   "per_H": {"12": {"mse": 0.173, "mae": 0.313}, "24": {"mse": 0.264, "mae": 0.395}, "36": {"mse": 0.346, "mae": 0.454}, "48": {"mse": 0.434, "mae": 0.516}},
+   "table1_mean": {"mse": 0.304, "mae": 0.420}
+  },
+  "Environment": {
+   "per_H": {"48": {"mse": 0.345, "mae": 0.426}, "96": {"mse": 0.370, "mae": 0.441}, "192": {"mse": 0.360, "mae": 0.442}, "336": {"mse": 0.340, "mae": 0.436}},
+   "table1_mean": {"mse": 0.354, "mae": 0.436}
+  },
+  "Health": {
+   "per_H": {"12": {"mse": 2.012, "mae": 1.093}, "24": {"mse": 2.594, "mae": 1.266}, "36": {"mse": 2.686, "mae": 1.291}, "48": {"mse": 2.454, "mae": 1.236}},
+   "table1_mean": {"mse": 2.436, "mae": 1.221}
+  },
+  "Security": {
+   "per_H": {"6": {"mse": 71.453, "mae": 4.286}, "8": {"mse": 78.023, "mae": 4.573}, "10": {"mse": 81.893, "mae": 4.669}, "12": {"mse": 87.023, "mae": 4.861}},
+   "table1_mean": {"mse": 79.598, "mae": 4.597},
+   "ocr_conversion": {"6": ["71,453", "4,286"], "8": ["78,023", "4,573"], "10": ["81,893", "4,669"], "12": ["87,023", "4,861"], "Avg": ["79,598", "4,597"]}
+  },
+  "Traffic": {
+   "per_H": {"6": {"mse": 0.275, "mae": 0.411}, "8": {"mse": 0.282, "mae": 0.410}, "10": {"mse": 0.286, "mae": 0.406}, "12": {"mse": 0.282, "mae": 0.402}},
+   "table1_mean": {"mse": 0.281, "mae": 0.407}
+  },
+  "SocialGood": {
+   "per_H": {"6": {"mse": 0.957, "mae": 0.543}, "8": {"mse": 1.106, "mae": 0.605}, "10": {"mse": 1.164, "mae": 0.636}, "12": {"mse": 1.278, "mae": 0.688}},
+   "table1_mean": {"mse": 1.126, "mae": 0.618}
+  }
+ },
+ "note": "Aurora paper does not disclose the periodicity P or history length L used for its VisionTS column; the table1_mean values are the paper's own domain means and are NOT recomputed from the per_H entries (rounding)"
+}

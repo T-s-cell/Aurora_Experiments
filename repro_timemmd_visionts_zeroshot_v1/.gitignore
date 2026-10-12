@@ -1,0 +1,8 @@
+dataset/*
+predictions/*
+results/*
+logs/*
+pack_out/*
+val_evidence/*
+__pycache__/
+*.pyc
