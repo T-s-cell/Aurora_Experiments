@@ -1,0 +1,100 @@
+{
+ "protocol_name": "repro_timemmd_economy_chrono_v1",
+ "label": "Aurora 官方脚本、TimeMMD Economy 时间升序对照、zero-shot v1",
+ "exp_id": "EXP-020",
+ "designation": "Aurora 官方脚本、TimeMMD Economy 时间升序对照、zero-shot v1",
+ "official_repo_commit": "a247760abbc9d17a861bc365c032368d317815f2",
+ "official_file_count": 42,
+ "original_exp_main_md5": "bcc775a2494fcfb98f39e60717daad56",
+ "hf_repo": "DecisionIntelligence/Aurora",
+ "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+ "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+ "weights_bytes": 843564328,
+ "hf_config_sha256": "37f1f42f3b7cb856691985aa44dd3c59b86c481f31fec874a06a3a0800bf8985",
+ "hf_generation_config_sha256": "d90f7f1d9ef012f9ec0bd76fdf42e6979d086f157d65910b3b273edfb100e748",
+ "seed": 2021,
+ "num_samples": 100,
+ "max_text_token": 500,
+ "label_len": 0,
+ "features": "S",
+ "target": "OT",
+ "preferred_batch": 256,
+ "batch_ladder": [
+  256,
+  128,
+  64,
+  32,
+  16
+ ],
+ "num_workers": 4,
+ "batch_plan": {
+  "Economy": 256
+ },
+ "batch_decision_source": "/home/wlt/MMTS/Aurora_Experiments/repro_timemmd_economy_chrono_v1/results/batch_decision.json",
+ "datasets": {
+  "Economy": {
+   "seq_len": 192,
+   "token_len": 48,
+   "horizons": [
+    12,
+    6,
+    8,
+    10
+   ],
+   "windows": {
+    "6": 79,
+    "8": 77,
+    "10": 75,
+    "12": 73
+   },
+   "order_assert": {
+    "Month": "January 1989",
+    "date": "1989-01-01",
+    "last_Month": "March 2024",
+    "last_date": "2024-03-01"
+   },
+   "csv_sha256": "023292b969b915a73185e047debfb18f5572544f9463b23e64e9f496a0b52b26",
+   "original_csv_sha256": "c35325f0181a426a78c35b9172d8908f64639796a535c5fdc8b082b538030e5d",
+   "sort_mapping_sha256": "43c3fd29f6275eb346066c2d3d6e2182f4f174bfd9d8bd6c6ab75d0492cc74b2",
+   "sort_rule": "stable ascending sort of whole rows by parsed `date` column (ISO yyyy-mm-dd, unique month-first days); all columns and cell contents move with their row; no field regenerated",
+   "n_rows": 423
+  }
+ },
+ "domain_order": [
+  "Economy"
+ ],
+ "total_windows": 304,
+ "split_claims": {
+  "n_rows": 423,
+  "num_train": 296,
+  "train_dates": [
+   "1989-01-01",
+   "2013-08-01"
+  ],
+  "num_val": 43,
+  "val_dates": [
+   "2013-09-01",
+   "2017-03-01"
+  ],
+  "num_test": 84,
+  "test_dates": [
+   "2017-04-01",
+   "2024-03-01"
+  ],
+  "test_border1": 147,
+  "first_test_pred_row": 339
+ },
+ "base_experiment": {
+  "dir": "repro_timemmd_zeroshot_v1",
+  "exp_id": "EXP-019",
+  "add_commit": "36a92942366e9185bc1356e6a0d2e3ba1b459a0a",
+  "freeze_commit": "8878412fd5ab68ff97143bca71c9c2de4e7bcdfb",
+  "protocol_sha256": "32b843660cc3434cb32e350f24e39985e6d855eebc0edfec4aa4ba7f442e2b3d",
+  "protocol_token": "32b843660cc3"
+ },
+ "paper_deviation_notes": {
+  "past_tokens": "paper A.4: past tokens maintained at a constant value of 11; official script instead pins per-dataset seq_len (this run follows the script)",
+  "single_protocol_change": "this experiment differs from frozen EXP-019 ONLY in Economy row order (chronological ascending vs original year-descending blocks); history windows, text selection, train/test periods and scaler statistics all change as a consequence",
+  "period_shift": "EXP-019 original-row-order test target rows cover 1989-01..1995-12; EXP-020 ascending test target rows cover 2017-04..2024-03"
+ }
+}

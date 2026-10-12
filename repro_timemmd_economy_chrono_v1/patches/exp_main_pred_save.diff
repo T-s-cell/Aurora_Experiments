@@ -1,0 +1,16 @@
+--- a/exp_main.py	2026-10-12 01:53:21.655939010 +0800
++++ b/exp_main.py	2026-10-12 01:53:21.667938958 +0800
+@@ -231,6 +231,13 @@
+             mae, mse, rmse, mape, mspe, rse, corr = metric(preds, trues)
+             print('mse:{}, mae:{}, rse:{}'.format(mse, mae, rse))
+ 
++            # --- repro_timemmd_zeroshot_v1: persist point predictions/ground truth (result-saving adapter only; forecast semantics unchanged) ---
++            pred_dir = os.environ.get('TMMD_PRED_DIR')
++            if pred_dir:
++                os.makedirs(pred_dir, exist_ok=True)
++                np.save(os.path.join(pred_dir, 'preds.npy'), preds)
++                np.save(os.path.join(pred_dir, 'trues.npy'), trues)
++
+         # return {"output": output}
+ 
+         #     f_dim = -1 if self.args.features == 'MS' else 0

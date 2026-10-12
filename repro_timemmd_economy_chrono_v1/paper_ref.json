@@ -1,0 +1,50 @@
+{
+  "source": "papers/Aurora/full.md (MinerU markdown of the Aurora paper)",
+  "table12": {
+    "location": "full.md lines 725-727; column group: Aurora(Ours) zero-shot, MSE then MAE",
+    "note_security": "Table 12 markdown renders Security values with commas (67,572); Table 1 renders the same metric with decimal points (72.475) and the Avg rows match under the decimal reading, so commas are extraction artifacts for decimal points. Pinned in decimal form.",
+    "values": {
+      "Agriculture": {"6": [0.184, 0.295], "8": [0.242, 0.335], "10": [0.297, 0.365], "12": [0.365, 0.398], "avg": [0.272, 0.348]},
+      "Climate": {"6": [0.859, 0.747], "8": [0.858, 0.746], "10": [0.868, 0.748], "12": [0.875, 0.753], "avg": [0.865, 0.749]},
+      "Economy": {"6": [0.035, 0.150], "8": [0.033, 0.145], "10": [0.032, 0.143], "12": [0.032, 0.144], "avg": [0.033, 0.146]},
+      "Energy": {"12": [0.117, 0.245], "24": [0.226, 0.354], "36": [0.292, 0.409], "48": [0.383, 0.472], "avg": [0.255, 0.370]},
+      "Environment": {"48": [0.281, 0.380], "96": [0.284, 0.382], "192": [0.270, 0.375], "336": [0.269, 0.377], "avg": [0.276, 0.379]},
+      "Health": {"12": [1.093, 0.668], "24": [1.572, 0.849], "36": [1.688, 0.920], "48": [1.857, 0.963], "avg": [1.553, 0.850]},
+      "Security": {"6": [67.572, 3.909], "8": [70.576, 4.013], "10": [74.173, 4.148], "12": [77.579, 4.264], "avg": [72.475, 4.084]},
+      "SocialGood": {"6": [0.701, 0.442], "8": [0.804, 0.493], "10": [0.886, 0.543], "12": [0.960, 0.587], "avg": [0.838, 0.516]},
+      "Traffic": {"6": [0.154, 0.285], "8": [0.158, 0.286], "10": [0.163, 0.289], "12": [0.168, 0.294], "avg": [0.161, 0.289]}
+    }
+  },
+  "table1": {
+    "location": "full.md line 258; zero-shot Aurora(Ours) row, MSE/MAE per domain",
+    "values": {
+      "Agriculture": [0.272, 0.348],
+      "Climate": [0.865, 0.749],
+      "Economy": [0.033, 0.146],
+      "Energy": [0.255, 0.370],
+      "Environment": [0.276, 0.379],
+      "Health": [1.553, 0.850],
+      "Security": [72.475, 4.084],
+      "SocialGood": [0.838, 0.516],
+      "Traffic": [0.161, 0.289]
+    }
+  },
+  "table7_claims": {
+    "location": "full.md lines 641-643",
+    "rows": {
+      "Agriculture": 496, "Climate": 496, "Economy": 423, "Energy": 1479,
+      "Environment": 11102, "Health": 1389, "Security": 297,
+      "SocialGood": 900, "Traffic": 531
+    },
+    "actual_rows": {
+      "Agriculture": 496, "Climate": 496, "Economy": 423, "Energy": 1479,
+      "Environment": 15248, "Health": 1389, "Security": 297,
+      "SocialGood": 892, "Traffic": 531
+    }
+  },
+  "protocol_quotes": {
+    "past_tokens_A4": "In the context of downstream forecasting tasks, we implement periodic patching strategies that are tailored to the temporal characteristics of each dataset. The quantity of past tokens is maintained at a constant value of 11.",
+    "samples_100": "which is based on n = 100 samples drawn from the conditional predictive distribution",
+    "metrics_A5": "for deterministic forecasting, we employ the Mean Squared Error (MSE) and Mean Absolute Error (MAE) as evaluation metrics"
+  }
+}
