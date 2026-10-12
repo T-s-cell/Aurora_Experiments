@@ -1,0 +1,9 @@
+dataset/*
+predictions/*
+results/*
+logs/*
+pack_out/*
+preflight_tmp/*
+official/
+__pycache__/
+*.pyc

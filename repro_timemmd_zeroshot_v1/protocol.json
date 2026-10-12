@@ -1,0 +1,219 @@
+{
+ "protocol_name": "repro_timemmd_zeroshot_v1",
+ "label": "Aurora TimeMMD 官方公开实现零样本复现（原始行序）",
+ "official_repo_commit": "a247760abbc9d17a861bc365c032368d317815f2",
+ "official_file_count": 42,
+ "original_exp_main_md5": "bcc775a2494fcfb98f39e60717daad56",
+ "hf_repo": "DecisionIntelligence/Aurora",
+ "hf_revision": "c495b02c1b151be52a3c174237ed240aa66e6384",
+ "weights_sha256": "df2fb96852a59515a14552d5bddc35c03588b6a8bea69355984b3dd926a72b58",
+ "weights_bytes": 843564328,
+ "hf_config_sha256": "37f1f42f3b7cb856691985aa44dd3c59b86c481f31fec874a06a3a0800bf8985",
+ "hf_generation_config_sha256": "d90f7f1d9ef012f9ec0bd76fdf42e6979d086f157d65910b3b273edfb100e748",
+ "seed": 2021,
+ "num_samples": 100,
+ "max_text_token": 500,
+ "label_len": 0,
+ "features": "S",
+ "target": "OT",
+ "preferred_batch": 256,
+ "batch_ladder": [
+  256,
+  128,
+  64,
+  32,
+  16
+ ],
+ "num_workers": 4,
+ "batch_plan": {
+  "Agriculture": 256,
+  "Climate": 256,
+  "Economy": 256,
+  "Energy": 256,
+  "Environment": 256,
+  "Health": 256,
+  "Security": 256,
+  "Traffic": 256,
+  "SocialGood": 256
+ },
+ "batch_decision_source": "/home/wlt/MMTS/Aurora_Experiments/repro_timemmd_zeroshot_v1/results/batch_decision.json",
+ "datasets": {
+  "Agriculture": {
+   "seq_len": 192,
+   "token_len": 48,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 94,
+    "8": 92,
+    "10": 90,
+    "12": 88
+   },
+   "csv_sha256": "41203f1af2c4fd9f3207ec286f0a1462df146b5ae8b6d9cdcec6cb569c57a0be"
+  },
+  "Climate": {
+   "seq_len": 192,
+   "token_len": 48,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 94,
+    "8": 92,
+    "10": 90,
+    "12": 88
+   },
+   "csv_sha256": "4096994d5e8691de404b15d16ab9e2a98d69b03eb1d4eafa4283ea44ead0e51b"
+  },
+  "Economy": {
+   "seq_len": 192,
+   "token_len": 48,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 79,
+    "8": 77,
+    "10": 75,
+    "12": 73
+   },
+   "csv_sha256": "c35325f0181a426a78c35b9172d8908f64639796a535c5fdc8b082b538030e5d",
+   "order_assert": {
+    "Month": "January 2024",
+    "date": "2024-01-01",
+    "last_Month": "December 1989"
+   }
+  },
+  "Energy": {
+   "seq_len": 1056,
+   "token_len": 48,
+   "horizons": [
+    12,
+    24,
+    36,
+    48
+   ],
+   "windows": {
+    "12": 284,
+    "24": 272,
+    "36": 260,
+    "48": 248
+   },
+   "csv_sha256": "fdef4b4f58ab319656b60e49c96d1dc4158d2c5b17467456d4d12d746ff55cd5"
+  },
+  "Environment": {
+   "seq_len": 528,
+   "token_len": 48,
+   "horizons": [
+    48,
+    96,
+    192,
+    336
+   ],
+   "windows": {
+    "48": 3002,
+    "96": 2954,
+    "192": 2858,
+    "336": 2714
+   },
+   "csv_sha256": "3bcda88e0831294678d412807fa2eac2022c5665a9f1f044cd23cff65657a0d6"
+  },
+  "Health": {
+   "seq_len": 96,
+   "token_len": 48,
+   "horizons": [
+    12,
+    24,
+    36,
+    48
+   ],
+   "windows": {
+    "12": 266,
+    "24": 254,
+    "36": 242,
+    "48": 230
+   },
+   "csv_sha256": "88a81d443533991b8e2b55da8db0a6496d68fc510077b1c0f568d6f186394cf8"
+  },
+  "Security": {
+   "seq_len": 220,
+   "token_len": 24,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 54,
+    "8": 52,
+    "10": 50,
+    "12": 48
+   },
+   "csv_sha256": "adea376a0e6858979b2d42cde6f3901d7d60639bb78cd64eec6f58e2e85ed23c"
+  },
+  "SocialGood": {
+   "seq_len": 192,
+   "token_len": 48,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 173,
+    "8": 171,
+    "10": 169,
+    "12": 167
+   },
+   "csv_sha256": "a6f25ea421d1e74b9c7aa29b0119c2dcd49bcd5b6c266ab7cd4ba498a5f814cf"
+  },
+  "Traffic": {
+   "seq_len": 96,
+   "token_len": 48,
+   "horizons": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "windows": {
+    "6": 101,
+    "8": 99,
+    "10": 97,
+    "12": 95
+   },
+   "csv_sha256": "82439ff69196789968f48245d8bce699ac09a566f24f027dabd6b99333417311"
+  }
+ },
+ "domain_order": [
+  "Agriculture",
+  "Climate",
+  "Economy",
+  "Energy",
+  "Environment",
+  "Health",
+  "Security",
+  "Traffic",
+  "SocialGood"
+ ],
+ "total_windows": 15892,
+ "exp017_archive_commit": "3d20862a35fce5854ab2bd2bc6b0e849bd67da57",
+ "paper_deviation_notes": {
+  "past_tokens": "paper A.4: past tokens maintained at a constant value of 11; official script instead pins per-dataset seq_len (this run follows the script)",
+  "environment_rows": "paper Table 7 says 11,102; actual CSV has 15,248",
+  "socialgood_rows": "paper Table 7 says 900; actual CSV has 892",
+  "economy_order": "CSV row order is year-descending blocks (2024 first, 1989 last), ascending within year; kept as-is and results labeled 'original row order'"
+ }
+}
