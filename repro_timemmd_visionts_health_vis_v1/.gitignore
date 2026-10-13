@@ -1,0 +1,9 @@
+results/*
+figures/*
+pack_out/*
+logs/*
+__pycache__/
+*.pyc
+nohup.out
+watcher.out
+verify_dt/
